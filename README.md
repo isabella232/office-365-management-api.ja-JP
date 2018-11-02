@@ -1,11 +1,10 @@
-# Office 365 Management APIs
+# <a name="office-365-management-apis"></a>Office 365 管理 API
 
-The Office 365 Management APIs provide a single extensibility platform for all Office 365 customers' and partners' management tasks, including service communications, security, compliance, reporting, and auditing. All of the Office 365 Management APIs are consistent in design and implementation with the current suite of Office 365 REST APIs, using common industry-standard approaches, including OAuth v2, OData v4, and JSON. Like the other Office 365 APIs, applications are registered in Azure Active Directory, giving developers a consistent way to authenticate and authorize their apps.
+Office 365 管理 API は、Office 365 のお客様およびパートナーの、サービス通信、セキュリティ、コンプライアンス、レポート作成、監査を含むすべての管理タスクに対応する、単一の機能拡張プラットフォームを提供します。 すべての Office 365 管理 API は、設計および実装において Office 365 REST API の現行スイートと一貫性があり、OAuth v2、OData v4、JSON などの一般的な業界標準アプローチを使用しています。 他の Office 365 API と同様、アプリケーションは Azure Active Directory で登録され、開発者はアプリの認証と承認を一貫した方法で受けることができます。
 
-To get started, go to the [Office 365 Management APIs overview](https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-apis-overview).
+使用を開始するには、「[Office 365 管理 API の概要](https://docs.microsoft.com/ja-JP/office/office-365-management-api/office-365-management-apis-overview)」に移動します。
 
 
 
-## Microsoft Open Source Code of Conduct
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+## <a name="microsoft-open-source-code-of-conduct"></a>Microsoft Open Source Code of Conduct
+このプロジェクトでは、[Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) が採用されています。詳細については、「[規範に関する FAQ](https://opensource.microsoft.com/codeofconduct/faq/)」を参照してください。または、その他の質問やコメントがあれば、[opencode@microsoft.com](mailto:opencode@microsoft.com) までにお問い合わせください。

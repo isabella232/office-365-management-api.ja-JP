@@ -4,13 +4,13 @@ title: Office 365 管理アクティビティ API のスキーマ
 description: Office 365 管理アクティビティ API のスキーマは、共通スキーマと製品固有スキーマの 2 つのレイヤーでデータ サービスとして提供されます。
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
-ms.date: 09/05/2018
-ms.openlocfilehash: fae8089a35e2917bc7ac3e17b2e9c1b3716aae95
-ms.sourcegitcommit: 7275a216044ec620974ffb45eec86fdf465deb39
+ms.date: ''
+ms.openlocfilehash: 13d964eb7665c70719b9310c880974b7eea6c530
+ms.sourcegitcommit: 0d3abd151e8970b84735eea975792ae930de6995
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "25846424"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "26215303"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -94,12 +94,16 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |15|AzureActiveDirectoryStsLogon|Azure Active Directory の Secure Token Service (STS) ログオン イベント。|
 |18|SecurityComplianceCenterEOPCmdlet|セキュリティ センターとコンプライアンス センターの管理者アクション|
 |20|PowerBIAudit|Power BI イベント。|
+|22|Yammer|Yammer のイベント。|
 |24|Discovery|セキュリティ/コンプライアンス センターでコンテンツ検索を実行し、eDiscovery のケースを管理することによって実行される、電子情報開示アクティビティのイベント。|
 |25|MicrosoftTeams|Microsoft Teams のイベント。|
 |26|MicrosoftTeamsAddOns|Microsoft Teams アドオンのイベント。|
 |27|MicrosoftTeamsSettingsOperation|Microsoft Teams の設定の変更。|
+|28|ThreatIntelligence|Office 365 Advanced Threat Protection および脅威インテリジェンスのイベント。|
+|30|MicrosoftFlow|Microsoft Flow のイベント。|
+|32|MicrosoftStream|Microsoft Stream のイベント。|
+|35|Project|Microsoft Project のイベント。|
 |40|SecurityComplianceAlerts|セキュリティ/コンプライアンス アラートのシグナル。|
-
 
 ### <a name="enum-user-type---type-edmint32"></a>列挙値: User Type - 型: Edm.Int32
 
@@ -694,16 +698,17 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |クライアント|Edm.String|いいえ|ログインを実行するブラウザーが提供する、クライアント デバイス情報。|
 |LogonError|Edm.String|いいえ|失敗したログインの場合、ログインが失敗した理由が含まれます。|
 
-
-
-
 ## <a name="dlp-schema"></a>DLP スキーマ
+
 DLP イベントは、Exchange Online、SharePoint Online、および OneDrive For Business で使用できます。 Exchange の DLP イベントは、統合された DLP ポリシーに基づいたイベント (セキュリティ/コンプライアンス センターで構成されたものなど) でのみ使用できます。 Exchange トランスポート ルールに基づく DLP イベントはサポートされていません。
 
-共通スキーマでは、DLP (データ損失防止) イベントに必ず UserKey="DlpAgent" があります。 共通スキーマの操作プロパティの値として格納される 3 種類の DLP イベントがあります。
-- "DlpRuleMatch":  This indicates a rule was matched. これらのイベントは、Exchange、SharePoint Online、OneDrive for Business のいずれにも存在します。 Exchange では、誤検知と上書きの情報が含まれます。 SharePoint Online と OneDrive for Business では、誤検知と上書きは異なるイベントを生成します。
-- "DlpRuleUndo": これらは SharePoint Online と OneDrive for Business にのみ存在し、ユーザーによる対象の誤検知/上書きにより、またはドキュメントがポリシーの適用対象ではなくなった (ポリシーを変更したか、ドキュメントのコンテンツを変更したため) ことにより、以前に適用されたポリシー アクションが取り消された (“undone”) ことを示します。
-- "DlpInfo": これらは SharePoint Online と OneDrive for Business にのみ存在し、対象を誤検知したものの、取り消された (“undone”) アクションはないことを示します。
+共通スキーマでは、DLP (データ損失防止) イベントに必ず UserKey="DlpAgent" があります。 共通スキーマの Operation プロパティの値として格納される 3 種類の DLP イベントがあります。
+
+- DlpRuleMatch: ルールが一致したことを示します。 これらのイベントは、Exchange、SharePoint Online、OneDrive for Business のいずれにも存在します。 Exchange では、誤検知と上書きの情報が含まれます。 SharePoint Online と OneDrive for Business では、誤検知と上書きは異なるイベントを生成します。
+
+- DlpRuleUndo: SharePoint Online と OneDrive for Business にのみ存在し、ユーザーによる対象の誤検知/上書きにより、またはドキュメントがポリシーの適用対象ではなくなった (ポリシーを変更したか、ドキュメントのコンテンツを変更したため) ことにより、以前に適用されたポリシー アクションが取り消された (“undone”) ことを示します。
+
+- DlpInfo: SharePoint Online と OneDrive for Business にのみ存在し、対象を誤検知したものの、取り消された (“undone”) アクションはないことを示します。
 
 
 
@@ -803,11 +808,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |妥当性|Edm.String|いいえ|ユーザーがポリシーを上書きすることにした場合、ユーザーによる指定の妥当性をここで確認できます。|
 |ルール|Collection(Edm.Guid)|いいえ|誤検知または上書き、もしくはアクションが取り消されるものとして指定された各ルールの GUID のコレクション。|
 
-
-
 ## <a name="security-and-compliance-center-schema"></a>セキュリティ/コンプライアンス センター スキーマ
-
-
 
 |**パラメーター**|**型**|**必須**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -819,6 +820,34 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |ClientApplication|Edm.String|いいえ|コマンドレットが (リモート PowerShell とは対照的に) アプリケーションによって実行された場合、このフィールドにはそのアプリケーションの名前が含まれます。|
 |パラメーター|Edm.String|いいえ|個人を特定できる情報を含まないコマンドレットで使用されたパラメーターの名前と値。|
 |NonPiiParameters|Edm.String|いいえ|The name and value for parameters that were used with the cmdlet that include Personally Identifiable Information. (Deprecated: This field will stop appearing in the future and its content merged with the Parameters field.)|
+
+## <a name="security-and-compliance-alerts-schema"></a>セキュリティとコンプライアンスのアラート スキーマ
+
+アラートの通知には、次のものが含まれます。
+
+- [セキュリティ/コンプライアンス センターのアラート ポリシー](https://docs.microsoft.com/office365/securitycompliance/alert-policies#default-alert-policies)に基づいて生成されたすべてのアラート。
+- [Office 365 Cloud App Security](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) および [Microsoft Cloud App Security](https://docs.microsoft.com/ja-JP/cloud-app-security/what-is-cloud-app-security) で生成された Office 365 関連のアラート。
+
+これらのイベントの UserId と UserKey は、常に SecurityComplianceAlerts になります。 共通スキーマの Operation プロパティの値として格納される 2 種類のアラート通知があります。
+
+- AlertTriggered: 新しいアラートがポリシーとの一致によって生成されている。
+
+- AlertEntityGenerated: 新しいエンティティがアラートに追加されている。 このイベントは、Office 365 セキュリティ/コンプライアンス センターのアラート ポリシーに基づいて生成されたアラートにのみ適用されます。 生成されたアラートごとに、これらのイベントが 1 つまたは複数関連付けられます。 たとえば、いずれかのユーザーが 5 分以内に 100 ファイル以上削除したときに、アラートをトリガーするポリシーが定義されているとします。 2 人のユーザーがほとんど同時にしきい値を超えた場合、AlertEntityGenerated イベントは 2 つになりますが、AlertTriggered イベントは 1 つのみになります。
+
+|**パラメーター**|**型**|**必須**|**Description**|
+|:-----|:-----|:-----|:-----|
+|AlertId|Edm.Guid|はい|アラートの GUID。|
+|AlertType|Self.String|はい|アラートの種類。 アラートの種類には、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>System</p></li><li><p>Custom</p></li>|
+|Name|Edm.String|はい|アラートの名前。|
+|PolicyId|Edm.Guid|いいえ|アラートをトリガーしたポリシーの GUID。|
+|Status|Edm.String|いいえ|アラートの状態。 状態には、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Active</p></li><li><p>Investigating</p></li><li><p>Resolved</p></li><li><p>Dismissed</p></li></ul>|
+|重要度|Edm.String|いいえ|アラートの重大度。 重大度レベルには、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>低</p></li><li><p>中</p></li><li><p>高</p></li></ul>|
+|カテゴリ|Edm.String|いいえ|アラートのカテゴリ。 カテゴリには、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>DataLossPrevention</p></li><li><p>ThreatManagement</p></li><li><p>DataGovernance</p></li><li><p>AccessGovernance</p></li><li><p>MailFlow</p></li><li><p>Other</p></li></ul>|
+|Source|Edm.String|いいえ|アラートのソース。 ソースには、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Office 365 セキュリティ/コンプライアンス</p></li><li><p>Cloud App Security</p></li></ul>|
+|Comments|Edm.String|いいえ|アラートが表示されたユーザーが残したコメント。 既定は、"New alert" です。|
+|Data|Edm.String|いいえ|アラートまたはアラート エンティティの詳細データ BLOB。|
+|AlertEntityId|Edm.String|いいえ|アラート エンティティの識別子。 このパラメーターは、AlertEntityGenerated イベントにのみ適用されます。|
+|EntityType|Edm.String|いいえ|アラートまたはアラート エンティティの種類。 エンティティの種類には、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>User</p></li><li><p>Recipients</p></li><li><p>Sender</p></li><li><p>MalwareFamily</p></li></ul>このパラメーターは、AlertEntityGenerated イベントにのみ適用されます。|
 
 ## <a name="yammer-schema"></a>Yammer スキーマ
 

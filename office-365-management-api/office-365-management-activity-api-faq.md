@@ -5,12 +5,12 @@ description: Office 365 マネージメント アクティビティ API の使�
 ms.ContentId: ''
 ms.topic: reference (API)
 ms.date: 09/21/2018
-ms.openlocfilehash: 612aac60ab421d79a1c866a4a79157ee255d167d
-ms.sourcegitcommit: 525c0d0e78cc44ea8cb6a4bdce1858cb4ef91d57
+ms.openlocfilehash: 8118f44b04beedf33e98edd5ebc63c85b8c0fbc5
+ms.sourcegitcommit: a5a60b603acd9a17d7717420e377d5760e08c7da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2018
-ms.locfileid: "25834888"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "27240625"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>Office 365 マネージメント アクティビティ API についてよく寄せられる質問
 
@@ -46,6 +46,11 @@ Office 365 マネージメント アクティビティ API を使用すること
 
 一時的な停止などの問題が Office 365 サービスに発生するときがあります。 そうした場合、一部の監査レコードに取りこぼしが発生し、サービスは取りこぼしのバックフィルを試行します。 これは、レコードの約 5% から 10 % でのみ発生しますが、そのようなレコードに特定の状況で遅延が発生することがあります。 遅延期間が 5 日を過ぎた場合は、Office 365 管理センターのサービス正常性ダッシュボードを調べてください。 必要な場合は、[Microsoft サポート](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online)でチケットを開くこともできます。
 
-#### <a name="i-am-encountering-a-throttling-error-in-the-management-activity-api-what-should-i-do"></a>マネージメント アクティビティ API で調整エラーが発生しました。 どうすればよいですか?
+#### <a name="im-encountering-a-throttling-error-in-the-management-activity-api-what-should-i-do"></a>マネージメント アクティビティ API で調整エラーが発生しました。 どうすればよいですか?
 
-[Microsoft サポート](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online)でチケットを開いて、新しい調整制限を要求してください。また、制限の引き上げに対する業務上の正当な理由を含めてください。 要求が審査されて承諾されると、調整制限が引き上げられます。
+[Microsoft サポート](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online)でチケットを開いて、新しい調整制限を要求してください。また、制限の引き上げに対する業務上の正当な理由を含めてください。 要求を審査し承諾されると、調整制限が引き上げられます。
+
+#### <a name="what-happens-if-i-disable-auditing-for-my-office-365-organization-will-i-still-get-events-via-the-management-activty-api"></a>Office 365 組織で監査を無効にすると、どうなりますか? 管理アクティビティ API で引き続きイベントを取得できますか?
+
+いいえ。 管理アクティビティ API でレコードを取得するには、組織で監査を有効にする必要があります。
+

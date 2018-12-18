@@ -5,12 +5,12 @@ description: Office 365 管理アクティビティ API のスキーマは、共
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
-ms.openlocfilehash: 13d964eb7665c70719b9310c880974b7eea6c530
-ms.sourcegitcommit: 0d3abd151e8970b84735eea975792ae930de6995
+ms.openlocfilehash: e9a7c47f10c3926f7fd681db6a11bb74cc034226
+ms.sourcegitcommit: a5a60b603acd9a17d7717420e377d5760e08c7da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "26215303"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "27240653"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -52,6 +52,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[Microsoft Teams アドオン スキーマ](#microsoft-teams-add-ons-schema)|Microsoft Teams スキーマを、すべての Microsoft Teams アドオンに固有のプロパティで拡張します。|
 |[Microsoft Teams 設定スキーマ](#microsoft-teams-settings-schema)|Microsoft Teams スキーマを、すべての Microsoft Teams 設定変更イベントに固有のプロパティで拡張します。|
 |[Office 365 Advanced Threat Protection および脅威インテリジェンス スキーマ](#office-365-advanced-threat-protection-and-threat-intelligence-schema)|Office 365 Advanced Threat Protection および脅威インテリジェンスのデータに固有のプロパティを使用して、共通スキーマを拡張します。|
+|[Power BI スキーマ](#power-bi-schema)|共通スキーマを、すべての Power BI イベントに固有のプロパティで拡張します。|
 
 ## <a name="common-schema"></a>共通スキーマ
 
@@ -94,16 +95,21 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |15|AzureActiveDirectoryStsLogon|Azure Active Directory の Secure Token Service (STS) ログオン イベント。|
 |18|SecurityComplianceCenterEOPCmdlet|セキュリティ センターとコンプライアンス センターの管理者アクション|
 |20|PowerBIAudit|Power BI イベント。|
-|22|Yammer|Yammer のイベント。|
+|21|CRM|Microsoft CRM イベント。|
+|22|Yammer|Yammer イベント。|
+|23|SkypeForBusinessCmdlets|Skype for Business イベント。|
 |24|Discovery|セキュリティ/コンプライアンス センターでコンテンツ検索を実行し、eDiscovery のケースを管理することによって実行される、電子情報開示アクティビティのイベント。|
 |25|MicrosoftTeams|Microsoft Teams のイベント。|
 |26|MicrosoftTeamsAddOns|Microsoft Teams アドオンのイベント。|
 |27|MicrosoftTeamsSettingsOperation|Microsoft Teams の設定の変更。|
-|28|ThreatIntelligence|Office 365 Advanced Threat Protection および脅威インテリジェンスのイベント。|
+|28|ThreatIntelligence|Exchange Online Protection と Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
 |30|MicrosoftFlow|Microsoft Flow のイベント。|
 |32|MicrosoftStream|Microsoft Stream のイベント。|
 |35|Project|Microsoft Project のイベント。|
+|36|SharepointListOperation|Sharepoint List のイベントです。|
 |40|SecurityComplianceAlerts|セキュリティ/コンプライアンス アラートのシグナル。|
+|41|ThreatIntelligenceUrl|ブロック時の安全なリンクと Office 365 Advanced Threat Protection からのイベントの上書きブロック。|
+|47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
 
 ### <a name="enum-user-type---type-edmint32"></a>列挙値: User Type - 型: Edm.Int32
 
@@ -300,7 +306,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |SendToConnectionRemoved*|グローバル管理者は、SharePoint 管理センターの [レコード管理] ページで、[送信先] 接続を削除します。|
 |SharedLinkCreated|ユーザーは、SharePoint または OneDrive for Business で共有ファイルへのリンクを作成します。このリンクは、共有ファイルにアクセスできるように他のユーザーに送信できます。ユーザーは、共有ファイルの表示と編集を許可するリンク、またはファイルの表示だけを許可するリンクの、2 種類のリンクを作成できます。|
 |SharedLinkDisabled*|ユーザーは、ファイルを共有するために作成されたリンクを (完全に) 無効にします。|
-|SharingInvitationAccepted*|User accepts an invitation to share a file or folder. This event is logged when a user shares a file with other users.|
+|SharingInvitationAccepted*|ユーザーは、ファイルまたはフォルダーの共有の招待を承諾します。 このイベントは、ユーザーが他のユーザーとファイルを共有すると記録されます。|
 |SharingRevoked*|ユーザーは、他のユーザーと以前に共有していたファイルまたはフォルダーを共有解除します。このイベントは、ユーザーが他のユーザーとのファイルの共有を停止すると記録されます。|
 |SharingSet|ユーザーは、SharePoint または OneDrive for Business にあるファイルまたはフォルダーを、組織内の他のユーザーと共有します。|
 |SiteAdminChangeRequest*|ユーザーが、SharePoint サイト コレクションのサイト コレクション管理者として追加されるように要求します。サイト コレクション管理者は、サイト コレクションとすべてのサブサイトのフル コントロール権限を持ちます。|
@@ -727,7 +733,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|接続元|Edm.String|はい|イベントを実行したユーザーの ID。 This will be either the FileOwner, LastModifier, or LastSharer.|
+|接続元|Edm.String|はい|イベントをトリガーしたユーザー。 これは、FileOwner、LastModifier、または LastSharer のいずれかになります。|
 |itemCreationTime|Edm.Date|はい|イベントのログの記録日時に関する UTC の Datetimestamp。|
 |SiteCollectionGuid|Edm.Guid|はい|サイト コレクションの GUID。|
 |SiteCollectionUrl|Edm.String|はい|SharePoint サイトの名前。|
@@ -813,13 +819,13 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |**パラメーター**|**型**|**必須**|**説明**|
 |:-----|:-----|:-----|:-----|
 |StartTime|Edm.Date|いいえ|コマンドレットが実行された日付と時刻。|
-|ClientRequestId|Edm.String|いいえ|A GUID that can be used to correlate this cmdlet with the Security & Compliance Center UX operations. This information is only used by Microsoft support.|
+|ClientRequestId|Edm.String|いいえ|このコマンドレットを、セキュリティ センターとコンプライアンス センターの UX 操作と関連付けるために使用できる GUID。 この情報は Microsoft サポートによってのみ使用されます。|
 |CmdletVersion|Edm.String|いいえ|実行された時のコマンドレットのビルド バージョン。|
-|EffectiveOrganization|Edm.String|いいえ|The GUID for the organization impacted by the cmdlet. (Deprecated: This parameter will stop appearing in the future.)|
+|EffectiveOrganization|Edm.String|いいえ|コマンドレットの影響を受けた組織の GUID。 (非推奨:このパラメーターは将来的になくなります。)|
 |UserServicePlan|Edm.String|いいえ|コマンドレットを実行したユーザーに割り当てられる Exchange Online Protection サービス プラン。|
 |ClientApplication|Edm.String|いいえ|コマンドレットが (リモート PowerShell とは対照的に) アプリケーションによって実行された場合、このフィールドにはそのアプリケーションの名前が含まれます。|
 |パラメーター|Edm.String|いいえ|個人を特定できる情報を含まないコマンドレットで使用されたパラメーターの名前と値。|
-|NonPiiParameters|Edm.String|いいえ|The name and value for parameters that were used with the cmdlet that include Personally Identifiable Information. (Deprecated: This field will stop appearing in the future and its content merged with the Parameters field.)|
+|NonPiiParameters|Edm.String|いいえ|個人を特定できる情報を含むコマンドレットで使用されたパラメーターの名前と値。 (非推奨: このフィールドは将来的になくなり、そのコンテンツはパラメーター フィールドと結合されます。)|
 
 ## <a name="security-and-compliance-alerts-schema"></a>セキュリティとコンプライアンスのアラート スキーマ
 
@@ -1116,9 +1122,34 @@ Office 365 Advanced Threat Protection (ATP) および脅威インテリジェン
 |URL|Edm.String|はい|ユーザーがクリックした URL。|
 |UserIp|Edm.String|はい|URL をクリックしたユーザーの IP アドレス。 IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
 
+## <a name="power-bi-schema"></a>Power BI スキーマ
 
+「[Office 365 プロテクション センターでの監査ログの検索](/power-bi/service-admin-auditing#activities-audited-by-power-bi)」にリストされている Power BI イベントは、このスキーマを使用します。
 
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+| AppName               | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したアプリの名前です。 |
+| DashboardName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したダッシュ ボードの名前です。 |
+| DataClassification    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したダッシュボードの[データの分類](/power-bi/service-data-classification) (存在する場合)。 |
+| DatasetName           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したデータセットの名前です。 |
+| MembershipInformation | Collection([MembershipInformationType](#MembershipInformationType))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | グループのメンバーシップ情報。 |
+| OrgAppPermission      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | 組織のアプリのアクセス許可の一覧 (組織全体、特定のユーザー、特定のグループ)。 |
+| ReportName            | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したレポートの名前です。 |
+| SharingInformation    | Collection([SharingInformationType](#SharingInformationType))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"    |  いいえ  | 共有の招待を送るユーザーについての情報。 |
+| SwitchState           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | さまざまなテナント レベル切り替えの状態についての情報。 |
+| WorkSpaceName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したワークスペースの名前です。 |
 
+### <a name="membershipinformationtype-complex-type"></a>MembershipInformationType 複合型
 
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+| MemberEmail | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | グループの電子メール アドレス。 |
+| 状態      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | 現在、入力されていません。 |
 
+### <a name="sharinginformationtype-complex-type"></a>SharingInformationType 複合型
 
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+| RecipientEmail    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | 共有の招待の受信者の電子メール アドレス。 |
+| RecipientName    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | 共有の招待の受信者の名前。 |
+| ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | 受信者にアクセス許可が付与されています。 |

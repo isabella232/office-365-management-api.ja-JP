@@ -5,12 +5,13 @@ description: Office 365 のお客様およびパートナーの、サービス�
 ms.ContentId: 4fca85f9-efa6-3b4b-b10d-a07cb31f803f
 ms.topic: reference (API)
 ms.date: 09/28/2016
-ms.openlocfilehash: b49bbbcaaefa1d33014919eaa5f0da8fd54c0889
-ms.sourcegitcommit: 525c0d0e78cc44ea8cb6a4bdce1858cb4ef91d57
+localization_priority: Priority
+ms.openlocfilehash: c8d6172649e5f3e901ba5944d72f8c7d0a506975
+ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2018
-ms.locfileid: "25834886"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "28014267"
 ---
 # <a name="office-365-management-apis-overview"></a>Office 365 管理 API の概要
 

@@ -5,12 +5,13 @@ description: Office 365 マネージメント アクティビティ API の使�
 ms.ContentId: ''
 ms.topic: reference (API)
 ms.date: 09/21/2018
-ms.openlocfilehash: 8118f44b04beedf33e98edd5ebc63c85b8c0fbc5
-ms.sourcegitcommit: a5a60b603acd9a17d7717420e377d5760e08c7da
+localization_priority: Priority
+ms.openlocfilehash: 8e341def7bc3a4f71eee23bc04d01e11d1390e1d
+ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "27240625"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "28014288"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>Office 365 マネージメント アクティビティ API についてよく寄せられる質問
 
@@ -50,7 +51,7 @@ Office 365 マネージメント アクティビティ API を使用すること
 
 [Microsoft サポート](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online)でチケットを開いて、新しい調整制限を要求してください。また、制限の引き上げに対する業務上の正当な理由を含めてください。 要求を審査し承諾されると、調整制限が引き上げられます。
 
-#### <a name="what-happens-if-i-disable-auditing-for-my-office-365-organization-will-i-still-get-events-via-the-management-activty-api"></a>Office 365 組織で監査を無効にすると、どうなりますか? 管理アクティビティ API で引き続きイベントを取得できますか?
+#### <a name="what-happens-if-i-disable-auditing-for-my-office-365-organization-will-i-still-get-events-via-the-management-activity-api"></a>Office 365 組織で監査を無効にすると、どうなりますか? 管理アクティビティ API で引き続きイベントを取得できますか?
 
 いいえ。 管理アクティビティ API でレコードを取得するには、組織で監査を有効にする必要があります。
 

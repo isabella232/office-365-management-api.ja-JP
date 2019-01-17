@@ -5,12 +5,13 @@ description: Office 365 管理アクティビティ API のスキーマは、共
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
-ms.openlocfilehash: e9a7c47f10c3926f7fd681db6a11bb74cc034226
-ms.sourcegitcommit: a5a60b603acd9a17d7717420e377d5760e08c7da
+localization_priority: Priority
+ms.openlocfilehash: a8e8fdab103bcee6a5ea8de56dc91c45c1c20b43
+ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "27240653"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "28014337"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -68,10 +69,10 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |UserType|Self.[UserType](#user-type)|はい|操作を実行したユーザーの種類。 ユーザーの種類の詳細については、「[ユーザーの種類](#user-type)」の表を参照してください。|
 |UserKey|Edm.String|はい|UserId プロパティで識別されるユーザーの別の ID。たとえば、このプロパティには、SharePoint、OneDrive for Business、および Exchange のユーザーにより実行されたイベントの Passport 固有 ID (PUID) が格納されます。このプロパティは、他のサービスで発生するイベントや、システム アカウントで実行されるイベントの UseID プロパティと同じ値を指定することもできます。|
 |Workload|Edm.String|いいえ|Workload 文字列でアクティビティが発生した Office 365 サービス。このプロパティに指定可能な値は次のとおりです。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Exchange</p></li><li><p>SharePoint</p></li><li><p>OneDrive</p></li><li><p>Azure Active Directory</p></li><li><p>SecurityComplianceCenter</p></li><li><p>Sway</p></li><li><p>ThreatIntelligence</p></li></ul>|
-|ResultStatus|Edm.String|いいえ|(Operation プロパティで指定された) アクションが正常に終了したかどうかどうかを示します。 指定可能な値は **Succeeded**、**PartiallySucceded**、または **Failed**。 Exchange 管理者アクティビティでは、値は **True** または **False** のいずれかになります。|
+|ResultStatus|Edm.String|いいえ|(Operation プロパティで指定された) アクションが正常に終了したかどうかどうかを示します。 指定可能な値は **Succeeded**、**PartiallySucceeded**、または **Failed** です。 Exchange 管理者アクティビティでは、値は **True** または **False** のいずれかになります。|
 |ObjectId|Edm.string|いいえ|SharePoint および OneDrive for Business のアクティビティの場合、ユーザーによりアクセスされるファイルまたはフォルダーの完全パス名。 Exchange 管理者の監査ログの場合は、コマンドレットによって変更されたオブジェクトの名前。|
 |UserId|Edm.string|はい|レコードがログに記録されることになった、(Operation プロパティで指定された) アクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、`my_name@my_domain_name` などです。 システム アカウント (SHAREPOINT\system または NT AUTHORITY\SYSTEM など) で実行されるアクティビティのレコードも含まれることに注意してください。|
-|ClientIp|Edm.String|はい|アクティビティがログに記録されたときに使用されたデバイスの IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
+|ClientIP|Edm.String|はい|アクティビティがログに記録されたときに使用されたデバイスの IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
 |Scope|Self.[AuditLogScope](#auditlogscope)|いいえ|このイベントは、ホストされた O365 サービスまたはオンプレミスのサーバーによって作成されたものですか。 設定できる値は **online** および **onprem** です。 SharePoint は現在、オンプレミスから O365 にイベントを送信する唯一のワークロードです。|
 
 ### <a name="enum-auditlogrecordtype---type-edmint32"></a>列挙値: AuditLogRecordType - 型: Edm.Int32
@@ -515,7 +516,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |フォルダー|Self.[ExchangeFolder](#exchangefolder-complex-type)|いいえ|アイテムのグループが存在するフォルダー。|
 |CrossMailboxOperations|Edm.Boolean|いいえ|操作に複数のメールボックスが関係したかどうかを示します。|
@@ -540,7 +541,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |SendAsUserSmtp|Edm.String|いいえ|偽装しているユーザーの SMTP アドレス。|
 |SendAsUserMailboxGuid|Edm.Guid|いいえ|電子メールを偽装ユーザーとして送信するためにアクセスされたメールボックスの Exchange GUID。|
 |SendOnBehalfOfUserSmtp|Edm.String|いいえ|電子メールが代理で送信されたユーザーの SMTP アドレス。|
-|SendonBehalfOfUserMailboxGuid|Edm.Guid|いいえ|電子メールを代理で送信するためにアクセスされたメールボックスの Exchange GUID。|
+|SendOnBehalfOfUserMailboxGuid|Edm.Guid|いいえ|電子メールを代理で送信するためにアクセスされたメールボックスの Exchange GUID。|
 
 
 ### <a name="exchangeitem-complex-type"></a>ExchangeItem 複合型

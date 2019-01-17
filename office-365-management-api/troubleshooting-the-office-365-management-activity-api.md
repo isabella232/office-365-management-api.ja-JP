@@ -5,12 +5,13 @@ description: この API のサポートについて Microsoft サポートに最
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: 09/05/2018
-ms.openlocfilehash: 9267bd9e55be7605af72d9c77cf5ed415dcc5c9d
-ms.sourcegitcommit: 525c0d0e78cc44ea8cb6a4bdce1858cb4ef91d57
+localization_priority: Priority
+ms.openlocfilehash: ed84984dc3009d03e0bb7cacba16eafb687c93e0
+ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2018
-ms.locfileid: "25834895"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "28014295"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Office 365 マネージメント アクティビティ API のトラブルシューティング
 
@@ -222,7 +223,7 @@ $contents = Invoke-WebRequest -Method GET -Headers $headerParams -Uri $uri
 Response Code 403: {'error':{'code':'AF429','message':'Too many requests. Method=GetBlob, PublisherId=00000000-0000-0000-0000-000000000000'}}
 ```
 
-これは、調整が原因になっていると考えられます。 Publisherid パラメーターの値に注目してください。この値は、クライアントが要求で *PublisherIdentifier* を指定していない可能性があることを示しています。 また、403 エラー応答に *PublisherId* と表示されていても、正しいパラメーター名は *PublisherIdentifier* である点にも注意が必要です。
+これは、調整が原因になっていると考えられます。 PublisherId パラメーターの値に注目してください。この値は、クライアントが要求で *PublisherIdentifier* を指定していない可能性があることを示しています。 また、403 エラー応答に *PublisherId* と表示されていても、正しいパラメーター名は *PublisherIdentifier* である点にも注意が必要です。
 
 > [!NOTE] 
 > API リファレンスでは、どの API 操作にも *PublisherIdentifier* パラメーターが示されていますが、このパラメーターはコンテンツ BLOB の取得時の contentUri URL に対する GET 要求にも含める必要があります。
@@ -231,7 +232,7 @@ Response Code 403: {'error':{'code':'AF429','message':'Too many requests. Method
 
 会社のテナントに対応するクライアントを実装する場合、*PublisherIdentifier* はテナント GUID になります。 複数の顧客に対応する ISV アプリケーションまたはアドインを作成する場合、*PublisherIdentifier* は ISV のテナント GUID にする必要があります (エンド ユーザーの会社のテナント GUID ではありません)。
 
-有効な *PublisherIdentifier* を含めると、テナントごとに 1 分あたり 60K の要求が割り当てられるプールに入れられます。 これは、莫大な数の要求です。 ただし、*PublishisherIdentifier* パラメーターを含めていないと、すべてのテナントに対して 1 分あたり 60K の要求が割り当てられる汎用プールに入れられます。 この場合、呼び出しが調整される可能性が高くなります。 これを防止するために、*PublisherIdentifier* を使用してコンテンツ BLOB を要求する方法を示します。
+有効な *PublisherIdentifier* を含めると、テナントごとに 1 分あたり 60K の要求が割り当てられるプールに入れられます。 これは、莫大な数の要求です。 ただし、*PublisherIdentifier* パラメーターを含めていないと、すべてのテナントに対して 1 分あたり 60K の要求が割り当てられる汎用プールに入れられます。 この場合、呼び出しが調整される可能性が高くなります。 これを防止するために、*PublisherIdentifier* を使用してコンテンツ BLOB を要求する方法を示します。
 
 ```powershell
 $contentUri = ($response.Content | ConvertFrom-Json).contentUri[0]
@@ -239,7 +240,7 @@ $uri = $contentUri + '?PublisherIdentifier=82b24b6d-0591-4604-827b-705d55d0992f'
 $contents = Invoke-WebRequest -Method GET -Headers $headerParams -Uri $uri
 ```
 
-前述の例は、*$response* 変数が /content エンドポイントに対する要求の応答で設定されていることと、*$hearderParams* 変数に有効なアクセス トークンが含まれていることを前提としています。 このスクリプトでは、応答からのコンテンツ URI の配列内で最初の項目を取得し、その BLOB をダウンロードするために GET を呼び出して、*$contents* 変数に格納します。 ユーザーのコードでは、*contentUri* ごとに GET を発行して、contentUri コレクション全体をループ処理することになります。
+前述の例は、*$response* 変数が /content エンドポイントに対する要求の応答で設定されていることと、*$headerParams* 変数に有効なアクセス トークンが含まれていることを前提としています。 このスクリプトでは、応答からのコンテンツ URI の配列内で最初の項目を取得し、その BLOB をダウンロードするために GET を呼び出して、*$contents* 変数に格納します。 ユーザーのコードでは、*contentUri* ごとに GET を発行して、contentUri コレクション全体をループ処理することになります。
 
 ## <a name="frequently-asked-questions-about-the-office-365-management-api"></a>Office 365 マネージメント API についてよく寄せられる質問
 

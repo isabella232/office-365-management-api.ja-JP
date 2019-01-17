@@ -5,12 +5,13 @@ description: Office 365 管理アクティビティ API は、Office 365 と Azu
 ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: 01/10/2018
-ms.openlocfilehash: be3d88182eb04f3864b3843859c8b367339ea651
-ms.sourcegitcommit: a5a60b603acd9a17d7717420e377d5760e08c7da
+localization_priority: Priority
+ms.openlocfilehash: f9c4a79a882da31b85847bf60237e813c7cdb71c
+ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "27240639"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "28014323"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Office 365 管理アクティビティ API リファレンス
 
@@ -265,7 +266,7 @@ Content-Type: application/json; charset=utf-8
 |**パス**| `/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
 |**パラメーター**|contentType|有効なコンテンツ タイプである必要があります。|
 ||PublisherIdentifier|API に対するコードを作成するベンダーのテナント GUID。 これは、アプリケーション GUID またはアプリケーションを使用する顧客の GUID では**ありません**。コードを記述した会社の GUID です。 このパラメーターは、要求率の調整に使用します。 専用のクオータを取得する場合は、このパラメーターが発行されるすべての要求で指定されていることを確認してください。 このパラメーターの指定なしで受信したすべての要求は、同一のクオータを共有することになります。|
-||startTimeendTime|コンテンツが利用可能になったときを基点として、コンテンツが返される時間の範囲を示す、オプションの日付/時刻 (UTC)。 この時刻範囲には、startTime (startTime <= contentCreated) は含まれ、endTime (contentCreated < endTime) は除外されます。これにより、利用可能なコンテンツのページングに、重なりがない増分の時間間隔を使用できます。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>両方を指定するか、両方を省略する必要があります。その時間差は 24 時間を超えてはならず、開始時刻は過去 7 日以内でなければなりません。 既定では、startTime と endTime を省略した場合、過去 24 時間以内に利用可能であったコンテンツが返されます。<p>**注**: 24 時間よりも長い間隔になる startTime と endTime を指定することもできますが、そのような設定はお勧めできません。 さらに、24 時間よりも長い間隔の要求に対する応答で結果が得られたとしても、部分的な結果になっている可能性があり、結果と見なすべきではありません。 要求の発行の際には、間隔が 24 時間以内になる startTime と endTime を指定してください。</p>|
+||startTime endTime|コンテンツが利用可能になったときを基点として、コンテンツが返される時間の範囲を示す、オプションの日付/時刻 (UTC)。 この時刻範囲には、startTime (startTime <= contentCreated) は含まれ、endTime (contentCreated < endTime) は除外されます。これにより、利用可能なコンテンツのページングに、重なりがない増分の時間間隔を使用できます。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>両方を指定するか、両方を省略する必要があります。その時間差は 24 時間を超えてはならず、開始時刻は過去 7 日以内でなければなりません。 既定では、startTime と endTime を省略した場合、過去 24 時間以内に利用可能であったコンテンツが返されます。<p>**注**: 24 時間よりも長い間隔になる startTime と endTime を指定することもできますが、そのような設定はお勧めできません。 さらに、24 時間よりも長い間隔の要求に対する応答で結果が得られたとしても、部分的な結果になっている可能性があり、結果と見なすべきではありません。 要求の発行の際には、間隔が 24 時間以内になる startTime と endTime を指定してください。</p>|
 |**Response**|JSON 配列|利用可能なコンテンツは、次のプロパティが指定された JSON オブジェクトで表されます。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>contentType</b>:コンテンツ タイプを示します。</p></li><li><p><b>contentId</b>:コンテンツを一意に識別する、符号化文字列です。</p></li><li><p><b>contentUri</b>:コンテンツを取得するときに使用する URL です。</p></li><li><p><b>contentCreated</b>:コンテンツが利用可能になった日付/時刻です。</p></li><li><p><b>contentExpiration</b>:コンテンツ取得の締切となる日付/時刻です。</p></li></ul>|
 
 
@@ -481,7 +482,7 @@ Content-Type: application/json; charset=utf-8
 |**パス**| `/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
 |**パラメーター**|contentType|有効なコンテンツ タイプである必要があります。|
 ||PublisherIdentifier|API に対するコードを作成するベンダーのテナント GUID。 これは、アプリケーション GUID またはアプリケーションを使用する顧客の GUID では**ありません**。コードを記述した会社の GUID です。 このパラメーターは、要求率の調整に使用します。 専用のクオータを取得する場合は、このパラメーターが発行されるすべての要求で指定されていることを確認してください。 このパラメーターの指定なしで受信したすべての要求は、同一のクオータを共有することになります。|
-||startTimeendTime|コンテンツが利用可能になったときを基点として、コンテンツが返される時間の範囲を示す、オプションの日付/時刻 (UTC)。 この時間の範囲には、_startTime_ (_startTime_ <= contentCreated) は含まれ、_endTime_ (_contentCreated_ < endTime) は含まれません。これにより、利用可能なコンテンツのページングに、重複することのない増分の時間間隔を使用できます。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>両方を指定するか、両方を省略する必要があります。その時間差は 24 時間を超えてはならず、開始時刻は過去 7 日以内でなければなりません。 既定では、_startTime_ と _endTime_ を省略した場合、過去 24 時間以内に利用可能であったコンテンツが返されます。|
+||startTime endTime|コンテンツが利用可能になったときを基点として、コンテンツが返される時間の範囲を示す、オプションの日付/時刻 (UTC)。 この時間の範囲には、_startTime_ (_startTime_ <= contentCreated) は含まれ、_endTime_ (_contentCreated_ < endTime) は含まれません。これにより、利用可能なコンテンツのページングに、重複することのない増分の時間間隔を使用できます。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>両方を指定するか、両方を省略する必要があります。その時間差は 24 時間を超えてはならず、開始時刻は過去 7 日以内でなければなりません。 既定では、_startTime_ と _endTime_ を省略した場合、過去 24 時間以内に利用可能であったコンテンツが返されます。|
 |**応答**|JSON 配列|通知は、次のプロパティが指定された JSON オブジェクトで表されます。 <ul><li>**contentType**: コンテンツ タイプを示します。</li><li>**contentId**: コンテンツを一意に識別する、符号化文字列です。</li><li>**contentUri**: コンテンツを取得するときに使用する URL です。 </li><li>**contentCreated**: コンテンツが利用可能になった日付/時刻です。</li><li>**contentExpiration**: コンテンツ取得の締切となる日付/時刻です。</li><li>**notificationSent**: 通知が送信された日付/時刻です。</li><li>**notificationStatus**: 通知の試行の成功または失敗を示します。</li></ul>|
 
 #### <a name="sample-request"></a>要求のサンプル

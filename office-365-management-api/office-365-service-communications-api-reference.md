@@ -5,12 +5,13 @@ description: この API を使用して、Get Services、Get Current Status、Ge
 ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: 09/05/2018
-ms.openlocfilehash: cde34da7377c5d4820d6ca62dd3affe806eda229
-ms.sourcegitcommit: 525c0d0e78cc44ea8cb6a4bdce1858cb4ef91d57
+localization_priority: Priority
+ms.openlocfilehash: dc231a4fb19be7ac0e9248d5f4d709681ff0abfa
+ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2018
-ms.locfileid: "25834889"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "28014309"
 ---
 # <a name="office-365-service-communications-api-reference-preview"></a>Office 365 サービス通信 API リファレンス (プレビュー)
 
@@ -380,7 +381,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 |**クエリ オプション**|$select|プロパティのサブセットを選択します。|
 ||$top|結果の最上位数を選択します (既定値および最大値 $top = 100)。|
 ||$skip|結果の数をスキップします (既定値: $skip = 0)。|
-|**応答**|"Message" エンティティのリスト。|"Message" エンティティには、"Id" (文字列)、"StartTime" (DateTimeOffset)、"EndTime" (DateTimeOffset)、"Status" (文字列)、"Messages" ("MessagHistory" エンティティのリスト)、"LastUpdatedTime" (DateTimeOffset)、"Workload" (文字列)、"WorkloadDisplayName" (文字列)、"Feature" (文字列)、"FeatureDisplayName" (文字列)、"MessageType" (列挙、既定: all) が含まれます。<br/><br/>"MessageHistory" エンティティには、"PublishedTime" (DateTimeOffset)、"MessageText" (文字列) が含まれます。|
+|**応答**|"Message" エンティティのリスト。|"Message" エンティティには、"Id" (文字列)、"StartTime" (DateTimeOffset)、"EndTime" (DateTimeOffset)、"Status" (文字列)、"Messages" ("MessageHistory" エンティティのリスト)、"LastUpdatedTime" (DateTimeOffset)、"Workload" (文字列)、"WorkloadDisplayName" (文字列)、"Feature" (文字列)、"FeatureDisplayName" (文字列)、"MessageType" (列挙、既定: all) が含まれます。<br/><br/>"MessageHistory" エンティティには、"PublishedTime" (DateTimeOffset)、"MessageText" (文字列) が含まれます。|
 
 #### <a name="sample-request"></a>要求のサンプル
 

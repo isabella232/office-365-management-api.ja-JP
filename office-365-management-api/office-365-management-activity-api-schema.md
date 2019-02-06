@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: a8e8fdab103bcee6a5ea8de56dc91c45c1c20b43
-ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
+ms.openlocfilehash: 6fa95b7134bd5bb8ac6a8f07c87df747ae086a81
+ms.sourcegitcommit: 55264094d1ebc2f9968b2d29d5982b1ba4e29118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "28014337"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "29735244"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -1059,12 +1059,14 @@ Office 365 Advanced Threat Protection (ATP) および脅威インテリジェン
 
 - [Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護に基づいてクリック時に悪意があるとして検出された組織内のユーザーがクリックした URL。  
 
+- [Office 365 の ATP](https://docs.microsoft.com/ja-JP/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。  
+
 ### <a name="email-message-events"></a>電子メール メッセージ イベント
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#AttachmentData))|いいえ|イベントをトリガーした電子メール メッセージの添付ファイルに関するデータ。|
-|DetectionType|Self.[DetectionType](#DetectionType)|はい|検出の種類。|
+|DetectionType|Edm.String|はい|検出タイプ (例: **Inline** - 配信時に検出、**Delayed** - 配布後に検出、**ZAP** - [Zero hour auto purge](https://support.office.com/ja-JP/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ)。 ZAP の検出タイプのイベントの前には、通常、**Delayed** 検出タイプのメッセージが表示されます。|
 |DetectionMethod|Edm.String|はい|Office 365 の ATP で検出に使用されるメソッドまたはテクノロジ。|
 |InternetMessageId|Edm.String|はい|インターネット メッセージ ID。|
 |NetworkMessageId|Edm.String|はい|Exchange Online のネットワーク メッセージ ID。|
@@ -1074,17 +1076,8 @@ Office 365 Advanced Threat Protection (ATP) および脅威インテリジェン
 |SenderIp|Edm.String|はい|Office 365 の電子メールを送信した IP アドレス。 IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
 |件名|Edm.String|はい|メッセージの件名。|
 |Verdict|Edm.String|はい|メッセージの判定。|
-
-### <a name="enum-detectiontype---type-edmint32"></a>列挙型: DetectionType - 型: Edm.Int32
-
-#### <a name="detectiontype"></a>DetectionType
-
-|**値**|**メンバー名**|**説明**|
-|:-----|:-----|:-----|
-|0|Inline|脅威が配信時に検出されました。|
-|1|Delayed|脅威が配信後に検出されました。|
-|2|ZAP|[Zero hour auto purge](https://support.office.com/ja-JP/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ。 この検出タイプのイベントの前には、通常、「遅延」検出タイプのメッセージが表示されます。|
-
+|MessageTime|Edm.Date|はい|メール メッセージが受信または送信された、協定世界時 (UTC) での日時。|
+|EventDeepLink|Edm.String|はい|エクスプローラーのメール イベントまたは Office 365 セキュリティ/コンプライアンス センターのリアルタイム レポートへのディープリンク。|
 
 ### <a name="attachmentdata-complex-type"></a>AttachmentData complex type
 
@@ -1114,14 +1107,63 @@ Office 365 Advanced Threat Protection (ATP) および脅威インテリジェン
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|UserId|Edm.String|はい|URL をクリックしたユーザーの識別子 (電子メール アドレスなど)。|
-|AppName|Edm.String|はい|URL がクリックされた Office 365 サービス (メールなど)。|
+|UserId|Edm.String|はい|URL をクリックしたユーザーの識別子 (例: 電子メール アドレス)。|
+|AppName|Edm.String|はい|URL がクリックされた Office 365 サービス (例: Outlook メール)。|
 |Blocked|Edm.Boolean|はい|これは、URL のクリックが [Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護によって禁止されている場合に当てはまります。|
 |ClickedThrough|Edm.Boolean|はい|これは、[Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護の組織のポリシーに基づいて、ユーザーが URL ブロックをクリックした (無効になった) 場合に当てはまります。|
-|SourceId|Edm.String|はい|URL がクリックされた Office 365 サービスの識別子 (メールの場合、これは Exchange Online のネットワーク メッセージ ID)。|
+|SourceId|Edm.String|はい|URL がクリックされた Office 365 サービスの識別子 (例: メールの場合、これは Exchange Online のネットワーク メッセージ ID)。|
 |TimeOfClick|Edm.Date|はい|ユーザーが URL をクリックした、世界協定時刻 (UTC) での日時。|
 |URL|Edm.String|はい|ユーザーがクリックした URL。|
 |UserIp|Edm.String|はい|URL をクリックしたユーザーの IP アドレス。 IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
+
+### <a name="enum-urlclickaction---type-edmint32"></a>列挙値: URLClickAction - タイプ: Edm.Int32
+
+#### <a name="urlclickaction"></a>URLClickAction
+
+|**値**|**メンバー名**|**説明**|
+|:-----|:-----|:-----|
+|0|None|クリックが検出されませんでした。|
+|1|可|ユーザーが URL に移動することが許可されました ([Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により URL が安全と判断されたため)。|
+|2|Blockpage|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされました。|
+|3|PendingDetonationPage|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されました。|
+|4|BlockPageOverride|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされましたが、ユーザーは URL に移動するためにブロックをオーバーライドしました。|
+|5|PendingDetonationPageOverride|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されましたが、ユーザーは URL に移動するためにオーバーライドしました。|
+
+
+### <a name="file-events"></a>ファイルのイベント
+
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+|FileData|Self.[FileData](#FileData)|はい|イベントをトリガーしたファイルに関するデータ。|
+|SourceWorkload|Self.[SourceWorkload](#SourceWorkload)|はい|ファイルが見つかったワークロードやサービス (例: SharePoint Online、OneDrive for Business、Microsoft Teams など)
+|DetectionMethod|Edm.String|はい|Office 365 の ATP で検出に使用されるメソッドまたはテクノロジ。|
+|LastModifiedDate|Edm.Date|はい|ファイルが作成または最後に変更された、世界協定時刻 (UTC) での日時。|
+|LastModifiedBy|Edm.String|はい|ファイルを作成または最後に変更したユーザーの識別子 (例: メール アドレス)。|
+|EventDeepLink|Edm.String|はい|エクスプローラーのファイル イベントまたはセキュリティ/コンプライアンス センターのリアルタイム レポートへのディープリンク。|
+
+### <a name="filedata-complex-type"></a>FileData 複合型
+
+#### <a name="filedata"></a>FileData
+
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+|DocumentId|Edm.String|はい|SharePoint、OneDrive、または Microsoft Teams のファイルの一意の識別子。|
+|FileName|Edm.String|はい|イベントをトリガーしたファイルの名前。|
+|FilePath|Edm.String|はい|SharePoint、OneDrive、または Microsoft Teams のファイルへのパス (場所)。|
+|FileVerdict||Self.[FileVerdict](#FileVerdict)|はい|ファイルのマルウェア判定。|
+|MalwareFamily|Edm.String|いいえ|ファイルのマルウェア ファミリ。|
+|SHA256|Edm.String|はい|ファイルの SHA256 ハッシュ。|
+|FileSize|Edm.String|はい|ファイルのサイズ (バイト単位)。|
+
+### <a name="enum-sourceworkload---type-edmint32"></a>列挙値: SourceWorkload - タイプ: Edm.Int32
+
+#### <a name="sourceworkload"></a>SourceWorkload
+
+|**値**|**メンバー名**|
+|:-----|:-----|
+|0|SharePoint Online|
+|1|OneDrive for Business|
+|2|Microsoft Teams|
 
 ## <a name="power-bi-schema"></a>Power BI スキーマ
 

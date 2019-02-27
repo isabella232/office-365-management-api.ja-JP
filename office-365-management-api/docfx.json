@@ -52,6 +52,7 @@
                                          "is_archived":  false,
                                          "uhfHeaderId":  "MSDocsHeader-Dev_Office",
                                          "author":  "o365devx",
+                                         "ms.suite": "office",
                                          "ms.author":  "o365devx",
                                          "ms.prod": "office 365",                                         
                                          "ms.topic":  "conceptual",

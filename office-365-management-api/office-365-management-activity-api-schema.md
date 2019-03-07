@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 6fa95b7134bd5bb8ac6a8f07c87df747ae086a81
-ms.sourcegitcommit: 55264094d1ebc2f9968b2d29d5982b1ba4e29118
+ms.openlocfilehash: de6a841339690c483ed58e38e0b691b00fadab4d
+ms.sourcegitcommit: b030dc1b7ca46280191dd2f54c8179795657d792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "29735244"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "30409079"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -108,9 +108,13 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |32|MicrosoftStream|Microsoft Stream のイベント。|
 |35|Project|Microsoft Project のイベント。|
 |36|SharepointListOperation|Sharepoint List のイベントです。|
+|38|DataGovernance|セキュリティ/コンプライアンス センターにおけるアイテム保持ポリシーと保持ラベルに関連するイベント|
 |40|SecurityComplianceAlerts|セキュリティ/コンプライアンス アラートのシグナル。|
 |41|ThreatIntelligenceUrl|ブロック時の安全なリンクと Office 365 Advanced Threat Protection からのイベントの上書きブロック。|
+|44|WorkplaceAnalytics|Workplace Analytics イベント。|
+|45|PowerAppsApp|PowerApps アプリ イベント。|
 |47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
+||||
 
 ### <a name="enum-user-type---type-edmint32"></a>列挙値: User Type - 型: Edm.Int32
 
@@ -307,7 +311,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |SendToConnectionRemoved*|グローバル管理者は、SharePoint 管理センターの [レコード管理] ページで、[送信先] 接続を削除します。|
 |SharedLinkCreated|ユーザーは、SharePoint または OneDrive for Business で共有ファイルへのリンクを作成します。このリンクは、共有ファイルにアクセスできるように他のユーザーに送信できます。ユーザーは、共有ファイルの表示と編集を許可するリンク、またはファイルの表示だけを許可するリンクの、2 種類のリンクを作成できます。|
 |SharedLinkDisabled*|ユーザーは、ファイルを共有するために作成されたリンクを (完全に) 無効にします。|
-|SharingInvitationAccepted*|ユーザーは、ファイルまたはフォルダーの共有の招待を承諾します。 このイベントは、ユーザーが他のユーザーとファイルを共有すると記録されます。|
+|SharingInvitationAccepted*|User accepts an invitation to share a file or folder. This event is logged when a user shares a file with other users.|
 |SharingRevoked*|ユーザーは、他のユーザーと以前に共有していたファイルまたはフォルダーを共有解除します。このイベントは、ユーザーが他のユーザーとのファイルの共有を停止すると記録されます。|
 |SharingSet|ユーザーは、SharePoint または OneDrive for Business にあるファイルまたはフォルダーを、組織内の他のユーザーと共有します。|
 |SiteAdminChangeRequest*|ユーザーが、SharePoint サイト コレクションのサイト コレクション管理者として追加されるように要求します。サイト コレクション管理者は、サイト コレクションとすべてのサブサイトのフル コントロール権限を持ちます。|
@@ -516,7 +520,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 
 
-|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |フォルダー|Self.[ExchangeFolder](#exchangefolder-complex-type)|いいえ|アイテムのグループが存在するフォルダー。|
 |CrossMailboxOperations|Edm.Boolean|いいえ|操作に複数のメールボックスが関係したかどうかを示します。|
@@ -734,7 +738,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|接続元|Edm.String|はい|イベントをトリガーしたユーザー。 これは、FileOwner、LastModifier、または LastSharer のいずれかになります。|
+|接続元|Edm.String|はい|イベントを実行したユーザーの ID。 This will be either the FileOwner, LastModifier, or LastSharer.|
 |itemCreationTime|Edm.Date|はい|イベントのログの記録日時に関する UTC の Datetimestamp。|
 |SiteCollectionGuid|Edm.Guid|はい|サイト コレクションの GUID。|
 |SiteCollectionUrl|Edm.String|はい|SharePoint サイトの名前。|
@@ -820,13 +824,13 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |**パラメーター**|**型**|**必須**|**説明**|
 |:-----|:-----|:-----|:-----|
 |StartTime|Edm.Date|いいえ|コマンドレットが実行された日付と時刻。|
-|ClientRequestId|Edm.String|いいえ|このコマンドレットを、セキュリティ センターとコンプライアンス センターの UX 操作と関連付けるために使用できる GUID。 この情報は Microsoft サポートによってのみ使用されます。|
+|ClientRequestId|Edm.String|いいえ|A GUID that can be used to correlate this cmdlet with the Security & Compliance Center UX operations. This information is only used by Microsoft support.|
 |CmdletVersion|Edm.String|いいえ|実行された時のコマンドレットのビルド バージョン。|
-|EffectiveOrganization|Edm.String|いいえ|コマンドレットの影響を受けた組織の GUID。 (非推奨:このパラメーターは将来的になくなります。)|
+|EffectiveOrganization|Edm.String|いいえ|The GUID for the organization impacted by the cmdlet. (Deprecated: This parameter will stop appearing in the future.)|
 |UserServicePlan|Edm.String|いいえ|コマンドレットを実行したユーザーに割り当てられる Exchange Online Protection サービス プラン。|
 |ClientApplication|Edm.String|いいえ|コマンドレットが (リモート PowerShell とは対照的に) アプリケーションによって実行された場合、このフィールドにはそのアプリケーションの名前が含まれます。|
 |パラメーター|Edm.String|いいえ|個人を特定できる情報を含まないコマンドレットで使用されたパラメーターの名前と値。|
-|NonPiiParameters|Edm.String|いいえ|個人を特定できる情報を含むコマンドレットで使用されたパラメーターの名前と値。 (非推奨: このフィールドは将来的になくなり、そのコンテンツはパラメーター フィールドと結合されます。)|
+|NonPiiParameters|Edm.String|いいえ|The name and value for parameters that were used with the cmdlet that include Personally Identifiable Information. (Deprecated: This field will stop appearing in the future and its content merged with the Parameters field.)|
 
 ## <a name="security-and-compliance-alerts-schema"></a>セキュリティとコンプライアンスのアラート スキーマ
 
@@ -999,7 +1003,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |:-----|:-----|:-----|:-----|
 |MessageId|Edm.String|いいえ|チャットまたはチャネル メッセージの識別子。|
 |MeetupId|Edm.String|いいえ|スケジュール済みまたはアドホックの会議の識別子。|
-|Members|Collection(Self.[MicrosoftTeamsMember](#MicrosoftTeamsMember-complex-type))|いいえ|チーム内のユーザーの一覧。|
+|メンバー|Collection(Self.[MicrosoftTeamsMember](#MicrosoftTeamsMember-complex-type))|いいえ|チーム内のユーザーの一覧。|
 |TeamName|Edm.String|いいえ|監査対象のチームの名前。|
 |TeamGuid|Edm.Guid|いいえ|監査対象のチームの一意識別子。|
 |ChannelName|Edm.String|いいえ|監査対象のチャネルの名前。|
@@ -1065,7 +1069,7 @@ Office 365 Advanced Threat Protection (ATP) および脅威インテリジェン
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|AttachmentData|Collection(Self.[AttachmentData](#AttachmentData))|いいえ|イベントをトリガーした電子メール メッセージの添付ファイルに関するデータ。|
+|AttachmentData|Collection(Self.[AttachmentData](#attachmentdata)|いいえ|イベントをトリガーした電子メール メッセージの添付ファイルに関するデータ。|
 |DetectionType|Edm.String|はい|検出タイプ (例: **Inline** - 配信時に検出、**Delayed** - 配布後に検出、**ZAP** - [Zero hour auto purge](https://support.office.com/ja-JP/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ)。 ZAP の検出タイプのイベントの前には、通常、**Delayed** 検出タイプのメッセージが表示されます。|
 |DetectionMethod|Edm.String|はい|Office 365 の ATP で検出に使用されるメソッドまたはテクノロジ。|
 |InternetMessageId|Edm.String|はい|インターネット メッセージ ID。|
@@ -1087,7 +1091,7 @@ Office 365 Advanced Threat Protection (ATP) および脅威インテリジェン
 |:-----|:-----|:-----|:-----|
 |FileName|Edm.String|はい|添付ファイルのファイル名。|
 |FileType|Edm.String|はい|添付ファイルのファイルの種類。|
-|FileVerdict|Self.[FileVerdict](#FileVerdict)|はい|ファイルのマルウェア判定。|
+|FileVerdict|Self.[FileVerdict](#fileverdict)|はい|ファイルのマルウェア判定。|
 |MalwareFamily|Edm.String|いいえ|ファイルのマルウェア ファミリ。|
 |SHA256|Edm.String|はい|ファイルの SHA256 ハッシュ。|
 
@@ -1109,8 +1113,7 @@ Office 365 Advanced Threat Protection (ATP) および脅威インテリジェン
 |:-----|:-----|:-----|:-----|
 |UserId|Edm.String|はい|URL をクリックしたユーザーの識別子 (例: 電子メール アドレス)。|
 |AppName|Edm.String|はい|URL がクリックされた Office 365 サービス (例: Outlook メール)。|
-|Blocked|Edm.Boolean|はい|これは、URL のクリックが [Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護によって禁止されている場合に当てはまります。|
-|ClickedThrough|Edm.Boolean|はい|これは、[Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護の組織のポリシーに基づいて、ユーザーが URL ブロックをクリックした (無効になった) 場合に当てはまります。|
+|URLClickAction|Self.[URLClickAction](#urlclickaction)|はい|[Office 365 ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)に関する組織のポリシーに基づいた、URL のクリック アクション。|
 |SourceId|Edm.String|はい|URL がクリックされた Office 365 サービスの識別子 (例: メールの場合、これは Exchange Online のネットワーク メッセージ ID)。|
 |TimeOfClick|Edm.Date|はい|ユーザーが URL をクリックした、世界協定時刻 (UTC) での日時。|
 |URL|Edm.String|はい|ユーザーがクリックした URL。|
@@ -1134,8 +1137,8 @@ Office 365 Advanced Threat Protection (ATP) および脅威インテリジェン
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|FileData|Self.[FileData](#FileData)|はい|イベントをトリガーしたファイルに関するデータ。|
-|SourceWorkload|Self.[SourceWorkload](#SourceWorkload)|はい|ファイルが見つかったワークロードやサービス (例: SharePoint Online、OneDrive for Business、Microsoft Teams など)
+|FileData|Self.[FileData](#filedata)|はい|イベントをトリガーしたファイルに関するデータ。|
+|SourceWorkload|Self.[SourceWorkload](#sourceworkload)|はい|ファイルが見つかったワークロードやサービス (例: SharePoint Online、OneDrive for Business、Microsoft Teams など)
 |DetectionMethod|Edm.String|はい|Office 365 の ATP で検出に使用されるメソッドまたはテクノロジ。|
 |LastModifiedDate|Edm.Date|はい|ファイルが作成または最後に変更された、世界協定時刻 (UTC) での日時。|
 |LastModifiedBy|Edm.String|はい|ファイルを作成または最後に変更したユーザーの識別子 (例: メール アドレス)。|
@@ -1150,7 +1153,7 @@ Office 365 Advanced Threat Protection (ATP) および脅威インテリジェン
 |DocumentId|Edm.String|はい|SharePoint、OneDrive、または Microsoft Teams のファイルの一意の識別子。|
 |FileName|Edm.String|はい|イベントをトリガーしたファイルの名前。|
 |FilePath|Edm.String|はい|SharePoint、OneDrive、または Microsoft Teams のファイルへのパス (場所)。|
-|FileVerdict||Self.[FileVerdict](#FileVerdict)|はい|ファイルのマルウェア判定。|
+|FileVerdict|Self.[FileVerdict](#fileverdict)|はい|ファイルのマルウェア判定。|
 |MalwareFamily|Edm.String|いいえ|ファイルのマルウェア ファミリ。|
 |SHA256|Edm.String|はい|ファイルの SHA256 ハッシュ。|
 |FileSize|Edm.String|はい|ファイルのサイズ (バイト単位)。|

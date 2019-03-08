@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: de6a841339690c483ed58e38e0b691b00fadab4d
-ms.sourcegitcommit: b030dc1b7ca46280191dd2f54c8179795657d792
+ms.openlocfilehash: 41018718dd5890c5c628672828a2dd365a6bebe3
+ms.sourcegitcommit: c6a3d440a1ecc8f8f0b00b3fdd8e41127514a6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "30409079"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "30458529"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -54,6 +54,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[Microsoft Teams 設定スキーマ](#microsoft-teams-settings-schema)|Microsoft Teams スキーマを、すべての Microsoft Teams 設定変更イベントに固有のプロパティで拡張します。|
 |[Office 365 Advanced Threat Protection および脅威インテリジェンス スキーマ](#office-365-advanced-threat-protection-and-threat-intelligence-schema)|Office 365 Advanced Threat Protection および脅威インテリジェンスのデータに固有のプロパティを使用して、共通スキーマを拡張します。|
 |[Power BI スキーマ](#power-bi-schema)|共通スキーマを、すべての Power BI イベントに固有のプロパティで拡張します。|
+|[Workplace Analytics](#workplace-analytics-schema)|共通スキーマを、すべての Microsoft Workplace Analytics イベントに固有のプロパティで拡張します。|
+|||
 
 ## <a name="common-schema"></a>共通スキーマ
 
@@ -963,8 +965,6 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ## <a name="data-center-security-base-schema"></a>データ センター セキュリティ基本スキーマ
 
-
-
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |DataCenterSecurityEventType|Self.[DataCenterSecurityEventType](#datacentersecurityeventtype)|はい|ロック ボックス内のコマンドレット イベントのタイプ。|
@@ -1199,3 +1199,14 @@ Office 365 Advanced Threat Protection (ATP) および脅威インテリジェン
 | RecipientEmail    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | 共有の招待の受信者の電子メール アドレス。 |
 | RecipientName    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | 共有の招待の受信者の名前。 |
 | ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | 受信者にアクセス許可が付与されています。 |
+
+## <a name="workplace-analytics-schema"></a>Workplace Analytics スキーマ
+
+「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities)」にリストされている WorkPlace Analytics イベントは、このスキーマを使用します。
+
+| **パラメーター**     | **型**            | **必須かどうか?** | **説明**|
+|:------------------ | :------------------ | :--------------|:--------------|
+| WpaUserRole        | Edm.String | いいえ     | アクションを実行したユーザーの Workplace Analytics ロール。                                                                                            |
+| ModifiedProperties | コレクション (Common.ModifiedProperty) | いいえ | このプロパティには、変更されたプロパティの名前、変更されたプロパティの新しい値、および変更されたプロパティの以前の値が含まれています。|
+| OperationDetails   | コレクション (Common.NameValuePair)    | いいえ | 変更された設定の拡張プロパティの一覧。 各プロパティには **Name** と **Value** があります。|
+||||

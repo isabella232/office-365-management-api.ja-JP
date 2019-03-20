@@ -6,12 +6,12 @@ ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: 01/10/2018
 localization_priority: Priority
-ms.openlocfilehash: 76907cf9f22078a232cc20e65ba5fdc12c7f5d7e
-ms.sourcegitcommit: 55264094d1ebc2f9968b2d29d5982b1ba4e29118
+ms.openlocfilehash: e6675628a384ab4b2dac3342875332b50586526f
+ms.sourcegitcommit: 95a3313d95b79a2164008d32c4a4f03bf873a23c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "29735230"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "30379182"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Office 365 管理アクティビティ API リファレンス
 
@@ -22,7 +22,7 @@ Office 365 と Microsoft Azure Active Directory の監査ログとアクティ�
 Office 365 管理アクティビティ API は、REAT Web サービスの 1 つであり、任意の言語と、HTTPS および X.509 証明書をサポートするホスト環境を用いて、ソリューションの開発に使用できます。この API は、認証と承認に Azure AD と OAuth2 プロトコルを使用します。アプリケーションからこの API にアクセスする場合は、まず Azure AD で登録し、適切なアクセス許可で設定する必要があります。これにより、アプリケーションで、API を呼び出すために必要な OAuth2 アクセス トークンを要求できます。詳細については、「[Office 365 管理 API の使用を開始する](get-started-with-office-365-management-apis.md)」を参照してください。
 
 > [!NOTE] 
-> Office 365 マネージメント アクティビティ API で返されるデータのスキーマと、実装に影響を与える可能性がある既知の問題および今後の変更については、「[Office 365 マネージメント アクティビティ API のスキーマ](office-365-management-activity-api-schema.md)」を参照してください。
+> Office 365 管理アクティビティ API で返されるデータのスキーマについては、「[Office 365 管理アクティビティ API のスキーマ](office-365-management-activity-api-schema.md)」を参照してください。
 
 
 ## <a name="working-with-the-office-365-management-activity-api"></a>Office 365 管理アクティビティ API の操作

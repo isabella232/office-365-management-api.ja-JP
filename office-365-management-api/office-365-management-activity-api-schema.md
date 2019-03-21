@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 41018718dd5890c5c628672828a2dd365a6bebe3
-ms.sourcegitcommit: c6a3d440a1ecc8f8f0b00b3fdd8e41127514a6f6
+ms.openlocfilehash: 4604bd0aec3856b377a24d758a0961e8da1d9bf6
+ms.sourcegitcommit: 338c5c61687bc15ade48ecbae80d7f477640b68f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "30458529"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "30575978"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -52,7 +52,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[Microsoft Teams スキーマ](#microsoft-teams-schema)|共通スキーマを、すべての Microsoft Teams イベントに固有のプロパティで拡張します。|
 |[Microsoft Teams アドオン スキーマ](#microsoft-teams-add-ons-schema)|Microsoft Teams スキーマを、すべての Microsoft Teams アドオンに固有のプロパティで拡張します。|
 |[Microsoft Teams 設定スキーマ](#microsoft-teams-settings-schema)|Microsoft Teams スキーマを、すべての Microsoft Teams 設定変更イベントに固有のプロパティで拡張します。|
-|[Office 365 Advanced Threat Protection および脅威インテリジェンス スキーマ](#office-365-advanced-threat-protection-and-threat-intelligence-schema)|Office 365 Advanced Threat Protection および脅威インテリジェンスのデータに固有のプロパティを使用して、共通スキーマを拡張します。|
+|[Office 365 Advanced Threat Protection および脅威の調査と対応スキーマ](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Office 365 Advanced Threat Protection および脅威の調査と対応のデータに固有のプロパティを使用して、共通スキーマを拡張します。|
 |[Power BI スキーマ](#power-bi-schema)|共通スキーマを、すべての Power BI イベントに固有のプロパティで拡張します。|
 |[Workplace Analytics](#workplace-analytics-schema)|共通スキーマを、すべての Microsoft Workplace Analytics イベントに固有のプロパティで拡張します。|
 |||
@@ -777,7 +777,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 ### <a name="rules-complex-type"></a>ルール複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |RuleId|Edm.Guid|はい|このイベントにおける DLP ルールの GUID。|
 |RuleName|Edm.String|はい|このイベントにおける DLP ルールの フレンドリ名。|
@@ -1055,21 +1055,24 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |ModifiedProperty|Common.ModifiedProperty|いいえ|変更されたプロパティ。 プロパティの **Name**、**OldValue**、および **NewValue** が含まれます。|
 |ExtendedProperties|Collection(Common.NameValuePair)|いいえ|変更する設定の拡張プロパティの一覧。 各プロパティには **Name** と **Value** があります。|
 
-## <a name="office-365-advanced-threat-protection-and-threat-intelligence-schema"></a>Office 365 Advanced Threat Protection および脅威インテリジェンス スキーマ
+## <a name="office-365-advanced-threat-protection-and-threat-investigation-and-response-schema"></a>Office 365 Advanced Threat Protection および脅威の調査と対応スキーマ
 
-Office 365 Advanced Threat Protection (ATP) および脅威インテリジェンスのイベントは、ATP、脅威インテリジェンス、または E5 サブスクリプションを利用している Office 365 のお客様が使用できます。 ATP および脅威インテリジェンス フィードの各イベントは、脅威が含まれていると判断された次の項目に対応します。
+Office 365 Advanced Threat Protection (ATP) および脅威の調査と対応のイベントは、Office 365 Advanced Threat Protection Plan 1、Office 365 Advanced Threat Protection Plan 2、または E5 サブスクリプションをお持ちの Office 365 のお客様が利用できます。 Office 365 ATP フィードの各イベントは、脅威が含まれていると判断された次の項目に対応します。
 
 - 配信時および [Zero-hour Auto Purge](https://support.office.com/ja-JP/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によってメッセージに対する検出が行われた、組織内のユーザーが送信または受信する電子メール メッセージ。 
 
 - [Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護に基づいてクリック時に悪意があるとして検出された組織内のユーザーがクリックした URL。  
 
-- [Office 365 の ATP](https://docs.microsoft.com/ja-JP/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。  
+- [Office 365 の ATP](https://docs.microsoft.com/ja-JP/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。
+
+> [!NOTE]
+> Office 365 Advanced Threat Protection および Office 365 脅威の調査と対応 (旧称: Office 365 脅威インテリジェンス) の機能は、Office 365 Advanced Threat Protection Plan 2 および追加の脅威保護機能の一部になっています。 詳細については、「[Office 365 ATP のプランと価格](https://products.office.com/exchange/advance-threat-protection)」および「[Office 365 ATP サービスの説明](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description)」を参照してください。
 
 ### <a name="email-message-events"></a>電子メール メッセージ イベント
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|AttachmentData|Collection(Self.[AttachmentData](#attachmentdata)|いいえ|イベントをトリガーした電子メール メッセージの添付ファイルに関するデータ。|
+|AttachmentData|Collection(Self.[AttachmentData](#attachmentdata))|いいえ|イベントをトリガーした電子メール メッセージの添付ファイルに関するデータ。|
 |DetectionType|Edm.String|はい|検出タイプ (例: **Inline** - 配信時に検出、**Delayed** - 配布後に検出、**ZAP** - [Zero hour auto purge](https://support.office.com/ja-JP/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ)。 ZAP の検出タイプのイベントの前には、通常、**Delayed** 検出タイプのメッセージが表示されます。|
 |DetectionMethod|Edm.String|はい|Office 365 の ATP で検出に使用されるメソッドまたはテクノロジ。|
 |InternetMessageId|Edm.String|はい|インターネット メッセージ ID。|

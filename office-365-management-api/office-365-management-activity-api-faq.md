@@ -7,11 +7,11 @@ ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
 ms.openlocfilehash: 8954be1b9076eb2a6f640ee96cc2b612addcabc0
-ms.sourcegitcommit: c6a3d440a1ecc8f8f0b00b3fdd8e41127514a6f6
+ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "30458515"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "32223946"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>Office 365 マネージメント アクティビティ API についてよく寄せられる質問
 

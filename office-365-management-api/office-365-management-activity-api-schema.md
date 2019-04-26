@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 4604bd0aec3856b377a24d758a0961e8da1d9bf6
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: 580fc44cacea81bcc046bb16d434a309485bab77
+ms.sourcegitcommit: 336f901a6ed8eb75d99baa4af37d838aeec905c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32223918"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "33311395"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -869,17 +869,17 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |**パラメーター**|**型**|**必須**|**説明**|
 |:-----|:-----|:-----|:-----|
 |ActorUserId|Edm.String|いいえ|操作を実行したユーザーの電子メール。|
-|ActorYammerUserId|Edm.Int32|いいえ|操作を実行したユーザーの ID。|
+|ActorYammerUserId|Edm.Int64|いいえ|操作を実行したユーザーの ID。|
 |DataExportType|Edm.String|いいえ|データのエクスポートにメッセージ、メモ、ファイル、トピック、ユーザー、およびグループが含まれている場合は "data" を返します。データのエクスポートにユーザーのみが含まれている場合は "user" を返します。|
-|FileId|Edm.Int32|いいえ|操作中のファイルの ID。 |
+|FileId|Edm.Int64|いいえ|操作中のファイルの ID。 |
 |FileName|Edm.String|いいえ|操作中のファイルの名前。 操作に関係のない場合は空白が表示されます。|
 |GroupName|Edm.String|いいえ|操作中のグループの名前。 操作に関係のない場合は空白が表示されます。|
 |IsSoftDelete|Edm.Boolean|いいえ|ネットワークのデータ保持ポリシーが論理的な削除に設定されている場合は "true" を返します。ネットワークのデータ保持ポリシーが物理的な削除に設定されている場合は "false" を返します。|
-|MessageId|Edm.Int32|いいえ|操作中のメッセージの ID。|
-|YammerNetworkId|Edm.Int32|いいえ|操作を実行したユーザーのネットワーク ID。|
+|MessageId|Edm.Int64|いいえ|操作中のメッセージの ID。|
+|YammerNetworkId|Edm.Int64|いいえ|操作を実行したユーザーのネットワーク ID。|
 |TargetUserId|Edm.String|いいえ|操作中のターゲット ユーザーのメール アドレス。 操作に関係のない場合は空白が表示されます。|
-|TargetYammerUserId|Edm.Int32|いいえ|操作中のターゲット ユーザーの ID。|
-|VersionId|Edm.Int32|いいえ|操作中のファイルのバージョン ID。|
+|TargetYammerUserId|Edm.Int64|いいえ|操作中のターゲット ユーザーの ID。|
+|VersionId|Edm.Int64|いいえ|操作中のファイルのバージョン ID。|
 
 ## <a name="sway-schema"></a>Sway スキーマ
 

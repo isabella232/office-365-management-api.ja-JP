@@ -7,11 +7,11 @@ ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
 ms.openlocfilehash: 9b38c4ee73f18bf10c7fa7cbb5b323740dfb5a7e
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.sourcegitcommit: 336f901a6ed8eb75d99baa4af37d838aeec905c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32223974"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "33440053"
 ---
 # <a name="office-365-service-communications-api-reference-preview"></a>Office 365 サービス通信 API リファレンス (プレビュー)
 

@@ -1,17 +1,17 @@
 ---
-ms.TocTitle: Office 365 Service Communications API reference (preview)
+ms.TocTitle: Office 365 Service Communications API reference (Preview)
 title: Office 365 サービス通信 API リファレンス (プレビュー)
 description: この API を使用して、Get Services、Get Current Status、Get Historical Status、Get Messages のデータにアクセスします。
 ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 9b38c4ee73f18bf10c7fa7cbb5b323740dfb5a7e
-ms.sourcegitcommit: 336f901a6ed8eb75d99baa4af37d838aeec905c6
+ms.openlocfilehash: 728cf632baa1f4a45b626677b1da862438562d90
+ms.sourcegitcommit: 490310e2718a7f9d827c945a78e940d936d15386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "33440053"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "34102312"
 ---
 # <a name="office-365-service-communications-api-reference-preview"></a>Office 365 サービス通信 API リファレンス (プレビュー)
 
@@ -142,6 +142,9 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 ## <a name="get-current-status"></a>現在の状態の取得
 
 過去 24 時間のサービスの状態を返します。
+
+> [!NOTE] 
+> サービスの応答には、要求が行われたときからの 24 時間後の時点の状態が含まれています。 StatusDate または StatusTime の値は、過去24時間の値が返されます。 
 
 ||サービス|説明|
 |:-----|:-----|:-----|

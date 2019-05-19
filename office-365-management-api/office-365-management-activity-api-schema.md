@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 580fc44cacea81bcc046bb16d434a309485bab77
-ms.sourcegitcommit: 336f901a6ed8eb75d99baa4af37d838aeec905c6
+ms.openlocfilehash: 567e17ca3dc701be6cb499f3bf36bcaba8912146
+ms.sourcegitcommit: 2a256e01834388711ba8c438a891c228877588a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "33311395"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "34106167"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -40,7 +40,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[Exchange メールボックス スキーマ](#exchange-mailbox-schema)|共通スキーマを、すべての Exchange メールボックス監査データに固有のプロパティで拡張します。|
 |[Azure Active Directory 基本スキーマ](#azure-active-directory-base-schema)|共通スキーマを、すべての Azure Active Directory 監査データに固有のプロパティで拡張します。|
 |[Azure Active Directory アカウント ログオン スキーマ](#azure-active-directory-account-logon-schema)|Azure Active Directory 基本スキーマを、すべての Azure Active Directory ログオン イベントに固有のプロパティで拡張します。|
-|[Azure Active Directory STS ログオン スキーマ](#azure-active-directory-sts-logon-schema)|Azure Active Directory 基本スキーマを、すべての Azure Active Directory STS ログオン イベントに固有のプロパティで拡張します。|
+|[Azure Active Directory の Secure STS ログオン スキーマ](#azure-active-directory-secure-token-service-sts-logon-schema)|Azure Active Directory 基本スキーマを、すべての Azure Active Directory の Secure Token Service (STS) ログオン イベントに固有のプロパティで拡張します。|
 |[Azure Active Directory スキーマ](#azure-active-directory-schema)|共通スキーマを、すべての Azure Active Directory 監査データに固有のプロパティで拡張します。|
 |[DLP スキーマ](#dlp-schema)|共通スキーマを、データ損失防止イベントに固有のプロパティで拡張します。|
 |[セキュリティ/コンプライアンス センター スキーマ](#security-and-compliance-center-schema)|共通スキーマを、すべてのセキュリティ/コンプライアンス センターのイベントに固有のプロパティで拡張します。|
@@ -70,8 +70,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |OrganizationId|Edm.Guid|はい|組織の Office 365 テナントの GUID。 この値は Office 365 サービスに関係なく、組織では常に同じ値になります。|
 |UserType|Self.[UserType](#user-type)|はい|操作を実行したユーザーの種類。 ユーザーの種類の詳細については、「[ユーザーの種類](#user-type)」の表を参照してください。|
 |UserKey|Edm.String|はい|UserId プロパティで識別されるユーザーの別の ID。たとえば、このプロパティには、SharePoint、OneDrive for Business、および Exchange のユーザーにより実行されたイベントの Passport 固有 ID (PUID) が格納されます。このプロパティは、他のサービスで発生するイベントや、システム アカウントで実行されるイベントの UseID プロパティと同じ値を指定することもできます。|
-|Workload|Edm.String|いいえ|Workload 文字列でアクティビティが発生した Office 365 サービス。このプロパティに指定可能な値は次のとおりです。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Exchange</p></li><li><p>SharePoint</p></li><li><p>OneDrive</p></li><li><p>Azure Active Directory</p></li><li><p>SecurityComplianceCenter</p></li><li><p>Sway</p></li><li><p>ThreatIntelligence</p></li></ul>|
-|ResultStatus|Edm.String|いいえ|(Operation プロパティで指定された) アクションが正常に終了したかどうかどうかを示します。 指定可能な値は **Succeeded**、**PartiallySucceeded**、または **Failed** です。 Exchange 管理者アクティビティでは、値は **True** または **False** のいずれかになります。|
+|Workload|Edm.String|いいえ|アクティビティが発生した Office 365 サービス。 
+|ResultStatus|Edm.String|いいえ|(Operation プロパティで指定された) アクションが正常に終了したかどうかどうかを示します。 指定可能な値は **Succeeded**、**PartiallySucceeded**、または **Failed** です。 Exchange 管理者アクティビティでは、値は **True** または **False** のいずれかになります。<br/><br/>**重要**: さまざまなワークロードにより ResultStatus プロパティの値が上書きされる可能性があります。 たとえば、Azure Active Directory の STS ログオン イベントの場合、ResultStatus の**Succeeded**値によって示されるものは、HTTP 操作が正常に完了したことだけであり、ログオンが正常に完了したことを意味しません。 実際のログオンが成功しているかどうかを確認するには、「[Azure Active Directory の STS ログオン スキーマ](#azure-active-directory-secure-token-service-sts-logon-schema)」の LogonError プロパティを参照してください。 ログオンに失敗していた場合、このプロパティにはログオン試行に失敗した理由が含まれます。 |
 |ObjectId|Edm.string|いいえ|SharePoint および OneDrive for Business のアクティビティの場合、ユーザーによりアクセスされるファイルまたはフォルダーの完全パス名。 Exchange 管理者の監査ログの場合は、コマンドレットによって変更されたオブジェクトの名前。|
 |UserId|Edm.string|はい|レコードがログに記録されることになった、(Operation プロパティで指定された) アクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、`my_name@my_domain_name` などです。 システム アカウント (SHAREPOINT\system または NT AUTHORITY\SYSTEM など) で実行されるアクティビティのレコードも含まれることに注意してください。|
 |ClientIP|Edm.String|はい|アクティビティがログに記録されたときに使用されたデバイスの IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
@@ -107,6 +107,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |27|MicrosoftTeamsSettingsOperation|Microsoft Teams の設定の変更。|
 |28|ThreatIntelligence|Exchange Online Protection と Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
 |30|MicrosoftFlow|Microsoft Flow のイベント。|
+|31|AeD|Advanced eDiscovery イベント。|
 |32|MicrosoftStream|Microsoft Stream のイベント。|
 |35|Project|Microsoft Project のイベント。|
 |36|SharepointListOperation|Sharepoint List のイベントです。|
@@ -116,6 +117,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |44|WorkplaceAnalytics|Workplace Analytics イベント。|
 |45|PowerAppsApp|PowerApps アプリ イベント。|
 |47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
+|54|SharePointListItemOperation|SharePoint リスト イベント。|
+|55|SharePointContentTypeOperation|SharePoint リスト コンテンツ タイプ イベント。|
 ||||
 
 ### <a name="enum-user-type---type-edmint32"></a>列挙値: User Type - 型: Edm.Int32
@@ -332,7 +335,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |TimesheetRejected|ユーザーが Project Web App でタイムシートを拒否します。|
 |TimesheetSaved|ユーザーが Project Web App でタイムシートを保存します。|
 |TimesheetSubmitted|ユーザーが Project Web App で状態のタイムシートを送信します。|
-|UnmanagedSyncClientBlocked|ユーザーは、組織のドメインのメンバーではないコンピューター、または組織のドキュメント ライブラリにアクセスできるものの、ドメインのリスト (宛先セーフ リスト) に追加されていないドメインのメンバーであるコンピューターから、SharePoint または OneDrive for Business サイトとの同期関係を確立しようとします。 同期関係は許可されていません。ユーザーのコンピューターは、ドキュメント ライブラリ上のファイルの同期、ダウンロード、アップロードがブロックされています。 この機能については、「[Windows PowerShell コマンドレットを使用して宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にする](https://docs.microsoft.com/en-us/powershell/module/sharepoint-online/index?view=sharepoint-ps)」を参照してください。|
+|UnmanagedSyncClientBlocked|ユーザーは、組織のドメインのメンバーではないコンピューター、または組織のドキュメント ライブラリにアクセスできるものの、ドメインのリスト (宛先セーフ リスト) に追加されていないドメインのメンバーであるコンピューターから、SharePoint または OneDrive for Business サイトとの同期関係を確立しようとします。 同期関係は許可されていません。ユーザーのコンピューターは、ドキュメント ライブラリ上のファイルの同期、ダウンロード、アップロードがブロックされています。 この機能については、「[Windows PowerShell コマンドレットを使用して宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にする](https://docs.microsoft.com/ja-JP/powershell/module/sharepoint-online/index?view=sharepoint-ps)」を参照してください。|
 |UpdateSSOApplication*|ターゲット アプリケーションが Secure Store Service で更新されました。|
 |UserAddedToGroup*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループにユーザーを追加します。ユーザーをグループに追加すると、そのユーザーにはグループに割り当てられたアクセス許可が付与されます。 |
 |UserRemovedFromGroup*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループからユーザーを削除します。削除されると、そのユーザーにはグループに割り当てられたアクセス許可は付与されなくなります。 |
@@ -346,7 +349,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="sharepoint-file-operations"></a>SharePoint ファイルの操作
 
-「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」の「ファイルとフォルダーのアクティビティ」セクションにリストされているファイル関連 SharePoint イベントは、このスキーマを使用します。
+「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/ja-JP/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」の「ファイルとフォルダーのアクティビティ」セクションにリストされているファイル関連 SharePoint イベントは、このスキーマを使用します。
 
 
 
@@ -366,7 +369,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="sharepoint-sharing-schema"></a>SharePoint 共有スキーマ
 
- ファイル共有関連の SharePoint イベント。 これは、ユーザーが別のユーザーに何らかの影響があるアクションを取るという点で、ファイル関連イベントやフォルダー関連イベントとは異なります。 SharePoint 共有スキーマについては、「[Office 365 監査ログで共有監査を使う](https://support.office.com/en-us/article/Use-sharing-auditing-in-the-Office-365-audit-log-50bbf89f-7870-4c2a-ae14-42635e0cfc01?ui=en-US&amp;rs=en-US&amp;ad=US)」を参照してください。
+ ファイル共有関連の SharePoint イベント。 これは、ユーザーが別のユーザーに何らかの影響があるアクションを取るという点で、ファイル関連イベントやフォルダー関連イベントとは異なります。 SharePoint 共有スキーマについては、「[Office 365 監査ログで共有監査を使う](https://support.office.com/ja-JP/article/Use-sharing-auditing-in-the-Office-365-audit-log-50bbf89f-7870-4c2a-ae14-42635e0cfc01?ui=en-US&amp;rs=en-US&amp;ad=US)」を参照してください。
 
 
 
@@ -379,7 +382,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="sharepoint-schema"></a>SharePoint スキーマ
 
-「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」にリストされている SharePoint イベント (ファイルおよびフォルダー イベントを除く) は、このスキーマを使用します。
+「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/ja-JP/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」にリストされている SharePoint イベント (ファイルおよびフォルダー イベントを除く) は、このスキーマを使用します。
 
 
 
@@ -511,7 +514,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|
 |0|Owner|メールボックス所有者。|
 |1|Admin|他のユーザーのメールボックスに対する管理者特権を持つユーザー。|
-|2|Delegated|他のユーザーのメールボックスに対する代理人特権を持つユーザー。|
+|2|委任|他のユーザーのメールボックスに対する代理人特権を持つユーザー。|
 |3|Transport|Microsoft データセンターのトランスポート サービス。|
 |4|SystemService|Microsoft データセンターのサービス アカウント。|
 |5|BestAccess|内部使用のため予約済みです。|
@@ -701,9 +704,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |UPN|ユーザー プリンシパル名。|
 
 
-## <a name="azure-active-directory-sts-logon-schema"></a>Azure Active Directory STS ログオン スキーマ
-
-
+## <a name="azure-active-directory-secure-token-service-sts-logon-schema"></a>Azure Active Directory の Secure Token Service (STS) ログオン スキーマ
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -723,8 +724,6 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 - DlpInfo: SharePoint Online と OneDrive for Business にのみ存在し、対象を誤検知したものの、取り消された (“undone”) アクションはないことを示します。
 
-
-
 |**パラメーター**|**型**|**必須**|**説明**|
 |:-----|:-----|:-----|:-----|
 |SharePointMetaData|Self.[SharePointMetadata](#sharepointmetadata-complex-type)|いいえ|機密情報を含む SharePoint または OneDrive for Business 内のドキュメントに関するメタデータを記述します。|
@@ -732,9 +731,6 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 |ExceptionInfo|Edm.String|いいえ|ポリシーが適用されなくなった理由や、エンド ユーザーが記した誤検知や上書きに関する情報を識別します。|
 |PolicyDetails|Collection(Self.[PolicyDetails](#policydetails-complex-type))|はい|DLP イベントをトリガーした 1 つ以上のポリシーに関する情報。|
 |SensitiveInfoDetectionIsIncluded|ブール型|はい|ソース コンテンツからの機密性の高いデータ型の値や周囲のコンテキストがイベントに含まれているかどうかを示します。 Azure Active Directory では、機密性の高いデータへのアクセスは「機密情報を含む DLP ポリシー イベントの読み取り」アクセス許可が必要です。|
-
-
-
 
 ### <a name="sharepointmetadata-complex-type"></a>SharePointMetadata 複合型
 
@@ -777,7 +773,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 ### <a name="rules-complex-type"></a>ルール複合型
 
-|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |RuleId|Edm.Guid|はい|このイベントにおける DLP ルールの GUID。|
 |RuleName|Edm.String|はい|このイベントにおける DLP ルールの フレンドリ名。|
@@ -839,7 +835,8 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 アラートの通知には、次のものが含まれます。
 
 - [セキュリティ/コンプライアンス センターのアラート ポリシー](https://docs.microsoft.com/office365/securitycompliance/alert-policies#default-alert-policies)に基づいて生成されたすべてのアラート。
-- [Office 365 Cloud App Security](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) および [Microsoft Cloud App Security](https://docs.microsoft.com/ja-JP/cloud-app-security/what-is-cloud-app-security) で生成された Office 365 関連のアラート。
+- 
+  [Office 365 Cloud App Security](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) および [Microsoft Cloud App Security](https://docs.microsoft.com/ja-JP/cloud-app-security/what-is-cloud-app-security) で生成された Office 365 関連のアラート。
 
 これらのイベントの UserId と UserKey は、常に SecurityComplianceAlerts になります。 共通スキーマの Operation プロパティの値として格納される 2 種類のアラート通知があります。
 
@@ -864,7 +861,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ## <a name="yammer-schema"></a>Yammer スキーマ
 
-「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」にリストされている Yammer イベントは、このスキーマを使用します。
+「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/ja-JP/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」にリストされている Yammer イベントは、このスキーマを使用します。
 
 |**パラメーター**|**型**|**必須**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -883,7 +880,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ## <a name="sway-schema"></a>Sway スキーマ
 
-「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」にリストされている Sway イベント (ファイルおよびフォルダー イベントを除く) は、このスキーマを使用します。
+「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/ja-JP/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」にリストされている Sway イベント (ファイルおよびフォルダー イベントを除く) は、このスキーマを使用します。
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -1003,7 +1000,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |:-----|:-----|:-----|:-----|
 |MessageId|Edm.String|いいえ|チャットまたはチャネル メッセージの識別子。|
 |MeetupId|Edm.String|いいえ|スケジュール済みまたはアドホックの会議の識別子。|
-|メンバー|Collection(Self.[MicrosoftTeamsMember](#MicrosoftTeamsMember-complex-type))|いいえ|チーム内のユーザーの一覧。|
+|メンバー|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|いいえ|チーム内のユーザーの一覧。|
 |TeamName|Edm.String|いいえ|監査対象のチームの名前。|
 |TeamGuid|Edm.Guid|いいえ|監査対象のチームの一意識別子。|
 |ChannelName|Edm.String|いいえ|監査対象のチャネルの名前。|
@@ -1063,7 +1060,8 @@ Office 365 Advanced Threat Protection (ATP) および脅威の調査と対応の
 
 - [Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護に基づいてクリック時に悪意があるとして検出された組織内のユーザーがクリックした URL。  
 
-- [Office 365 の ATP](https://docs.microsoft.com/ja-JP/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。
+- 
+  [Office 365 の ATP](https://docs.microsoft.com/ja-JP/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。
 
 > [!NOTE]
 > Office 365 Advanced Threat Protection および Office 365 脅威の調査と対応 (旧称: Office 365 脅威インテリジェンス) の機能は、Office 365 Advanced Threat Protection Plan 2 および追加の脅威保護機能の一部になっています。 詳細については、「[Office 365 ATP のプランと価格](https://products.office.com/exchange/advance-threat-protection)」および「[Office 365 ATP サービスの説明](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description)」を参照してください。
@@ -1181,10 +1179,10 @@ Office 365 Advanced Threat Protection (ATP) および脅威の調査と対応の
 | DashboardName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したダッシュ ボードの名前です。 |
 | DataClassification    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したダッシュボードの[データの分類](/power-bi/service-data-classification) (存在する場合)。 |
 | DatasetName           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したデータセットの名前です。 |
-| MembershipInformation | Collection([MembershipInformationType](#MembershipInformationType))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | グループのメンバーシップ情報。 |
+| MembershipInformation | Collection([MembershipInformationType](#membershipinformationtype-complex-type))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | グループのメンバーシップ情報。 |
 | OrgAppPermission      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | 組織のアプリのアクセス許可の一覧 (組織全体、特定のユーザー、特定のグループ)。 |
 | ReportName            | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したレポートの名前です。 |
-| SharingInformation    | Collection([SharingInformationType](#SharingInformationType))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"    |  いいえ  | 共有の招待を送るユーザーについての情報。 |
+| SharingInformation    | Collection([SharingInformationType](#sharinginformationtype-complex-type))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"    |  いいえ  | 共有の招待を送るユーザーについての情報。 |
 | SwitchState           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | さまざまなテナント レベル切り替えの状態についての情報。 |
 | WorkSpaceName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したワークスペースの名前です。 |
 

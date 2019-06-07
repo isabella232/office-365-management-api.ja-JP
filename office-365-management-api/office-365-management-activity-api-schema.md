@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 567e17ca3dc701be6cb499f3bf36bcaba8912146
-ms.sourcegitcommit: 2a256e01834388711ba8c438a891c228877588a4
+ms.openlocfilehash: c42f22fa1c4d07c25ed15bad7225f35c298075ff
+ms.sourcegitcommit: efa2f49c46a4dc2a296d0ecc510a8153f51c535b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "34106167"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "34741221"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -1126,8 +1126,6 @@ Office 365 Advanced Threat Protection (ATP) および脅威の調査と対応の
 
 |**値**|**メンバー名**|**説明**|
 |:-----|:-----|:-----|
-|0|None|クリックが検出されませんでした。|
-|1|可|ユーザーが URL に移動することが許可されました ([Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により URL が安全と判断されたため)。|
 |2|Blockpage|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされました。|
 |3|PendingDetonationPage|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されました。|
 |4|BlockPageOverride|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされましたが、ユーザーは URL に移動するためにブロックをオーバーライドしました。|

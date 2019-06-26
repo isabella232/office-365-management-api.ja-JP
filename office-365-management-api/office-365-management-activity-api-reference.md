@@ -6,12 +6,12 @@ ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: 01/10/2018
 localization_priority: Priority
-ms.openlocfilehash: e6675628a384ab4b2dac3342875332b50586526f
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: 727d4e0d58e11887c15188b62d7642be90c1ebc3
+ms.sourcegitcommit: efd3dcdb3d190ca7b0f22a671867f0aede5d46c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32223981"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "35226980"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Office 365 管理アクティビティ API リファレンス
 
@@ -158,7 +158,7 @@ Content-Type: application/json; charset=utf-8
 ```json
 POST {webhook address}
 Content-Type: application/json; charset=utf-8
-Webhook-AuthID: (webhook authId) if provided)
+Webhook-AuthID: (webhook authId, if provided)
 Webhook-ValidationCode: (random opaque string)
 
 {

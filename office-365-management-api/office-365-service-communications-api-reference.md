@@ -6,12 +6,12 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 728cf632baa1f4a45b626677b1da862438562d90
-ms.sourcegitcommit: 490310e2718a7f9d827c945a78e940d936d15386
+ms.openlocfilehash: 1790baa6c941900a18488f338b02fc83a9b29a8b
+ms.sourcegitcommit: efd3dcdb3d190ca7b0f22a671867f0aede5d46c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "34102312"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "35226966"
 ---
 # <a name="office-365-service-communications-api-reference-preview"></a>Office 365 サービス通信 API リファレンス (プレビュー)
 
@@ -141,10 +141,10 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 ## <a name="get-current-status"></a>現在の状態の取得
 
-過去 24 時間のサービスの状態を返します。
+過去 24 時間からのサービスの状態を返します。
 
 > [!NOTE] 
-> サービスの応答には、要求が行われたときからの 24 時間後の時点の状態が含まれています。 StatusDate または StatusTime の値は、過去24時間の値が返されます。 
+> サービスの応答には、過去 24 時間以内の状態とインシデントが含まれます。 StatusDate または StatusTime の値は、過去 24 時間の値が返されます。 
 
 ||サービス|説明|
 |:-----|:-----|:-----|

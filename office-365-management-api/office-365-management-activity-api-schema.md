@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c42f22fa1c4d07c25ed15bad7225f35c298075ff
-ms.sourcegitcommit: efa2f49c46a4dc2a296d0ecc510a8153f51c535b
+ms.openlocfilehash: 012d2951c12b5da0b5767ff3edd2dd7fb64fd695
+ms.sourcegitcommit: 1345cb6bd688ee7ca4320b073eacdf614dae9b08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "34741221"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "35601531"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -103,8 +103,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |23|SkypeForBusinessCmdlets|Skype for Business イベント。|
 |24|Discovery|セキュリティ/コンプライアンス センターでコンテンツ検索を実行し、eDiscovery のケースを管理することによって実行される、電子情報開示アクティビティのイベント。|
 |25|MicrosoftTeams|Microsoft Teams のイベント。|
-|26|MicrosoftTeamsAddOns|Microsoft Teams アドオンのイベント。|
-|27|MicrosoftTeamsSettingsOperation|Microsoft Teams の設定の変更。|
 |28|ThreatIntelligence|Exchange Online Protection と Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
 |30|MicrosoftFlow|Microsoft Flow のイベント。|
 |31|AeD|Advanced eDiscovery イベント。|

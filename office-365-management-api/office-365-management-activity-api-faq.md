@@ -6,18 +6,18 @@ ms.ContentId: ''
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 8954be1b9076eb2a6f640ee96cc2b612addcabc0
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: 2abcdd71c75cab011fa8e711832b06d398e3a6ab
+ms.sourcegitcommit: 289cf45903a045630f4b3efba6f03494bf08ab4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32223946"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "35772115"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>Office 365 マネージメント アクティビティ API についてよく寄せられる質問
 
 #### <a name="what-events-are-audited-for-a-specific-office-365-service"></a>特定の Office 365 サービスについて、どのイベントが監査されますか?
 
-総合的なイベントの一覧は、Office 365 マネージメント アクティビティ API スキーマのドキュメントに記載されています。 詳細については、「[Office 365 マネージメント アクティビティ API のスキーマ](office-365-management-activity-api-schema.md)」を参照してください。
+総合的なイベントの一覧は、Office 365 マネージメント アクティビティ API スキーマのドキュメントに記載されています。 詳細については、「[Office 365 マネージメント アクティビティ API のスキーマ](office-365-management-activity-api-schema.md)」を参照してください。 また、監査されているほとんどの Office 365 サービスのイベント・リストについては、[セキュリティ/コンプライアンス センターで監査ログを検索する](https://docs.microsoft.com/ja-JP/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities)も参照してください。
 
 #### <a name="how-do-i-onboard-to-the-management-activity-api"></a>どのようにすればマネージメント アクティビティ API の使用を開始できますか?
 
@@ -33,7 +33,7 @@ Office 365 マネージメント アクティビティ API を使用すること
 
 #### <a name="is-it-true-that-mailbox-auditing-in-exchange-online-can-only-be-enabled-by-using-powershell"></a>Exchange Online ではメールボックスの監査が PowerShell を使用してのみ有効化できるというのは本当ですか?
 
-はい。 ただし、Office 365 組織のすべてのメールボックスに対して、既定でメールボックスの監査を有効化するための作業が進行中です。 詳細については、「[Microsoft セキュリティ、プライバシー、およびコンプライアンス ブログ](https://techcommunity.microsoft.com/t5/Security-Privacy-and-Compliance/Exchange-Mailbox-Auditing-will-be-enabled-by-default/ba-p/215171)」の「既定で有効化される Exchange メールボックスの監査」を参照してください。
+上記のように使用されていましたが、2019 年 1 月から、すべての Office 365 組織のメールボックスの監査が既定で有効になっています。 詳細については、[メールボックスの監査の管理](https://docs.microsoft.com/office365/securitycompliance/enable-mailbox-auditing)」を参照してください。
 
 #### <a name="are-there-any-differences-in-the-records-that-are-fetched-by-the-management-activity-api-versus-the-records-that-are-returned-by-using-the-audit-log-search-tool-in-the-office-365-security--compliance-center"></a>マネージメント アクティビティ API でフェッチされたレコードと、Office 365 セキュリティ/コンプライアンス センターの監査ログの検索ツールで返されたレコードに違いはありますか?
 

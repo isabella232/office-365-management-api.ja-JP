@@ -6,12 +6,12 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 6b42efe72931875592c87e78aa9c9cdce11a339b
-ms.sourcegitcommit: f823233a1ab116bc83d7ca8cd8ad7c7ea59439fc
+ms.openlocfilehash: 986298b87e2583788dca9b11f288743ce5f96b60
+ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "35688173"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "35924813"
 ---
 # <a name="office-365-service-communications-api-reference-preview"></a>Office 365 サービス通信 API リファレンス (プレビュー)
 
@@ -46,7 +46,7 @@ https://manage.office.com/api/v1.0/{tenant_identifier}/ServiceComms/{operation}
 Authorization: Bearer {OAuth2 token}
 ```
 
-**要求ヘッダー**
+### <a name="request-headers"></a>要求ヘッダー
 
 以下に示すのは、Office 365 サービス通信 API のすべての操作に対してサポートされている要求ヘッダーです。
 
@@ -58,7 +58,7 @@ Authorization: Bearer {OAuth2 token}
 
 <br/>
 
-**応答ヘッダー**
+### <a name="response-headers"></a>応答ヘッダー
 
 以下に示すのは、Office 365 サービス通信 API のすべての操作に対して返される応答ヘッダーです。
 
@@ -95,7 +95,7 @@ Authorization: Bearer {OAuth2 token}
 |**応答**|"Service" エンティティのリスト|"Service" エンティティには、"Id" (文字列)、"DisplayName" (文字列)、および "FeatureNames" (文字列のリスト) が含まれています。|
 ||||
 
-#### <a name="sample-request"></a>要求のサンプル
+### <a name="sample-request"></a>要求のサンプル
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/Services 
@@ -103,7 +103,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 ```
 
-#### <a name="sample-response"></a>応答のサンプル
+### <a name="sample-response"></a>応答のサンプル
 
 ```json
 {
@@ -145,7 +145,9 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 過去 24 時間からのサービスの状態を返します。
 
 > [!NOTE] 
-> サービスの応答には、過去 24 時間以内の状態とインシデントが含まれます。 最新の状況が利用可能でない限り、StatusDate または StatusTime の値は、過去 24 時間の値が返されます。 サービスが過去 24 時間以内に状態更新を受信した場合は、最新の更新の時刻が代わりに返されます。
+> サービスの応答には、過去 24 時間以内の状態とインシデントが含まれます。 StatusDate または StatusTime の値は、過去 24 時間の値が返されます。 特定のインシデントの最後の更新を取得するには、メッセージの取得機能を使用して、インシデント ID と一致する応答レコードから LastUpdatedTime 値を読み取ります。 <br/>
+
+<br/>
 
 ||サービス|説明|
 |:-----|:-----|:-----|
@@ -155,14 +157,14 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 |**応答**|"WorkloadStatus" エンティティのリスト。|"WorkloadStatus" エンティティには、"Id" (文字列)、"Workload" (文字列)、"StatusTime"(DateTimeOffset)、"WorkloadDisplayName" (文字列)、"Status" (文字列)、"IncidentIds" (文字列のリスト)、FeatureGroupStatusCollection ("FeatureStatus" のリスト) が含まれます。<br/><br/>"FeatureStatus" エンティティには、"Feature" (文字列)、"FeatureGroupDisplayName" (文字列)、"FeatureStatus" (文字列) が含まれます。|
 ||||
 
-#### <a name="sample-request"></a>要求のサンプル
+### <a name="sample-request"></a>要求のサンプル
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/CurrentStatus
 Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
-#### <a name="sample-response"></a>応答のサンプル
+### <a name="sample-response"></a>応答のサンプル
 
 ```json
 {
@@ -265,22 +267,23 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
     ]
 }
 ```
-#### <a name="status-definitions"></a>状態の定義
 
-|**状態**|**定義**|
-|:-----|:-----|
-|**調査中** | 潜在的な問題は認識されており、現状と影響範囲に関する詳細情報を収集中です。 |
-|**ServiceDegradation** | サービスまたは機能の使用に影響する可能性のある問題があることが確認されています。サービスの実行に通常より長い時間がかかる場合、一時的に中断している場合、機能が動作していない場合などにこの状態が示されることがあります。 |
-|**ServiceInterruption** | 問題がサービスへのアクセスを妨げると判断された場合にこの状態が示されます。この場合、問題は重要なものであり、常に再現できます。 |
-|**RestoringService** | 問題の原因は特定されており、対応策はわかっています。また、サービスを正常な状態に戻している段階です。 |
-|**ExtendedRecovery** | この状態は、ほとんどのユーザーに対するサービスを復元するための対応策が進行中ですが、影響を受けるすべてのシステムに適用されるまでは時間がかかることを示します。また、永続的な修正プログラムが適用されるのを待機する間に、一時的な修正プログラムで影響を減らした場合、この状態が表示されることもあります。 |
-|**InvestigationSuspended** | 潜在的な問題の詳細な調査で、さらに調査できるようにお客様からの追加情報を要求する場合は、この状態が示されます。お客様にアクションを求める場合は、必要なデータまたはログをお知らせします。 |
-|**ServiceRestored** | 対応策によって根本的な問題が解決され、サービスが正常な状態に復元されたことが確認されています。原因を確認するには、問題の詳細を表示します。 |
-|**PostIncidentReportPublished** | 根本原因情報と同様の問題が再発しないようにするための次の手順を含む特定の問題について、インシデントの事後レポートを発行しました。 |
-|||
+### <a name="status-definitions"></a>状態の定義
 
-> [!NOTE] 
-> Office 365 サービス正常性の詳細については、「[Office 365 サービスの正常性をチェックする方法](https://docs.microsoft.com/office365/enterprise/view-service-health)」を参照してください。
+状態の定義には次の値が含まれます。 
+
+- Investigating
+- ServiceDegradation
+- ServiceInterruption 
+- RestoringService
+- ExtendedRecovery
+- ServiceRestored
+- PostIncidentReportPublished 
+- VerifyingService
+- ServiceOperational
+
+最新のリストおよびこれらの状態の定義の説明については、「[Office 365 サービスの正常性をチェックする方法](https://docs.microsoft.com/office365/enterprise/view-service-health#status-definitions)」を参照してください。
+
 
 ## <a name="get-historical-status"></a>Get Historical Status
 
@@ -295,14 +298,14 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 |**応答**|"WorkloadStatus" エンティティのリスト。|"WorkloadStatus" エンティティには、"Id" (文字列)、"Workload" (文字列)、"StatusTime"(DateTimeOffset)、"WorkloadDisplayName" (文字列)、"Status" (文字列)、"IncidentIds" (文字列のリスト)、FeatureGroupStatusCollection ("FeatureStatus" のリスト) が含まれます。<br/><br/>"FeatureStatus" エンティティには、"Feature" (文字列)、"FeatureGroupDisplayName" (文字列)、"FeatureStatus" (文字列) が含まれます。|
 ||||
 
-#### <a name="sample-request"></a>要求のサンプル
+### <a name="sample-request"></a>要求のサンプル
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/HistoricalStatus
 Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
-#### <a name="sample-response"></a>応答のサンプル
+### <a name="sample-response"></a>応答のサンプル
 
 ```json
 {
@@ -383,7 +386,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 }
 ```
 
-
 ## <a name="get-messages"></a>Get Messages
 
 特定の時間範囲内のサービスに関するメッセージを返します。"サービス インシデント"、"計画済みメンテナンス"、または "メッセージ センター" メッセージをフィルター処理するためのタイプ フィルターを使用します。
@@ -402,14 +404,14 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 |**応答**|"Message" エンティティのリスト。|"Message" エンティティには、"Id" (文字列)、"StartTime" (DateTimeOffset)、"EndTime" (DateTimeOffset)、"Status" (文字列)、"Messages" ("MessageHistory" エンティティのリスト)、"LastUpdatedTime" (DateTimeOffset)、"Workload" (文字列)、"WorkloadDisplayName" (文字列)、"Feature" (文字列)、"FeatureDisplayName" (文字列)、"MessageType" (列挙、既定: all) が含まれます。<br/><br/>"MessageHistory" エンティティには、"PublishedTime" (DateTimeOffset)、"MessageText" (文字列) が含まれます。|
 ||||
 
-#### <a name="sample-request"></a>要求のサンプル
+### <a name="sample-request"></a>要求のサンプル
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/Messages
 Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
-#### <a name="sample-response"></a>応答のサンプル
+### <a name="sample-response"></a>応答のサンプル
 
 ```json
 {
@@ -476,7 +478,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 
 ```json
-
 { 
     "error":{ 
         "code":"AF5000.  An internal server error occurred.",

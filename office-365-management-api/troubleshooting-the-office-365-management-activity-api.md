@@ -6,12 +6,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: 09/05/2018
 localization_priority: Priority
-ms.openlocfilehash: ed84984dc3009d03e0bb7cacba16eafb687c93e0
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: 35d90859056225a5ebcf547d88c05640699c5295
+ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32223953"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "35924820"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Office 365 マネージメント アクティビティ API のトラブルシューティング
 
@@ -25,6 +25,10 @@ Office 365 マネージメント アクティビティ API (別名、*統合監�
 比較的に少数の操作を備えたシンプルな REST インターフェイスになっているにもかかわらず、マネージメント アクティビティ API の使用方法とデータ取得の正確なしくみについて多くの誤解があります。  マネージメント アクティビティ API の入門者が明確にしておく必要のあることの 1 つは、イベントが発生した日付、イベントの発生元になる可能性のあるサイト コレクション、イベントの種類などのイベントの詳細によってクエリを実行するという概念がないことです。  その代りに、特定のワークロード (SharePoint や Azure AD など) に対するサブスクリプションを作成します。また、それぞれのサブスクリプションはテナント単位にします。
 
 この記事は、この API のサポートについて Microsoft サポートに最も多く寄せられる質問をまとめたものです。  ここでは、選りすぐりのシンプルな PowerShell スクリプトを示します。これらのスクリプトにより、ユーザーから最も多く寄せられる質問への回答を示すことができます。また、主な操作の用例が示されているためカスタム ソリューションの実装を開始する際に役立てることもできます。  この記事では説明されていない操作もありますが、「[Office 365 マネージメント アクティビティ API リファレンス](office-365-management-activity-api-reference.md)」には、すべての操作が示されています。
+
+## <a name="enabling-unified-audit-logging-in-office-365"></a>Office 365 で統合監査ログを有効にする
+
+管理アクティビティ API を使用するためにアプリをセットアップしたのに、それが動作しない場合は、Office 365 組織の統合監査ログが有効になっていることをご確認ください。 これを実行するには、Office 365 監査ログをオンにします。 手順については、「[Office 365 監査ログの検索を有効または無効にする](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)」を参照してください。
 
 ## <a name="questions-about-third-party-tools-and-clients"></a>サード パーティ製のツールとクライアントに関する質問
 

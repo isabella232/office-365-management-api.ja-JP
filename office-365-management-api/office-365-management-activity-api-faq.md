@@ -6,12 +6,12 @@ ms.ContentId: ''
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 2abcdd71c75cab011fa8e711832b06d398e3a6ab
-ms.sourcegitcommit: 289cf45903a045630f4b3efba6f03494bf08ab4a
+ms.openlocfilehash: 9083127d1fd3ecf82e5fe778ba1727d22d91017c
+ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "35772115"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "35924778"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>Office 365 マネージメント アクティビティ API についてよく寄せられる質問
 
@@ -38,7 +38,11 @@ Office 365 マネージメント アクティビティ API を使用すること
 #### <a name="are-there-any-differences-in-the-records-that-are-fetched-by-the-management-activity-api-versus-the-records-that-are-returned-by-using-the-audit-log-search-tool-in-the-office-365-security--compliance-center"></a>マネージメント アクティビティ API でフェッチされたレコードと、Office 365 セキュリティ/コンプライアンス センターの監査ログの検索ツールで返されたレコードに違いはありますか?
 
 どちらの方法でも、同じデータが返されます。 フィルター処理は行われません。 唯一の相違点は、API では一度に取得できるデータが過去 7 日間のものであるということです。 セキュリティ/コンプライアンス センターでの監査ログの検査 (または、それに相当する Exchange Online での [Search-UnifiedAuditLog](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/search-unifiedauditlog) コマンドレットの使用) では、過去 90 日間のデータを取得できます。 
- 
+
+#### <a name="what-happens-if-i-disable-auditing-for-my-office-365-organization-will-i-still-get-events-via-the-management-activity-api"></a>Office 365 組織で監査を無効にすると、どうなりますか? 管理アクティビティ API で引き続きイベントを取得できますか?
+
+いいえ。 管理アクティビティ API を介してレコードを取得するには、組織の Office 365 統合監査を有効にする必要があります。 手順については、「[Office 365 監査ログの検索を有効または無効にする](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)」を参照してください。
+
 #### <a name="arent-webhook-notifications-more-immediate-after-all-arent-they-event-driven"></a>webhook 通知のほうが早くなりませんか? 結局のところ、イベント駆動型ではないですか?
 
 いいえ。 Webhook 通知は、イベントによって通知がトリガーされるという意味ではイベント駆動ではありません。 コンテンツ BLOB の作成は依然として必要であり、コンテンツ BLOB の作成が通知の配信をトリガーします。 最近では、webhook の使用時の通知の待機時間は、*/content* 操作で API を直接クエリするよりも長くなっています。 そのため、マネージメント アクティビティ API は、リアルタイムのセキュリティ警告システムとして捉えることはできません。 Microsoft は、その目的のための別の製品を用意しています。 セキュリティに関する限り、マネージメント アクティビティ API のイベント通知は、長期間にわたる使用パターンを判断するために使用するほうが適しています。
@@ -50,10 +54,6 @@ Office 365 マネージメント アクティビティ API を使用すること
 #### <a name="im-encountering-a-throttling-error-in-the-management-activity-api-what-should-i-do"></a>マネージメント アクティビティ API で調整エラーが発生しました。 どうすればよいですか?
 
 [Microsoft サポート](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online)でチケットを開いて、新しい調整制限を要求してください。また、制限の引き上げに対する業務上の正当な理由を含めてください。 要求を審査し承諾されると、調整制限が引き上げられます。
-
-#### <a name="what-happens-if-i-disable-auditing-for-my-office-365-organization-will-i-still-get-events-via-the-management-activity-api"></a>Office 365 組織で監査を無効にすると、どうなりますか? 管理アクティビティ API で引き続きイベントを取得できますか?
-
-いいえ。 管理アクティビティ API でレコードを取得するには、組織で監査を有効にする必要があります。
 
 #### <a name="why-are-targetupdatedproperties-no-longer-in-extendedproperties-in-the-audit-logs-for-azure-active-directory-activities"></a>Azure Active Directory アクティビティの監査ログで TargetUpdatedProperties が ExtendedProperties に含まれなくなったのはなぜですか?
 

@@ -4,14 +4,14 @@ title: Office 365 管理 API へようこそ
 description: Office 365 管理 API は、Office 365 のお客様およびパートナーの、サービス通信、セキュリティ、コンプライアンス、レポート作成、監査を含むすべての管理タスクに対応する、単一の機能拡張プラットフォームを提供します。
 ms.ContentId: a11a6d30-f6b7-3629-28b6-cbab527d8a5e
 ms.topic: reference (API)
-ms.date: 07/10/2018
+ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 0444b343a28f89a56a45f639d3f2374bb82a33d6
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: c809fd5d86dcd04c075eae27790991340c3460eb
+ms.sourcegitcommit: 37737b849f1b2d0484e626002978b1d4ece2c742
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32223932"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "35936220"
 ---
 # <a name="welcome-to-office-365-management-apis"></a>Office 365 管理 API へようこそ
 
@@ -29,4 +29,5 @@ Office 365 管理 API は、Office 365 のお客様およびパートナーの�
 
 ## <a name="see-also"></a>関連項目
 
-- [Office 365 REST API](https://docs.microsoft.com/ja-JP/previous-versions/office/office-365-api/how-to/platform-development-overview)
+- 
+  [Office 365 REST API](https://docs.microsoft.com/ja-JP/previous-versions/office/office-365-api/how-to/platform-development-overview)

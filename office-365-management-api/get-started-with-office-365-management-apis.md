@@ -4,14 +4,14 @@ title: Office 365 Management API の使用を開始する
 description: この API では、Azure AD を使用してサービスへのアクセス権をアプリケーションに付与するための認証サービスを提供します。
 ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
-ms.date: 09/05/2018
+ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 9732b5a838bdf4c14a6a13af8196704c89dec63d
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: 08f510302c1d19cf3e3e2385f1baab6133153f07
+ms.sourcegitcommit: 37737b849f1b2d0484e626002978b1d4ece2c742
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32224052"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "35936237"
 ---
 # <a name="get-started-with-office-365-management-apis"></a>Office 365 Management API の使用を開始する
 
@@ -32,6 +32,8 @@ Office 365 Management API と同じようにセキュリティで保護された
 
 ![管理 API が承認フローを開始する](images/authorization-flow.png)
 
+> [!IMPORTANT]
+> Office 365 管理アクティビティ API を介してデータにアクセスする前に、Office 365 組織の統合監査ログを有効にする必要があります。 これを実行するには、Office 365 監査ログをオンにします。 手順については、「[Office 365 監査ログの検索を有効または無効にする](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)」を参照してください。 <br/><br/>Office 365 サービス通信 API のみを使用している場合は、統合監査ログを有効にする必要はありません。
 
 ## <a name="register-your-application-in-azure-ad"></a>Azure AD でアプリケーションを登録する
 
@@ -113,7 +115,7 @@ Azure AD アプリケーションの全般的なアプリケーション構成�
 
 デーモンやサービスなど、バックグラウンドで実行されているアプリケーションは、最初の同意が与えられた後、繰り返しテナント管理者に同意を求めることがなく、アプリ専用アクセス トークン要求にクライアントの資格情報を使用できます。 
 
-詳細については、「[クライアント資格情報を使用したサービス間の呼び出し](https://msdn.microsoft.com/ja-JP/library/azure/dn645543.aspx)」を参照してください。
+詳細については、「[クライアント資格情報を使用したサービス間の呼び出し](https://msdn.microsoft.com/en-us/library/azure/dn645543.aspx)」を参照してください。
 
 Azure AD からアプリ専用アクセス トークンを要求するときは、X.509 証明書をクライアントの資格情報として使用するよう、アプリケーションを構成しなければなりません。プロセスは 2 つの手順で行います。
 
@@ -247,10 +249,9 @@ http://www.mycompany.com/myapp/?code=AAABAAAAvPM1KaPlrEqdFSB...
 
 Azure AD からアクセス トークンを要求する方法は 2 つです。
 
-- 
-  [承認コードの許可フロー](https://msdn.microsoft.com/en-us/library/azure/dn645542.aspx)では、テナント管理者が明示的な同意を与え、それによりアプリケーションに認証コードが返されます。その後、アプリケーションはアクセス トークンの認証コードを交換します。このメソッドは、アプリケーションが API を使用してテナントのデータにアクセスするために必要な初期の同意を取得するために必要です。また、この初期の同意は、テナント ID を取得し、保存するために必要です。
+- [承認コードの許可フロー](https://msdn.microsoft.com/en-us/library/azure/dn645542.aspx)では、テナント管理者が明示的な同意を与え、それによりアプリケーションに認証コードが返されます。その後、アプリケーションはアクセス トークンの認証コードを交換します。このメソッドは、アプリケーションが API を使用してテナントのデータにアクセスするために必要な初期の同意を取得するために必要です。また、この初期の同意は、テナント ID を取得し、保存するために必要です。
     
-- [クライアント資格情報の許可フロー](https://msdn.microsoft.com/ja-JP/library/azure/dn645543.aspx)では、古いアクセス トークンが期限切れになったときに、テナント管理者がサインインして同意を明示的に与える必要なしで、アプリケーションは以降のアクセス トークンを要求できるようになります。 このメソッドは、初期テナント管理者の同意が与えられた後、API を呼び出すバックグラウンドで継続的に実行するアプリケーションで使用する必要があります。
+- [クライアント資格情報の許可フロー](https://msdn.microsoft.com/en-us/library/azure/dn645543.aspx)では、古いアクセス トークンが期限切れになったときに、テナント管理者がサインインして同意を明示的に与える必要なしで、アプリケーションは以降のアクセス トークンを要求できるようになります。 このメソッドは、初期テナント管理者の同意が与えられた後、API を呼び出すバックグラウンドで継続的に実行するアプリケーションで使用する必要があります。
     
 
 ### <a name="request-an-access-token-using-the-authorization-code"></a>承認コードを使用してアクセス トークンを要求する

@@ -4,14 +4,14 @@ title: Office 365 マネージメント アクティビティ API のトラブ�
 description: この API のサポートについて Microsoft サポートに最も多く寄せられる質問のまとめです。
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
-ms.date: 09/05/2018
+ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 35d90859056225a5ebcf547d88c05640699c5295
-ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
+ms.openlocfilehash: f02088f557a10414539952c78542e09b2dc2d90b
+ms.sourcegitcommit: 37737b849f1b2d0484e626002978b1d4ece2c742
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "35924820"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "35936230"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Office 365 マネージメント アクティビティ API のトラブルシューティング
 
@@ -26,15 +26,17 @@ Office 365 マネージメント アクティビティ API (別名、*統合監�
 
 この記事は、この API のサポートについて Microsoft サポートに最も多く寄せられる質問をまとめたものです。  ここでは、選りすぐりのシンプルな PowerShell スクリプトを示します。これらのスクリプトにより、ユーザーから最も多く寄せられる質問への回答を示すことができます。また、主な操作の用例が示されているためカスタム ソリューションの実装を開始する際に役立てることもできます。  この記事では説明されていない操作もありますが、「[Office 365 マネージメント アクティビティ API リファレンス](office-365-management-activity-api-reference.md)」には、すべての操作が示されています。
 
-## <a name="enabling-unified-audit-logging-in-office-365"></a>Office 365 で統合監査ログを有効にする
-
-管理アクティビティ API を使用するためにアプリをセットアップしたのに、それが動作しない場合は、Office 365 組織の統合監査ログが有効になっていることをご確認ください。 これを実行するには、Office 365 監査ログをオンにします。 手順については、「[Office 365 監査ログの検索を有効または無効にする](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)」を参照してください。
-
 ## <a name="questions-about-third-party-tools-and-clients"></a>サード パーティ製のツールとクライアントに関する質問
 
 現時点でサポートの対象になっている質問のうち最も共通するカテゴリは、監査データのダウンロードおよび集計にサード パーティ製の製品を使用しているユーザーからのものです。 サード パーティ製の製品によっては、セットアップで問題が発生することや、該当する製品で公開されるデータに中断や矛盾が発生することがあります。 そのような場合は、まず、ベンダーのサポート組織に問い合せてください。 サポートに寄せられたすべてのサービス要求についてエンジニアが調べたところ、テナント固有のサービスの問題が原因になっていたケースは 1 つしかありませんでした。
 
 それにもかかわらず、こうしたユーザーの問題が解決されていないことがあります。 ベンダーが問題はサービスにあると主張している可能性もありますが、ベンダーに問い合せる前にユーザーが最初の確認をしようとしているだけだとも考えられます。 
+
+## <a name="enabling-unified-audit-logging-in-office-365"></a>Office 365 で統合監査ログを有効にする
+
+管理アクティビティ API を使用するためにアプリをセットアップしたのに、それが動作しない場合は、Office 365 組織の統合監査ログが有効になっていることをご確認ください。 これを実行するには、Office 365 監査ログをオンにします。 手順については、「[Office 365 監査ログの検索を有効または無効にする](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)」を参照してください。
+
+統合監査が有効になっていない場合は、通常、次の文字列を含むエラーが表示されます。`Microsoft.Office.Compliance.Audit.DataServiceException: Tenant <tenantID> does not exist.`
 
 ## <a name="connecting-to-the-api"></a>API への接続
 
@@ -43,6 +45,7 @@ Office 365 マネージメント アクティビティ API (別名、*統合監�
 ### <a name="azure-application-permissions"></a>Azure アプリケーションのアクセス許可
 
 現在、Office 365 マネージメント アクティビティ API に使用されている 3 つのアクセス許可は次のとおりです。
+
 1. 組織のアクティビティ データの読み取り
 2. 組織のサービス正常性情報の読み取り
 3. データ損失防止 (DLP) ポリシー イベントの読み取り (機密情報の検出を含む) 

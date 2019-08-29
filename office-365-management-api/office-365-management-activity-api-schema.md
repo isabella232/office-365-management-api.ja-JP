@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 49ffb697575a63bce7a7eee8e539a30c733772a5
-ms.sourcegitcommit: c4674653f99c77b64115f8547f9e410dea3408f9
+ms.openlocfilehash: 175d18dad57bff0939250cd4ae27c02129d7c0ed
+ms.sourcegitcommit: b9439635542de9db8f9fb8e056b8359d4653aa21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "35613586"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "36643044"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -1096,7 +1096,10 @@ Office 365 Advanced Threat Protection (ATP) および脅威の調査と対応の
 |NetworkMessageId|Edm.String|はい|Exchange Online のネットワーク メッセージ ID。|
 |P1Sender|Edm.String|はい|電子メール メッセージの送信者の返信先。|
 |P2Sender|Edm.String|はい|電子メール メッセージの送信者。|
-|Recipients|Collection(Edm.String)|はい|電子メール メッセージの受信者の配列。|
+|ポリシー|Self.[Policy](#policy-type-and-action-type)|はい|メール メッセージに関連するフィルタリング ポリシーのタイプ (**スパム対策**や**フィッシング対策**など) および関連するアクションタイプ (**高確度スパム**、**スパム**、**フィッシング**など)。|
+|ポリシー|Self.[PolicyAction](#policy-action)|はい|メール メッセージに関連するフィルタリング ポリシーで構成されたアクション (たとえば、**迷惑メールフォルダーに移動**または**検疫**)。|
+|P2Sender|Edm.String|はい|電子メール メッセージの**送信者**。|
+|受信者|Collection(Edm.String)|はい|電子メール メッセージの受信者の配列。|
 |SenderIp|Edm.String|はい|Office 365 の電子メールを送信した IP アドレス。 IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
 |件名|Edm.String|はい|メッセージの件名。|
 |Verdict|Edm.String|はい|メッセージの判定。|
@@ -1129,6 +1132,37 @@ Office 365 Advanced Threat Protection (ATP) および脅威の調査と対応の
 |-2|Timeout|スキャン/分析のタイムアウト。|
 |-3|Pending|スキャン/分析が完了していません。|
 |||||
+
+### <a name="enum-policy---type-edmint32"></a>列挙値: Policy - 型: Edm.Int32
+
+#### <a name="policy-type-and-action-type"></a>ポリシー タイプおよびアクション タイプ
+
+|**値**|**メンバー名**|**説明**|
+|:-----|:-----|:-----|
+|1|スパム対策、HSPM|スパム対策ポリシーの高確度スパム (HSPM) アクション。|
+|2|スパム対策、SPM|スパム対策ポリシーのスパム (SPM) アクション。|
+|3|スパム対策、バルク|スパム対策ポリシーのバルク アクション。|
+|4|スパム対策、PHSH|スパム対策ポリシーのフィッシング (PHSH) アクション。|
+|5|フィッシング対策、DIMP|フィッシング対策ポリシーのドメイン偽装 (DIMP) アクション。|
+|6|フィッシング対策、UIMP|フィッシング対策ポリシーのユーザー偽装 (UIMP) アクション。|
+|7|フィッシング対策、SPOOF|フィッシング対策ポリシーのスプーフィング アクション。|
+
+
+### <a name="enum-policyaction---type-edmint32"></a>列挙値: PolicyAction - 型: Edm.Int32
+
+#### <a name="policy-action"></a>ポリシー アクション
+
+|**値**|**メンバー名**|**説明**|
+|:-----|:-----|:-----|
+|0|MoveToJMF|迷惑メールフォルダーに移動するポリシー アクション。|
+|1|AddXHeader|メール メッセージに X-header を追加するポリシー アクション。|
+|2|ModifySubject|フィルタリング ポリシーで指定された情報でメール メッセージの件名を変更するポリシー アクション。|
+|3|Redirect|フィルタリング ポリシーで指定されたメール アドレスにメール メッセージをリダイレクトするポリシー アクション。|
+|4|Delete|メール メッセージを削除 (ドロップ) するポリシー アクション。|
+|5|Quarantine|メール メッセージを隔離するポリシー アクション。|
+|6|NoAction| メール メッセージに対してアクションを実行しないように構成されたポリシー。|
+|7|BccMessage|フィルタリング ポリシーで指定されたメール アドレスにメール メッセージを Bcc するポリシー アクション。|
+
 
 ### <a name="url-time-of-click-events"></a>URL time-of-click イベント
 

@@ -29,5 +29,4 @@ Office 365 管理 API は、Office 365 のお客様およびパートナーの�
 
 ## <a name="see-also"></a>関連項目
 
-- 
-  [Office 365 REST API](https://docs.microsoft.com/ja-JP/previous-versions/office/office-365-api/how-to/platform-development-overview)
+- [Office 365 REST API](https://docs.microsoft.com/ja-JP/previous-versions/office/office-365-api/how-to/platform-development-overview)

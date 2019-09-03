@@ -843,8 +843,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 アラートの通知には、次のものが含まれます。
 
 - [セキュリティ/コンプライアンス センターのアラート ポリシー](https://docs.microsoft.com/office365/securitycompliance/alert-policies#default-alert-policies)に基づいて生成されたすべてのアラート。
-- 
-  [Office 365 Cloud App Security](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) および [Microsoft Cloud App Security](https://docs.microsoft.com/ja-JP/cloud-app-security/what-is-cloud-app-security) で生成された Office 365 関連のアラート。
+- [Office 365 Cloud App Security](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) および [Microsoft Cloud App Security](https://docs.microsoft.com/ja-JP/cloud-app-security/what-is-cloud-app-security) で生成された Office 365 関連のアラート。
 
 これらのイベントの UserId と UserKey は、常に SecurityComplianceAlerts になります。 共通スキーマの Operation プロパティの値として格納される 2 種類のアラート通知があります。
 
@@ -1079,8 +1078,7 @@ Office 365 Advanced Threat Protection (ATP) および脅威の調査と対応の
 
 - [Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護に基づいてクリック時に悪意があるとして検出された組織内のユーザーがクリックした URL。  
 
-- 
-  [Office 365 の ATP](https://docs.microsoft.com/ja-JP/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。
+- [Office 365 の ATP](https://docs.microsoft.com/ja-JP/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。
 
 > [!NOTE]
 > Office 365 Advanced Threat Protection および Office 365 脅威の調査と対応 (旧称: Office 365 脅威インテリジェンス) の機能は、Office 365 Advanced Threat Protection Plan 2 および追加の脅威保護機能の一部になっています。 詳細については、「[Office 365 ATP のプランと価格](https://products.office.com/exchange/advance-threat-protection)」および「[Office 365 ATP サービスの説明](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description)」を参照してください。

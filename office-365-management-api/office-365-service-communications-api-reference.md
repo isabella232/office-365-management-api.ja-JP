@@ -1,34 +1,31 @@
 ---
-ms.TocTitle: Office 365 Service Communications API reference (Preview)
-title: Office 365 サービス通信 API リファレンス (プレビュー)
+ms.TocTitle: Office 365 Service Communications API reference
+title: Office 365 サービス通信 API リファレンス
 description: この API を使用して、Get Services、Get Current Status、Get Historical Status、Get Messages のデータにアクセスします。
 ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 986298b87e2583788dca9b11f288743ce5f96b60
-ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
+ms.openlocfilehash: 427c741f623f46962c3cd6818adbb64bfc0f1e7a
+ms.sourcegitcommit: 0e6d71ad2375e5d1fc72d6893724511c08840c27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "35924813"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "37131425"
 ---
-# <a name="office-365-service-communications-api-reference-preview"></a>Office 365 サービス通信 API リファレンス (プレビュー)
-
-> [!NOTE] 
-> このドキュメントで取り上げる機能は、現時点ではプレビュー段階にあります。
+# <a name="office-365-service-communications-api-reference"></a>Office 365 サービス通信 API リファレンス
 
 Office 365 サービス通信 API V2 を使用して、次のデータにアクセスできます。
 
 - **Get Services**:サブスクライブしているサービスのリストを取得します。
     
-- **Get Current Status**:現在進行中のサービス インシデントやメンテナンス イベントのリアルタイム ビューを取得します。
+- **Get Current Status**: 現在進行中のサービス インシデントのリアルタイム ビューを取得します。
     
-- **Get Historical Status**:サービス インシデントやメンテナンス イベントなどの、サービス正常性の履歴ビューを取得します。
+- **Get Historical Status**: サービス インシデントの過去のビューを取得します。
     
-- **Get Messages**:インシデント、計画済みメンテナンス、およびメッセージ センター通信を検索します。
+- **Get Messages**: インシデントとメッセージ センター通信を検索します。
     
-現時点では、Office 365 サービス通信 API には、以下のサービスについてのデータが含まれています。Dynamics CRM、Dynamics Marketing、Exchange Online、Exchange Online Protection、ID サービス、モバイル デバイス管理、Office 365 パートナー管理センター、OneDrive for Business、Parature、Power BI for Office 365、Rights Management Service、SharePoint Online、SHD Admin、Skype for Business、Social Engagement、および Yammer Enterprise。
+現在、Office 365 サービス通信 API には、Office 365、Yammer、Dynamics CRM および Microsoft Intune のクラウド サービスのデータが含まれます。
 
 ## <a name="the-fundamentals"></a>基本事項
 

@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 2e2ca6440a0f1ba10eb3d63e889a85efdaa334a0
-ms.sourcegitcommit: 78b79bd215433512fad7437220c7d5ebc1987862
+ms.openlocfilehash: bd37eb32c07e5b8c1feafad39c765d81342b5150
+ms.sourcegitcommit: 0e6d71ad2375e5d1fc72d6893724511c08840c27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "36766853"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "37131439"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -708,7 +708,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|いいえ|ログインを要求しているアプリケーションを表す GUID。表示名は、Azure Active Directory グラフ API を使用して検索できます。|
 |クライアント|Edm.String|いいえ|ログインを実行するブラウザーが提供する、クライアント デバイス情報。|
-|LogonError|Edm.String|いいえ|失敗したログインの場合、ログインが失敗した理由が含まれます。|
+|LogonError|Edm.String|いいえ|失敗したログインの場合、ログインが失敗した理由が含まれます。 LogonErrors の詳細な説明については「[認証と承認エラー コード](https://docs.microsoft.com/ja-JP/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes)」の一覧を参照してください。
 |||||
 
 ## <a name="dlp-schema"></a>DLP スキーマ

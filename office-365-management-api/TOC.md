@@ -1,7 +1,7 @@
 # [Office 365 管理 API](index.md)
 ## [管理 API の概要](office-365-management-apis-overview.md)
 ## [管理 API の使用を開始する](get-started-with-office-365-management-apis.md)
-## [サービス通信 API (プレビュー)](office-365-service-communications-api-reference.md)
+## [サービス通信 API](office-365-service-communications-api-reference.md)
 ## [管理アクティビティ API リファレンス](office-365-management-activity-api-reference.md)
 ## [管理アクティビティ API のスキーマ](office-365-management-activity-api-schema.md)
 ## [管理アクティビティ API のトラブルシューティング](troubleshooting-the-office-365-management-activity-api.md)

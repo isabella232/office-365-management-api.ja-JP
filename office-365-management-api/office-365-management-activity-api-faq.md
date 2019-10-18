@@ -17,7 +17,7 @@ ms.locfileid: "35924778"
 
 #### <a name="what-events-are-audited-for-a-specific-office-365-service"></a>特定の Office 365 サービスについて、どのイベントが監査されますか?
 
-総合的なイベントの一覧は、Office 365 マネージメント アクティビティ API スキーマのドキュメントに記載されています。 詳細については、「[Office 365 マネージメント アクティビティ API のスキーマ](office-365-management-activity-api-schema.md)」を参照してください。 また、監査されているほとんどの Office 365 サービスのイベント・リストについては、[セキュリティ/コンプライアンス センターで監査ログを検索する](https://docs.microsoft.com/ja-JP/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities)も参照してください。
+総合的なイベントの一覧は、Office 365 マネージメント アクティビティ API スキーマのドキュメントに記載されています。 詳細については、「[Office 365 マネージメント アクティビティ API のスキーマ](office-365-management-activity-api-schema.md)」を参照してください。 また、監査されているほとんどの Office 365 サービスのイベント・リストについては、[セキュリティ/コンプライアンス センターで監査ログを検索する](https://docs.microsoft.com/en-us/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities)も参照してください。
 
 #### <a name="how-do-i-onboard-to-the-management-activity-api"></a>どのようにすればマネージメント アクティビティ API の使用を開始できますか?
 

@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: f03ce58c1d953b1db66bc5327c8dc4156b02efe4
-ms.sourcegitcommit: d7c91b326681544518edecb94d71f4ce68cd4ff3
+ms.openlocfilehash: 85e9a62a029a905204d0091d3f0d58824d3c1d9a
+ms.sourcegitcommit: 0db48c00c956935a4a52aa2c2686f160a3efc8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "37437684"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "37636285"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -72,7 +72,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |ResultStatus|Edm.String|いいえ|(Operation プロパティで指定された) アクションが正常に終了したかどうかどうかを示します。 指定可能な値は **Succeeded**、**PartiallySucceeded**、または **Failed** です。 Exchange 管理者アクティビティでは、値は **True** または **False** のいずれかになります。<br/><br/>**重要**: さまざまなワークロードにより ResultStatus プロパティの値が上書きされる可能性があります。 たとえば、Azure Active Directory の STS ログオン イベントの場合、ResultStatus の**Succeeded**値によって示されるものは、HTTP 操作が正常に完了したことだけであり、ログオンが正常に完了したことを意味しません。 実際のログオンが成功しているかどうかを確認するには、「[Azure Active Directory の STS ログオン スキーマ](#azure-active-directory-secure-token-service-sts-logon-schema)」の LogonError プロパティを参照してください。 ログオンに失敗していた場合、このプロパティにはログオン試行に失敗した理由が含まれます。 |
 |ObjectId|Edm.string|いいえ|SharePoint および OneDrive for Business のアクティビティの場合、ユーザーによりアクセスされるファイルまたはフォルダーの完全パス名。 Exchange 管理者の監査ログの場合は、コマンドレットによって変更されたオブジェクトの名前。|
 |UserId|Edm.string|はい|レコードがログに記録されることになった、(Operation プロパティで指定された) アクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、`my_name@my_domain_name` などです。 システム アカウント (SHAREPOINT\system または NT AUTHORITY\SYSTEM など) で実行されるアクティビティのレコードも含まれることに注意してください。|
-|ClientIP|Edm.String|はい|アクティビティがログに記録されたときに使用されたデバイスの IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。<br/><br/>Azure Active Directory 関連のイベントの管理者のアクティビティの場合、 IP アドレスはログに記録されず、ClientIP プロパティの値は `null` になりますのでご留意ください。|
+|ClientIP|Edm.String|はい|アクティビティがログに記録されたときに使用されたデバイスの IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。<br/><br/>一部のサービスでは、このプロパティに表示される値は、ユーザーに代わってサービスを呼び出す信頼できるアプリケーション (Office on the web アプリなど) の IP アドレスであり、アクティビティを実行したユーザーが使用するデバイスの IP アドレスではない場合があります。 <br/><br/>また、Azure Active Directory 関連のイベントの場合、 IP アドレスはログに記録されず、ClientIP プロパティの値は `null` になります。|
 |範囲|Self.[AuditLogScope](#auditlogscope)|いいえ|このイベントは、ホストされた O365 サービスまたはオンプレミスのサーバーによって作成されたものですか。 設定できる値は **online** および **onprem** です。 SharePoint は現在、オンプレミスから O365 にイベントを送信する唯一のワークロードです。|
 |||||
 

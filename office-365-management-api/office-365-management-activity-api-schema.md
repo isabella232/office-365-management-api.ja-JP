@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 85e9a62a029a905204d0091d3f0d58824d3c1d9a
-ms.sourcegitcommit: 0db48c00c956935a4a52aa2c2686f160a3efc8f3
+ms.openlocfilehash: ee002772f5d35fefb758d32b6cb015993add0319
+ms.sourcegitcommit: d0bf43ff238f4647dd049672f68b4e1171083203
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "37636285"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "37774891"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -1146,6 +1146,13 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |5|フィッシング対策、DIMP|フィッシング対策ポリシーのドメイン偽装 (DIMP) アクション。|
 |6|フィッシング対策、UIMP|フィッシング対策ポリシーのユーザー偽装 (UIMP) アクション。|
 |7|フィッシング対策、SPOOF|フィッシング対策ポリシーのスプーフィング アクション。|
+|8|フィッシング対策、GIMP|フィッシング対策ポリシーのメールボックス インテリジェンス アクション。|
+|9|マルウェア対策、AMP| マルウェア対策ポリシーのマルウェア ポリシー アクション。|
+|10|安全な添付ファイル、SAP| Office 365 ATP の安全な添付ファイル ポリシーのポリシー アクション。|
+|11|Exchange トランスポート ルール、ETR| Exchange トランスポート ルールのポリシー アクション。|
+|12|マルウェア対策、ZAPM| ゼロアワー自動消去 (ZAP) に適用されるマルウェア対策ポリシーのマルウェア対策ポリシー アクション。|
+|13|フィッシング対策、ZAPP| ZAP に適用されるフィッシング対策のフィッシング詐欺ポリシー アクション。|
+|14|フィッシング対策、ZAPS| ZAP に適用されるスパム対策 ポリシーの迷惑メール ポリシー アクション。|
 
 
 ### <a name="enum-policyaction---type-edmint32"></a>列挙値: PolicyAction - 型: Edm.Int32

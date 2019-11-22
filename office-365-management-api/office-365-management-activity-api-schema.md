@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: ee002772f5d35fefb758d32b6cb015993add0319
-ms.sourcegitcommit: d0bf43ff238f4647dd049672f68b4e1171083203
+ms.openlocfilehash: 3cd8c5988273d05c85b97faa20903ebc283217dd
+ms.sourcegitcommit: a64c58d52f210c9952666d3e5bd86a0e70e983a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "37774891"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "38696962"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -64,7 +64,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |Id|Combination GUIDEdm.Guid|はい|監査レコードの一意識別子。|
 |RecordType|Self.[AuditLogRecordType](#auditlogrecordtype)|はい|レコードによって示される操作の種類。監査ログ レコードの種類の詳細については、[AuditLogRecordType](#auditlogrecordtype) の表を参照してください。|
 |CreationTime|Edm.Date|はい|ユーザーがアクティビティを実行した、世界協定時刻 (UTC) での日時。|
-|Operation|Edm.String|はい|ユーザーまたは管理者アクティビティの名前。 一般的な操作/アクティビティの説明については、「[Office 365 プロテクション センターでの監査ログの検索](http://go.microsoft.com/fwlink/p/?LinkId=708432)」を参照してください。 Exchange 管理者アクティビティでは、このプロパティは、実行されたコマンドレットの名前を識別します。 DLP イベントでは、これは "DlpRuleMatch"、"DlpRuleUndo" または "DlpInfo" (後続の「DLP スキーマ」で説明) になる可能性があります。|
+|Operation|Edm.String|はい|ユーザーまたは管理者アクティビティの名前。 一般的な操作/アクティビティの説明については、「[Office 365 プロテクション センターでの監査ログの検索](https://go.microsoft.com/fwlink/p/?LinkId=708432)」を参照してください。 Exchange 管理者アクティビティでは、このプロパティは、実行されたコマンドレットの名前を識別します。 DLP イベントでは、これは "DlpRuleMatch"、"DlpRuleUndo" または "DlpInfo" (後続の「DLP スキーマ」で説明) になる可能性があります。|
 |OrganizationId|Edm.Guid|はい|組織の Office 365 テナントの GUID。 この値は Office 365 サービスに関係なく、組織では常に同じ値になります。|
 |UserType|Self.[UserType](#user-type)|はい|操作を実行したユーザーの種類。 ユーザーの種類の詳細については、「[ユーザーの種類](#user-type)」の表を参照してください。|
 |UserKey|Edm.String|はい|UserId プロパティで識別されるユーザーの別の ID。たとえば、このプロパティには、SharePoint、OneDrive for Business、および Exchange のユーザーにより実行されたイベントの Passport 固有 ID (PUID) が格納されます。このプロパティは、他のサービスで発生するイベントや、システム アカウントで実行されるイベントの UseID プロパティと同じ値を指定することもできます。|
@@ -265,7 +265,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |LanguageRemovedFromTermStore*|用語ストアから言語が削除されました。|
 |LegacyWorkflowEnabledSet*|サイト管理者または所有者は、SharePoint ワークフロー タスク コンテンツ タイプをサイトに追加します。グローバル管理者は、SharePoint 管理センターで組織全体のワークフローを有効にすることもできます。|
 |LookAndFeelModified|ユーザーがサイド リンク バー、ガント チャートの書式、またはグループの形式を変更します。 または、ユーザーが Project Web App でビューを作成、変更、または削除します。|
-|ManagedSyncClientAllowed|ユーザーが SharePoint または OneDrive for Business サイトとの同期関係を正常に確立します。 ユーザーのコンピューターが、組織内のドキュメント ライブラリにアクセスできるドメインのリスト (宛先セーフ リストと呼ばれる) に追加されているドメインのメンバーであるため、同期関係は成功しました。 この機能の詳細については、「[Windows PowerShell コマンドレットを使用して宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にする](http://go.microsoft.com/fwlink/p/?LinkID=534609)」を参照してください。|
+|ManagedSyncClientAllowed|ユーザーが SharePoint または OneDrive for Business サイトとの同期関係を正常に確立します。 ユーザーのコンピューターが、組織内のドキュメント ライブラリにアクセスできるドメインのリスト (宛先セーフ リストと呼ばれる) に追加されているドメインのメンバーであるため、同期関係は成功しました。 詳細については、「[SharePoint Online PowerShell を使用する](https://go.microsoft.com/fwlink/p/?LinkID=534609)」を参照し、宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にしてください。|
 |MaxQuotaModified*|サイトの最大クォータは変更されています。|
 |MaxResourceUsageModified*|サイトの最大許容リソース配分状況は変更されています。|
 |MySitePublicEnabledSet*|SharePoint 管理者によって、ユーザーが公開 MySite を持てるようにするフラグが設定されています。|
@@ -336,7 +336,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |TimesheetRejected|ユーザーが Project Web App でタイムシートを拒否します。|
 |TimesheetSaved|ユーザーが Project Web App でタイムシートを保存します。|
 |TimesheetSubmitted|ユーザーが Project Web App で状態のタイムシートを送信します。|
-|UnmanagedSyncClientBlocked|ユーザーは、組織のドメインのメンバーではないコンピューター、または組織のドキュメント ライブラリにアクセスできるものの、ドメインのリスト (宛先セーフ リスト) に追加されていないドメインのメンバーであるコンピューターから、SharePoint または OneDrive for Business サイトとの同期関係を確立しようとします。 同期関係は許可されていません。ユーザーのコンピューターは、ドキュメント ライブラリ上のファイルの同期、ダウンロード、アップロードがブロックされています。 この機能については、「[Windows PowerShell コマンドレットを使用して宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にする](https://docs.microsoft.com/en-us/powershell/module/sharepoint-online/index?view=sharepoint-ps)」を参照してください。|
+|UnmanagedSyncClientBlocked|ユーザーは、組織のドメインのメンバーではないコンピューター、または組織のドキュメント ライブラリにアクセスできるものの、ドメインのリスト (宛先セーフ リスト) に追加されていないドメインのメンバーであるコンピューターから、SharePoint または OneDrive for Business サイトとの同期関係を確立しようとします。 同期関係は許可されていません。ユーザーのコンピューターは、ドキュメント ライブラリ上のファイルの同期、ダウンロード、アップロードがブロックされています。 この機能については、「[Windows PowerShell コマンドレットを使用して宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にする](https://docs.microsoft.com/powershell/module/sharepoint-online/index?view=sharepoint-ps)」を参照してください。|
 |UpdateSSOApplication*|ターゲット アプリケーションが Secure Store Service で更新されました。|
 |UserAddedToGroup*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループにユーザーを追加します。ユーザーをグループに追加すると、そのユーザーにはグループに割り当てられたアクセス許可が付与されます。 |
 |UserRemovedFromGroup*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループからユーザーを削除します。削除されると、そのユーザーにはグループに割り当てられたアクセス許可は付与されなくなります。 |
@@ -708,7 +708,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|いいえ|ログインを要求しているアプリケーションを表す GUID。表示名は、Azure Active Directory グラフ API を使用して検索できます。|
 |クライアント|Edm.String|いいえ|ログインを実行するブラウザーが提供する、クライアント デバイス情報。|
-|LogonError|Edm.String|いいえ|失敗したログインの場合、ログインが失敗した理由が含まれます。 LogonErrors の詳細な説明については「[認証と承認エラー コード](https://docs.microsoft.com/ja-JP/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes)」の一覧を参照してください。
+|LogonError|Edm.String|いいえ|失敗したログインの場合、ログインが失敗した理由が含まれます。 LogonErrors の詳細な説明については「[認証と承認エラー コード](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes)」の一覧を参照してください。
 |||||
 
 ## <a name="dlp-schema"></a>DLP スキーマ
@@ -843,7 +843,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 アラートの通知には、次のものが含まれます。
 
 - [セキュリティ/コンプライアンス センターのアラート ポリシー](https://docs.microsoft.com/office365/securitycompliance/alert-policies#default-alert-policies)に基づいて生成されたすべてのアラート。
-- [Office 365 Cloud App Security](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) および [Microsoft Cloud App Security](https://docs.microsoft.com/ja-JP/cloud-app-security/what-is-cloud-app-security) で生成された Office 365 関連のアラート。
+- [Office 365 Cloud App Security](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) および [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) で生成された Office 365 関連のアラート。
 
 これらのイベントの UserId と UserKey は、常に SecurityComplianceAlerts になります。 共通スキーマの Operation プロパティの値として格納される 2 種類のアラート通知があります。
 
@@ -1078,7 +1078,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 - [Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護に基づいてクリック時に悪意があるとして検出された組織内のユーザーがクリックした URL。  
 
-- [Office 365 の ATP](https://docs.microsoft.com/ja-JP/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。
+- [Office 365 の ATP](https://docs.microsoft.com/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。
 
 - トリガーされ、[自動調査](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office)を開始したアラート。
 
@@ -1169,6 +1169,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |5|Quarantine|メール メッセージを隔離するポリシー アクション。|
 |6|NoAction| メール メッセージに対してアクションを実行しないように構成されたポリシー。|
 |7|BccMessage|フィルタリング ポリシーで指定されたメール アドレスにメール メッセージを Bcc するポリシー アクション。|
+|8|ReplaceAttachment|ポリシーアクションとは、フィルタリング ポリシーで指定されたメールメッセージの添付ファイルを置き換えることです。|
 
 
 ### <a name="url-time-of-click-events"></a>URL time-of-click イベント
@@ -1240,15 +1241,16 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 [Office 365 の自動調査および応答 (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) イベントは、Office 365 Advanced Threat Protection Plan 2、または Office 365 E5 を含むサブスクリプションをお持ちの Office 365 のお客様が利用できます。 調査イベントは調査ステータスの変更に基づいてログに記録されます。 たとえば、管理者が [保留中のアクション] の調査ステータスを [完了] に変更する操作を行うと、イベントがログに記録されます。 
 
 現在のところ、自動調査のみがログに記録されます (手動で生成された調査のイベントは間もなく発生します)。次のステータス値がログに記録されます。 
-- 調査が作成されました
-- 脅威なし 
-- システムにより終了 
+- 調査の開始
+- 脅威は検出されませんでした 
+- システムにより終了
 - 保留中のアクション 
-- 脅威を検出 
+- 脅威が検出されました 
 - 修復済み 
 - 失敗 
 - スロットルで終了 
-- ユーザーにより終了 
+- ユーザーにより終了
+- 実行中
 
 #### <a name="main-investigation-schema"></a>主要な調査スキーマ 
 

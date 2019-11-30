@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 3cd8c5988273d05c85b97faa20903ebc283217dd
-ms.sourcegitcommit: a64c58d52f210c9952666d3e5bd86a0e70e983a2
+ms.openlocfilehash: c97325687967b85b589f4e7b94196ed1a406ef5d
+ms.sourcegitcommit: 3ff573d31612ca08819a37bfc98d43926a4a60e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "38696962"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "39631992"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -53,6 +53,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[Office 365 Advanced Threat Protection および脅威の調査と対応スキーマ](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Office 365 Advanced Threat Protection および脅威の調査と対応のデータに固有のプロパティを使用して、共通スキーマを拡張します。|
 |[Power BI スキーマ](#power-bi-schema)|共通スキーマを、すべての Power BI イベントに固有のプロパティで拡張します。|
 |[Workplace Analytics](#workplace-analytics-schema)|共通スキーマを、すべての Microsoft Workplace Analytics イベントに固有のプロパティで拡張します。|
+|[Microsoft Forms スキーマ](#microsoft-forms-schema)|共通スキーマを、すべての Microsoft Forms イベントに固有のプロパティで拡張します。|
 |||
 
 ## <a name="common-schema"></a>共通スキーマ
@@ -116,6 +117,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
 |54|SharePointListItemOperation|SharePoint リスト イベント。|
 |55|SharePointContentTypeOperation|SharePoint リスト コンテンツ タイプ イベント。|
+|66|MicrosoftForms|Microsoft Forms イベント。|
 ||||
 
 ### <a name="enum-user-type---type-edmint32"></a>列挙値: User Type - 型: Edm.Int32
@@ -1240,7 +1242,8 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 [Office 365 の自動調査および応答 (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) イベントは、Office 365 Advanced Threat Protection Plan 2、または Office 365 E5 を含むサブスクリプションをお持ちの Office 365 のお客様が利用できます。 調査イベントは調査ステータスの変更に基づいてログに記録されます。 たとえば、管理者が [保留中のアクション] の調査ステータスを [完了] に変更する操作を行うと、イベントがログに記録されます。 
 
-現在のところ、自動調査のみがログに記録されます (手動で生成された調査のイベントは間もなく発生します)。次のステータス値がログに記録されます。 
+現在のところ、自動調査のみがログに記録されます (手動で生成された調査のイベントは間もなく発生します)。次のステータス値がログに記録されます。
+
 - 調査の開始
 - 脅威は検出されませんでした 
 - システムにより終了
@@ -1265,6 +1268,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |DeeplinkURL    |Edm.String |Office 365 セキュリティ/コンプライアンス センターの調査へのディープ リンク URL |
 |Actions |Collection (Edm.String)   |調査により推奨される操作のコレクション |
 |データ   |Edm.String |調査エンティティの詳細、調査に関連するアラートの情報が含まれているデータ文字列。 エンティティはデータ blob 内の個別のノードで使用できます。 |
+||||
 
 #### <a name="actions"></a>Actions
 
@@ -1283,6 +1287,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |リソース識別子   |Edm.String  |Azure Active Directory のテナント ID で構成されます。|
 |Entities   |Collection(Edm.String) |操作によって影響を受ける複数のエンティティのリスト |
 |関連するアラート ID  |Edm.String |調査に関連するアラート |
+||||
 
 #### <a name="entities"></a>Entities
 
@@ -1300,6 +1305,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |NetworkMessageId   |Edm.Guid   |このメール メッセージのネットワーク メッセージ ID  |
 |InternetMessageId  |Edm.String  |このメール メッセージのインターネット メッセージ ID |
 |件名    |Edm.String |このメール メッセージの件名  |
+||||
 
 #### <a name="ip"></a>IP
 
@@ -1307,6 +1313,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |----|----|----|
 |Type   |Edm.String |"ip" |
 |Address    |Edm.String |文字列としての IP アドレス (`127.0.0.1` など)
+||||
 
 #### <a name="url"></a>URL
 
@@ -1314,6 +1321,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |----|----|----|
 |Type   |Edm.String |"url" |
 |Url    |Edm.String |エンティティが指す完全な URL  |
+||||
 
 #### <a name="mailbox-also-equivalent-to-the-user"></a>Mailbox (ユーザーにも相当) 
 
@@ -1323,6 +1331,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |MailboxPrimaryAddress  |Edm.String |メールボックスのプライマリ アドレス  |
 |DisplayName    |Edm.String |メールボックスの表示名 |
 |Upn    |Edm.String |メールボックスの UPN  |
+||||
 
 #### <a name="file"></a>File
 
@@ -1331,6 +1340,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |Type   |Edm.String |"file" |
 |Name   |Edm.String |パスのないファイル名 |
 FileHashes |Collection (Edm.String) |ファイルに関連付けられているファイル ハッシュ |
+||||
 
 #### <a name="filehash"></a>FileHash
 
@@ -1339,6 +1349,7 @@ FileHashes |Collection (Edm.String) |ファイルに関連付けられている�
 |Type   |Edm.String |"filehash" |
 |Algorithm  |Edm.String |ハッシュ アルゴリズムの種類は、次のいずれかの値になります。<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
 |Value  |Edm.String |ハッシュ値  |
+||||
 
 #### <a name="mailcluster"></a>MailCluster
 
@@ -1353,6 +1364,7 @@ FileHashes |Collection (Edm.String) |ファイルに関連付けられている�
 |QueryTime  |Edm.DateTime   |クエリ時間  |
 |MailCount  |Edm.int    |メール クラスターに含まれているメール メッセージの数。  |
 |ソース |String |メール クラスターのソース、クラスター ソースの値。 |
+||||
 
 ## <a name="power-bi-schema"></a>Power BI スキーマ
 
@@ -1391,11 +1403,48 @@ FileHashes |Collection (Edm.String) |ファイルに関連付けられている�
 
 ## <a name="workplace-analytics-schema"></a>Workplace Analytics スキーマ
 
-「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities)」にリストされている WorkPlace Analytics イベントは、このスキーマを使用します。
+「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities)」にリストされている WorkPlace Analytics イベントは、このスキーマを使用します。
 
 | **パラメーター**     | **型**            | **必須かどうか?** | **説明**|
 |:------------------ | :------------------ | :--------------|:--------------|
 | WpaUserRole        | Edm.String | いいえ     | アクションを実行したユーザーの Workplace Analytics ロール。                                                                                            |
 | ModifiedProperties | コレクション (Common.ModifiedProperty) | いいえ | このプロパティには、変更されたプロパティの名前、変更されたプロパティの新しい値、および変更されたプロパティの以前の値が含まれています。|
 | OperationDetails   | コレクション (Common.NameValuePair)    | いいえ | 変更された設定の拡張プロパティの一覧。 各プロパティには **Name** と **Value** があります。|
+||||
+
+## <a name="microsoft-forms-schema"></a>Microsoft Forms スキーマ
+
+「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities)」に記載されている Micorosft Forms イベントは、このスキーマを使用します。
+
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+|FormsUserTypes|Collection(Self.[FormsUserTypes](#formsusertypes))|はい|アクションを実行するユーザーの役割。  このパラメーターの値は、管理者、所有者、レスポンダー、または共同編集者です。|
+|SourceApp|Edm.String|はい|アクションが Forms Web サイトからのものなのか、他のアプリからのものなのかを示します。|
+|FormName|Edm.String|いいえ|現在のフォームの名前。|
+|FormId |Edm.String|いいえ|対象フォームの ID。|
+|FormTypes|Collection(Self.[FormTypes](#formtypes))|いいえ|これが、フォーム、クイズ、またはアンケートなのかを示します。|
+|ActivityParameters|Edm.String|いいえ|アクティビティのパラメーターを含む JSON 文字列。 詳細については、「[Office 365 セキュリティ/コンプライアンス センターで監査ログを検索する](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities)」を参照してください。|
+||||
+
+### <a name="enum-formsusertypes---type-edmint32"></a>Enum: FormsUserTypes - Type: Edm.Int32
+
+#### <a name="formsusertypes"></a>FormsUserTypes
+
+|**値**|**フォーム ユーザーの種類**|**説明**|
+|:-----|:-----|:-----|
+|0|管理者|フォームにアクセスできる管理者。|
+|1|Owner|フォームの所有者であるユーザー。|
+|2|レスポンダー|フォームに応答を送信したユーザー。|
+|3|共同編集者|フォームの所有者から提供された、フォームにログインして編集するための共同編集者リンクを使用したユーザー。|
+||||
+
+### <a name="enum-formtypes---type-edmint32"></a>Enum: FormTypes - Type: Edm.Int32
+
+#### <a name="formtypes"></a>FormTypes
+
+|**値**|**フォームの種類**|**説明**|
+|:-----|:-----|:-----|
+|0|フォーム|[新しいフォーム] オプションを使用して作成されたフォーム。|
+|1|クイズ|[新しいクイズ] オプションを使用して作成されたクイズ。  クイズは特殊な種類のフォームで、点数、自動および手動採点、コメントなどの追加の機能が含まれるフォームです。|
+|2|アンケート|[新しいアンケート] オプションを使用して作成されたアンケート。  アンケートは特殊な種類のフォームで、CMS 統合や Flow ルールのサポートなどの追加の機能が含まれるフォームです。|
 ||||

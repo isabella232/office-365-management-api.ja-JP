@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c97325687967b85b589f4e7b94196ed1a406ef5d
-ms.sourcegitcommit: 3ff573d31612ca08819a37bfc98d43926a4a60e2
+ms.openlocfilehash: 1762bed1a970215b3fc8c45f3ef807caaf93ace8
+ms.sourcegitcommit: e45b168705f36e12ceae02c77244d17d5ce01310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "39631992"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "39665465"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -51,6 +51,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[データ センター セキュリティ コマンドレット スキーマ](#data-center-security-cmdlet-schema)|データ センター セキュリティ基本スキーマを、すべてのデータ センター セキュリティ コマンドレット監査データに固有のプロパティで拡張します。|
 |[Microsoft Teams スキーマ](#microsoft-teams-schema)|共通スキーマを、すべての Microsoft Teams イベントに固有のプロパティで拡張します。|
 |[Office 365 Advanced Threat Protection および脅威の調査と対応スキーマ](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Office 365 Advanced Threat Protection および脅威の調査と対応のデータに固有のプロパティを使用して、共通スキーマを拡張します。|
+|[自動調査および対応イベント](#automated-investigation-and-response-events-in-office-365)|Office 365 自動調査および応答 (AIR) イベントに固有のプロパティを使用して、共通スキーマを拡張します。|
 |[Power BI スキーマ](#power-bi-schema)|共通スキーマを、すべての Power BI イベントに固有のプロパティで拡張します。|
 |[Workplace Analytics](#workplace-analytics-schema)|共通スキーマを、すべての Microsoft Workplace Analytics イベントに固有のプロパティで拡張します。|
 |[Microsoft Forms スキーマ](#microsoft-forms-schema)|共通スキーマを、すべての Microsoft Forms イベントに固有のプロパティで拡張します。|
@@ -117,6 +118,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
 |54|SharePointListItemOperation|SharePoint リスト イベント。|
 |55|SharePointContentTypeOperation|SharePoint リスト コンテンツ タイプ イベント。|
+|64|AIR 調査|自動インシデント応答 (AIR) イベント|
 |66|MicrosoftForms|Microsoft Forms イベント。|
 ||||
 
@@ -1238,7 +1240,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |2|Microsoft Teams|
 |||||
 
-### <a name="automated-investigation-and-response-events"></a>自動調査および対応イベント
+## <a name="automated-investigation-and-response-events-in-office-365"></a>Office 365 の自動調査および対応イベント
 
 [Office 365 の自動調査および応答 (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) イベントは、Office 365 Advanced Threat Protection Plan 2、または Office 365 E5 を含むサブスクリプションをお持ちの Office 365 のお客様が利用できます。 調査イベントは調査ステータスの変更に基づいてログに記録されます。 たとえば、管理者が [保留中のアクション] の調査ステータスを [完了] に変更する操作を行うと、イベントがログに記録されます。 
 
@@ -1255,7 +1257,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 - ユーザーにより終了
 - 実行中
 
-#### <a name="main-investigation-schema"></a>主要な調査スキーマ 
+### <a name="main-investigation-schema"></a>主要な調査スキーマ 
 
 |名前   |種類   |説明  |
 |----|----|----|
@@ -1270,7 +1272,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |データ   |Edm.String |調査エンティティの詳細、調査に関連するアラートの情報が含まれているデータ文字列。 エンティティはデータ blob 内の個別のノードで使用できます。 |
 ||||
 
-#### <a name="actions"></a>Actions
+### <a name="actions"></a>Actions
 
 |Field  |種類   |説明 |
 |----|----|----|
@@ -1289,9 +1291,9 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |関連するアラート ID  |Edm.String |調査に関連するアラート |
 ||||
 
-#### <a name="entities"></a>Entities
+### <a name="entities"></a>Entities
 
-##### <a name="mailmessage-email"></a>MailMessage (電子メール) 
+#### <a name="mailmessage-email"></a>MailMessage (電子メール) 
 
 |Field  |種類   |説明  |
 |----|----|----|

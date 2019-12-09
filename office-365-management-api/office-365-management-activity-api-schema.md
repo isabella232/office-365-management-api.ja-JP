@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 1762bed1a970215b3fc8c45f3ef807caaf93ace8
-ms.sourcegitcommit: e45b168705f36e12ceae02c77244d17d5ce01310
+ms.openlocfilehash: f05cf59e720c56b1b43db153519ea0fbee548895
+ms.sourcegitcommit: f959ebd84b3df57171f8d8ca2485adc1b69b4008
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "39665465"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "39872226"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -108,16 +108,21 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |30|MicrosoftFlow|Microsoft Flow のイベント。|
 |31|AeD|Advanced eDiscovery イベント。|
 |32|MicrosoftStream|Microsoft Stream のイベント。|
+|33|ComplianceDLPSharePointClassification|SharePoint の DLP 分類に関連するイベント。|
 |35|Project|Microsoft Project のイベント。|
-|36|SharepointListOperation|Sharepoint List のイベントです。|
+|36|SharePointListOperation|SharePoint リスト イベント。|
 |38|DataGovernance|セキュリティ/コンプライアンス センターにおけるアイテム保持ポリシーと保持ラベルに関連するイベント|
 |40|SecurityComplianceAlerts|セキュリティ/コンプライアンス アラートのシグナル。|
 |41|ThreatIntelligenceUrl|ブロック時の安全なリンクと Office 365 Advanced Threat Protection からのイベントの上書きブロック。|
+|42|SecurityComplianceInsights|Office 365 セキュリティおよびコンプライアンス センターの分析情報とレポートに関連するイベント。|
 |44|WorkplaceAnalytics|Workplace Analytics イベント。|
 |45|PowerAppsApp|PowerApps アプリ イベント。|
 |47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
-|54|SharePointListItemOperation|SharePoint リスト イベント。|
+|49|TeamsHealthcare|Microsoft 医療関係向けのTeams の[患者アプリケーション](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit)に関連するベント。|
+|52|DataInsightsRestApiAudit|データ インサイト REST API イベント。|
+|54|SharePointListItemOperation|SharePoint リスト アイテム イベント。|
 |55|SharePointContentTypeOperation|SharePoint リスト コンテンツ タイプ イベント。|
+|56|SharePointFieldOperation|SharePoint リスト フィールド イベント。|
 |64|AIR 調査|自動インシデント応答 (AIR) イベント|
 |66|MicrosoftForms|Microsoft Forms イベント。|
 ||||
@@ -135,10 +140,9 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |4|System|システム アカウント。|
 |5|Application|アプリケーション。|
 |6|ServicePrincipal|サービス プリンシパル。|
+|7|CustomPolicy|カスタム ポリシー。|
+|8|SystemPolicy|システム ポリシー。|
 ||||
-
-> [!NOTE] 
-> ユーザーの種類が含まれるのは Exchange の操作のみです。 SharePoint の操作では、ユーザーの種類は指定しません。 
 
 ### <a name="enum-auditlogscope---type-edmint32"></a>列挙値: AuditLogScope - 型: Edm.Int32
 

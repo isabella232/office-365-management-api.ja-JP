@@ -6,12 +6,12 @@ ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 08f510302c1d19cf3e3e2385f1baab6133153f07
-ms.sourcegitcommit: 37737b849f1b2d0484e626002978b1d4ece2c742
+ms.openlocfilehash: f444aa9411e0520be42ce68b2f618efe5228ac75
+ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "35936237"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "41263241"
 ---
 # <a name="get-started-with-office-365-management-apis"></a>Office 365 Management API の使用を開始する
 
@@ -42,7 +42,7 @@ Office 365 Management API は、Office 365 テナント データに対し、Azu
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure AD でアプリを登録するには、Office 365 サブスクリプションと、Office 365 サブスクリプションに関連付けられている Azure のサブスクリプションが必要です。開始するには、Office 365 と Azure の両方に、試用版のサブスクリプションを使用できます。詳細については、「[Office 365 開発者プログラムへようこそ](https://docs.microsoft.com/ja-JP/office/developer-program/office-365-developer-program)」を参照してください。
+Azure AD でアプリを登録するには、Office 365 サブスクリプションと、Office 365 サブスクリプションに関連付けられている Azure のサブスクリプションが必要です。開始するには、Office 365 と Azure の両方に、試用版のサブスクリプションを使用できます。詳細については、「[Office 365 開発者プログラムへようこそ](https://docs.microsoft.com/office/developer-program/office-365-developer-program)」を参照してください。
 
 
 ### <a name="use-the-azure-management-portal-to-register-your-application-in-azure-ad"></a>Azure の管理ポータルを使用してアプリケーションを Azure AD で登録する
@@ -80,7 +80,7 @@ Azure AD でアプリを登録するには、Office 365 サブスクリプショ
 
 アプリケーションを登録すると、いくつかの重要なプロパティを指定する必要があります。プロパティでは、Azure AD 内でアプリケーションがどのように機能するか、また、テナント管理者が Office 365 Management API を使用してアプリケーションにテナント データへのアクセス許可に同意する方法を指定します。
 
-Azure AD アプリケーションの全般的なアプリケーション構成の詳細については、「[Application オブジェクトのプロパティ](https://docs.microsoft.com/ja-JP/azure/active-directory/develop/active-directory-application-objects)」を参照してください。
+Azure AD アプリケーションの全般的なアプリケーション構成の詳細については、「[Application オブジェクトのプロパティ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)」を参照してください。
 
 
 1. **クライアント ID**。この値は Azure AD で自動的に生成されます。アプリケーションは、テナント管理者に同意を求めるとき、および Azure AD からアプリ専用トークンを要求するときに、この値を使用します。
@@ -115,7 +115,7 @@ Azure AD アプリケーションの全般的なアプリケーション構成�
 
 デーモンやサービスなど、バックグラウンドで実行されているアプリケーションは、最初の同意が与えられた後、繰り返しテナント管理者に同意を求めることがなく、アプリ専用アクセス トークン要求にクライアントの資格情報を使用できます。 
 
-詳細については、「[クライアント資格情報を使用したサービス間の呼び出し](https://msdn.microsoft.com/ja-JP/library/azure/dn645543.aspx)」を参照してください。
+詳細については、「[クライアント資格情報を使用したサービス間の呼び出し](https://msdn.microsoft.com/library/azure/dn645543.aspx)」を参照してください。
 
 Azure AD からアプリ専用アクセス トークンを要求するときは、X.509 証明書をクライアントの資格情報として使用するよう、アプリケーションを構成しなければなりません。プロセスは 2 つの手順で行います。
 
@@ -249,9 +249,9 @@ http://www.mycompany.com/myapp/?code=AAABAAAAvPM1KaPlrEqdFSB...
 
 Azure AD からアクセス トークンを要求する方法は 2 つです。
 
-- [承認コードの許可フロー](https://msdn.microsoft.com/en-us/library/azure/dn645542.aspx)では、テナント管理者が明示的な同意を与え、それによりアプリケーションに認証コードが返されます。その後、アプリケーションはアクセス トークンの認証コードを交換します。このメソッドは、アプリケーションが API を使用してテナントのデータにアクセスするために必要な初期の同意を取得するために必要です。また、この初期の同意は、テナント ID を取得し、保存するために必要です。
+- [承認コードの許可フロー](https://msdn.microsoft.com/library/azure/dn645542.aspx)では、テナント管理者が明示的な同意を与え、それによりアプリケーションに認証コードが返されます。その後、アプリケーションはアクセス トークンの認証コードを交換します。このメソッドは、アプリケーションが API を使用してテナントのデータにアクセスするために必要な初期の同意を取得するために必要です。また、この初期の同意は、テナント ID を取得し、保存するために必要です。
     
-- [クライアント資格情報の許可フロー](https://msdn.microsoft.com/ja-JP/library/azure/dn645543.aspx)では、古いアクセス トークンが期限切れになったときに、テナント管理者がサインインして同意を明示的に与える必要なしで、アプリケーションは以降のアクセス トークンを要求できるようになります。 このメソッドは、初期テナント管理者の同意が与えられた後、API を呼び出すバックグラウンドで継続的に実行するアプリケーションで使用する必要があります。
+- [クライアント資格情報の許可フロー](https://msdn.microsoft.com/library/azure/dn645543.aspx)では、古いアクセス トークンが期限切れになったときに、テナント管理者がサインインして同意を明示的に与える必要なしで、アプリケーションは以降のアクセス トークンを要求できるようになります。 このメソッドは、初期テナント管理者の同意が与えられた後、API を呼び出すバックグラウンドで継続的に実行するアプリケーションで使用する必要があります。
     
 
 ### <a name="request-an-access-token-using-the-authorization-code"></a>承認コードを使用してアクセス トークンを要求する
@@ -335,7 +335,7 @@ Content-Length: 3265
 
 テナント ID が判明すると、アプリケーションは、Azure AD にサービス間の呼び出しを行い、期限切れの際に追加のアクセス トークンを要求することができます。 これらのトークンには、同意を許可した管理者ではなく、要求元のアプリケーションについてのみ情報が含まれます。 サービス間の呼び出しでは、アプリケーションが X.509 証明書を使用して、base64 でエンコードされ、SHA256 で署名されている JWT ベアラー トークンの形式でクライアントのアサーションを作成する必要があります。
 
-.NET でアプリケーションを開発するときには、[Azure AD Authentication Library (ADAL)](https://docs.microsoft.com/ja-JP/azure/active-directory/develop/active-directory-authentication-libraries) を使用してクライアントのアサーションを作成できます。他の開発プラットフォームにも同様のライブラリが必要です。
+.NET でアプリケーションを開発するときには、[Azure AD Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) を使用してクライアントのアサーションを作成できます。他の開発プラットフォームにも同様のライブラリが必要です。
 
 エンコードされていない JWT トークンは、次のプロパティを持つヘッダーとペイロードで構成されます。
 

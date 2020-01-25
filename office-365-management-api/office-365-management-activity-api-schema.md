@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: f05cf59e720c56b1b43db153519ea0fbee548895
-ms.sourcegitcommit: f959ebd84b3df57171f8d8ca2485adc1b69b4008
+ms.openlocfilehash: 7a12fc60894742ebdcc41457930225a4dd9bfc02
+ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "39872226"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "41263276"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -105,7 +105,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |24|Discovery|セキュリティ/コンプライアンス センターでコンテンツ検索を実行し、eDiscovery のケースを管理することによって実行される、電子情報開示アクティビティのイベント。|
 |25|MicrosoftTeams|Microsoft Teams のイベント。|
 |28|ThreatIntelligence|Exchange Online Protection と Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
-|30|MicrosoftFlow|Microsoft Flow のイベント。|
+|30|MicrosoftFlow|Microsoft Power Automate (旧称 Microsoft Flow) イベント。|
 |31|AeD|Advanced eDiscovery イベント。|
 |32|MicrosoftStream|Microsoft Stream のイベント。|
 |33|ComplianceDLPSharePointClassification|SharePoint の DLP 分類に関連するイベント。|
@@ -116,7 +116,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |41|ThreatIntelligenceUrl|ブロック時の安全なリンクと Office 365 Advanced Threat Protection からのイベントの上書きブロック。|
 |42|SecurityComplianceInsights|Office 365 セキュリティおよびコンプライアンス センターの分析情報とレポートに関連するイベント。|
 |44|WorkplaceAnalytics|Workplace Analytics イベント。|
-|45|PowerAppsApp|PowerApps アプリ イベント。|
+|45|PowerAppsApp|Power Apps イベント。|
 |47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
 |49|TeamsHealthcare|Microsoft 医療関係向けのTeams の[患者アプリケーション](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit)に関連するベント。|
 |52|DataInsightsRestApiAudit|データ インサイト REST API イベント。|
@@ -359,7 +359,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="sharepoint-file-operations"></a>SharePoint ファイルの操作
 
-「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」の「ファイルとフォルダーのアクティビティ」セクションにリストされているファイル関連 SharePoint イベントは、このスキーマを使用します。
+「[セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)」の「ファイルとフォルダーのアクティビティ」セクションにリストされているファイル関連 SharePoint イベントは、このスキーマを使用します。
 
 
 
@@ -379,7 +379,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="sharepoint-sharing-schema"></a>SharePoint 共有スキーマ
 
- ファイル共有関連の SharePoint イベント。 これは、ユーザーが別のユーザーに何らかの影響があるアクションを取るという点で、ファイル関連イベントやフォルダー関連イベントとは異なります。 SharePoint 共有スキーマについては、「[Office 365 監査ログで共有監査を使う](https://support.office.com/en-us/article/Use-sharing-auditing-in-the-Office-365-audit-log-50bbf89f-7870-4c2a-ae14-42635e0cfc01?ui=en-US&amp;rs=en-US&amp;ad=US)」を参照してください。
+ ファイル共有関連の SharePoint イベント。 これは、ユーザーが別のユーザーに何らかの影響があるアクションを取るという点で、ファイル関連イベントやフォルダー関連イベントとは異なります。 SharePoint 共有スキーマについては、「[Office 365 監査ログで共有監査を使う](https://docs.microsoft.com/microsoft-365/compliance/use-sharing-auditing
+)」を参照してください。
 
 
 
@@ -393,7 +394,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="sharepoint-schema"></a>SharePoint スキーマ
 
-「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」にリストされている SharePoint イベント (ファイルおよびフォルダー イベントを除く) は、このスキーマを使用します。
+「[セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)」にリストされている SharePoint イベント (ファイルおよびフォルダー イベントを除く) は、このスキーマを使用します。
 
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
@@ -897,7 +898,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ## <a name="sway-schema"></a>Sway スキーマ
 
-「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」にリストされている Sway イベント (ファイルおよびフォルダー イベントを除く) は、このスキーマを使用します。
+「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」にリストされている Sway イベント (ファイルおよびフォルダー イベントを除く) は、このスキーマを使用します。
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -1082,7 +1083,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 [Office 365 Advanced Threat Protection](https://docs.microsoft.com/office365/securitycompliance/office-365-atp) (ATP) および脅威の調査と対応のイベントは、Office 365 Advanced Threat Protection Plan 1、Office 365 Advanced Threat Protection Plan 2、または E5 サブスクリプションをお持ちの Office 365 のお客様が利用できます。 Office 365 ATP フィードの各イベントは、脅威が含まれていると判断された次のように対応します。
 
-- 配信時および [Zero-hour Auto Purge](https://support.office.com/ja-JP/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によってメッセージに対する検出が行われた、組織内のユーザーが送信または受信する電子メール メッセージ。 
+- 配信時および [Zero-hour Auto Purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によってメッセージに対する検出が行われた、組織内のユーザーが送信または受信する電子メール メッセージ。 
 
 - [Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護に基づいてクリック時に悪意があるとして検出された組織内のユーザーがクリックした URL。  
 
@@ -1098,7 +1099,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#attachmentdata))|いいえ|イベントをトリガーした電子メール メッセージの添付ファイルに関するデータ。|
-|DetectionType|Edm.String|はい|検出タイプ (例: **Inline** - 配信時に検出、**Delayed** - 配布後に検出、**ZAP** - [Zero hour auto purge](https://support.office.com/ja-JP/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ)。 ZAP の検出タイプのイベントの前には、通常、**Delayed** 検出タイプのメッセージが表示されます。|
+|DetectionType|Edm.String|はい|検出タイプ (例: **Inline** - 配信時に検出、**Delayed** - 配布後に検出、**ZAP** - [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ)。 ZAP の検出タイプのイベントの前には、通常、**Delayed** 検出タイプのメッセージが表示されます。|
 |DetectionMethod|Edm.String|はい|Office 365 の ATP で検出に使用されるメソッドまたはテクノロジ。|
 |InternetMessageId|Edm.String|はい|インターネット メッセージ ID。|
 |NetworkMessageId|Edm.String|はい|Exchange Online のネットワーク メッセージ ID。|

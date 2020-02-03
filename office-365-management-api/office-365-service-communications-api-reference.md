@@ -6,12 +6,12 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 427c741f623f46962c3cd6818adbb64bfc0f1e7a
-ms.sourcegitcommit: 0e6d71ad2375e5d1fc72d6893724511c08840c27
+ms.openlocfilehash: 36ef8e548b535fc97f2b1b6d4347184fa18d6ceb
+ms.sourcegitcommit: 78e76d5d1c3e40907ea0936a7c3f016eed4ebd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "37131425"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "41650851"
 ---
 # <a name="office-365-service-communications-api-reference"></a>Office 365 サービス通信 API リファレンス
 
@@ -278,6 +278,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 - PostIncidentReportPublished 
 - VerifyingService
 - ServiceOperational
+- FalsePositive
 
 最新のリストおよびこれらの状態の定義の説明については、「[Office 365 サービスの正常性をチェックする方法](https://docs.microsoft.com/office365/enterprise/view-service-health#status-definitions)」を参照してください。
 

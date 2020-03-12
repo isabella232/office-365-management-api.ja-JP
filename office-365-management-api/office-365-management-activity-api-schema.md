@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 7a12fc60894742ebdcc41457930225a4dd9bfc02
-ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
+ms.openlocfilehash: 38905a88f8be1924d0df02f10362caa624b34bd8
+ms.sourcegitcommit: 8aa0be26e0e69dd7908b3bcece3a71eafb973705
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "41263276"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "42586304"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
  
@@ -73,7 +73,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |Workload|Edm.String|いいえ|アクティビティが発生した Office 365 サービス。 
 |ResultStatus|Edm.String|いいえ|(Operation プロパティで指定された) アクションが正常に終了したかどうかどうかを示します。 指定可能な値は **Succeeded**、**PartiallySucceeded**、または **Failed** です。 Exchange 管理者アクティビティでは、値は **True** または **False** のいずれかになります。<br/><br/>**重要**: さまざまなワークロードにより ResultStatus プロパティの値が上書きされる可能性があります。 たとえば、Azure Active Directory の STS ログオン イベントの場合、ResultStatus の**Succeeded**値によって示されるものは、HTTP 操作が正常に完了したことだけであり、ログオンが正常に完了したことを意味しません。 実際のログオンが成功しているかどうかを確認するには、「[Azure Active Directory の STS ログオン スキーマ](#azure-active-directory-secure-token-service-sts-logon-schema)」の LogonError プロパティを参照してください。 ログオンに失敗していた場合、このプロパティにはログオン試行に失敗した理由が含まれます。 |
 |ObjectId|Edm.string|いいえ|SharePoint および OneDrive for Business のアクティビティの場合、ユーザーによりアクセスされるファイルまたはフォルダーの完全パス名。 Exchange 管理者の監査ログの場合は、コマンドレットによって変更されたオブジェクトの名前。|
-|UserId|Edm.string|はい|レコードがログに記録されることになった、(Operation プロパティで指定された) アクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、`my_name@my_domain_name` などです。 システム アカウント (SHAREPOINT\system または NT AUTHORITY\SYSTEM など) で実行されるアクティビティのレコードも含まれることに注意してください。|
+|UserId|Edm.string|はい|レコードがログに記録されることになった、(Operation プロパティで指定された) アクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、`my_name@my_domain_name` などです。 システム アカウント (SHAREPOINT\system または NT AUTHORITY\SYSTEM など) で実行されるアクティビティのレコードも含まれることに注意してください。 SharePoint では、UserId プロパティの別の値が app@sharepoint に表示されます。 これは、アクティビティを実行した "ユーザー" が、ユーザー、管理者、またはサービスの代理として、組織全体のアクション (SharePoint サイトまたは OneDrive アカウント検索など) を実行するために必要な アクセス許可が SharePoint に与えられているアプリケーションであることを示しています。 詳細については、「[監査レコード内の app@sharepoint ユーザー](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records)」を参照してください。 |
 |ClientIP|Edm.String|はい|アクティビティがログに記録されたときに使用されたデバイスの IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。<br/><br/>一部のサービスでは、このプロパティに表示される値は、ユーザーに代わってサービスを呼び出す信頼できるアプリケーション (Office on the web アプリなど) の IP アドレスであり、アクティビティを実行したユーザーが使用するデバイスの IP アドレスではない場合があります。 <br/><br/>また、Azure Active Directory 関連のイベントの場合、 IP アドレスはログに記録されず、ClientIP プロパティの値は `null` になります。|
 |範囲|Self.[AuditLogScope](#auditlogscope)|いいえ|このイベントは、ホストされた O365 サービスまたはオンプレミスのサーバーによって作成されたものですか。 設定できる値は **online** および **onprem** です。 SharePoint は現在、オンプレミスから O365 にイベントを送信する唯一のワークロードです。|
 |||||
@@ -105,6 +105,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |24|Discovery|セキュリティ/コンプライアンス センターでコンテンツ検索を実行し、eDiscovery のケースを管理することによって実行される、電子情報開示アクティビティのイベント。|
 |25|MicrosoftTeams|Microsoft Teams のイベント。|
 |28|ThreatIntelligence|Exchange Online Protection と Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
+|29|MailSubmission|Exchange Online Protection と Office 365 Advanced Threat Protection からの送信イベント。|
 |30|MicrosoftFlow|Microsoft Power Automate (旧称 Microsoft Flow) イベント。|
 |31|AeD|Advanced eDiscovery イベント。|
 |32|MicrosoftStream|Microsoft Stream のイベント。|
@@ -124,6 +125,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |55|SharePointContentTypeOperation|SharePoint リスト コンテンツ タイプ イベント。|
 |56|SharePointFieldOperation|SharePoint リスト フィールド イベント。|
 |64|AIR 調査|自動インシデント応答 (AIR) イベント|
+|65|Quarantine|検疫イベント。|
 |66|MicrosoftForms|Microsoft Forms イベント。|
 ||||
 
@@ -728,9 +730,9 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 - DlpRuleMatch: ルールが一致したことを示します。 これらのイベントは、Exchange、SharePoint Online、OneDrive for Business のいずれにも存在します。 Exchange では、誤検知と上書きの情報が含まれます。 SharePoint Online と OneDrive for Business では、誤検知と上書きは異なるイベントを生成します。
 
-- DlpRuleUndo: SharePoint Online と OneDrive for Business にのみ存在し、ユーザーによる対象の誤検知/上書きにより、またはドキュメントがポリシーの適用対象ではなくなった (ポリシーを変更したか、ドキュメントのコンテンツを変更したため) ことにより、以前に適用されたポリシー アクションが取り消された (“undone”) ことを示します。
+- DlpRuleUndo: SharePoint Online と OneDrive for Business にのみ存在し、ユーザーによる対象の誤検知/上書きにより、またはドキュメントがポリシーの適用対象ではなくなった (ポリシーを変更したか、ドキュメントのコンテンツを変更したため) ことにより、以前に適用されたポリシー アクションが取り消された ("undone") ことを示します。
 
-- DlpInfo: SharePoint Online と OneDrive for Business にのみ存在し、対象を誤検知したものの、取り消された (“undone”) アクションはないことを示します。
+- DlpInfo: SharePoint Online と OneDrive for Business にのみ存在し、対象を誤検知したものの、取り消された ("undone") アクションはないことを示します。
 
 |**パラメーター**|**型**|**必須**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -1264,113 +1266,113 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="main-investigation-schema"></a>主要な調査スキーマ 
 
-|名前   |種類   |説明  |
+|名前    |種類    |説明  |
 |----|----|----|
-|InvestigationId    |Edm.String |調査 ID/GUID |
-|InvestigationName  |Edm.String |調査名 |
-|InvestigationType  |Edm.String |調査の種類。 次のいずれかの値を指定できます。<br/>- ユーザーが報告したメッセージ<br/>- zapped マルウェア<br/>- zapped フィッシング<br/>- URL の判定変更<p>(現在手動調査は利用できません。まもなく提供開始予定です) |
-|LastUpdateTimeUtc  |Edm.Date   |調査の最終更新の UTC 時刻 |
-|StartTimeUtc   |Edm.Date   |調査の開始時刻 |
+|InvestigationId    |Edm.String    |調査 ID/GUID |
+|InvestigationName    |Edm.String    |調査名 |
+|InvestigationType    |Edm.String    |調査の種類。 次のいずれかの値を指定できます。<br/>- ユーザーが報告したメッセージ<br/>- zapped マルウェア<br/>- zapped フィッシング<br/>- URL の判定変更<p>(現在手動調査は利用できません。まもなく提供開始予定です) |
+|LastUpdateTimeUtc    |Edm.Date    |調査の最終更新の UTC 時刻 |
+|StartTimeUtc    |Edm.Date    |調査の開始時刻 |
 |状態     |Edm.String     |調査、実行中、保留中のアクションなどの状態。 |
-|DeeplinkURL    |Edm.String |Office 365 セキュリティ/コンプライアンス センターの調査へのディープ リンク URL |
-|Actions |Collection (Edm.String)   |調査により推奨される操作のコレクション |
-|データ   |Edm.String |調査エンティティの詳細、調査に関連するアラートの情報が含まれているデータ文字列。 エンティティはデータ blob 内の個別のノードで使用できます。 |
+|DeeplinkURL    |Edm.String    |Office 365 セキュリティ/コンプライアンス センターの調査へのディープ リンク URL |
+|Actions |Collection (Edm.String)    |調査により推奨される操作のコレクション |
+|データ    |Edm.String    |調査エンティティの詳細、調査に関連するアラートの情報が含まれているデータ文字列。 エンティティはデータ blob 内の個別のノードで使用できます。 |
 ||||
 
 ### <a name="actions"></a>Actions
 
-|Field  |種類   |説明 |
+|Field    |種類    |説明 |
 |----|----|----|
-|ID     |Edm.String |操作 ID|
-|ActionType |Edm.String |操作の種類 (メールの修復など) |
-|ActionStatus   |Edm.String |値は次のとおりです。 <br/>- 保留中<br/>- 実行中<br/>- リソースの待機中<br/>- 完了<br/>- 失敗 |
-|ApprovedBy |Edm.String |自動承認された場合は null 値、それ以外の場合はユーザー名または ID (まもなく対応予定) |
-|TimestampUtc   |Edm.DateTime   |操作ステータス変更のタイムスタンプ |
-|ActionId   |Edm.String |操作の一意の識別子 |
-|InvestigationId    |Edm.String |調査の一意の識別子 |
-|RelatedAlertIds    |Collection(Edm.String) |調査に関連するアラート |
-|StartTimeUtc   |Edm.DateTime   |操作作成のタイムスタンプ |
-|EndTimeUtc |Edm.DateTime   |操作の最終ステータス更新のタイムスタンプ |
-|リソース識別子   |Edm.String  |Azure Active Directory のテナント ID で構成されます。|
-|Entities   |Collection(Edm.String) |操作によって影響を受ける複数のエンティティのリスト |
-|関連するアラート ID  |Edm.String |調査に関連するアラート |
+|ID     |Edm.String    |操作 ID|
+|ActionType    |Edm.String    |操作の種類 (メールの修復など) |
+|ActionStatus    |Edm.String    |値は次のとおりです。 <br/>- 保留中<br/>- 実行中<br/>- リソースの待機中<br/>- 完了<br/>- 失敗 |
+|ApprovedBy    |Edm.String    |自動承認された場合は null 値、それ以外の場合はユーザー名または ID (まもなく対応予定) |
+|TimestampUtc    |Edm.DateTime    |操作ステータス変更のタイムスタンプ |
+|ActionId    |Edm.String    |操作の一意の識別子 |
+|InvestigationId    |Edm.String    |調査の一意の識別子 |
+|RelatedAlertIds    |Collection(Edm.String)    |調査に関連するアラート |
+|StartTimeUtc    |Edm.DateTime    |操作作成のタイムスタンプ |
+|EndTimeUtc    |Edm.DateTime    |操作の最終ステータス更新のタイムスタンプ |
+|リソース識別子     |Edm.String     |Azure Active Directory のテナント ID で構成されます。|
+|Entities    |Collection(Edm.String)    |操作によって影響を受ける複数のエンティティのリスト |
+|関連するアラート ID    |Edm.String    |調査に関連するアラート |
 ||||
 
 ### <a name="entities"></a>Entities
 
 #### <a name="mailmessage-email"></a>MailMessage (電子メール) 
 
-|Field  |種類   |説明  |
+|Field    |種類    |説明  |
 |----|----|----|
-|Type   |Edm.String |"mail-message"  |
-|Files  |Collection (Self.File) |このメッセージの添付ファイルのファイルに関する詳細 |
-|Recipient  |Edm.String |メール メッセージの受信者 |
-|Urls   |Collection(Self.URL) |このメール メッセージに含まれている URL  |
-|Sender |Edm.String |送信者の電子メール アドレス  |
-|SenderIP   |Edm.String |送信者の IP アドレス  |
-|ReceivedDate   |Edm.DateTime   |このメッセージの受信日  |
-|NetworkMessageId   |Edm.Guid   |このメール メッセージのネットワーク メッセージ ID  |
-|InternetMessageId  |Edm.String  |このメール メッセージのインターネット メッセージ ID |
-|件名    |Edm.String |このメール メッセージの件名  |
+|Type    |Edm.String    |"mail-message"  |
+|Files    |Collection (Self.File) |このメッセージの添付ファイルのファイルに関する詳細 |
+|Recipient    |Edm.String    |メール メッセージの受信者 |
+|Urls    |Collection(Self.URL) |このメール メッセージに含まれている URL  |
+|Sender    |Edm.String    |送信者の電子メール アドレス  |
+|SenderIP    |Edm.String    |送信者の IP アドレス  |
+|ReceivedDate    |Edm.DateTime    |このメッセージの受信日  |
+|NetworkMessageId    |Edm.Guid     |このメール メッセージのネットワーク メッセージ ID  |
+|InternetMessageId    |Edm.String  |このメール メッセージのインターネット メッセージ ID |
+|件名    |Edm.String    |このメール メッセージの件名  |
 ||||
 
 #### <a name="ip"></a>IP
 
-|Field  |種類   |説明  |
+|Field    |種類    |説明  |
 |----|----|----|
-|Type   |Edm.String |"ip" |
-|Address    |Edm.String |文字列としての IP アドレス (`127.0.0.1` など)
+|Type    |Edm.String    |"ip" |
+|Address    |Edm.String    |文字列としての IP アドレス (`127.0.0.1` など)
 ||||
 
 #### <a name="url"></a>URL
 
-|Field  |種類   |説明  |
+|Field    |種類    |説明  |
 |----|----|----|
-|Type   |Edm.String |"url" |
-|Url    |Edm.String |エンティティが指す完全な URL  |
+|Type    |Edm.String    |"url" |
+|Url    |Edm.String    |エンティティが指す完全な URL  |
 ||||
 
 #### <a name="mailbox-also-equivalent-to-the-user"></a>Mailbox (ユーザーにも相当) 
 
-|Field  |種類   |説明 |
+|Field    |種類    |説明 |
 |----|----|----|
-|Type   |Edm.String |"mailbox"  |
-|MailboxPrimaryAddress  |Edm.String |メールボックスのプライマリ アドレス  |
-|DisplayName    |Edm.String |メールボックスの表示名 |
-|Upn    |Edm.String |メールボックスの UPN  |
+|Type    |Edm.String    |"mailbox"  |
+|MailboxPrimaryAddress    |Edm.String    |メールボックスのプライマリ アドレス  |
+|DisplayName    |Edm.String    |メールボックスの表示名 |
+|Upn    |Edm.String    |メールボックスの UPN  |
 ||||
 
 #### <a name="file"></a>File
 
-|Field  |種類   |説明  |
+|Field    |種類    |説明  |
 |----|----|----|
-|Type   |Edm.String |"file" |
-|Name   |Edm.String |パスのないファイル名 |
-FileHashes |Collection (Edm.String) |ファイルに関連付けられているファイル ハッシュ |
+|Type    |Edm.String    |"file" |
+|Name    |Edm.String    |パスのないファイル名 |
+FileHashes |Collection (Edm.String)    |ファイルに関連付けられているファイル ハッシュ |
 ||||
 
 #### <a name="filehash"></a>FileHash
 
-|Field  |種類   |説明 |
+|Field    |種類    |説明 |
 |----|----|----|
-|Type   |Edm.String |"filehash" |
-|Algorithm  |Edm.String |ハッシュ アルゴリズムの種類は、次のいずれかの値になります。<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
-|Value  |Edm.String |ハッシュ値  |
+|Type    |Edm.String    |"filehash" |
+|Algorithm    |Edm.String    |ハッシュ アルゴリズムの種類は、次のいずれかの値になります。<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
+|Value    |Edm.String    |ハッシュ値  |
 ||||
 
 #### <a name="mailcluster"></a>MailCluster
 
-|Field  |種類   |説明   |
+|Field    |種類    |説明   |
 |----|----|----|
-|Type   |Edm.String |"MailCluster" <br/>討議されているエンティティの種類を決定する |
-|NetworkMessageIds  |Collection (Edm.String)    |メール クラスターに含まれているメール メッセージの ID のリスト |
-|CountByDeliveryStatus  |Collections (Edm.String)   |DeliveryStatus の文字列表現によるメール メッセージの数 |
-|CountByThreatType  |Collections (Edm.String) |ThreatType の文字列表現によるメール メッセージの数 |
-|Threats    |Collections (Edm.String)   |メール クラスターに含まれているメール メッセージの脅威。 脅威にはフィッシングやマルウェアなどの値が含まれます。 |
-|Query  |Edm.String |メール クラスターのメッセージを特定するために使用されたクエリ  |
-|QueryTime  |Edm.DateTime   |クエリ時間  |
-|MailCount  |Edm.int    |メール クラスターに含まれているメール メッセージの数。  |
-|ソース |String |メール クラスターのソース、クラスター ソースの値。 |
+|Type    |Edm.String    |"MailCluster" <br/>討議されているエンティティの種類を決定する |
+|NetworkMessageIds    |Collection (Edm.String)    |メール クラスターに含まれているメール メッセージの ID のリスト |
+|CountByDeliveryStatus    |Collections (Edm.String)    |DeliveryStatus の文字列表現によるメール メッセージの数 |
+|CountByThreatType    |Collections (Edm.String) |ThreatType の文字列表現によるメール メッセージの数 |
+|Threats    |Collections (Edm.String)    |メール クラスターに含まれているメール メッセージの脅威。 脅威にはフィッシングやマルウェアなどの値が含まれます。 |
+|Query    |Edm.String    |メール クラスターのメッセージを特定するために使用されたクエリ  |
+|QueryTime    |Edm.DateTime    |クエリ時間  |
+|MailCount    |Edm.int    |メール クラスターに含まれているメール メッセージの数。  |
+|ソース    |String    |メール クラスターのソース、クラスター ソースの値。 |
 ||||
 
 ## <a name="power-bi-schema"></a>Power BI スキーマ

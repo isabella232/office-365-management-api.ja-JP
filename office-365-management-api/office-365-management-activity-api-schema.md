@@ -6,21 +6,21 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 38905a88f8be1924d0df02f10362caa624b34bd8
-ms.sourcegitcommit: 8aa0be26e0e69dd7908b3bcece3a71eafb973705
+ms.openlocfilehash: 2ce104849e7aeafcb12bf25720548a84a5ea73f4
+ms.sourcegitcommit: 2c592abf7005b4c73311ea9a4d1804994084bca4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "42586304"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "42941475"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
- 
+
 Office 365 管理アクティビティ API のスキーマは、次の 2 つのレイヤーでデータ サービスとして提供されます。
 
 - **共通スキーマ**。 レコードの種類、作成時刻、ユーザーの種類、およびアクションなどの中心的な Office 365 監査概念にアクセスし、コア ディメンション (ユーザー ID など)、場所の詳細情報 (クライアント IP アドレスなど)、および製品固有のプロパティ (オブジェクト ID など) を提供するインターフェイスです。 これにより一貫性がある統一ビューが確立され、いくつかの最上位ビューで適切なパラメーターを指定して、すべての Office 365 監査データを抽出できます。さらに、学習のコストを大幅に削減する、すべてのデータ ソース向けの固定スキーマも提供されます。 共通スキーマのデータは、Exchange、SharePoint、Azure Active Directory、Yammer、および OneDrive for Business などの各製品チームが所有する製品データから調達されます。 製品チームは [オブジェクト ID] フィールドを、製品固有のプロパティを追加するために拡張できます。
-    
+
 - **製品固有スキーマ**。 共通スキーマ上に構築され、製品固有の属性セット (Sway スキーマ、SharePoint スキーマ、OneDrive for Business スキーマ、および Exchange 管理者スキーマなど) を提供します。
-    
+
 **各自のシナリオでどのレイヤーを使用するべきですか?**
 一般に、データが上位レイヤーで使用可能であれば、下位レイヤーには戻らないでください。 つまり、データ要件が製品固有のスキーマに適合できるのであれば、共通スキーマに戻る必要はありません。 
 
@@ -51,9 +51,10 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[データ センター セキュリティ コマンドレット スキーマ](#data-center-security-cmdlet-schema)|データ センター セキュリティ基本スキーマを、すべてのデータ センター セキュリティ コマンドレット監査データに固有のプロパティで拡張します。|
 |[Microsoft Teams スキーマ](#microsoft-teams-schema)|共通スキーマを、すべての Microsoft Teams イベントに固有のプロパティで拡張します。|
 |[Office 365 Advanced Threat Protection および脅威の調査と対応スキーマ](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Office 365 Advanced Threat Protection および脅威の調査と対応のデータに固有のプロパティを使用して、共通スキーマを拡張します。|
-|[自動調査および対応イベント](#automated-investigation-and-response-events-in-office-365)|Office 365 自動調査および応答 (AIR) イベントに固有のプロパティを使用して、共通スキーマを拡張します。|
+|[自動調査および対応イベント スキーマ](#automated-investigation-and-response-events-in-office-365)|Office 365 自動調査および応答 (AIR) イベントに固有のプロパティを使用して、共通スキーマを拡張します。|
 |[Power BI スキーマ](#power-bi-schema)|共通スキーマを、すべての Power BI イベントに固有のプロパティで拡張します。|
-|[Workplace Analytics](#workplace-analytics-schema)|共通スキーマを、すべての Microsoft Workplace Analytics イベントに固有のプロパティで拡張します。|
+|[Workplace Analytics スキーマ](#workplace-analytics-schema)|共通スキーマを、すべての Microsoft Workplace Analytics イベントに固有のプロパティで拡張します。|
+|[検疫スキーマ](#quarantine-schema)|共通スキーマを、すべての検疫イベントに固有のプロパティで拡張します。|
 |[Microsoft Forms スキーマ](#microsoft-forms-schema)|共通スキーマを、すべての Microsoft Forms イベントに固有のプロパティで拡張します。|
 |||
 
@@ -1421,6 +1422,38 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 | OperationDetails   | コレクション (Common.NameValuePair)    | いいえ | 変更された設定の拡張プロパティの一覧。 各プロパティには **Name** と **Value** があります。|
 ||||
 
+## <a name="quarantine-schema"></a>検疫スキーマ
+
+「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities)」に記載されている検疫イベントは、このスキーマを使用します。 検疫の詳細については、「[Office 365 の検疫](https://docs.microsoft.com/microsoft-365/security/office-365-security/quarantine-email-messages)」を参照してください。
+
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+|RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|いいえ|ユーザーによって実行された検疫要求の型。|
+|RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|いいえ|検疫要求のソースは、セキュリティ/コンプライアンス センター (SCC)、コマンドレット、URLlink に由来する場合があります。|
+|NetworkMessageId|Edm.String|いいえ|検疫されたメール メッセージのネットワーク メッセージ ID。|
+|ReleaseTo|Edm.String|いいえ|メール メッセージの受信者。|
+|||||
+
+### <a name="enum-requesttype---type-edmint32"></a>Enum: RequestType - Type: Edm.Int32
+
+|**値**|**メンバー名**|**説明**|
+|:-----|:-----|:-----|
+|0|Preview|これは、有害と見なされるメール メッセージをプレビューするように求める、ユーザーからの要求です。|
+|1|Delete|これは、有害と見なされるメール メッセージを削除するように求める、ユーザーからの要求です。|
+|2|Release|これは、有害と見なされるメール メッセージを解放するように求める、ユーザーからの要求です。|
+|3|Export|これは、有害と見なされるメール メッセージをエクスポートするように求める、ユーザーからの要求です。|
+|4|ViewHeader|これは、有害と見なされるメール メッセージのヘッダーを表示するように求める、ユーザーからの要求です。|
+||||
+
+### <a name="enum-requestsource---type-edmint32"></a>Enum: RequestSource - Type: Edm.Int32
+
+|**値**|**メンバー名**|**説明**|
+|:-----|:-----|:-----|
+|0|SCC|セキュリティ/コンプライアンス センター (SCC) が、有害な可能性のあるメール メッセージのプレビュー、削除、解放、エクスポート、ヘッダーの表示を求めるユーザーからの要求の発生元になりうるソースです。 |
+|1|コマンドレット|コマンドレットが、有害な可能性のあるメール メッセージのプレビュー、削除、解放、エクスポート、ヘッダーの表示を求めるユーザーからの要求の発生元になりうるソースです。|
+|2|URLlink|これが、有害な可能性のあるメール メッセージのプレビュー、削除、解放、エクスポート、ヘッダーの表示を求めるユーザーからの要求の発生元になりうるソースです。|
+||||
+
 ## <a name="microsoft-forms-schema"></a>Microsoft Forms スキーマ
 
 「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities)」に記載されている Micorosft Forms イベントは、このスキーマを使用します。
@@ -1457,3 +1490,4 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 |1|クイズ|[新しいクイズ] オプションを使用して作成されたクイズ。  クイズは特殊な種類のフォームで、点数、自動および手動採点、コメントなどの追加の機能が含まれるフォームです。|
 |2|アンケート|[新しいアンケート] オプションを使用して作成されたアンケート。  アンケートは特殊な種類のフォームで、CMS 統合や Flow ルールのサポートなどの追加の機能が含まれるフォームです。|
 ||||
+

@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 2ce104849e7aeafcb12bf25720548a84a5ea73f4
-ms.sourcegitcommit: 2c592abf7005b4c73311ea9a4d1804994084bca4
+ms.openlocfilehash: 7a636bcdf86dd4513d7ea7809066b5becb68de83
+ms.sourcegitcommit: 9d32000d9b9af3f008d93745379697bc74e4703c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "42941475"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "43785566"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -120,7 +120,9 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |44|WorkplaceAnalytics|Workplace Analytics イベント。|
 |45|PowerAppsApp|Power Apps イベント。|
 |47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
+|48|LabelContentExplorer|[データ分類コンテンツ エクスプローラー](https://docs.microsoft.com/microsoft-365/compliance/data-classification-content-explorer)に関係するイベント。|
 |49|TeamsHealthcare|Microsoft 医療関係向けのTeams の[患者アプリケーション](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit)に関連するベント。|
+|51|HygieneEvent|スパム対策とメール検疫に関連するイベント。|
 |52|DataInsightsRestApiAudit|データ インサイト REST API イベント。|
 |54|SharePointListItemOperation|SharePoint リスト アイテム イベント。|
 |55|SharePointContentTypeOperation|SharePoint リスト コンテンツ タイプ イベント。|
@@ -156,7 +158,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |0|Online|このイベントは、ホストされた O365 サービスによって作成されました。|
 |1|Onprem|このイベントは、オンプレミスのサーバーによって作成されました。|
 ||||
-
 
 ## <a name="sharepoint-base-schema"></a>SharePoint Base schema
 
@@ -767,7 +768,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |MessageID|Edm.String|はい|イベントをトリガーした電子メールのメッセージ ID。|
-|送信元|Edm.String|はい|電子メールを送信したユーザー。|
+|接続元|Edm.String|はい|電子メールを送信したユーザー。|
 |宛先|Collection(Edm.String)|いいえ|メッセージの宛先行にあった電子メール アドレスのコレクション。|
 |CC|Collection(Edm.String)|いいえ|メッセージの CC 行にあった電子メール アドレスのコレクション。|
 |BCC|Collection(Edm.String)|いいえ|メッセージの BCC 行にあった電子メール アドレスのコレクション。|
@@ -1165,7 +1166,9 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |12|マルウェア対策、ZAPM| ゼロアワー自動消去 (ZAP) に適用されるマルウェア対策ポリシーのマルウェア対策ポリシー アクション。|
 |13|フィッシング対策、ZAPP| ZAP に適用されるフィッシング対策のフィッシング詐欺ポリシー アクション。|
 |14|フィッシング対策、ZAPS| ZAP に適用されるスパム対策 ポリシーの迷惑メール ポリシー アクション。|
-
+|15|スパム対策、高確度フィッシング メール (HPHISH)|スパム対策ポリシーの高確度フィッシング ポリシー アクション。|
+|17|スパム対策、送信スパム ポリシー (OSPM)|スパム対策の送信スパム フィルター ポリシーのポリシー アクション。|
+||||
 
 ### <a name="enum-policyaction---type-edmint32"></a>列挙値: PolicyAction - 型: Edm.Int32
 

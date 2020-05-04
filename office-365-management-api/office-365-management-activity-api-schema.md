@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 7a636bcdf86dd4513d7ea7809066b5becb68de83
-ms.sourcegitcommit: 9d32000d9b9af3f008d93745379697bc74e4703c
+ms.openlocfilehash: 8f44ae4d9f4b1eff3ab6de195392458aab6ee2ce
+ms.sourcegitcommit: ebf6973abd2f4c9b88e4297cd08d06dd2a62976f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "43785566"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "43939110"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -56,6 +56,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[Workplace Analytics スキーマ](#workplace-analytics-schema)|共通スキーマを、すべての Microsoft Workplace Analytics イベントに固有のプロパティで拡張します。|
 |[検疫スキーマ](#quarantine-schema)|共通スキーマを、すべての検疫イベントに固有のプロパティで拡張します。|
 |[Microsoft Forms スキーマ](#microsoft-forms-schema)|共通スキーマを、すべての Microsoft Forms イベントに固有のプロパティで拡張します。|
+|[MIP ラベルのスキーマ](#mip-label-schema)|メール メッセージに手動または自動で適用される秘密度ラベルの固有のプロパティを使用して、共通のスキーマを拡張します。|
 |||
 
 ## <a name="common-schema"></a>共通スキーマ
@@ -117,6 +118,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |40|SecurityComplianceAlerts|セキュリティ/コンプライアンス アラートのシグナル。|
 |41|ThreatIntelligenceUrl|ブロック時の安全なリンクと Office 365 Advanced Threat Protection からのイベントの上書きブロック。|
 |42|SecurityComplianceInsights|Office 365 セキュリティおよびコンプライアンス センターの分析情報とレポートに関連するイベント。|
+|43|MIPLabel|秘密度ラベルで (手動または自動で) タグ付けされたメール メッセージのトランスポート パイプラインでの検出に関連するイベント。 |
 |44|WorkplaceAnalytics|Workplace Analytics イベント。|
 |45|PowerAppsApp|Power Apps イベント。|
 |47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
@@ -1494,3 +1496,24 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 |2|アンケート|[新しいアンケート] オプションを使用して作成されたアンケート。  アンケートは特殊な種類のフォームで、CMS 統合や Flow ルールのサポートなどの追加の機能が含まれるフォームです。|
 ||||
 
+## <a name="mip-label-schema"></a>MIP ラベルのスキーマ
+
+Microsoft Information Protection (MIP) ラベルのスキーマのイベントは、秘密度ラベルが適用されているトランスポート パイプラインのエージェントによって処理されたメール メッセージを Microsoft 365 が検出したときにトリガーされます。 秘密度ラベルは、手動または自動で、トランスポート パイプラインの内部または外部で適用されます。 秘密度ラベルは、ラベル ポリシーの自動適用により、メール メッセージに自動的に適用できます。
+
+この監査スキーマの目的は、秘密度ラベルが適用されているすべてのメール アクティビティの合計を示すことです。 そのため、秘密度ラベルがいつどのように適用されたかに関係なく、秘密度ラベルが適用されている組織内のユーザー間で送受信されるメール メッセージごとに、監査のアクティビティが記録されます。 秘密度ラベルの詳細については、以下をご覧ください。
+
+- [秘密度ラベルの詳細](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels)
+
+- [秘密度ラベルをコンテンツに自動的に適用する](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically)
+
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+|Sender|Edm.String|いいえ|メール メッセージの差出人フィールドのメール アドレス。|
+|Receivers|Collection(Edm.String)|いいえ|メール メッセージの [宛先]、[CC]、[BCC] フィールドにあるすべてのメール アドレス。|
+|ItemName|Edm.String|いいえ|メール メッセージの件名フィールドの文字列。|
+|LabelId|Edm.Guid|いいえ|メール メッセージに適用される秘密度ラベルの GUID。|
+|LabelName|Edm.String|いいえ|メール メッセージに適用される秘密度ラベルの名前。|
+|LabelAction|Edm.String|いいえ|メッセージがメールのトランスポート パイプラインに入る前にメール メッセージに適用された秘密度ラベルによって指定されたアクション。|
+|LabelAppliedDateTime|Edm.Date|いいえ|メール メッセージに秘密度ラベルが適用された日付。|
+|ApplicationMode|Edm.String|いいえ|メール メッセージに秘密度ラベルが適用された方法を指定します。 **Privileged** の値は、ラベルがユーザーによって手動で適用されたことを示します。 **Standard** の値は、ラベルがクライアント側またはサービス側のラベル付けのプロセスによって自動的に適用されたことを示します。|
+|||||

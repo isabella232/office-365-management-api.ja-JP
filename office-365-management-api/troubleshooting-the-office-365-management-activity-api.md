@@ -6,12 +6,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: b751c89194407e57c8654a9317b8070ab2918b03
-ms.sourcegitcommit: 2c592abf7005b4c73311ea9a4d1804994084bca4
+ms.openlocfilehash: 0552456c2340ad170355953e274a455ff681e2c9
+ms.sourcegitcommit: d55928a0d535090fa2dbe94f38c7316d0e52e9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "42941557"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "44173135"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Office 365 マネージメント アクティビティ API のトラブルシューティング
 
@@ -55,7 +55,13 @@ Office 365 マネージメント アクティビティ API (別名、*統合監�
 
 ### <a name="getting-an-access-token"></a>アクセス トークンの取得
 
-次に示す PowerShell スクリプトでは、アプリ ID とクライアント シークレットを使用して、マネージメント アクティビティ API 認証エンドポイントから OAuth2 トークンを取得します。 その後で、アクセス トークンを `$headerParams` 配列変数に格納します。HTTP 要求には、この配列変数を添付します。 
+次に示す PowerShell スクリプトでは、アプリ ID とクライアント シークレットを使用して、マネージメント アクティビティ API 認証エンドポイントから OAuth2 トークンを取得します。 その後で、HTTP 要求に添付する `$headerParams` 配列変数にアクセス トークンを格納します。 API エンドポイントの値 ($resource 変数内) には、組織の Microsoft 365 または Office 365 サブスクリプション プランに基づいて、次の値のいずれかを使用します。
+
+- エンタープライズ プランと GCC 政府機関向けプラン: `manage.office.com`
+
+- GCC High 政府機関向けプラン: `manage.office365.us`
+
+- DoD 政府機関向けプラン: `manage.protection.apps.mil`
 
 ```powershell
 # Create app of type Web app / API in Azure AD, generate a Client Secret, and update the client id and client secret here
@@ -63,9 +69,9 @@ $ClientID = "<YOUR_APPLICATION_ID"
 $ClientSecret = "<YOUR_CLIENT_SECRET>"
 $loginURL = "https://login.microsoftonline.com/"
 $tenantdomain = "<YOUR_DOMAIN>.onmicrosoft.com"
-# Get the tenant GUID from Properties | Directory ID under the Azure Active Directory section
+# Get the tenant GUID from Properties | Directory ID under the Azure Active Directory section. For $resource, use one of these endpoint values based on your subscription plan: Enterprise and GCC - manage.office.com; GCC High: manage.office365.us; DoD: manage.protection.apps.mil
 $TenantGUID = "<YOUR_TENANT_GUID>"
-$resource = "https://manage.office.com"
+$resource = "https://<YOUR_API_ENDPOINT>"
 # auth
 $body = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
@@ -89,7 +95,7 @@ access_token   : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjJLVmN1enFBaWRPTHF
 既存のマネージメント アクティビティ API クライアントまたはソリューションへのデータ フローに中断が発生したときには、サブスクリプションに何らかの問題が発生しているのではないかと疑われることがあります。 アクティブなサブスクリプションを確認するために、前述のスクリプトに次のコードを追加します。
 
 ```powershell
-Invoke-WebRequest -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/list" 
+Invoke-WebRequest -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/list" 
 ```
 
 #### <a name="sample-response"></a>応答例 
@@ -119,10 +125,16 @@ RawContentLength  : 266
 
 ## <a name="creating-a-new-subscription"></a>新しいサブスクリプションの作成
 
-新しいサブスクリプションを作成するには、/start 操作を使用します。
+新規サブスクリプションを作成するには、/start 操作を使用します。 API エンドポイントには、サブスクリプション プランに基づいて、次の値のいずれかを使用します。
+
+- エンタープライズ プランと GCC 政府機関向けプラン: `manage.office.com`
+
+- GCC High 政府機関向けプラン: `manage.office365.us`
+
+- DoD 政府機関向けプラン: `manage.protection.apps.mil`
 
 ```powershell
-Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
+Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_ENDPOINT>/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
 ```
 
 > [!NOTE] 
@@ -132,25 +144,25 @@ Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://manage.offic
 
 ## <a name="checking-content-availability"></a>コンテンツの利用の可否の確認
 
-特定の期間中に、どのコンテンツ BLOB が作成されたかを確認するために、「API への接続」セクションに示したスクリプトに次の行を追加できます。
+特定の期間中に、どのコンテンツ BLOB が作成されたかを確認するために、「API への接続」セクションで示したスクリプトに、次の行を追加することができます。
 
 ```powershell
-Invoke-WebRequest -Method GET -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint"
+Invoke-WebRequest -Method GET -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint"
 ```
 
 上記の例では、本日 (午前 12 時 00 分 UTC から現在の時刻までに) 利用可能になったすべてのコンテンツの通知を取得しています。 別の期間を指定する場合は、URI に *starttime* パラメーターと *endtime* パラメーターを追加します (照会可能な最長の期間は 24 時間である点に注意してください)。次に例を示します。
 
 ```powershell
-Invoke-WebRequest -Method GET -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint&startTime=2017-10-13T00:00&endTime=2017-10-13T11:59"
+Invoke-WebRequest -Method GET -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint&startTime=2017-10-13T00:00&endTime=2017-10-13T11:59"
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > *starttime* パラメーターと *endtime* パラメーターは、「両方とも使用する」または「両方とも使用しない」のどちらかにする必要があります。
 
 上記の要求により、指定した期間中に利用可能になった通知のコレクションを含む JSON オブジェクトが返されます。 応答は次のようになります。
 
 ```json
-[{      "contentUri" : "https://manage.office.com/api/v1.0/<<your_tenant_guid>>/activity/feed/audit/20171014180051748005825$20171014180051748005825$audit_sharepoint$Audit_SharePoint",
+[{      "contentUri" : "https://<your_API_endpoint>/api/v1.0/<your_tenant_guid>/activity/feed/audit/20171014180051748005825$20171014180051748005825$audit_sharepoint$Audit_SharePoint",
         "contentId" : "20171014180051748005825$20171014180051748005825$audit_sharepoint$Audit_SharePoint",
         "contentType" : "Audit.SharePoint",
         "contentCreated" : "2017-10-13T18:00:51.748Z",
@@ -158,8 +170,10 @@ Invoke-WebRequest -Method GET -Headers $headerParams -Uri "https://manage.office
 }]
 ```
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
+>
 > - *contentUri* プロパティは、コンテンツ BLOB を取得できる URI です。 イベントの詳細は BLOB 自体に格納されていて、1 ～ N 件のイベントに関する詳細が格納されています。 コレクションには 30 件の JSON オブジェクトが存在している可能性があり、それらの 30 件のコンテンツ URI には、さらに多くのイベントの詳細が存在している可能性があります。
+>
 > - *contentCreated* プロパティは、通知されるイベントが作成された日付ではありません。 通知が作成された日付です。 その BLOB で詳細が示されるイベントは、コンテンツ BLOB が作成されたときよりも相当前に作成されている可能性があります。 そのため、特定の期間内に発生したイベントについて API を直接照会することはできません。
 
 ### <a name="paging-contents-for-busy-tenants"></a>ビジー状態のテナントに対するコンテンツのページング
@@ -211,7 +225,7 @@ Invoke-RestMethod -Method Post -uri $uri -Headers $headerParams -Body $body
 
 ## <a name="requesting-content-blobs-and-throttling"></a>コンテンツ BLOB の要求と調整
 
-コンテンツ URI のリストを取得したら、その URI で指定される BLOB を要求する必要があります。 次に、PowerShell を使用してコンテンツ BLOB を要求する例を示します。 この例は、この記事の「[アクセス トークンの取得](#getting-an-access-token)」セクションに示した例を使用してアクセス トークンを取得していることと、`$headerParams` 変数に適切な値が設定されていることを前提としています。
+コンテンツ URI のリストを取得したら、その URI で指定される BLOB を要求する必要があります。 PowerShell を使用して (Enterprise や GCC 組織の場合には manage.office.com API エンドポイントを使用して) コンテンツ BLOB を要求する例を次に示します。 この例は、この記事の「[アクセス トークンの取得](#getting-an-access-token)」セクションに示した例を使用してアクセス トークンを取得していることと、`$headerParams` 変数に適切な値が設定されていることを前提としています。
 
 ```powershell
 # Get a content blob

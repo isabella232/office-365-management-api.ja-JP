@@ -6,12 +6,12 @@ ms.ContentId: ''
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 19603e9f22d65c51ee01c9b410c61cb46ca97434
-ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
+ms.openlocfilehash: 4ceec751e72bc5bec3d8c0412d48aafa38d40596
+ms.sourcegitcommit: 745a6e43dc3a9849897a5b57eadb3e7c57511c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "41263234"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "45083695"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>Office 365 マネージメント アクティビティ API についてよく寄せられる質問
 
@@ -46,10 +46,6 @@ Office 365 マネージメント アクティビティ API を使用すること
 #### <a name="arent-webhook-notifications-more-immediate-after-all-arent-they-event-driven"></a>webhook 通知のほうが早くなりませんか? 結局のところ、イベント駆動型ではないですか?
 
 いいえ。 Webhook 通知は、イベントによって通知がトリガーされるという意味ではイベント駆動ではありません。 コンテンツ BLOB の作成は依然として必要であり、コンテンツ BLOB の作成が通知の配信をトリガーします。 最近では、webhook の使用時の通知の待機時間は、*/content* 操作で API を直接クエリするよりも長くなっています。 そのため、マネージメント アクティビティ API は、リアルタイムのセキュリティ警告システムとして捉えることはできません。 Microsoft は、その目的のための別の製品を用意しています。 セキュリティに関する限り、マネージメント アクティビティ API のイベント通知は、長期間にわたる使用パターンを判断するために使用するほうが適しています。
-
-#### <a name="when-pulling-the-data-from-the-management-activity-api-there-is-sometimes-a-delay-of-more-than-3-to-5-days-why-is-this"></a>マネージメント アクティビティ API からデータを収集するときに、3 日から 5 日以上の遅延が発生することがあります。 これはなぜですか?
-
-一時的な停止などの問題が Office 365 サービスに発生するときがあります。 そうした場合、一部の監査レコードに取りこぼしが発生し、サービスは取りこぼしのバックフィルを試行します。 これは、レコードの約 5% から 10 % でのみ発生しますが、そのようなレコードに特定の状況で遅延が発生することがあります。 遅延期間が 5 日を過ぎた場合は、Office 365 管理センターのサービス正常性ダッシュボードを調べてください。 必要な場合は、[Microsoft サポート](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online)でチケットを開くこともできます。
 
 #### <a name="im-encountering-a-throttling-error-in-the-management-activity-api-what-should-i-do"></a>マネージメント アクティビティ API で調整エラーが発生しました。 どうすればよいですか?
 

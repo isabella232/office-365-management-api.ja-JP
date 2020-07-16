@@ -69,17 +69,17 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |パラメーター|型|必須かどうか?|説明|
 |:-----|:-----|:-----|:-----|
 |Id|Combination GUIDEdm.Guid|はい|監査レコードの一意識別子。|
-|RecordType|Self.[AuditLogRecordType](#auditlogrecordtype)|はい|The type of operation indicated by the record. See the [AuditLogRecordType](#auditlogrecordtype) table for details on the types of audit log records.|
+|RecordType|Self.[AuditLogRecordType](#auditlogrecordtype)|はい|レコードによって示される操作の種類。監査ログ レコードの種類の詳細については、[AuditLogRecordType](#auditlogrecordtype) の表を参照してください。|
 |CreationTime|Edm.Date|はい|ユーザーがアクティビティを実行した、世界協定時刻 (UTC) での日時。|
 |Operation|Edm.String|はい|ユーザーまたは管理者アクティビティの名前。 一般的な操作/アクティビティの説明については、「[Office 365 プロテクション センターでの監査ログの検索](https://go.microsoft.com/fwlink/p/?LinkId=708432)」を参照してください。 Exchange 管理者アクティビティでは、このプロパティは、実行されたコマンドレットの名前を識別します。 DLP イベントでは、これは "DlpRuleMatch"、"DlpRuleUndo" または "DlpInfo" (後続の「DLP スキーマ」で説明) になる可能性があります。|
 |OrganizationId|Edm.Guid|はい|組織の Office 365 テナントの GUID。 この値は Office 365 サービスに関係なく、組織では常に同じ値になります。|
 |UserType|Self.[UserType](#user-type)|はい|操作を実行したユーザーの種類。 ユーザーの種類の詳細については、「[ユーザーの種類](#user-type)」の表を参照してください。|
-|UserKey|Edm.String|はい|An alternative ID for the user identified in the UserId property. For example, this property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange. This property may also specify the same value as the UserID property for events occurring in other services and events performed by system accounts.|
+|UserKey|Edm.String|はい|UserId プロパティで識別されるユーザーの別の ID。たとえば、このプロパティには、SharePoint、OneDrive for Business、および Exchange のユーザーにより実行されたイベントの Passport 固有 ID (PUID) が格納されます。このプロパティは、他のサービスで発生するイベントや、システム アカウントで実行されるイベントの UseID プロパティと同じ値を指定することもできます。|
 |Workload|Edm.String|いいえ|アクティビティが発生した Office 365 サービス。 
 |ResultStatus|Edm.String|不要|(Operation プロパティで指定された) アクションが正常に終了したかどうかどうかを示します。 指定可能な値は **Succeeded**、**PartiallySucceeded**、または **Failed** です。 Exchange 管理者アクティビティでは、値は **True** または **False** のいずれかになります。<br/><br/>**重要**: さまざまなワークロードにより ResultStatus プロパティの値が上書きされる可能性があります。 たとえば、Azure Active Directory の STS ログオン イベントの場合、ResultStatus の**Succeeded**値によって示されるものは、HTTP 操作が正常に完了したことだけであり、ログオンが正常に完了したことを意味しません。 実際のログオンが成功しているかどうかを確認するには、「[Azure Active Directory の STS ログオン スキーマ](#azure-active-directory-secure-token-service-sts-logon-schema)」の LogonError プロパティを参照してください。 ログオンに失敗していた場合、このプロパティにはログオン試行に失敗した理由が含まれます。 |
 |ObjectId|Edm.string|いいえ|SharePoint および OneDrive for Business のアクティビティの場合、ユーザーによりアクセスされるファイルまたはフォルダーの完全パス名。 Exchange 管理者の監査ログの場合は、コマンドレットによって変更されたオブジェクトの名前。|
 |UserId|Edm.string|はい|レコードがログに記録されることになった、(Operation プロパティで指定された) アクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、`my_name@my_domain_name` などです。 システム アカウント (SHAREPOINT\system または NT AUTHORITY\SYSTEM など) で実行されるアクティビティのレコードも含まれることに注意してください。 SharePoint では、UserId プロパティの別の値が app@sharepoint に表示されます。 これは、アクティビティを実行した "ユーザー" が、ユーザー、管理者、またはサービスの代理として、組織全体のアクション (SharePoint サイトまたは OneDrive アカウント検索など) を実行するために必要な アクセス許可が SharePoint に与えられているアプリケーションであることを示しています。 詳細については、「[監査レコード内の app@sharepoint ユーザー](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records)」を参照してください。 |
-|ClientIP|Edm.String|はい|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.<br/><br/>一部のサービスでは、このプロパティに表示される値は、ユーザーに代わってサービスを呼び出す信頼できるアプリケーション (Office on the web アプリなど) の IP アドレスであり、アクティビティを実行したユーザーが使用するデバイスの IP アドレスではない場合があります。 <br/><br/>また、Azure Active Directory 関連のイベントの場合、 IP アドレスはログに記録されず、ClientIP プロパティの値は `null` になります。|
+|ClientIP|Edm.String|はい|アクティビティがログに記録されたときに使用されたデバイスの IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。<br/><br/>一部のサービスでは、このプロパティに表示される値は、ユーザーに代わってサービスを呼び出す信頼できるアプリケーション (Office on the web アプリなど) の IP アドレスであり、アクティビティを実行したユーザーが使用するデバイスの IP アドレスではない場合があります。 <br/><br/>また、Azure Active Directory 関連のイベントの場合、 IP アドレスはログに記録されず、ClientIP プロパティの値は `null` になります。|
 |範囲|Self.[AuditLogScope](#auditlogscope)|いいえ|このイベントは、ホストされた O365 サービスまたはオンプレミスのサーバーによって作成されたものですか。 設定できる値は **online** および **onprem** です。 SharePoint は現在、オンプレミスから O365 にイベントを送信する唯一のワークロードです。|
 |||||
 
@@ -171,12 +171,12 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |サイト|Edm.Guid|いいえ|ユーザーによりアクセスされるファイルまたはフォルダーが置かれているサイトの GUID。|
-|ItemType|Edm.String String="Microsoft.Office.Audit.Schema.SharePoint.[ItemType](#itemtype)"|いいえ|The type of object that was accessed or modified. See the [ItemType](#itemtype) table for details on the types of objects.|
+|ItemType|Edm.String String="Microsoft.Office.Audit.Schema.SharePoint.[ItemType](#itemtype)"|いいえ|アクセスまたは変更されたオブジェクトの種類。オブジェクトの種類の詳細については、「[ItemType](#itemtype)」の表を参照してください。|
 |EventSource|Edm.String String="Microsoft.Office.Audit.Schema.SharePoint.[EventSource](#eventsource)"|いいえ|SharePoint でイベントが発生したことを示します。 指定可能な値は **SharePoint** または **ObjectModel**。|
 |SourceName|Edm.String|いいえ|監査対象の操作をトリガーしたエンティティ。 指定可能な値は、SharePoint または **ObjectModel**。|
-|UserAgent|Edm.String|不要|Information about the user's client or browser. This information is provided by the client or browser.|
-|MachineDomainInfo|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|いいえ|Information about device sync operations. This information is reported only if it's present in the request.|
-|MachineId|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|いいえ|Information about device sync operations. This information is reported only if it's present in the request.|
+|UserAgent|Edm.String|不要|ユーザーのクライアントまたはブラウザーに関する情報。この情報は、クライアントまたはブラウザーによって提供されます。|
+|MachineDomainInfo|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|いいえ|デバイスの同期操作に関する情報。この情報は、要求で指定されている場合にのみ報告されます。|
+|MachineId|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|いいえ|デバイスの同期操作に関する情報。この情報は、要求で指定されている場合にのみ報告されます。|
 |||||
 
 ### <a name="enum-itemtype---type-edmint32"></a>列挙:ItemType - タイプ:Edm.Int32
@@ -210,9 +210,9 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |**メンバー名**|**説明**|
 |:-----|:-----|
 |AccessInvitationAccepted*|共有ファイル (またはフォルダー) の表示または編集への招待の受信者が、招待のリンクをクリックして共有ファイルにアクセスしました。|
-|AccessInvitationCreated*|User sends an invitation to another person (inside or outside their organization) to view or edit a shared file or folder on a SharePoint or OneDrive for Business site. The details of the event entry identifies the name of the file that was shared, the user the invitation was sent to, and the type of the sharing permission selected by the person who sent the invitation.|
-|AccessInvitationExpired*|An invitation sent to an external user expires. By default, an invitation sent to a user outside of your organization expires after 7 days if the invitation isn't accepted.|
-|AccessInvitationRevoked*|The site administrator or owner of a site or document in SharePoint or OneDrive for Business withdraws an invitation that was sent to a user outside your organization. An invitation can be withdrawn only before it's accepted.|
+|AccessInvitationCreated*|ユーザーは、SharePoint または OneDrive for Business サイトにある共有ファイルまたはフォルダーの表示または編集への招待を、(組織の内外の) 他のユーザーに送信します。イベント エントリの詳細は、共有されたファイルの名前、招待状の送付先ユーザー、および招待を送信したユーザーが選択した共有アクセス許可の種類を示します。|
+|AccessInvitationExpired*|外部ユーザーに送信する招待に有効期限を設定します。既定では、組織外のユーザーに送信する招待は、招待が承諾されない場合には 7 日後に有効期限が切れます。|
+|AccessInvitationRevoked*|SharePoint または OneDrive for Business のサイト管理者、サイト所有者、またはドキュメント所有者は、組織外のユーザーに送信された招待を取り下げます。招待は、承諾前にのみ取り下げることができます。|
 |AccessInvitationUpdated*|SharePoint または OneDrive for Business サイトにある共有ファイルまたはフォルダーの表示または編集への招待を作成して送信したユーザーが、招待を再送します。|
 |AccessRequestApproved|SharePoint または OneDrive for Business のサイト管理者、サイト所有者、またはドキュメント所有者は、サイトまたはドキュメントにアクセスするユーザー要求を承認します。|
 |AccessRequestCreated|ユーザーは、アクセス許可がない SharePoint または OneDrive for Business のサイトまたはドキュメントへのアクセス権限を要求します。 |
@@ -231,13 +231,13 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |CustomFieldOrLookupTableCreated|ユーザーが Project Web App でユーザー設定フィールドまたはルックアップ テーブル/アイテムを作成しました。|
 |CustomFieldOrLookupTableDeleted|ユーザーが Project Web App でユーザー設定フィールドまたはルックアップ テーブル/アイテムを削除しました。|
 |CustomFieldOrLookupTableModified|ユーザーが Project Web App でユーザー設定フィールドまたはルックアップ テーブル/アイテムを変更しました。|
-|CustomizeExemptUsers*|Global administrator customized the list of exempt user agents in SharePoint admin center. You can specify which user agents to exempt from receiving an entire Web page to index. This means when a user agent you've specified as exempt encounters an InfoPath form, the form will be returned as an XML file instead of an entire Web page. This makes indexing InfoPath forms faster.|
+|CustomizeExemptUsers*|グローバル管理者が、SharePoint 管理センターで適用除外ユーザー エージェントのリストをカスタマイズしました。インデックスを作成する Web ページ全体を受け取らせないように除外するユーザー エージェントを指定できます。つまり、除外対象として指定したユーザー エージェントが InfoPath フォームを検出すると、フォームは、Web ページ全体ではなく XML ファイルとして返されます。これにより InfoPath フォームのインデックス作成の速度が上がります。|
 |DefaultLanguageChangedInTermStore*|用語ストアで変更された言語設定。|
 |DelegateModified|ユーザーが Project Web App でセキュリティの代理人を作成または変更しました。|
 |DelegateRemoved|ユーザーが Project Web App でセキュリティの代理人を削除しました。|
 |DeleteSSOApplication*|SSO アプリケーションが削除されました。|
-|eDiscoveryHoldApplied*|An In-Place Hold was placed on a content source. In-Place Holds are managed by using an eDiscovery site collection (such as the eDiscovery Center) in SharePoint.|
-|eDiscoveryHoldRemoved*|An In-Place Hold was removed from a content source. In-Place Holds are managed by using an eDiscovery site collection (such as the eDiscovery Center) in SharePoint.|
+|eDiscoveryHoldApplied*|インプレース ホールドが、コンテンツ ソースに置かれました。インプレース ホールドは、SharePoint で (電子情報開示センターなどの) 電子情報開示サイト コレクションを使用して管理されます。|
+|eDiscoveryHoldRemoved*|インプレース ホールドが、コンテンツ ソースから削除されました。インプレース ホールドは、SharePoint で (電子情報開示センターなどの) 電子情報開示サイト コレクションを使用して管理されます。|
 |eDiscoverySearchPerformed*|電子情報開示検索は、SharePoint の電子情報開示サイト コレクションを使用して実行されました。|
 |EngagementAccepted|ユーザーが Project Web App でリソースのエンゲージメントを承諾します。|
 |EngagementModified|ユーザーが Project Web App でリソースのエンゲージメントを変更します。|
@@ -246,11 +246,11 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |EntityDeleted|ユーザーが Project Web App でタイムシートを削除します。|
 |EntityForceCheckedIn|ユーザーが Project Web App で、予定表、ユーザー設定フィールド、またはルックアップ テーブルに対してチェックインを強制します。|
 |ExemptUserAgentSet*|グローバル管理者が、SharePoint 管理センターで適用除外ユーザー エージェントのリストにユーザー エージェントを追加しました。|
-|FileAccessed|User or system account accesses a file on a SharePoint or OneDrive for Business site. System accounts can also generate FileAccessed events.|
-|FileCheckOutDiscarded*|User discards (or undos) a checked out file. That means any changes they made to the file when it was checked out are discarded, and not saved to the version of the document in the document library.|
+|FileAccessed|ユーザーまたはシステム アカウントは、SharePoint または OneDrive for Business サイトにあるファイルにアクセスします。システム アカウントが FileAccessed イベントを生成する場合もあります。|
+|FileCheckOutDiscarded*|ユーザーは、チェックアウトしたファイルを破棄します (または元に戻します)。つまり、チェックアウト時にファイルに加えた変更はすべて破棄され、ドキュメント ライブラリ内のドキュメントのバージョンには保存されないということです。|
 |FileCheckedIn*|ユーザーは、SharePoint または OneDrive for Business ドキュメント ライブラリからチェックアウトしたドキュメントをチェックインします。|
-|FileCheckedOut*|User checks out a document located in a SharePoint or OneDrive for Business document library. Users can check out and make changes to documents that have been shared with them.|
-|FileCopied|User copies a document from a SharePoint or OneDrive for Business site. The copied file can be saved to another folder on the site.|
+|FileCheckedOut*|ユーザーは、SharePoint または OneDrive for Business ドキュメント ライブラリにあるドキュメントをチェックアウトします。共有しているドキュメントは、複数のユーザーがチェックアウトし、変更を加えることができます。|
+|FileCopied|ユーザーは、SharePoint または OneDrive for Business サイトからドキュメントをコピーします。コピーしたファイルは、サイト上の別のフォルダーに保存できます。|
 |FileDeleted|ユーザーは、SharePoint または OneDrive for Business サイトからドキュメントを削除します。|
 |FileDeletedFirstStageRecycleBin|ユーザーが SharePoint または OneDrive for Business サイトのごみ箱からファイルを削除します。|
 |FileDeletedSecondStageRecycleBin|ユーザーが SharePoint または OneDrive for Business サイトの第 2 段階のごみ箱からファイルを削除します。|
@@ -262,9 +262,9 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |FileRenamed|ユーザーは、SharePoint または OneDrive for Business サイトにあるドキュメントの名前を変更します。|
 |FileRestored|ユーザーは、SharePoint または OneDrive for Business サイトのごみ箱からドキュメントを復元します。 |
 |FileSyncDownloadedFull|ユーザーは、同期関係を確立し、SharePoint または OneDrive for Business ドキュメント ライブラリから自分のコンピューターに初めてファイルを正常にダウンロードします。|
-|FileSyncDownloadedPartial|User successfully downloads any changes to files from SharePoint or OneDrive for Business document library. This event indicates that any changes that were made to files in the document library were downloaded to the user's computer. Only changes were downloaded because the document library was previously downloaded by the user (as indicated by the FileSyncDownloadedFull event).|
+|FileSyncDownloadedPartial|ユーザーは、SharePoint または OneDrive for Business ドキュメント ライブラリから、ファイルに加えたすべての変更内容を正常にダウンロードします。このイベントは、ドキュメント ライブラリ内のファイルに加えたすべての変更内容がユーザーのコンピューターにダウンロードされたことを示します。ドキュメント ライブラリは (FileSyncDownloadedFull イベントが示すとおり) ユーザーによって以前ダウンロードされているため、変更内容のみがダウンロードされました。|
 |FileSyncUploadedFull*|ユーザーは、同期関係を確立し、自分のコンピューターから SharePoint または OneDrive for Business ドキュメント ライブラリに初めてファイルを正常にアップロードします。|
-|FileSyncUploadedPartial*|User successfully uploads changes to files on a SharePoint or OneDrive for Business document library. This event indicates that any changes made to the local version of a file from a document library are successfully uploaded to the document library. Only changes are unloaded because those files were previously uploaded by the user (as indicated by the FileSyncUploadedFull event).|
+|FileSyncUploadedPartial*|ユーザーは、SharePoint または OneDrive for Business ドキュメント ライブラリにあるファイルに、変更内容を正常にアップロードします。このイベントは、ドキュメント ライブラリからダウンロードしたローカル バージョンのファイルに加えた変更内容が、ドキュメント ライブラリに正常にアップロードされたことを示します。ファイルは (FileSyncUploadedFull イベントが示すとおり) ユーザーによって以前にアップロードされているため、変更内容のみがアップロードされます。|
 |FileUploaded|ユーザーは、SharePoint または OneDrive for Business サイトにあるフォルダーにドキュメントをアップロードします。 |
 |FileViewed|このイベントは、FileAccessed イベントに置き換えられており、推奨されていません。|
 |FolderCopied|ユーザーがフォルダーを SharePoint または OneDrive for Business サイトから SharePoint または OneDrive for Business の別の場所にコピーします。|
@@ -276,20 +276,20 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |FolderMoved|ユーザーが SharePoint または OneDrive for Business サイトからフォルダーを移動します。|
 |FolderRenamed|ユーザーが SharePoint または OneDrive for Business サイトのフォルダーの名前を変更します。|
 |FolderRestored|ユーザーが SharePoint または OneDrive for Business サイトのごみ箱からフォルダーを復元します。|
-|GroupAdded*|Site administrator or owner creates a group for a SharePoint or OneDrive for Business site, or performs a task that results in a group being created. For example, the first time a user creates a link to share a file, a system group is added to the user's OneDrive for Business site. This event can also be a result of a user creating a link with edit permissions to a shared file.|
+|GroupAdded*|サイト管理者または所有者は、SharePoint または OneDrive for Business のグループを作成するか、グループが作成されることになるタスクを実行します。たとえば、ユーザーがファイルを共有するためのリンクを初めて作成すると、システム グループがユーザーの OneDrive for Business に追加されます。ユーザーが共有ファイルの編集許可があるリンクを作成したときにも、このイベントになる場合があります。|
 |GroupRemoved*|ユーザーは、SharePoint または OneDrive for Business サイトからグループを削除します。 |
-|GroupUpdated*|Site administrator or owner changes the settings of a group for a SharePoint or OneDrive for Business site. This can include changing the group's name, who can view or edit the group membership, and how membership requests are handled.|
+|GroupUpdated*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトのグループの設定を変更します。これには、グループの名前、グループ メンバーシップを表示または編集できるユーザー、およびメンバーシップ要求を処理する方法の変更を含めることができます。|
 |LanguageAddedToTermStore*|用語ストアに言語が追加されました。|
 |LanguageRemovedFromTermStore*|用語ストアから言語が削除されました。|
-|LegacyWorkflowEnabledSet*|Site administrator or owner adds theSharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in theSharePoint admin center.|
+|LegacyWorkflowEnabledSet*|サイト管理者または所有者は、SharePoint ワークフロー タスク コンテンツ タイプをサイトに追加します。グローバル管理者は、SharePoint 管理センターで組織全体のワークフローを有効にすることもできます。|
 |LookAndFeelModified|ユーザーがサイド リンク バー、ガント チャートの書式、またはグループの形式を変更します。 または、ユーザーが Project Web App でビューを作成、変更、または削除します。|
 |ManagedSyncClientAllowed|ユーザーが SharePoint または OneDrive for Business サイトとの同期関係を正常に確立します。 ユーザーのコンピューターが、組織内のドキュメント ライブラリにアクセスできるドメインのリスト (宛先セーフ リストと呼ばれる) に追加されているドメインのメンバーであるため、同期関係は成功しました。 詳細については、「[SharePoint Online PowerShell を使用する](https://go.microsoft.com/fwlink/p/?LinkID=534609)」を参照し、宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にしてください。|
 |MaxQuotaModified*|サイトの最大クォータは変更されています。|
 |MaxResourceUsageModified*|サイトの最大許容リソース配分状況は変更されています。|
 |MySitePublicEnabledSet*|SharePoint 管理者によって、ユーザーが公開 MySite を持てるようにするフラグが設定されています。|
-|NewsFeedEnabledSet*|Site administrator or owner enables RSS feeds for a SharePoint or OneDrive for Business site. Global administrators can enable RSS feeds for the entire organization in the SharePoint admin center.|
+|NewsFeedEnabledSet*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトの RSS フィードを有効にします。グローバル管理者は、SharePoint 管理センターで組織全体の RSS フィードを有効にできます。|
 |ODBNextUXSettings*|OneDrive for Business 用の新しい UI が使用可能になっています。|
-|OfficeOnDemandSet*|Site administrator enables Office on Demand, which lets users access the latest version of Office desktop applications. Office on Demand is enabled in the SharePoint admin center and requires an Office 365 subscription that includes full, installed Office applications.|
+|OfficeOnDemandSet*|サイト管理者は、Office オンデマンドを有効にします。これによりユーザーは、Office デスクトップ アプリケーションの最新バージョンにアクセスできます。Office オンデマンドは Office SharePoint 管理センターで有効にされ、インストール済みのすべての Office アプリケーションを含む Office 365 サブスクリプションを必要とします。|
 |PageViewed|ユーザーが SharePoint または OneDrive for Business サイトにあるページを表示します。 これには、SharePoint サイトまたは One Drive for Business サイトのドキュメント ライブラリのファイルをブラウザーで表示することは含まれません。|
 |PeopleResultsScopeSet*|サイト管理者は、SharePoint サイトの人の検索の結果ソースを作成または変更します。|
 |PermissionSyncSettingModified|ユーザーが Project Web App でプロジェクトのアクセス許可の同期設定を変更します。|
@@ -331,15 +331,15 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |SecondaryMySiteOwnerSet*|ユーザーがその MySite に代理所有者を追加しました。|
 |SecurityCategoryModified|ユーザーが Project Web App で、セキュリティのカテゴリを作成、変更、または削除します。|
 |SecurityGroupModified|ユーザーが Project Web App で、セキュリティ グループを作成、変更、または削除します。|
-|SendToConnectionAdded*|Global administrator creates a new Send To connection on the Records management page in the SharePoint admin center. A Send To connection specifies settings for a document repository or a records center. When you create a Send To connection, a Content Organizer can submit documents to the specified location.|
+|SendToConnectionAdded*|グローバル管理者は、SharePoint 管理センターの [レコード管理] ページで、新しい [送信先] 接続を作成します。[送信先] 接続は、ドキュメント リポジトリまたはレコード センターの設定を指定します。[送信先] 接続を作成すると、コンテンツ オーガナイザーにより、指定された場所にドキュメントを送信できます。|
 |SendToConnectionRemoved*|グローバル管理者は、SharePoint 管理センターの [レコード管理] ページで、[送信先] 接続を削除します。|
-|SharedLinkCreated|User creates a link to a shared file in SharePoint or OneDrive for Business. This link can be sent to other people to give them access to the file. A user can create two types of links: a link that allows a user to view and edit the shared file, or a link that allows the user to just view the file.|
+|SharedLinkCreated|ユーザーは、SharePoint または OneDrive for Business で共有ファイルへのリンクを作成します。このリンクは、共有ファイルにアクセスできるように他のユーザーに送信できます。ユーザーは、共有ファイルの表示と編集を許可するリンク、またはファイルの表示だけを許可するリンクの、2 種類のリンクを作成できます。|
 |SharedLinkDisabled*|ユーザーは、ファイルを共有するために作成されたリンクを (完全に) 無効にします。|
 |SharingInvitationAccepted*|User accepts an invitation to share a file or folder. This event is logged when a user shares a file with other users.|
-|SharingRevoked*|User unshares a file or folder that was previously shared with other users. This event is logged when a user stops sharing a file with other users.|
+|SharingRevoked*|ユーザーは、他のユーザーと以前に共有していたファイルまたはフォルダーを共有解除します。このイベントは、ユーザーが他のユーザーとのファイルの共有を停止すると記録されます。|
 |SharingSet|ユーザーは、SharePoint または OneDrive for Business にあるファイルまたはフォルダーを、組織内の他のユーザーと共有します。|
-|SiteAdminChangeRequest*|User requests to be added as a site collection administrator for a SharePoint site collection. Site collection administrators have full control permissions for the site collection and all subsites.|
-|SiteCollectionAdminAdded*|Site collection administrator or owner adds a person as a site collection administrator for a SharePoint or OneDrive for Business site. Site collection administrators have full control permissions for the site collection and all subsites.|
+|SiteAdminChangeRequest*|ユーザーが、SharePoint サイト コレクションのサイト コレクション管理者として追加されるように要求します。サイト コレクション管理者は、サイト コレクションとすべてのサブサイトのフル コントロール権限を持ちます。|
+|SiteCollectionAdminAdded*|サイト コレクション管理者または所有者は、ユーザーを SharePoint または OneDrive for Business サイトのサイト コレクション管理者として追加します。サイト コレクション管理者は、サイト コレクションとすべてのサブサイトのフル コントロール権限を持ちます。|
 |SiteCollectionCreated*| グローバル管理者は、SharePoint 組織に新しいサイト コレクションを作成します。|
 |SiteRenamed*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトの名前を変更します。|
 |StatusReportModified|ユーザーが Project Web App で、進捗レポートを作成、変更、または削除します。|
@@ -356,8 +356,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |TimesheetSubmitted|ユーザーが Project Web App で状態のタイムシートを送信します。|
 |UnmanagedSyncClientBlocked|ユーザーは、組織のドメインのメンバーではないコンピューター、または組織のドキュメント ライブラリにアクセスできるものの、ドメインのリスト (宛先セーフ リスト) に追加されていないドメインのメンバーであるコンピューターから、SharePoint または OneDrive for Business サイトとの同期関係を確立しようとします。 同期関係は許可されていません。ユーザーのコンピューターは、ドキュメント ライブラリ上のファイルの同期、ダウンロード、アップロードがブロックされています。 この機能については、「[Windows PowerShell コマンドレットを使用して宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にする](https://docs.microsoft.com/powershell/module/sharepoint-online/index?view=sharepoint-ps)」を参照してください。|
 |UpdateSSOApplication*|ターゲット アプリケーションが Secure Store Service で更新されました。|
-|UserAddedToGroup*|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
-|UserRemovedFromGroup*|Site administrator or owner removes a person from a group on a SharePoint or OneDrive for Business site. After the person is removed, they no longer are granted the permissions that were assigned to the group. |
+|UserAddedToGroup*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループにユーザーを追加します。ユーザーをグループに追加すると、そのユーザーにはグループに割り当てられたアクセス許可が付与されます。 |
+|UserRemovedFromGroup*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループからユーザーを削除します。削除されると、そのユーザーにはグループに割り当てられたアクセス許可は付与されなくなります。 |
 |WorkflowModified|ユーザーが Project Web App で、エンタープライズ プロジェクトの種類、ワークフローのフェーズ、またはステージを作成、変更、または削除します。|
 |||||
 
@@ -374,14 +374,14 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |SiteUrl|Edm.String|はい|ユーザーによりアクセスされるファイルまたはフォルダーが置かれているサイトの URL。|
-|SourceRelativeUrl|Edm.String|不要|The URL of the folder that contains the file accessed by the user. The combination of the values for the  _SiteURL_,  _SourceRelativeURL_, and  _SourceFileName_ parameters is the same as the value for the **ObjectID** property, which is the full path name for the file accessed by the user.|
+|SourceRelativeUrl|Edm.String|不要|ユーザーがアクセスするファイルが含まれているフォルダーの URL。_SiteURL_、_SourceRelativeURL_、および _SourceFileName_ パラメーターの値の組み合わせは、**ObjectID** プロパティの値と同じであり、ユーザーがアクセスするファイルの完全パス名です。|
 |SourceFileName|Edm.String|はい|ユーザーによりアクセスされるファイルまたはフォルダーの名前。|
-|SourceFileExtension|Edm.String|不要|The file extension of the file that was accessed by the user. This property is blank if the object that was accessed is a folder.|
-|DestinationRelativeUrl|Edm.String|不要|The URL of the destination folder where a file is copied or moved. The combination of the values for  _SiteURL_,  _DestinationRelativeURL_, and  _DestinationFileName_ parameters is the same as the value for the **ObjectID** property, which is the full path name for the file that was copied. This property is displayed only for FileCopied and FileMoved events.|
-|DestinationFileName|Edm.String|不要|The name of the file that is copied or moved. This property is displayed only for FileCopied and FileMoved events.|
-|DestinationFileExtension|Edm.String|不要|The file extension of a file that is copied or moved. This property is displayed only for FileCopied and FileMoved events.|
+|SourceFileExtension|Edm.String|不要|ユーザーがアクセスしたファイルのファイル拡張子。このプロパティは、アクセスされたオブジェクトがフォルダーの場合には、空白になります。|
+|DestinationRelativeUrl|Edm.String|不要|ファイルのコピー先または移動先フォルダーの URL。_SiteURL_、_SourceRelativeURL_、および _SourceFileName_ パラメーターの値の組み合わせは、**ObjectID** プロパティの値と同じであり、コピーされたファイルの完全パス名です。このプロパティは、FileCopied および FileMoved イベントに対してのみ表示されます。|
+|DestinationFileName|Edm.String|不要|コピーまたは移動したファイルの名前。このプロパティは、FileCopied および FileMoved イベントに対してのみ表示されます。|
+|DestinationFileExtension|Edm.String|不要|コピーまたは移動したファイルのファイル拡張子。このプロパティは、FileCopied および FileMoved イベントに対してのみ表示されます。|
 |UserSharedWith|Edm.String|不要|リソースを共有したユーザー。|
-|SharingType|Edm.String|不要|The type of sharing permissions that were assigned to the user that the resource was shared with. This user is identified by the  _UserSharedWith_ parameter.|
+|SharingType|Edm.String|不要|リソースを共有したユーザーに割り当てられているアクセス許可の種類。このユーザーは、_UserSharedWith_ パラメーターにより識別されます。|
 |||||
 
 
@@ -409,7 +409,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|:-----|
 |CustomEvent|Edm.String|不要|カスタム イベントのオプション文字列。|
 |EventData|Edm.String|不要|カスタム イベントのオプション ペイロード。|
-|ModifiedProperties|Collection(ModifiedProperty)|いいえ|The property is included for admin events, such as adding a user as a member of a site or a site collection admin group. The property includes the name of the property that was modified (for example, the Site Admin group), the new value of the modified property (such the user who was added as a site admin), and the previous value of the modified object.|
+|ModifiedProperties|Collection(ModifiedProperty)|いいえ|このプロパティは、サイトまたはサイト コレクション管理者グループのメンバーとしてユーザーを追加するなどの、管理イベントの場合に含まれます。プロパティには、変更されたプロパティの名前 (サイト管理者グループなど)、変更されたプロパティの新しい値 (サイト管理者として追加されたユーザーなど)、および変更されたオブジェクトの以前の値が含まれます。|
 |||||
 
 ## <a name="project-schema"></a>Project スキーマ
@@ -494,9 +494,9 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 |**パラメーター**|**型**|**必須**|**説明**|
 |:-----|:-----|:-----|:-----|
-|ModifiedObjectResolvedName|Edm.String|不要|This is the user friendly name of the object that was modified by the cmdlet. This is logged only if the cmdlet modifies the object.|
+|ModifiedObjectResolvedName|Edm.String|不要|これはコマンドレットによって変更されたオブジェクトのユーザー フレンドリ名です。これはコマンドレットによるオブジェクトの変更の場合にのみ記録されます。|
 |パラメーター|Collection(Common.NameValuePair)|いいえ|Operations プロパティで示されているコマンドレットで使用された、すべてのパラメーターの名前と値。|
-|ModifiedProperties|Collection(Common.ModifiedProperty)|いいえ|The property is included for admin events. The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified object.|
+|ModifiedProperties|Collection(Common.ModifiedProperty)|いいえ|このプロパティは、管理イベント用に組み込まれています。プロパティには、変更されたプロパティの名前、変更されたプロパティの新しい値、および変更されたオブジェクトの以前の値が含まれます。|
 |ExternalAccess|Edm.Boolean|はい|組織内のユーザー、Microsoft データセンター担当者またはデータセンター サービス アカウント、あるいは代理管理者により、コマンドレットが実行されたかどうかを示します。 値 **False** は、コマンドレットが組織内のユーザーによって実行されたことを示します。 値 **True** は、コマンドレットがデータセンターの担当者、データセンターのサービス アカウント、または代理管理者によって実行されたことを示します。|
 |OriginatingServer|Edm.String|不要|コマンドレット実行元のサーバーの名前。|
 |OrganizationName|Edm.String|不要|テナントの名前。|
@@ -519,7 +519,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |OriginatingServer |Edm.String|いいえ|これは、操作の発生場所です。|
 |OrganizationName|Edm.String|不要|テナントの名前。|
 |ClientInfoString|Edm.String|不要|操作を実行するために使用された電子メール クライアントについての情報 (ブラウザーのバージョン、Outlook のバージョン、およびモバイル デバイスの情報など)。|
-|ClientIPAddress|Edm.String|不要|The IP address of the device that was used when the operation was logged. The IP address is displayed in either an IPv4 or IPv6 address format.|
+|ClientIPAddress|Edm.String|不要|操作がログに記録されたときに使用されたデバイスの IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
 |ClientMachineName|Edm.String|不要|Outlook クライアントをホストしているマシン名。|
 |ClientProcessName|Edm.String|不要|メールボックスへのアクセスに使用された電子メール クライアント。 |
 |ClientVersion|Edm.String|不要|電子メール クライアントのバージョン。|
@@ -599,7 +599,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|:-----|
 |AzureActiveDirectoryEventType|Self.[AzureActiveDirectoryEventType](#azureactivedirectoryeventtype)|はい|Azure AD イベントの種類。 |
 |ExtendedProperties|Collection(Common.NameValuePair)|いいえ|Azure AD イベントの拡張プロパティ。|
-|ModifiedProperties|Collection(Common.ModifiedProperty)|いいえ|This property is included for admin events. The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
+|ModifiedProperties|Collection(Common.ModifiedProperty)|いいえ|このプロパティは、管理イベント用に組み込まれています。プロパティには、変更されたプロパティの名前、変更されたプロパティの新しい値、および変更されたプロパティの以前の値が含まれています。|
 |||||
 
 ### <a name="enum-azureactivedirectoryeventtype---type--edmint32"></a>列挙:AzureActiveDirectoryEventType - タイプ: -Edm.Int32
@@ -619,7 +619,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|:-----|
 |アプリケーション|Edm.String|不要|Office 15 などの、アカウント ログイン イベントをトリガーするアプリケーション。|
 |Client|Edm.String|いいえ|クライアント デバイス、デバイスの OS、およびアカウント ログイン イベントに使用したデバイスのブラウザーに関する詳細。|
-|LoginStatus|Edm.Int32|はい|This property is from OrgIdLogon.LoginStatus directly. The mapping of various interesting logon failures could be done by alerting algorithms.|
+|LoginStatus|Edm.Int32|はい|このプロパティは、OrgIdLogon.LoginStatus に直接由来しています。関心の対象となるさまざまなログオン失敗のマッピングは、警告アルゴリズムによって行うことができます。|
 |UserDomain|Edm.String|はい|テナント ID 情報 (TII)。|
 |||||
 
@@ -723,7 +723,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|ApplicationId|Edm.String|不要|The GUID that represents the application that is requesting the login. The display name can be looked up via the Azure Active Directory Graph API.|
+|ApplicationId|Edm.String|不要|ログインを要求しているアプリケーションを表す GUID。表示名は、Azure Active Directory グラフ API を使用して検索できます。|
 |クライアント|Edm.String|不要|ログインを実行するブラウザーが提供する、クライアント デバイス情報。|
 |LogonError|Edm.String|いいえ|失敗したログインの場合、ログインが失敗した理由が含まれます。 LogonErrors の詳細な説明については「[認証と承認エラー コード](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes)」の一覧を参照してください。
 |||||
@@ -753,7 +753,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 |**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|接続元|Edm.String|はい|The user who triggered the event. This will be either the FileOwner, LastModifier, or LastSharer.|
+|接続元|Edm.String|はい|イベントを実行したユーザーの ID。 This will be either the FileOwner, LastModifier, or LastSharer.|
 |itemCreationTime|Edm.Date|はい|イベントのログの記録日時に関する UTC の Datetimestamp。|
 |SiteCollectionGuid|Edm.Guid|はい|サイト コレクションの GUID。|
 |SiteCollectionUrl|Edm.String|はい|SharePoint サイトの名前。|
@@ -912,10 +912,10 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|ObjectType|Self.[ObjectType](#objecttype)|いいえ|The access point for the triggered event. Access points include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Sway</p></li><li><p>ホスト内に埋め込まれた Sway。</p></li><li><p>Office 365 管理ポータル内の Sway 設定。</p></li></ul>|
-|エンドポイント|Self.[Endpoint](#endpoint)|いいえ|The Sway client endpoint for the triggered event. The Sway client endpoint can be web, iOS, Windows, or Android. |
+|ObjectType|Self.[ObjectType](#objecttype)|いいえ|トリガーされたイベントのアクセス ポイント。アクセス ポイントには以下が含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Sway</p></li><li><p>ホスト内に埋め込まれた Sway。</p></li><li><p>Office 365 管理ポータル内の Sway 設定。</p></li></ul>|
+|エンドポイント|Self.[Endpoint](#endpoint)|いいえ|トリガーされたイベントの Sway クライアント エンドポイント。Sway クライアント エンドポイントには、Web、iOS、Windows、または Android を使用できます。 |
 |BrowserName|Edm.String|不要|トリガーされたイベントの Sway にアクセスするために使用するブラウザー。 |
-|DeviceType|Self.[DeviceType](#devicetype)|いいえ|The device type used to access Sway for the triggered event. The device type can be desktop, mobile, or tablet.|
+|DeviceType|Self.[DeviceType](#devicetype)|いいえ|トリガーされたイベントの Sway にアクセスするために使用するデバイスの種類。デバイスの種類は、デスクトップ、モバイル、またはタブレットのいずれかにできます。|
 |SwayLookupId|Edm.String|不要|Sway ID。 |
 |SiteUrl|Edm.String|不要|Sway の URL。|
 |OperationResult|Self.[OperationResult](#operationresult)|いいえ|成功または失敗のいずれか。|
@@ -980,9 +980,9 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |3 |View|ユーザーは Sway を表示します。|
 |4 |Edit|ユーザーは Sway を編集します。|
 |5 |Duplicate|ユーザーは Sway を複製します。|
-|7 |共有|The user initiates sharing a Sway. This event captures the user action of clicking on a specific share destination within the Sway share menu. The event does not indicate whether the user actually follows through and completes the share action.|
-|8 |ChangeShareLevel|The user changes the share level of a Sway. This event captures the user changing the scope of sharing associated with a Sway. For example, public as compared to from within the organization.|
-|9 |RevokeShare|The user stops sharing a Sway by revoking access. Revoking access changes the links associated with a Sway.|
+|7 |共有|ユーザーは Sway の共有を開始します。このイベントは、Sway 共有メニュー内で特定の共有先をクリックするユーザー アクションをキャプチャします。イベントでは、ユーザーが実際に共有アクションを最後まで実行して完了させるかどうかは示されません。|
+|8 |ChangeShareLevel|ユーザーは Sway の共有のレベルを変更します。このイベントは、ユーザーによる、Sway に関連付けられている共有のスコープの変更をキャプチャします。たとえば、「組織内から」と比較して「パブリック」などへの変更です。|
+|9 |RevokeShare|ユーザーは、アクセス権限の取り消しによって、Sway の共有を停止します。アクセス権限を取り消すと、Sway に関連付けられているリンクは変更されます。|
 |10 |EnableDuplication|ユーザーは Sway を複製できます (既定ではオン)。|
 |11 |DisableDuplication|ユーザーは Sway を複製できません (既定ではオフ)。|
 |12 |ServiceOn|ユーザーは、Office 365 管理センターを使用して、組織全体で Sway を有効にします (既定ではオン)。|

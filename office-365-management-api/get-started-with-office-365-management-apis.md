@@ -6,12 +6,12 @@ ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: f444aa9411e0520be42ce68b2f618efe5228ac75
-ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
+ms.openlocfilehash: c0c7f69fcb879879244b5e51768f91ea2472faad
+ms.sourcegitcommit: a85b79e8586ae83ecbf30de808c4df90e839536b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "41263241"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "46612296"
 ---
 # <a name="get-started-with-office-365-management-apis"></a>Office 365 Management API の使用を開始する
 
@@ -28,7 +28,6 @@ Office 365 Management API と同じようにセキュリティで保護された
 4. **Office 365 Management API の呼び出し**。アプリケーションを認証して承認するため、アプリ専用アクセス トークンが Office 365 Management API に渡されます。
     
 次の図は、同意とアクセス トークンの要求のシーケンスを示しています。
-
 
 ![管理 API が承認フローを開始する](images/authorization-flow.png)
 
@@ -329,7 +328,6 @@ Content-Length: 3265
   "acr": "1"
 }
 ```
-
 
 ### <a name="request-an-access-token-by-using-client-credentials"></a>クライアントの資格情報を使用してアクセス トークンを要求する
 

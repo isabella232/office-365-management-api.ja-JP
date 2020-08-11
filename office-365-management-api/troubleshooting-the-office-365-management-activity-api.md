@@ -6,12 +6,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 459143049732df246edf4877551ca2dd8f7cbafe
-ms.sourcegitcommit: 745a6e43dc3a9849897a5b57eadb3e7c57511c6f
+ms.openlocfilehash: 84a24a2f803a95d2cadaf804f35a358f10ba49be
+ms.sourcegitcommit: a85b79e8586ae83ecbf30de808c4df90e839536b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "45083716"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "46612310"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Office 365 マネージメント アクティビティ API のトラブルシューティング
 
@@ -57,7 +57,9 @@ Office 365 マネージメント アクティビティ API (別名、*統合監�
 
 次に示す PowerShell スクリプトでは、アプリ ID とクライアント シークレットを使用して、マネージメント アクティビティ API 認証エンドポイントから OAuth2 トークンを取得します。 その後で、HTTP 要求に添付する `$headerParams` 配列変数にアクセス トークンを格納します。 API エンドポイントの値 ($resource 変数内) には、組織の Microsoft 365 または Office 365 サブスクリプション プランに基づいて、次の値のいずれかを使用します。
 
-- エンタープライズ プランと GCC 政府機関向けプラン: `manage.office.com`
+- Enterprise プラン: `manage.office.com`
+
+- GCC 政府機関向けプラン: `manage-gcc.office.com`
 
 - GCC High 政府機関向けプラン: `manage.office365.us`
 
@@ -69,7 +71,7 @@ $ClientID = "<YOUR_APPLICATION_ID"
 $ClientSecret = "<YOUR_CLIENT_SECRET>"
 $loginURL = "https://login.microsoftonline.com/"
 $tenantdomain = "<YOUR_DOMAIN>.onmicrosoft.com"
-# Get the tenant GUID from Properties | Directory ID under the Azure Active Directory section. For $resource, use one of these endpoint values based on your subscription plan: Enterprise and GCC - manage.office.com; GCC High: manage.office365.us; DoD: manage.protection.apps.mil
+# Get the tenant GUID from Properties | Directory ID under the Azure Active Directory section. For $resource, use one of these endpoint values based on your subscription plan: Enterprise - manage.office.com; GCC - manage-gcc.office.com; GCC High: manage.office365.us; DoD: manage.protection.apps.mil
 $TenantGUID = "<YOUR_TENANT_GUID>"
 $resource = "https://<YOUR_API_ENDPOINT>"
 # auth
@@ -127,7 +129,9 @@ RawContentLength  : 266
 
 新規サブスクリプションを作成するには、/start 操作を使用します。 API エンドポイントには、サブスクリプション プランに基づいて、次の値のいずれかを使用します。
 
-- エンタープライズ プランと GCC 政府機関向けプラン: `manage.office.com`
+- Enterprise プラン: `manage.office.com`
+
+- GCC 政府機関向けプラン: `manage-gcc.office.com`
 
 - GCC High 政府機関向けプラン: `manage.office365.us`
 
@@ -137,7 +141,7 @@ RawContentLength  : 266
 Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_ENDPOINT>/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > `$headerParams` のデータは、この記事の「[API への接続](#connecting-to-the-api)」に示したスクリプトの最初の部分で設定されています。
 
 前述のコードにより、Audit.AzureActiveDirectory コンテンツ タイプに対する新しいサブスクリプションが作成されます (Webhook は Null になっています)。 その後で、この記事の「[サブスクリプションの確認](#checking-your-subscriptions)」セクションで示したコードを使用すると、サブスクリプションを確認できます。
@@ -225,7 +229,7 @@ Invoke-RestMethod -Method Post -uri $uri -Headers $headerParams -Body $body
 
 ## <a name="requesting-content-blobs-and-throttling"></a>コンテンツ BLOB の要求と調整
 
-コンテンツ URI のリストを取得したら、その URI で指定される BLOB を要求する必要があります。 PowerShell を使用して (Enterprise や GCC 組織の場合には manage.office.com API エンドポイントを使用して) コンテンツ BLOB を要求する例を次に示します。 この例は、この記事の「[アクセス トークンの取得](#getting-an-access-token)」セクションに示した例を使用してアクセス トークンを取得していることと、`$headerParams` 変数に適切な値が設定されていることを前提としています。
+コンテンツ URI のリストを取得したら、その URI で指定される BLOB を要求する必要があります。 PowerShell を使用して (Enterprise 組織の場合には manage.office.com API エンドポイントを使用して) コンテンツ BLOB を要求する例を次に示します。 この例は、この記事の「[アクセス トークンの取得](#getting-an-access-token)」セクションに示した例を使用してアクセス トークンを取得していることと、`$headerParams` 変数に適切な値が設定されていることを前提としています。
 
 ```powershell
 # Get a content blob

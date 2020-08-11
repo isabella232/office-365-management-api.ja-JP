@@ -6,12 +6,12 @@ ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 48065e1770e485ffa04778d662a170ae14916354
-ms.sourcegitcommit: d55928a0d535090fa2dbe94f38c7316d0e52e9a9
+ms.openlocfilehash: 892dff36a9a7320bdfda4ba908581cb1e000c2b0
+ms.sourcegitcommit: a85b79e8586ae83ecbf30de808c4df90e839536b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "44173142"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "46612303"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Office 365 管理アクティビティ API リファレンス
 
@@ -63,10 +63,16 @@ Webhook に送信される通知にはテナント ID が含まれるため、�
 
 使用する API エンドポイントの URL は、組織の Microsoft 365 または Office 365 のサブスクリプション プランの種類に基づいています。
 
-**エンタープライズ プランと GCC 政府機関向けプラン**
+**Enterprise プラン**
 
 ```http
 https://manage.office.com/api/v1.0/{tenant_id}/activity/feed/{operation}
+```
+
+**GCC 政府機関向けプラン**
+
+```http
+https://manage-gcc.office.com/api/v1.0/{tenant_id}/activity/feed/{operation}
 ```
 
 **GCC High 政府機関向けプラン**

@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 01e144964a1d76f6dd081ad5e1424fd56ce72556
-ms.sourcegitcommit: f0ec98d5230b0f2dbcc9a74b989db0ab1c2bfa92
+ms.openlocfilehash: f4c35fc343593c0d61ae29b43a58db66ebf2185f
+ms.sourcegitcommit: 1047f1e1d17d873918790ff1fc6d7adcc75ab2bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "45189771"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "46672893"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -19,14 +19,14 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 - **共通スキーマ**。 レコードの種類、作成時刻、ユーザーの種類、およびアクションなどの中心的な Office 365 監査概念にアクセスし、コア ディメンション (ユーザー ID など)、場所の詳細情報 (クライアント IP アドレスなど)、および製品固有のプロパティ (オブジェクト ID など) を提供するインターフェイスです。 これにより一貫性がある統一ビューが確立され、いくつかの最上位ビューで適切なパラメーターを指定して、すべての Office 365 監査データを抽出できます。さらに、学習のコストを大幅に削減する、すべてのデータ ソース向けの固定スキーマも提供されます。 共通スキーマのデータは、Exchange、SharePoint、Azure Active Directory、Yammer、および OneDrive for Business などの各製品チームが所有する製品データから調達されます。 製品チームは [オブジェクト ID] フィールドを、製品固有のプロパティを追加するために拡張できます。
 
-- **製品固有スキーマ**。 共通スキーマ上に構築され、製品固有の属性セット (Sway スキーマ、SharePoint スキーマ、OneDrive for Business スキーマ、および Exchange 管理者スキーマなど) を提供します。
+- **製品固有スキーマ**。 共通スキーマ上に構築され、製品固有の属性セット (SharePoint スキーマ、OneDrive for Business スキーマ、および Exchange 管理者スキーマなど) を提供します。
 
 **各自のシナリオでどのレイヤーを使用するべきですか?**
 一般に、データが上位レイヤーで使用可能であれば、下位レイヤーには戻らないでください。 つまり、データ要件が製品固有のスキーマに適合できるのであれば、共通スキーマに戻る必要はありません。 
 
 ## <a name="office-365-management-api-schemas"></a>Office 365 管理 API のスキーマ
 
-この記事では、共通スキーマと、製品固有の各スキーマについて詳細に説明します。 次の表では、使用可能なスキーマについて説明しています。 
+この記事では、共通スキーマと、製品固有の各スキーマについて詳細に説明します。 次の表では、使用可能なスキーマについて説明しています。
 
 |スキーマ名|説明|
 |:-----|:-----|
@@ -46,7 +46,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[セキュリティ/コンプライアンス センター スキーマ](#security-and-compliance-center-schema)|共通スキーマを、すべてのセキュリティ/コンプライアンス センターのイベントに固有のプロパティで拡張します。|
 |[セキュリティ/コンプライアンス アラート スキーマ](#security-and-compliance-alerts-schema)|共通スキーマを、すべてのOffice 365 セキュリティ/コンプライアンス アラートに固有のプロパティで拡張します。|
 |[Yammer スキーマ](#yammer-schema)|共通スキーマを、すべての Yammer イベントに固有のプロパティで拡張します。|
-|[Sway スキーマ](#sway-schema)|共通スキーマを、すべての Sway イベントに固有のプロパティで拡張します。|
 |[データ センター セキュリティ基本スキーマ](#data-center-security-base-schema)|共通スキーマを、すべてのデータ センター セキュリティ監査データに固有のプロパティで拡張します。|
 |[データ センター セキュリティ コマンドレット スキーマ](#data-center-security-cmdlet-schema)|データ センター セキュリティ基本スキーマを、すべてのデータ センター セキュリティ コマンドレット監査データに固有のプロパティで拡張します。|
 |[Microsoft Teams スキーマ](#microsoft-teams-schema)|共通スキーマを、すべての Microsoft Teams イベントに固有のプロパティで拡張します。|
@@ -98,7 +97,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |9|AzureActiveDirectoryAccountLogon|Azure Active Directory OrgId ログオン イベント (非推奨)。|
 |10|DataCenterSecurityCmdlet|データ センター セキュリティ コマンドレット イベント。|
 |11|ComplianceDLPSharePoint|SharePoint のデータ損失防止 (DLP) イベントと OneDrive for Business。|
-|12|Sway|Sway サービスおよびクライアントからのイベント。|
 |13|ComplianceDLPExchange|統合 DLP ポリシーを使用して構成された場合の Exchange のデータ損失防止 (DLP) イベント。 Exchange トランスポート ルールに基づく DLP イベントはサポートされていません。|
 |14|SharePointSharingOperation|SharePoint 共有イベント。|
 |15|AzureActiveDirectoryStsLogon|Azure Active Directory の Secure Token Service (STS) ログオン イベント。|
@@ -209,47 +207,47 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 |**メンバー名**|**説明**|
 |:-----|:-----|
-|AccessInvitationAccepted*|共有ファイル (またはフォルダー) の表示または編集への招待の受信者が、招待のリンクをクリックして共有ファイルにアクセスしました。|
-|AccessInvitationCreated*|ユーザーは、SharePoint または OneDrive for Business サイトにある共有ファイルまたはフォルダーの表示または編集への招待を、(組織の内外の) 他のユーザーに送信します。イベント エントリの詳細は、共有されたファイルの名前、招待状の送付先ユーザー、および招待を送信したユーザーが選択した共有アクセス許可の種類を示します。|
-|AccessInvitationExpired*|外部ユーザーに送信する招待に有効期限を設定します。既定では、組織外のユーザーに送信する招待は、招待が承諾されない場合には 7 日後に有効期限が切れます。|
-|AccessInvitationRevoked*|SharePoint または OneDrive for Business のサイト管理者、サイト所有者、またはドキュメント所有者は、組織外のユーザーに送信された招待を取り下げます。招待は、承諾前にのみ取り下げることができます。|
-|AccessInvitationUpdated*|SharePoint または OneDrive for Business サイトにある共有ファイルまたはフォルダーの表示または編集への招待を作成して送信したユーザーが、招待を再送します。|
+|AccessInvitationAccepted|共有ファイル (またはフォルダー) の表示または編集への招待の受信者が、招待のリンクをクリックして共有ファイルにアクセスしました。|
+|AccessInvitationCreated|ユーザーは、SharePoint または OneDrive for Business サイトにある共有ファイルまたはフォルダーの表示または編集への招待を、(組織の内外の) 他のユーザーに送信します。イベント エントリの詳細は、共有されたファイルの名前、招待状の送付先ユーザー、および招待を送信したユーザーが選択した共有アクセス許可の種類を示します。|
+|AccessInvitationExpired|外部ユーザーに送信する招待に有効期限を設定します。既定では、組織外のユーザーに送信する招待は、招待が承諾されない場合には 7 日後に有効期限が切れます。|
+|AccessInvitationRevoked|SharePoint または OneDrive for Business のサイト管理者、サイト所有者、またはドキュメント所有者は、組織外のユーザーに送信された招待を取り下げます。招待は、承諾前にのみ取り下げることができます。|
+|AccessInvitationUpdated|SharePoint または OneDrive for Business サイトにある共有ファイルまたはフォルダーの表示または編集への招待を作成して送信したユーザーが、招待を再送します。|
 |AccessRequestApproved|SharePoint または OneDrive for Business のサイト管理者、サイト所有者、またはドキュメント所有者は、サイトまたはドキュメントにアクセスするユーザー要求を承認します。|
 |AccessRequestCreated|ユーザーは、アクセス許可がない SharePoint または OneDrive for Business のサイトまたはドキュメントへのアクセス権限を要求します。 |
-|AccessRequestRejected*|SharePoint のサイト管理者、サイト所有者、またはドキュメント所有者は、サイトまたはドキュメントへのアクセスを求めるユーザー要求を拒否します。|
-|ActivationEnabled*|ユーザーは、フォーム コードが含まれていないフォーム テンプレートをブラウザー対応にする、完全な信頼を要求する、モバイル デバイスでのレンダリングを有効にする、サーバー管理者が管理するデータ接続を使用する、などができます。|
-|AdministratorAddedToTermStore*|用語ストア管理者が追加されました。|
-|AdministratorDeletedFromTermStore*|用語ストア管理者が削除されました。|
-|AllowGroupCreationSet*|サイト管理者またはサイト所有者は、許可が割り当てられたユーザーが SharePoint または OneDrive for Business サイトのグループを作成できる許可レベルを、それらのサイトに追加します。|
-|AppCatalogCreated*|SharePoint 環境でカスタム ビジネス アプリを利用できるように、アプリ カタログが作成されました。|
-|AuditPolicyRemoved*|サイト コレクションのドキュメント ライフサイクル ポリシーが削除されました。|
-|AuditPolicyUpdate*|サイト コレクションのドキュメント ライフサイクル ポリシーが更新されました。|
-|AzureStreamingEnabledSet*|ビデオ ポータルの所有者が、Azure からのビデオ ストリーミングを許可されました。|
-|CollaborationTypeModified*|サイト (イントラネット、エクストラネット、またはパブリックなど) で許可されているコラボレーションの種類が変更されました。|
+|AccessRequestRejected|SharePoint内のドキュメントやサイトの管理者または所有者が、サイトまたはドキュメントへのユーザーアクセスを拒否しています。|
+|ActivationEnabled|ユーザーは、フォーム コードが含まれていないフォーム テンプレートをブラウザー対応にする、完全な信頼を要求する、モバイル デバイスでのレンダリングを有効にする、サーバー管理者が管理するデータ接続を使用する、などができます。|
+|AdministratorAddedToTermStore|用語ストア管理者が追加されました。|
+|AdministratorDeletedFromTermStore|用語ストア管理者が削除されました。|
+|AllowGroupCreationSet|サイト管理者またはサイト所有者は、許可が割り当てられたユーザーが SharePoint または OneDrive for Business サイトのグループを作成できる許可レベルを、それらのサイトに追加します。|
+|AppCatalogCreated|SharePoint環境でカスタムビジネスアプリを利用できるように、アプリカタログが作成されました。|
+|AuditPolicyRemoved|サイトコレクションのドキュメントライフサイクルポリシーが削除されました。|
+|AuditPolicyUpdate|サイトコレクションのドキュメントライフサイクルポリシーが更新されました。|
+|AzureStreamingEnabledSet|ビデオ ポータルの所有者が、Azure からのビデオ ストリーミングを許可されました。|
+|CollaborationTypeModified|サイト (イントラネット、エクストラネット、またはパブリックなど) で許可されているコラボレーションの種類が変更されました。|
 |ConnectedSiteSettingModified|ユーザーが Project Web App でプロジェクトとプロジェクト サイト間のリンクを作成、変更、または削除したか、ユーザーがリンク上の同期設定を変更します。|
-|CreateSSOApplication*|ターゲット アプリケーションが Secure Store Service で作成されました。|
+|CreateSSOApplication|ターゲット アプリケーションが Secure Store Service で作成されました。|
 |CustomFieldOrLookupTableCreated|ユーザーが Project Web App でユーザー設定フィールドまたはルックアップ テーブル/アイテムを作成しました。|
 |CustomFieldOrLookupTableDeleted|ユーザーが Project Web App でユーザー設定フィールドまたはルックアップ テーブル/アイテムを削除しました。|
 |CustomFieldOrLookupTableModified|ユーザーが Project Web App でユーザー設定フィールドまたはルックアップ テーブル/アイテムを変更しました。|
-|CustomizeExemptUsers*|グローバル管理者が、SharePoint 管理センターで適用除外ユーザー エージェントのリストをカスタマイズしました。インデックスを作成する Web ページ全体を受け取らせないように除外するユーザー エージェントを指定できます。つまり、除外対象として指定したユーザー エージェントが InfoPath フォームを検出すると、フォームは、Web ページ全体ではなく XML ファイルとして返されます。これにより InfoPath フォームのインデックス作成の速度が上がります。|
+|CustomizeExemptUsers|グローバル管理者が、SharePoint 管理センターで適用除外ユーザー エージェントのリストをカスタマイズしました。インデックスを作成する Web ページ全体を受け取らせないように除外するユーザー エージェントを指定できます。つまり、除外対象として指定したユーザー エージェントが InfoPath フォームを検出すると、フォームは、Web ページ全体ではなく XML ファイルとして返されます。これにより InfoPath フォームのインデックス作成の速度が上がります。|
 |DefaultLanguageChangedInTermStore*|用語ストアで変更された言語設定。|
 |DelegateModified|ユーザーが Project Web App でセキュリティの代理人を作成または変更しました。|
 |DelegateRemoved|ユーザーが Project Web App でセキュリティの代理人を削除しました。|
-|DeleteSSOApplication*|SSO アプリケーションが削除されました。|
-|eDiscoveryHoldApplied*|インプレース ホールドが、コンテンツ ソースに置かれました。インプレース ホールドは、SharePoint で (電子情報開示センターなどの) 電子情報開示サイト コレクションを使用して管理されます。|
-|eDiscoveryHoldRemoved*|インプレース ホールドが、コンテンツ ソースから削除されました。インプレース ホールドは、SharePoint で (電子情報開示センターなどの) 電子情報開示サイト コレクションを使用して管理されます。|
-|eDiscoverySearchPerformed*|電子情報開示検索は、SharePoint の電子情報開示サイト コレクションを使用して実行されました。|
+|DeleteSSOApplication|SSO アプリケーションが削除されました。|
+|eDiscoveryHoldApplied|インプレース ホールドが、コンテンツ ソースに置かれました。インプレース ホールドは、SharePoint で (電子情報開示センターなどの) 電子情報開示サイト コレクションを使用して管理されます。|
+|eDiscoveryHoldRemoved|インプレース ホールドが、コンテンツ ソースから削除されました。インプレース ホールドは、SharePoint で (電子情報開示センターなどの) 電子情報開示サイト コレクションを使用して管理されます。|
+|eDiscoverySearchPerformed|電子情報開示検索は、SharePoint の電子情報開示サイト コレクションを使用して実行されました。|
 |EngagementAccepted|ユーザーが Project Web App でリソースのエンゲージメントを承諾します。|
 |EngagementModified|ユーザーが Project Web App でリソースのエンゲージメントを変更します。|
 |EngagementRejected|ユーザーが Project Web App でリソースのエンゲージメントを拒否します。|
 |EnterpriseCalendarModified|ユーザーが Project Web App でエンタープライズ カレンダーをコピー、変更、または削除します。|
 |EntityDeleted|ユーザーが Project Web App でタイムシートを削除します。|
 |EntityForceCheckedIn|ユーザーが Project Web App で、予定表、ユーザー設定フィールド、またはルックアップ テーブルに対してチェックインを強制します。|
-|ExemptUserAgentSet*|グローバル管理者が、SharePoint 管理センターで適用除外ユーザー エージェントのリストにユーザー エージェントを追加しました。|
+|ExemptUserAgentSet|グローバル管理者が、SharePoint 管理センターで適用除外ユーザー エージェントのリストにユーザー エージェントを追加しました。|
 |FileAccessed|ユーザーまたはシステム アカウントは、SharePoint または OneDrive for Business サイトにあるファイルにアクセスします。システム アカウントが FileAccessed イベントを生成する場合もあります。|
-|FileCheckOutDiscarded*|ユーザーは、チェックアウトしたファイルを破棄します (または元に戻します)。つまり、チェックアウト時にファイルに加えた変更はすべて破棄され、ドキュメント ライブラリ内のドキュメントのバージョンには保存されないということです。|
-|FileCheckedIn*|ユーザーは、SharePoint または OneDrive for Business ドキュメント ライブラリからチェックアウトしたドキュメントをチェックインします。|
-|FileCheckedOut*|ユーザーは、SharePoint または OneDrive for Business ドキュメント ライブラリにあるドキュメントをチェックアウトします。共有しているドキュメントは、複数のユーザーがチェックアウトし、変更を加えることができます。|
+|FileCheckOutDiscarded|ユーザーは、チェックアウトしたファイルを破棄します (または元に戻します)。つまり、チェックアウト時にファイルに加えた変更はすべて破棄され、ドキュメント ライブラリ内のドキュメントのバージョンには保存されないということです。|
+|FileCheckedIn|ユーザーは、SharePoint または OneDrive for Business のドキュメント ライブラリからチェックアウトしたことをドキュメントで確認します。|
+|FileCheckedOut|ユーザーは、SharePoint または OneDrive for Business ドキュメント ライブラリにあるドキュメントをチェックアウトします。共有しているドキュメントは、複数のユーザーがチェックアウトし、変更を加えることができます。|
 |FileCopied|ユーザーは、SharePoint または OneDrive for Business サイトからドキュメントをコピーします。コピーしたファイルは、サイト上の別のフォルダーに保存できます。|
 |FileDeleted|ユーザーは、SharePoint または OneDrive for Business サイトからドキュメントを削除します。|
 |FileDeletedFirstStageRecycleBin|ユーザーが SharePoint または OneDrive for Business サイトのごみ箱からファイルを削除します。|
@@ -263,8 +261,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |FileRestored|ユーザーは、SharePoint または OneDrive for Business サイトのごみ箱からドキュメントを復元します。 |
 |FileSyncDownloadedFull|ユーザーは、同期関係を確立し、SharePoint または OneDrive for Business ドキュメント ライブラリから自分のコンピューターに初めてファイルを正常にダウンロードします。|
 |FileSyncDownloadedPartial|ユーザーは、SharePoint または OneDrive for Business ドキュメント ライブラリから、ファイルに加えたすべての変更内容を正常にダウンロードします。このイベントは、ドキュメント ライブラリ内のファイルに加えたすべての変更内容がユーザーのコンピューターにダウンロードされたことを示します。ドキュメント ライブラリは (FileSyncDownloadedFull イベントが示すとおり) ユーザーによって以前ダウンロードされているため、変更内容のみがダウンロードされました。|
-|FileSyncUploadedFull*|ユーザーは、同期関係を確立し、自分のコンピューターから SharePoint または OneDrive for Business ドキュメント ライブラリに初めてファイルを正常にアップロードします。|
-|FileSyncUploadedPartial*|ユーザーは、SharePoint または OneDrive for Business ドキュメント ライブラリにあるファイルに、変更内容を正常にアップロードします。このイベントは、ドキュメント ライブラリからダウンロードしたローカル バージョンのファイルに加えた変更内容が、ドキュメント ライブラリに正常にアップロードされたことを示します。ファイルは (FileSyncUploadedFull イベントが示すとおり) ユーザーによって以前にアップロードされているため、変更内容のみがアップロードされます。|
+|FileSyncUploadedFull|ユーザーは、同期関係を確立し、自分のコンピューターから SharePoint または OneDrive for Business ドキュメント ライブラリに初めてファイルを正常にアップロードします。|
+|FileSyncUploadedPartial|ユーザーは、SharePoint または OneDrive for Business ドキュメント ライブラリにあるファイルに、変更内容を正常にアップロードします。このイベントは、ドキュメント ライブラリからダウンロードしたローカル バージョンのファイルに加えた変更内容が、ドキュメント ライブラリに正常にアップロードされたことを示します。ファイルは (FileSyncUploadedFull イベントが示すとおり) ユーザーによって以前にアップロードされているため、変更内容のみがアップロードされます。|
 |FileUploaded|ユーザーは、SharePoint または OneDrive for Business サイトにあるフォルダーにドキュメントをアップロードします。 |
 |FileViewed|このイベントは、FileAccessed イベントに置き換えられており、推奨されていません。|
 |FolderCopied|ユーザーがフォルダーを SharePoint または OneDrive for Business サイトから SharePoint または OneDrive for Business の別の場所にコピーします。|
@@ -276,27 +274,27 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |FolderMoved|ユーザーが SharePoint または OneDrive for Business サイトからフォルダーを移動します。|
 |FolderRenamed|ユーザーが SharePoint または OneDrive for Business サイトのフォルダーの名前を変更します。|
 |FolderRestored|ユーザーが SharePoint または OneDrive for Business サイトのごみ箱からフォルダーを復元します。|
-|GroupAdded*|サイト管理者または所有者は、SharePoint または OneDrive for Business のグループを作成するか、グループが作成されることになるタスクを実行します。たとえば、ユーザーがファイルを共有するためのリンクを初めて作成すると、システム グループがユーザーの OneDrive for Business に追加されます。ユーザーが共有ファイルの編集許可があるリンクを作成したときにも、このイベントになる場合があります。|
-|GroupRemoved*|ユーザーは、SharePoint または OneDrive for Business サイトからグループを削除します。 |
-|GroupUpdated*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトのグループの設定を変更します。これには、グループの名前、グループ メンバーシップを表示または編集できるユーザー、およびメンバーシップ要求を処理する方法の変更を含めることができます。|
-|LanguageAddedToTermStore*|用語ストアに言語が追加されました。|
-|LanguageRemovedFromTermStore*|用語ストアから言語が削除されました。|
-|LegacyWorkflowEnabledSet*|サイト管理者または所有者は、SharePoint ワークフロー タスク コンテンツ タイプをサイトに追加します。グローバル管理者は、SharePoint 管理センターで組織全体のワークフローを有効にすることもできます。|
+|GroupAdded|サイト管理者または所有者は、SharePoint または OneDrive for Business のグループを作成するか、グループが作成されることになるタスクを実行します。たとえば、ユーザーがファイルを共有するためのリンクを初めて作成すると、システム グループがユーザーの OneDrive for Business に追加されます。ユーザーが共有ファイルの編集許可があるリンクを作成したときにも、このイベントになる場合があります。|
+|GroupRemoved|ユーザーは、SharePoint または OneDrive for Business のサイトからグループを削除します。 |
+|GroupUpdated|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトのグループの設定を変更します。これには、グループの名前、グループ メンバーシップを表示または編集できるユーザー、およびメンバーシップ要求を処理する方法の変更を含めることができます。|
+|LanguageAddedToTermStore|用語ストアに言語が追加されました。|
+|LanguageRemovedFromTermStore|用語ストアから言語が削除されました。|
+|LegacyWorkflowEnabledSet|サイト管理者または所有者は、SharePoint ワークフロー タスク コンテンツ タイプをサイトに追加します。グローバル管理者は、SharePoint 管理センターで組織全体のワークフローを有効にすることもできます。|
 |LookAndFeelModified|ユーザーがサイド リンク バー、ガント チャートの書式、またはグループの形式を変更します。 または、ユーザーが Project Web App でビューを作成、変更、または削除します。|
 |ManagedSyncClientAllowed|ユーザーが SharePoint または OneDrive for Business サイトとの同期関係を正常に確立します。 ユーザーのコンピューターが、組織内のドキュメント ライブラリにアクセスできるドメインのリスト (宛先セーフ リストと呼ばれる) に追加されているドメインのメンバーであるため、同期関係は成功しました。 詳細については、「[SharePoint Online PowerShell を使用する](https://go.microsoft.com/fwlink/p/?LinkID=534609)」を参照し、宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にしてください。|
-|MaxQuotaModified*|サイトの最大クォータは変更されています。|
-|MaxResourceUsageModified*|サイトの最大許容リソース配分状況は変更されています。|
-|MySitePublicEnabledSet*|SharePoint 管理者によって、ユーザーが公開 MySite を持てるようにするフラグが設定されています。|
-|NewsFeedEnabledSet*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトの RSS フィードを有効にします。グローバル管理者は、SharePoint 管理センターで組織全体の RSS フィードを有効にできます。|
-|ODBNextUXSettings*|OneDrive for Business 用の新しい UI が使用可能になっています。|
-|OfficeOnDemandSet*|サイト管理者は、Office オンデマンドを有効にします。これによりユーザーは、Office デスクトップ アプリケーションの最新バージョンにアクセスできます。Office オンデマンドは Office SharePoint 管理センターで有効にされ、インストール済みのすべての Office アプリケーションを含む Office 365 サブスクリプションを必要とします。|
+|MaxQuotaModified|サイトに割り当てられた上限が変更されています。|
+|MaxResourceUsageModified|サイトのリソース使用量の上限が変更されています。|
+|MySitePublicEnabledSet|SharePoint 管理者によって、ユーザーが公開 MySite を持てるようにフラグが設定されています。|
+|NewsFeedEnabledSet|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトの RSS フィードを有効にします。グローバル管理者は、SharePoint 管理センターで組織全体の RSS フィードを有効にできます。|
+|ODBNextUXSettings|OneDrive for Business 用の新しい UI が使用可能になっています。|
+|OfficeOnDemandSet|サイト管理者は、Office オンデマンドを有効にします。これによりユーザーは、Office デスクトップ アプリケーションの最新バージョンにアクセスできます。Office オンデマンドは Office SharePoint 管理センターで有効にされ、インストール済みのすべての Office アプリケーションを含む Office 365 サブスクリプションを必要とします。|
 |PageViewed|ユーザーが SharePoint または OneDrive for Business サイトにあるページを表示します。 これには、SharePoint サイトまたは One Drive for Business サイトのドキュメント ライブラリのファイルをブラウザーで表示することは含まれません。|
-|PeopleResultsScopeSet*|サイト管理者は、SharePoint サイトの人の検索の結果ソースを作成または変更します。|
+|PeopleResultsScopeSet|サイト管理者は、SharePoint サイトの人の検索の結果ソースを作成または変更します。|
 |PermissionSyncSettingModified|ユーザーが Project Web App でプロジェクトのアクセス許可の同期設定を変更します。|
 |PermissionTemplateModified|ユーザーが Project Web App で、アクセス許可テンプレートを作成、変更、または削除します。|
 |PortfolioDataAccessed|ユーザーが Project Web App で、ポートフォリオのコンテンツ (ドライバー ライブラリ、ドライバーの優先順位付け、ポートフォリオ分析) にアクセスします。|
 |PortfolioDataModified|ユーザーが Project Web App で、ポートフォリオのデータ (ドライバー ライブラリ、ドライバーの優先順位付け、ポートフォリオ分析) を作成、変更、または削除します。|
-|PreviewModeEnabledSet*|サイト管理者は、SharePoint サイトのドキュメント プレビューを有効にします。|
+|PreviewModeEnabledSet|サイト管理者は、SharePoint サイトのドキュメント プレビューを有効にします。|
 |ProjectAccessed|ユーザーが Project Web App でプロジェクトのコンテンツにアクセスします。|
 |ProjectCheckedIn|ユーザーが Project Web App からチェックアウトしたプロジェクトをチェックインします。|
 |ProjectCheckedOut|ユーザーが Project Web App にあるプロジェクトをチェックアウトします。 ユーザーが開く権限を持つプロジェクトをチェックアウトして、変更することができます。|
@@ -309,8 +307,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |PWASettingsAccessed|ユーザーが CSOM を使用して、Project Web App の設定にアクセスします。|
 |PWASettingsModified|ユーザーが Project Web App の構成を変更します。|
 |QueueJobStateModified|ユーザーが Project Web App でキュー ジョブをキャンセルまたは再開します。|
-|QuotaWarningEnabledModified*|ストレージ クォータ警告が変更されました。|
-|RenderingEnabled*|ブラウザー対応フォーム テンプレートが、InfoPath フォーム サービスでレンダリングされます。|
+|QuotaWarningEnabledModified|ストレージ クォータ警告が変更されました。|
+|RenderingEnabled|ブラウザー対応フォーム テンプレートが、InfoPath フォーム サービスでレンダリングされます。|
 |ReportingAccessed|ユーザーが Project Web App でレポートのエンドポイントにアクセスしました。|
 |ReportingSettingModified|ユーザーが Project Web App でレポートの構成を変更します。|
 |ResourceAccessed|ユーザーが Project Web App でエンタープライズ リソースのコンテンツにアクセスします。|
@@ -324,26 +322,26 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |ResourcePlanModified|ユーザーが Project Web App でリソース計画を変更します。|
 |ResourcePlanPublished|ユーザーが Project Web App でリソース計画を公開します。|
 |ResourceRedacted|ユーザーが Project Web App でエンタープライズ リソースを編集し、すべての個人情報を削除します。|
-|ResourceWarningEnabledModified*|リソース クォータ警告が変更されました。|
-|SSOGroupCredentialsSet*|Secure Store Service でグループ資格情報が設定されました。|
-|SSOUserCredentialsSet*|Secure Store Service でユーザー資格情報が設定されました。|
-|SearchCenterUrlSet*|検索センターの URL が設定されました。|
-|SecondaryMySiteOwnerSet*|ユーザーがその MySite に代理所有者を追加しました。|
+|ResourceWarningEnabledModified|リソース クォータ警告が変更されました。|
+|SSOGroupCredentialsSet|Secure Store Service でグループ資格情報が設定されました。|
+|SSOUserCredentialsSet|Secure Store Service でユーザー資格情報が設定されました。|
+|SearchCenterUrlSet|検索センターの URL が設定されました。|
+|SecondaryMySiteOwnerSet|ユーザーがその MySite に代理所有者を追加しました。|
 |SecurityCategoryModified|ユーザーが Project Web App で、セキュリティのカテゴリを作成、変更、または削除します。|
 |SecurityGroupModified|ユーザーが Project Web App で、セキュリティ グループを作成、変更、または削除します。|
-|SendToConnectionAdded*|グローバル管理者は、SharePoint 管理センターの [レコード管理] ページで、新しい [送信先] 接続を作成します。[送信先] 接続は、ドキュメント リポジトリまたはレコード センターの設定を指定します。[送信先] 接続を作成すると、コンテンツ オーガナイザーにより、指定された場所にドキュメントを送信できます。|
-|SendToConnectionRemoved*|グローバル管理者は、SharePoint 管理センターの [レコード管理] ページで、[送信先] 接続を削除します。|
+|SendToConnectionAdded|グローバル管理者は、SharePoint 管理センターの [レコード管理] ページで、新しい [送信先] 接続を作成します。[送信先] 接続は、ドキュメント リポジトリまたはレコード センターの設定を指定します。[送信先] 接続を作成すると、コンテンツ オーガナイザーにより、指定された場所にドキュメントを送信できます。|
+|SendToConnectionRemoved|グローバル管理者は、SharePoint 管理センターの [レコード管理] ページで、[送信先] 接続を削除します。|
 |SharedLinkCreated|ユーザーは、SharePoint または OneDrive for Business で共有ファイルへのリンクを作成します。このリンクは、共有ファイルにアクセスできるように他のユーザーに送信できます。ユーザーは、共有ファイルの表示と編集を許可するリンク、またはファイルの表示だけを許可するリンクの、2 種類のリンクを作成できます。|
-|SharedLinkDisabled*|ユーザーは、ファイルを共有するために作成されたリンクを (完全に) 無効にします。|
+|SharedLinkDisabled|ユーザーは、ファイルを共有するために作成されたリンクを (完全に) 無効にします。|
 |SharingInvitationAccepted*|User accepts an invitation to share a file or folder. This event is logged when a user shares a file with other users.|
-|SharingRevoked*|ユーザーは、他のユーザーと以前に共有していたファイルまたはフォルダーを共有解除します。このイベントは、ユーザーが他のユーザーとのファイルの共有を停止すると記録されます。|
+|SharingRevoked|ユーザーは、他のユーザーと以前に共有していたファイルまたはフォルダーを共有解除します。このイベントは、ユーザーが他のユーザーとのファイルの共有を停止すると記録されます。|
 |SharingSet|ユーザーは、SharePoint または OneDrive for Business にあるファイルまたはフォルダーを、組織内の他のユーザーと共有します。|
-|SiteAdminChangeRequest*|ユーザーが、SharePoint サイト コレクションのサイト コレクション管理者として追加されるように要求します。サイト コレクション管理者は、サイト コレクションとすべてのサブサイトのフル コントロール権限を持ちます。|
+|SiteAdminChangeRequest|ユーザーが、SharePoint サイト コレクションのサイト コレクション管理者として追加されるように要求します。サイト コレクション管理者は、サイト コレクションとすべてのサブサイトのフル コントロール権限を持ちます。|
 |SiteCollectionAdminAdded*|サイト コレクション管理者または所有者は、ユーザーを SharePoint または OneDrive for Business サイトのサイト コレクション管理者として追加します。サイト コレクション管理者は、サイト コレクションとすべてのサブサイトのフル コントロール権限を持ちます。|
-|SiteCollectionCreated*| グローバル管理者は、SharePoint 組織に新しいサイト コレクションを作成します。|
-|SiteRenamed*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトの名前を変更します。|
+|SiteCollectionCreated| グローバル管理者は、あなたはのSharePoint 組織に新しいサイトコレクションを作成します。|
+|SiteRenamed|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトの名前を変更します。|
 |StatusReportModified|ユーザーが Project Web App で、進捗レポートを作成、変更、または削除します。|
-|SyncGetChanges*|ユーザーがドキュメント ライブラリ内のファイルに加えたすべての変更内容を自分のコンピューターに同期するために、SharePoint または OneDrive for Business のアクション トレイにある **[同期]** をクリックします。|
+|SyncGetChanges|ユーザーがドキュメント ライブラリ内のファイルに加えたすべての変更内容を自分のコンピューターに同期するために、SharePoint または OneDrive for Business のアクション トレイにある **[同期]** をクリックします。|
 |TaskStatusAccessed|ユーザーが Project Web App で、1 つまたは複数のタスクの状態にアクセスします。|
 |TaskStatusApproved|ユーザーが Project Web App で、1 つまたは複数のタスクの状態の更新を承認します。|
 |TaskStatusRejected|ユーザーが Project Web App で、1 つまたは複数のタスクの状態の更新を拒否します。|
@@ -355,21 +353,15 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |TimesheetSaved|ユーザーが Project Web App でタイムシートを保存します。|
 |TimesheetSubmitted|ユーザーが Project Web App で状態のタイムシートを送信します。|
 |UnmanagedSyncClientBlocked|ユーザーは、組織のドメインのメンバーではないコンピューター、または組織のドキュメント ライブラリにアクセスできるものの、ドメインのリスト (宛先セーフ リスト) に追加されていないドメインのメンバーであるコンピューターから、SharePoint または OneDrive for Business サイトとの同期関係を確立しようとします。 同期関係は許可されていません。ユーザーのコンピューターは、ドキュメント ライブラリ上のファイルの同期、ダウンロード、アップロードがブロックされています。 この機能については、「[Windows PowerShell コマンドレットを使用して宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にする](https://docs.microsoft.com/powershell/module/sharepoint-online/index?view=sharepoint-ps)」を参照してください。|
-|UpdateSSOApplication*|ターゲット アプリケーションが Secure Store Service で更新されました。|
-|UserAddedToGroup*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループにユーザーを追加します。ユーザーをグループに追加すると、そのユーザーにはグループに割り当てられたアクセス許可が付与されます。 |
-|UserRemovedFromGroup*|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループからユーザーを削除します。削除されると、そのユーザーにはグループに割り当てられたアクセス許可は付与されなくなります。 |
+|UpdateSSOApplication|対象アプリケーションが Secure Store Service で更新されました。|
+|UserAddedToGroup|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループにユーザーを追加します。ユーザーをグループに追加すると、そのユーザーにはグループに割り当てられたアクセス許可が付与されます。 |
+|UserRemovedFromGroup|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループからユーザーを削除します。削除されると、そのユーザーにはグループに割り当てられたアクセス許可は付与されなくなります。 |
 |WorkflowModified|ユーザーが Project Web App で、エンタープライズ プロジェクトの種類、ワークフローのフェーズ、またはステージを作成、変更、または削除します。|
 |||||
-
-
-> [!NOTE] 
-> *この操作はプレビュー段階です。
 
 ## <a name="sharepoint-file-operations"></a>SharePoint ファイルの操作
 
 「[セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)」の「ファイルとフォルダーのアクティビティ」セクションにリストされているファイル関連 SharePoint イベントは、このスキーマを使用します。
-
-
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -384,13 +376,10 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |SharingType|Edm.String|いいえ|リソースを共有したユーザーに割り当てられているアクセス許可の種類。このユーザーは、_UserSharedWith_ パラメーターにより識別されます。|
 |||||
 
-
 ## <a name="sharepoint-sharing-schema"></a>SharePoint 共有スキーマ
 
  ファイル共有関連の SharePoint イベント。 これは、ユーザーが別のユーザーに何らかの影響があるアクションを取るという点で、ファイル関連イベントやフォルダー関連イベントとは異なります。 SharePoint 共有スキーマについては、「[Office 365 監査ログで共有監査を使う](https://docs.microsoft.com/microsoft-365/compliance/use-sharing-auditing
 )」を参照してください。
-
-
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -399,11 +388,9 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |EventData|XML コード|いいえ|グループへのユーザーの追加や編集アクセス許可の付与などの、発生した共有アクションに関する追加情報を伝達します。|
 |||||
 
-
 ## <a name="sharepoint-schema"></a>SharePoint スキーマ
 
 「[セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)」にリストされている SharePoint イベント (ファイルおよびフォルダー イベントを除く) は、このスキーマを使用します。
-
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -491,7 +478,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="exchange-admin-schema"></a>Exchange Admin schema
 
-
 |**パラメーター**|**型**|**必須**|**説明**|
 |:-----|:-----|:-----|:-----|
 |ModifiedObjectResolvedName|Edm.String|いいえ|これはコマンドレットによって変更されたオブジェクトのユーザー フレンドリ名です。これはコマンドレットによるオブジェクトの変更の場合にのみ記録されます。|
@@ -503,7 +489,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |||||
 
 ## <a name="exchange-mailbox-schema"></a>Exchange メールボックス スキーマ
-
 
 |**パラメーター**|**型**|**必須**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -529,7 +514,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 #### <a name="logontype"></a>LogonType
 
-
 |**値**|**メンバー名**|**説明**|
 |:-----|:-----|:-----|
 |0|Owner|メールボックス所有者。|
@@ -542,7 +526,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |||||
 
 ### <a name="exchangemailboxauditgrouprecord-schema"></a>ExchangeMailboxAuditGroupRecord スキーマ
-
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -557,9 +540,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |AffectedItems|Collection(Self.[ExchangeItem](#exchangeitem-complex-type))|いいえ|グループ内の各項目についての情報。|
 |||||
 
-
 ### <a name="exchangemailboxauditrecord-schema"></a>ExchangeMailboxAuditRecord スキーマ
-
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -573,7 +554,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ### <a name="exchangeitem-complex-type"></a>ExchangeItem 複合型
 
-
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |ID|Edm.String|はい|ストア ID。|
@@ -584,16 +564,13 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ### <a name="exchangefolder-complex-type"></a>ExchangeFolder 複合型
 
-
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |ID|Edm.String|はい|フォルダー オブジェクトのストアの ID。|
 |Path|Edm.String|いいえ|アクセスされたメッセージが置かれているメールボックス フォルダーの名前。|
 |||||
 
-
 ## <a name="azure-active-directory-base-schema"></a>Azure Active Directory 基本スキーマ
-
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -614,7 +591,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="azure-active-directory-account-logon-schema"></a>Azure Active Directory アカウント ログオン スキーマ
 
-
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |アプリケーション|Edm.String|いいえ|Office 15 などの、アカウント ログイン イベントをトリガーするアプリケーション。|
@@ -623,9 +599,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |UserDomain|Edm.String|はい|テナント ID 情報 (TII)。|
 |||||
 
-
 ### <a name="enum-credentialtype---type-edmint32"></a>列挙:CredentialType - タイプ:Edm.Int32
-
 
 |**値**|**メンバー名**|**説明**|
 |:-----|:-----|:-----|
@@ -643,7 +617,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ### <a name="enum-logintype---type-edmint32"></a>列挙:LoginType - タイプ:Edm.Int32
 
-
 |**値**|**メンバー名**|**説明**|
 |:-----|:-----|:-----|
 |-1|Other|その他の i タイプ。|
@@ -653,7 +626,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |||||
 
 ### <a name="enum-authenticationmethod---type-edmint32"></a>列挙:AuthenticationMethod - タイプ:Edm.Int32
-
 
 |**値**|**メンバー名**|**説明**|
 |:-----|:-----|:-----|
@@ -679,9 +651,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |19|OneTimeCode|認証方法は、ワンタイム・コードです。|
 |||||
 
-
 ## <a name="azure-active-directory-schema"></a>Azure Active Directory スキーマ
-
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -696,7 +666,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |||||
 
 ### <a name="complex-type-identitytypevaluepair"></a>複合型 IdentityTypeValuePair
-
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -717,7 +686,6 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |SPN|Office 365 サービスでアクションが実行される場合、サービス プリンシパルの ID。|
 |UPN|ユーザー プリンシパル名。|
 |||||
-
 
 ## <a name="azure-active-directory-secure-token-service-sts-logon-schema"></a>Azure Active Directory の Secure Token Service (STS) ログオン スキーマ
 
@@ -765,7 +733,6 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 |UniqueId|Edm.String|はい|ファイルを識別する GUID。|
 |LastModifiedTime|Edm.DateTime|はい|ドキュメントの最終更新日時に関する UTC の Timestamp。|
 |||||
-
 
 ### <a name="exchangemetadata-complex-type"></a>ExchangeMetadata 複合型
 
@@ -822,8 +789,9 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 |SensitiveInformationDetections|Self.SensitiveInformationDetections|いいえ|詳細 (一致した値と一致した値のコンテキスト) のある機密情報データを含むオブジェクトの配列。|
 |||||
 
-### <a name="sensitiveinformationdetections-complex-type"></a>SensitiveInformationDetections complex type 
-DLP 機密データは、「DLP 機密データの読み取り」アクセス許可が付与されたユーザーが、アクティビティ フィード API でのみ利用できます。 
+### <a name="sensitiveinformationdetections-complex-type"></a>SensitiveInformationDetections complex type
+
+DLP 機密データは、「DLP 機密データの読み取り」アクセス許可が付与されたユーザーが、アクティビティ フィード API でのみ利用できます。
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -906,91 +874,6 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |VersionId|Edm.Int64|いいえ|操作中のファイルのバージョン ID。|
 |||||
 
-## <a name="sway-schema"></a>Sway スキーマ
-
-「[Office 365 プロテクション センターでの監査ログの検索](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US)」にリストされている Sway イベント (ファイルおよびフォルダー イベントを除く) は、このスキーマを使用します。
-
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
-|:-----|:-----|:-----|:-----|
-|ObjectType|Self.[ObjectType](#objecttype)|いいえ|トリガーされたイベントのアクセス ポイント。アクセス ポイントには以下が含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Sway</p></li><li><p>ホスト内に埋め込まれた Sway。</p></li><li><p>Office 365 管理ポータル内の Sway 設定。</p></li></ul>|
-|エンドポイント|Self.[Endpoint](#endpoint)|いいえ|トリガーされたイベントの Sway クライアント エンドポイント。Sway クライアント エンドポイントには、Web、iOS、Windows、または Android を使用できます。 |
-|BrowserName|Edm.String|いいえ|トリガーされたイベントの Sway にアクセスするために使用するブラウザー。 |
-|DeviceType|Self.[DeviceType](#devicetype)|いいえ|トリガーされたイベントの Sway にアクセスするために使用するデバイスの種類。デバイスの種類は、デスクトップ、モバイル、またはタブレットのいずれかにできます。|
-|SwayLookupId|Edm.String|いいえ|Sway ID。 |
-|SiteUrl|Edm.String|いいえ|Sway の URL。|
-|OperationResult|Self.[OperationResult](#operationresult)|いいえ|成功または失敗のいずれか。|
-|||||
-
-
-### <a name="enum-objecttype---type-edmint32"></a>列挙:ObjectType - タイプ: Edm.Int32
-
-#### <a name="objecttype"></a>ObjectType
-
-|**値**|**メンバー名**|**説明**|
-|:-----|:-----|:-----|
-|0|Sway|Sway からトリガーされたイベント。|
-|1|SwayEmbedded|ホストに埋め込まれている、Sway からトリガーされたイベント。|
-|2|SwayAdminPortal|イベントは、Office 365 管理ポータルの Sway サービス設定からトリガーされました。|
-|||||
-
-
-### <a name="enum-operationresult---type-edmint32"></a>列挙:OperationResult - タイプ: Edm.Int32
-
-#### <a name="operationresult"></a>OperationResult
-
-|**値**|**メンバー名**|**説明**|
-|:-----|:-----|:-----|
-|0|Succeeded|イベントは成功しました。|
-|1|Failed|イベントは失敗しました。|
-|||||
-
-
-### <a name="enum-endpoint---type-edmint32"></a>列挙:Endpoint - タイプ: Edm.Int32
-
-#### <a name="endpoint"></a>Endpoint
-
-|**値**|**メンバー名**|**説明**|
-|:-----|:-----|:-----|
-|0|SwayWeb|Sway の Web クライアントを使用してイベントがトリガーされました。|
-|1|SwayIOS|Sway の iOS クライアントを使用してイベントがトリガーされました。|
-|2|SwayWindows|Sway の Windows クライアントを使用してイベントがトリガーされました。|
-|3|SwayAndroid|Sway の Android クライアントを使用してイベントがトリガーされました。|
-|||||
-
-
-### <a name="enum-devicetype---type-edmint32"></a>列挙:DeviceType - タイプ: Edm.Int32
-
-#### <a name="devicetype"></a>DeviceType
-
-|**値**|**メンバー名**|**説明**|
-|:-----|:-----|:-----|
-|0|Desktop|イベントはデスクトップを使用してトリガーされました。|
-|1|Mobile|イベントはモバイル デバイスを使用してトリガーされました。|
-|2|Tablet|イベントはタブレット デバイスを使用してトリガーされました。|
-|||||
-
-### <a name="enum-swayauditoperation---type-edmint32"></a>列挙:SwayAuditOperation - タイプ: Edm.Int32
-
-#### <a name="swayauditoperation"></a>SwayAuditOperation
-
-|**値**|**メンバー名**|**説明**|
-|:-----|:-----|:-----|
-|1|Create|ユーザーは Sway を作成します。|
-|2|Delete|ユーザーは Sway を削除します。|
-|3|View|ユーザーは Sway を表示します。|
-|4|Edit|ユーザーは Sway を編集します。|
-|5|Duplicate|ユーザーは Sway を複製します。|
-|7|共有|ユーザーは Sway の共有を開始します。このイベントは、Sway 共有メニュー内で特定の共有先をクリックするユーザー アクションをキャプチャします。イベントでは、ユーザーが実際に共有アクションを最後まで実行して完了させるかどうかは示されません。|
-|8|ChangeShareLevel|ユーザーは Sway の共有のレベルを変更します。このイベントは、ユーザーによる、Sway に関連付けられている共有のスコープの変更をキャプチャします。たとえば、「組織内から」と比較して「パブリック」などへの変更です。|
-|9|RevokeShare|ユーザーは、アクセス権限の取り消しによって、Sway の共有を停止します。アクセス権限を取り消すと、Sway に関連付けられているリンクは変更されます。|
-|10|EnableDuplication|ユーザーは Sway を複製できます (既定ではオン)。|
-|11|DisableDuplication|ユーザーは Sway を複製できません (既定ではオフ)。|
-|12|ServiceOn|ユーザーは、Office 365 管理センターを使用して、組織全体で Sway を有効にします (既定ではオン)。|
-|13|ServiceOff|ユーザーは、Office 365 管理センターを使用して、組織全体で Sway を無効にします (既定ではオフ)。|
-|14|ExternalSharingOn|ユーザーは、Office 365 管理センターを使用して、組織全体で外部共有を有効にします。|
-|15|ExternalSharingOff|ユーザーは、Office 365 管理センターを使用して、組織全体で外部共有を無効にします。|
-|||||
-
 ## <a name="data-center-security-base-schema"></a>データ センター セキュリティ基本スキーマ
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
@@ -1002,12 +885,10 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 #### <a name="datacentersecurityeventtype"></a>DataCenterSecurityEventType
 
-
 |**メンバー名**|**説明**|
 |:-----|:-----|
 |DataCenterSecurityCmdletAuditEvent|これは、コマンドレット監査タイプ イベントの列挙型の値です。|
 |||
-
 
 ## <a name="data-center-security-cmdlet-schema"></a>データ センター セキュリティ コマンドレット スキーマ
 
@@ -1023,7 +904,6 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |ElevationDuration|Edm.Int32|はい|昇格がアクティブであった期間。|
 |GenericInfo|Edm.String|いいえ|コメントやその他の一般的な情報に使用されます。|
 |||||
-
 
 ## <a name="microsoft-teams-schema"></a>Microsoft Teams スキーマ
 
@@ -1045,7 +925,6 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |OldValue|Edm.String|いいえ|設定のイベントにのみ存在します。 設定の以前の値。|
 |NewValue|Edm.String|いいえ|設定のイベントにのみ存在します。 設定の新しい値。|
 ||||
-
 
 ### <a name="microsoftteamsmember-complex-type"></a>MicrosoftTeamsMember complex type
 
@@ -1074,7 +953,6 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |キー|Edm.String|いいえ|キーと値のペアのキー。|
 |値|Edm.String|いいえ|キーと値のペアの値。|
 |||||
-
 
 ### <a name="enum-addontype---type-edmint32"></a>列挙型: AddOnType - 型: Edm.Int32
 
@@ -1216,7 +1094,6 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |5|PendingDetonationPageOverride|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されましたが、ユーザーは URL に移動するためにオーバーライドしました。|
 |||||
 
-
 ### <a name="file-events"></a>ファイルのイベント
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
@@ -1262,17 +1139,17 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 現在のところ、自動調査のみがログに記録されます (手動で生成された調査のイベントは間もなく発生します)。次のステータス値がログに記録されます。
 
 - 調査の開始
-- 脅威は検出されませんでした 
+- 脅威は検出されませんでした
 - システムにより終了
-- 保留中のアクション 
-- 脅威が検出されました 
-- 修復済み 
-- 失敗 
-- スロットルで終了 
+- 保留中のアクション
+- 脅威が検出されました
+- 修復済み
+- 失敗
+- スロットルで終了
 - ユーザーにより終了
 - 実行中
 
-### <a name="main-investigation-schema"></a>主要な調査スキーマ 
+### <a name="main-investigation-schema"></a>主要な調査スキーマ
 
 |名前    |種類    |説明  |
 |----|----|----|
@@ -1308,7 +1185,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="entities"></a>Entities
 
-#### <a name="mailmessage-email"></a>MailMessage (電子メール) 
+#### <a name="mailmessage-email"></a>MailMessage (電子メール)
 
 |Field    |種類    |説明  |
 |----|----|----|

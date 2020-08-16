@@ -214,14 +214,14 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |AccessInvitationUpdated|SharePoint または OneDrive for Business サイトにある共有ファイルまたはフォルダーの表示または編集への招待を作成して送信したユーザーが、招待を再送します。|
 |AccessRequestApproved|SharePoint または OneDrive for Business のサイト管理者、サイト所有者、またはドキュメント所有者は、サイトまたはドキュメントにアクセスするユーザー要求を承認します。|
 |AccessRequestCreated|ユーザーは、アクセス許可がない SharePoint または OneDrive for Business のサイトまたはドキュメントへのアクセス権限を要求します。 |
-|AccessRequestRejected|SharePoint内のドキュメントやサイトの管理者または所有者が、サイトまたはドキュメントへのユーザーアクセスを拒否しています。|
+|AccessRequestRejected|SharePoint 内のドキュメントやサイトの管理者または所有者が、サイトまたはドキュメントへのユーザー アクセスを拒否しています。|
 |ActivationEnabled|ユーザーは、フォーム コードが含まれていないフォーム テンプレートをブラウザー対応にする、完全な信頼を要求する、モバイル デバイスでのレンダリングを有効にする、サーバー管理者が管理するデータ接続を使用する、などができます。|
 |AdministratorAddedToTermStore|用語ストア管理者が追加されました。|
 |AdministratorDeletedFromTermStore|用語ストア管理者が削除されました。|
 |AllowGroupCreationSet|サイト管理者またはサイト所有者は、許可が割り当てられたユーザーが SharePoint または OneDrive for Business サイトのグループを作成できる許可レベルを、それらのサイトに追加します。|
-|AppCatalogCreated|SharePoint環境でカスタムビジネスアプリを利用できるように、アプリカタログが作成されました。|
-|AuditPolicyRemoved|サイトコレクションのドキュメントライフサイクルポリシーが削除されました。|
-|AuditPolicyUpdate|サイトコレクションのドキュメントライフサイクルポリシーが更新されました。|
+|AppCatalogCreated|SharePoint 環境でカスタム ビジネス アプリを利用できるように、アプリ カタログが作成されました。|
+|AuditPolicyRemoved|サイト コレクションのドキュメント ライフサイクル ポリシーが削除されました。|
+|AuditPolicyUpdate|サイト コレクションのドキュメント ライフ サイクル ポリシーが更新されました。|
 |AzureStreamingEnabledSet|ビデオ ポータルの所有者が、Azure からのビデオ ストリーミングを許可されました。|
 |CollaborationTypeModified|サイト (イントラネット、エクストラネット、またはパブリックなど) で許可されているコラボレーションの種類が変更されました。|
 |ConnectedSiteSettingModified|ユーザーが Project Web App でプロジェクトとプロジェクト サイト間のリンクを作成、変更、または削除したか、ユーザーがリンク上の同期設定を変更します。|
@@ -338,7 +338,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |SharingSet|ユーザーは、SharePoint または OneDrive for Business にあるファイルまたはフォルダーを、組織内の他のユーザーと共有します。|
 |SiteAdminChangeRequest|ユーザーが、SharePoint サイト コレクションのサイト コレクション管理者として追加されるように要求します。サイト コレクション管理者は、サイト コレクションとすべてのサブサイトのフル コントロール権限を持ちます。|
 |SiteCollectionAdminAdded*|サイト コレクション管理者または所有者は、ユーザーを SharePoint または OneDrive for Business サイトのサイト コレクション管理者として追加します。サイト コレクション管理者は、サイト コレクションとすべてのサブサイトのフル コントロール権限を持ちます。|
-|SiteCollectionCreated| グローバル管理者は、あなたはのSharePoint 組織に新しいサイトコレクションを作成します。|
+|SiteCollectionCreated| グローバル管理者は、あなたの SharePoint 組織に新しいサイト コレクションを作成します。|
 |SiteRenamed|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトの名前を変更します。|
 |StatusReportModified|ユーザーが Project Web App で、進捗レポートを作成、変更、または削除します。|
 |SyncGetChanges|ユーザーがドキュメント ライブラリ内のファイルに加えたすべての変更内容を自分のコンピューターに同期するために、SharePoint または OneDrive for Business のアクション トレイにある **[同期]** をクリックします。|

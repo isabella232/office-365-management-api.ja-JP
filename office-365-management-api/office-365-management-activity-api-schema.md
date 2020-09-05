@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: f4c35fc343593c0d61ae29b43a58db66ebf2185f
-ms.sourcegitcommit: 1047f1e1d17d873918790ff1fc6d7adcc75ab2bc
+ms.openlocfilehash: 01ca346835edc94007d90db0a85d20a9bc5b945e
+ms.sourcegitcommit: a4ba198b7417e49880905e49a38d0bd1f4ad8802
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "46672893"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "47334882"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -50,7 +50,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[データ センター セキュリティ コマンドレット スキーマ](#data-center-security-cmdlet-schema)|データ センター セキュリティ基本スキーマを、すべてのデータ センター セキュリティ コマンドレット監査データに固有のプロパティで拡張します。|
 |[Microsoft Teams スキーマ](#microsoft-teams-schema)|共通スキーマを、すべての Microsoft Teams イベントに固有のプロパティで拡張します。|
 |[Office 365 Advanced Threat Protection および脅威の調査と対応スキーマ](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Office 365 Advanced Threat Protection および脅威の調査と対応のデータに固有のプロパティを使用して、共通スキーマを拡張します。|
-|[自動調査および対応イベント スキーマ](#automated-investigation-and-response-events-in-office-365)|Office 365 自動調査および応答 (AIR) イベントに固有のプロパティを使用して、共通スキーマを拡張します。|
+|[自動調査および対応イベント スキーマ](#automated-investigation-and-response-events-in-office-365)|Office 365 自動調査および応答 (AIR) イベントに固有のプロパティを使用して、共通スキーマを拡張します。 例については、「[Tech Community のブログ: Office 365 ATP と O365 管理 API を使用して SOC の有効性を向上させる](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185)」を参照してください。|
 |[検疫イベントスキーマ](#hygiene-events-schema)|Exchange Online Protection および Advanced Threat Protection　のイベントに固有のプロパティを使用して、共通スキーマを拡張します。|
 |[Power BI スキーマ](#power-bi-schema)|共通スキーマを、すべての Power BI イベントに固有のプロパティで拡張します。|
 |[Dynamics 365 スキーマ](#dynamics-365-schema)|Dynamics 365 イベントに固有のプロパティを使用して共通スキーマを拡張します。|
@@ -497,7 +497,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |MailboxGuid|Edm.String|いいえ|アクセスされたメールボックスの Exchange GUID。|
 |MailboxOwnerUPN|Edm.String|いいえ|アクセスされたメールボックスの所有者の電子メール アドレス。|
 |MailboxOwnerSid|Edm.String|いいえ|メールボックス所有者の SID。|
-|MailboxOwnerMasterAccountSid|Edm.String|いいえ|メールボックス所有者のアカウントのマスター アカウント SID。|
+|MailboxOwnerMasterAccountSid|Edm.String|不要|メールボックス所有者のアカウントのマスター アカウント SID。|
 |LogonUserSid|Edm.String|いいえ|操作を実行したユーザーの SID。|
 |LogonUserDisplayName|Edm.String|いいえ|操作を実行したユーザーのユーザー フレンドリ名。|
 |ExternalAccess|Edm.Boolean|はい|これは、ログオン ユーザーのドメインがメールボックス所有者のドメインと異なる場合は、true です。|

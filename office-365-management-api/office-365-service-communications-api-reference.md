@@ -6,25 +6,25 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 36ef8e548b535fc97f2b1b6d4347184fa18d6ceb
-ms.sourcegitcommit: 78e76d5d1c3e40907ea0936a7c3f016eed4ebd3c
+ms.openlocfilehash: e6024c19457796fb6f3fb94a62a013cc86a95072
+ms.sourcegitcommit: a4ba198b7417e49880905e49a38d0bd1f4ad8802
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "41650851"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "47334889"
 ---
 # <a name="office-365-service-communications-api-reference"></a>Office 365 サービス通信 API リファレンス
 
 Office 365 サービス通信 API V2 を使用して、次のデータにアクセスできます。
 
 - **Get Services**:サブスクライブしているサービスのリストを取得します。
-    
+
 - **Get Current Status**: 現在進行中のサービス インシデントのリアルタイム ビューを取得します。
-    
+
 - **Get Historical Status**: サービス インシデントの過去のビューを取得します。
-    
+
 - **Get Messages**: インシデントとメッセージ センター通信を検索します。
-    
+
 現在、Office 365 サービス通信 API には、Office 365、Yammer、Dynamics CRM および Microsoft Intune のクラウド サービスのデータが含まれます。
 
 ## <a name="the-fundamentals"></a>基本事項
@@ -52,7 +52,6 @@ Authorization: Bearer {OAuth2 token}
 |**Accept (省略可能)**|以下が、受け入れられる応答の表記です。<br/>**application/json;odata.metadata=full**<br/>**application/json;odata.metadata=minimal**<br/>[ヘッダーが指定されていない場合の既定値] **application/json;odata.metadata=none**|
 |**Authorization (必須)**|要求の認証トークン (Bearer JWT Azure トークン)。|
 
-
 <br/>
 
 ### <a name="response-headers"></a>応答ヘッダー
@@ -79,7 +78,6 @@ Authorization: Bearer {OAuth2 token}
 <br/>
 
 以下に示すのは、Office 365 サービス通信 API の操作です。
-
 
 ## <a name="get-services"></a>Get Services
 
@@ -135,7 +133,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
     ]
 }
 ```
-
 
 ## <a name="get-current-status"></a>現在の状態の取得
 
@@ -267,21 +264,21 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 ### <a name="status-definitions"></a>状態の定義
 
-状態の定義には次の値が含まれます。 
+状態の定義には次の値が含まれます。
 
 - Investigating
 - ServiceDegradation
-- ServiceInterruption 
+- ServiceInterruption
 - RestoringService
 - ExtendedRecovery
+- InvestigationSuspended
 - ServiceRestored
-- PostIncidentReportPublished 
+- FalsePositive
+- PostIncidentReportPublished
 - VerifyingService
 - ServiceOperational
-- FalsePositive
 
 最新のリストおよびこれらの状態の定義の説明については、「[Office 365 サービスの正常性をチェックする方法](https://docs.microsoft.com/office365/enterprise/view-service-health#status-definitions)」を参照してください。
-
 
 ## <a name="get-historical-status"></a>Get Historical Status
 
@@ -483,4 +480,3 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
     } 
 }
 ```
-

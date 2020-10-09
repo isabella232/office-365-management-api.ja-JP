@@ -1,4 +1,5 @@
 ---
+ms.technology: o365-service-communications
 ms.TocTitle: Office 365 Management Activity API schema
 title: Office 365 管理アクティビティ API のスキーマ
 description: Office 365 管理アクティビティ API のスキーマは、共通スキーマと製品固有スキーマの 2 つのレイヤーでデータ サービスとして提供されます。
@@ -6,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 01ca346835edc94007d90db0a85d20a9bc5b945e
-ms.sourcegitcommit: a4ba198b7417e49880905e49a38d0bd1f4ad8802
+ms.openlocfilehash: c800a099dc102b36f938607599bd0c66ac007ccd
+ms.sourcegitcommit: ec60dbd5990cfc61b8c000b423e7ade25fa613a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "47334882"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "48397469"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -497,7 +498,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |MailboxGuid|Edm.String|いいえ|アクセスされたメールボックスの Exchange GUID。|
 |MailboxOwnerUPN|Edm.String|いいえ|アクセスされたメールボックスの所有者の電子メール アドレス。|
 |MailboxOwnerSid|Edm.String|いいえ|メールボックス所有者の SID。|
-|MailboxOwnerMasterAccountSid|Edm.String|不要|メールボックス所有者のアカウントのマスター アカウント SID。|
+|MailboxOwnerMasterAccountSid|Edm.String|いいえ|メールボックス所有者のアカウントのマスター アカウント SID。|
 |LogonUserSid|Edm.String|いいえ|操作を実行したユーザーの SID。|
 |LogonUserDisplayName|Edm.String|いいえ|操作を実行したユーザーのユーザー フレンドリ名。|
 |ExternalAccess|Edm.Boolean|はい|これは、ログオン ユーザーのドメインがメールボックス所有者のドメインと異なる場合は、true です。|
@@ -730,7 +731,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 |FilePathUrl|Edm.String|はい|文書の URL。|
 |DocumentLastModifier|Edm.String|はい|最後にドキュメントを変更したユーザー。|
 |DocumentSharer|Edm.String|はい|最後にドキュメントの共有を変更したユーザー。|
-|UniqueId|Edm.String|はい|ファイルを識別する GUID。|
+|UniqueId|Edm.String|必要|ファイルを識別する GUID。|
 |LastModifiedTime|Edm.DateTime|はい|ドキュメントの最終更新日時に関する UTC の Timestamp。|
 |||||
 

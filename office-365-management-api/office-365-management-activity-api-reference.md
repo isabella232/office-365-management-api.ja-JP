@@ -1,4 +1,5 @@
 ---
+ms.technology: o365-service-communications
 ms.TocTitle: Office 365 Management Activity API reference
 title: Office 365 管理アクティビティ API リファレンス
 description: Office 365 管理アクティビティ API は、Office 365 と Azure AD のアクティビティ ログから、ユーザー、管理者、システム、およびポリシー アクションとポリシー イベントについての情報を取得するために使用します。
@@ -6,12 +7,12 @@ ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 892dff36a9a7320bdfda4ba908581cb1e000c2b0
-ms.sourcegitcommit: a85b79e8586ae83ecbf30de808c4df90e839536b
+ms.openlocfilehash: 94879a2634396868248d3df6a6eb76b9931d9f65
+ms.sourcegitcommit: ec60dbd5990cfc61b8c000b423e7ade25fa613a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "46612303"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "48397427"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Office 365 管理アクティビティ API リファレンス
 

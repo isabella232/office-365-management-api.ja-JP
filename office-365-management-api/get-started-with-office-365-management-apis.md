@@ -1,4 +1,5 @@
 ---
+ms.technology: o365-service-communications
 ms.TocTitle: Get started with Office 365 Management APIs
 title: Office 365 Management API の使用を開始する
 description: この API では、Azure AD を使用してサービスへのアクセス権をアプリケーションに付与するための認証サービスを提供します。
@@ -6,12 +7,12 @@ ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c0c7f69fcb879879244b5e51768f91ea2472faad
-ms.sourcegitcommit: a85b79e8586ae83ecbf30de808c4df90e839536b
+ms.openlocfilehash: d11644a4a9985096c14ad4ae265471159243b65b
+ms.sourcegitcommit: ec60dbd5990cfc61b8c000b423e7ade25fa613a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "46612296"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "48397448"
 ---
 # <a name="get-started-with-office-365-management-apis"></a>Office 365 Management API の使用を開始する
 

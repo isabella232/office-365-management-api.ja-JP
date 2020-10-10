@@ -4,5 +4,4 @@
 ## [サービス通信 API](office-365-service-communications-api-reference.md)
 ## [管理アクティビティ API リファレンス](office-365-management-activity-api-reference.md)
 ## [管理アクティビティ API のスキーマ](office-365-management-activity-api-schema.md)
-## [管理アクティビティ API のトラブルシューティング](troubleshooting-the-office-365-management-activity-api.md)
-## [管理アクティビティ API についてよく寄せられる質問](office-365-management-activity-api-faq.md)
+## [管理アクティビティ API の FAQ とトラブルシューティング](troubleshooting-the-office-365-management-activity-api.md)

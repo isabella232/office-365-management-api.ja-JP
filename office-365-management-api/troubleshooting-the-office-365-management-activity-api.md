@@ -7,12 +7,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: a5661cd1650ac6412bf6723a5ffc27c3a81c11b1
-ms.sourcegitcommit: e7f345710dc63003704399419f784c4a9b5fc529
+ms.openlocfilehash: a65c8dff39d80b57b1c885639be2e228e8119cb7
+ms.sourcegitcommit: 263cfbc04033ea8a1d765215e8777739587818e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "48830477"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "49021010"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>Office 365 マネージメント アクティビティ API の FAQ とトラブルシューティング
 
@@ -25,7 +25,7 @@ Office 365 マネージメント アクティビティ API （ *統合監査 API
 マネージメント アクティビティ API を Office 365 サービス コミュニケーション API と混同しないでください。 マネージメント アクティビティ API は、各種のワークローでのエンド ユーザーのアクティビティを監査するためのものです。 サービス コミュニケーション API は、Office 365 で利用可能なサービス (Dynamics CRM や ID サービスなど) によって送信される状態やメッセージを監査するためのものです。
  
 > [!NOTE]
-> 現在、Office 365 マネージメント アクティビティ API を使用しているときに、Audit.AzureActiveDirectory コンテンツの種類のイベントを使用できない問題を調査しています。 この問題は 2020 年 10 月 26 日頃に始まりました。 Azure AD サインイン イベントは、この問題の影響を受けません。 問題が解決したら、更新プログラムを提供します。
+> 2020 年 10 月 22 日から 2020 年 11 月 6 日までの間に、Audit.AzureActiveDirectory コンテンツ タイプに属するイベントがOffice 365 マネージメント アクティビティ API を介して利用できないという問題がありました。 Azure AD サインイン イベントは、この問題の影響を受けませんでした。 影響期間中の不足しているイベントは、今後数日間で利用可能になり、2020 年 11 月 20 日までに完了すると予想されます。 場合によっては、2020 年 10 月 26 日から 2020 年 11 月 5 日までの間に生成されたイベントの重複イベントデータが発生することがあります。
 
 ## <a name="frequently-asked-questions-about-the-office-365-management-activity-api"></a>Office 365 マネージメント アクティビティ API についてよく寄せられる質問
 

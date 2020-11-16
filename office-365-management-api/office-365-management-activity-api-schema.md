@@ -104,8 +104,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |15|AzureActiveDirectoryStsLogon|Azure Active Directory の Secure Token Service (STS) ログオン イベント。|
 |16|SkypeForBusinessPSTNUsage|Skype for Business からの公衆交換電話網 (PSTN) イベント。|
 |17|SkypeForBusinessUsersBlocked|Skype for Business からのブロックされたユーザー イベント。|
-|18|SecurityComplianceCenterEOPCmdlet|セキュリティ センターとコンプライアンス センターの管理者アクション|
-|19|ExchangeAggregatedOperation|集約された Exchange メールボックス監査イベント。|
+|18|SecurityComplianceCenterEOPCmdlet|セキュリティ/コンプライアンス センターからの管理者アクション|
+|19|ExchangeAggregatedOperation|集計された Exchange メールボックス監査イベント。|
 |20|PowerBIAudit|Power BI イベント。|
 |21|CRM|Dynamics 365 イベント。|
 |22|Yammer|Yammer イベント。|
@@ -118,12 +118,12 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |31|AeD|Advanced eDiscovery イベント。|
 |32|MicrosoftStream|Microsoft Stream のイベント。|
 |33|ComplianceDLPSharePointClassification|SharePoint の DLP 分類に関連するイベント。|
-|34|ThreatFinder|Microsoft Defender for Office 365 のキャンペーン関連のイベント。|
+|34|ThreatFinder|Microsoft Defender for Office 365 からのキャンペーン関連のイベント。|
 |35|Project|Microsoft Project のイベント。|
 |36|SharePointListOperation|SharePoint リスト イベント。|
 |37|SharePointCommentOperation|SharePoint コメント イベント。|
 |38|DataGovernance|セキュリティ/コンプライアンス センターにおけるアイテム保持ポリシーと保持ラベルに関連するイベント|
-|39|Kaizala|Kaizala のイベント。|
+|39|Kaizala|Kaizala イベント。|
 |40|SecurityComplianceAlerts|セキュリティ/コンプライアンス アラートのシグナル。|
 |41|ThreatIntelligenceUrl|ブロック時の安全なリンクと Office 365 Advanced Threat Protection からのイベントの上書きブロック。|
 |42|SecurityComplianceInsights|Office 365 セキュリティおよびコンプライアンス センターの分析情報とレポートに関連するイベント。|
@@ -145,14 +145,14 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |58|HRSignal|インサイダー リスク管理ソリューションをサポートする HR データ信号に関連するイベント。|
 |59|MicrosoftTeamsDevice|Teams デバイス イベント。|
 |60|MicrosoftTeamsAnalytics|Teams 分析イベント。|
-|61|InformationWorkerProtection|危険にさらされたユーザー アラートに関連するイベント。|
-|62|Campaign|Microsoft Defender for Office 365 のメール キャンペーンのイベント。|
+|61|InformationWorkerProtection|侵害されたユーザーのアラートに関連するイベント。|
+|62|Campaign|Microsoft Defender for Office 365 からのメール キャンペーンのイベント。|
 |63|DLPEndpoint|エンドポイント DLP イベント。|
 |64|AIR 調査|自動インシデント応答 (AIR) イベント|
 |65|Quarantine|検疫イベント。|
 |66|MicrosoftForms|Microsoft Forms イベント。|
 |67|ApplicationAudit|アプリケーション監査イベント。|
-|68|ComplianceSupervisionExchange|コミュニケーションコンプライアンス違反言語モデルによって追跡されるイベント。|
+|68|ComplianceSupervisionExchange|コミュニケーション コンプライアンス違反言語モデルによって追跡されたイベント。|
 |69|CustomerKeyServiceEncryption|カスタマー キーの暗号化に関連するイベント。|
 |70|OfficeNative|Office ドキュメントに適用される機密ラベルに関連するイベント。|
 |71|MipAutoLabelSharePointItem|SharePoint での自動ラベル付けイベント。|
@@ -166,10 +166,10 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |82|SensitivityLabelPolicyMatch|機密ラベルでラベル付けされたファイルが開かれるか、名前が変更されたときに生成されるイベント。|
 |83|SensitivityLabelAction|機密ラベルがファイルに適用、更新、または削除されたときに生成されるイベント。|
 |84|SensitivityLabeledFileAction|機密ラベルでラベル付けされたファイルが開かれたとき、または名前が変更されたときに生成されるイベント。|
-|85|AttackSim|攻撃シミュレータ イベント。|
+|85|AttackSim|攻撃シミュレーター イベント。|
 |86|AirManualInvestigation|自動調査と応答 (AIR) での手動調査に関連するイベント。 |
 |87|SecurityComplianceRBAC|セキュリティとコンプライアンスの RBAC イベント。|
-|88|UserTraining|Microsoft Defender for Office365 での攻撃シミュレータ トレーニング イベント。|
+|88|UserTraining|Microsoft Defender for Office365 での攻撃シミュレーター トレーニング イベント。|
 |89|AirAdminActionInvestigation|自動調査と応答 (AIR) の管理アクションに関連するイベント。|
 |90|MSTIC|Microsoft Defender for Office365 の脅威インテリジェンス イベント。|
 |91|PhysicalBadgingSignal|インサイダー リスク管理ソリューションをサポートする物理バッジに関連するイベント。|
@@ -181,13 +181,13 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |98|MCASAlerts|Microsoft Cloud App Security によってトリガーされたアラートに対応するイベント。|
 |99|OnPremisesFileShareScannerDlp|ファイル共有の機密データのスキャンに関連するイベント。|
 |100|OnPremisesSharePointScannerDlp|SharePoint での機密データのスキャンに関連するイベント。|
-|101|ExchangeSearch|Outlook on the Web (OWA) を使用してメールボックスアイテムを検索することに関連するイベント。|
-|102|SharePointSearch|組織の SharePoint ホームサイトの検索に関連するイベント。|
+|101|ExchangeSearch|Outlook on the Web (OWA) を使用してメールボックス アイテムを検索することに関連するイベント。|
+|102|SharePointSearch|組織の SharePoint ホーム サイトの検索に関連するイベント。|
 |103|PrivacyInsights|プライバシー分析情報イベント。|
 |105|MyAnalyticsSettings|MyAnalytics イベント。|
 |106|SecurityComplianceUserChange|ユーザーの変更または削除に関連するイベント。|
 |107|ComplianceDLPExchangeClassification|Exchange DLP 分類イベント。|
-|109|MipExactDataMatch|完全一致 (EDM) 分類イベント。|
+|109|MipExactDataMatch|完全データ一致 (EDM) 分類イベント。|
 ||||
 
 ### <a name="enum-user-type---type-edmint32"></a>列挙値: User Type - 型: Edm.Int32
@@ -1189,17 +1189,17 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 [Office 365 の自動調査および応答 (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) イベントは、Office 365 Advanced Threat Protection Plan 2、または Office 365 E5 を含むサブスクリプションをお持ちの Office 365 のお客様が利用できます。 調査イベントは調査ステータスの変更に基づいてログに記録されます。 たとえば、管理者が [保留中のアクション] の調査ステータスを [完了] に変更する操作を行うと、イベントがログに記録されます。 
 
-現在のところ、自動調査のみがログに記録されます (手動で生成された調査のイベントは間もなく発生します)。次のステータス値がログに記録されます。
+現在のところ、自動調査のみがログに記録されます (手動で生成された調査のイベントのログへの記録は、間もなく開始されます)。次のステータス値がログに記録されます。
 
 - 調査が開始しました
 - 脅威は検出されませんでした
-- システムにより終了
+- システムによって終了されました
 - 保留中のアクション
 - 脅威が検出されました
 - 修復済み
 - 失敗しました
-- スロットルで終了しました
-- ユーザーにより終了しました
+- スロットルにより終了しました
+- ユーザーによって終了されました
 - 実行中
 
 ### <a name="main-investigation-schema"></a>主要な調査スキーマ

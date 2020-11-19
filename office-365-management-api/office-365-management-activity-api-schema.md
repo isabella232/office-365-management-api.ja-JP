@@ -7,27 +7,26 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c56a76a44972d2df4787aa4185300b2643db388a
-ms.sourcegitcommit: 263cfbc04033ea8a1d765215e8777739587818e0
+ms.openlocfilehash: 829af6eb582175c99239720c04bfe7d0ce286af9
+ms.sourcegitcommit: e74da95f449e4f8e04ee82e2d376c041f8403524
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "49021017"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "49086804"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
 Office 365 管理アクティビティ API のスキーマは、次の 2 つのレイヤーでデータ サービスとして提供されます。
 
-- **共通スキーマ** 。 レコードの種類、作成時刻、ユーザーの種類、およびアクションなどの中心的な Office 365 監査概念にアクセスし、コア ディメンション (ユーザー ID など)、場所の詳細情報 (クライアント IP アドレスなど)、および製品固有のプロパティ (オブジェクト ID など) を提供するインターフェイスです。 これにより一貫性がある統一ビューが確立され、いくつかの最上位ビューで適切なパラメーターを指定して、すべての Office 365 監査データを抽出できます。さらに、学習のコストを大幅に削減する、すべてのデータ ソース向けの固定スキーマも提供されます。 共通スキーマのデータは、Exchange、SharePoint、Azure Active Directory、Yammer、および OneDrive for Business などの各製品チームが所有する製品データから調達されます。 製品チームは [オブジェクト ID] フィールドを、製品固有のプロパティを追加するために拡張できます。
+- **共通スキーマ**。 レコードの種類、作成時刻、ユーザーの種類、およびアクションなどの中心的な Office 365 監査概念にアクセスし、コア ディメンション (ユーザー ID など)、場所の詳細情報 (クライアント IP アドレスなど)、および製品固有のプロパティ (オブジェクト ID など) を提供するインターフェイスです。これにより一貫性がある統一ビューが確立され、いくつかの最上位ビューで適切なパラメーターを指定して、すべての Office 365 監査データを抽出できます。さらに、学習のコストを大幅に削減する、すべてのデータ ソース向けの固定スキーマも提供されます。共通スキーマのデータは、Exchange、SharePoint、Azure Active Directory、Yammer、および OneDrive for Business などの各製品チームが所有する製品データから調達されます。製品チームは [オブジェクト ID] フィールドを、製品固有のプロパティを追加するために拡張できます。
 
-- **製品固有スキーマ** 。 共通スキーマ上に構築され、製品固有の属性セット (SharePoint スキーマ、OneDrive for Business スキーマ、および Exchange 管理者スキーマなど) を提供します。
+- **製品固有スキーマ**。共通スキーマ上に構築され、製品固有の属性セット (SharePoint スキーマ、OneDrive for Business スキーマ、および Exchange 管理者スキーマなど) を提供します。
 
-**各自のシナリオでどのレイヤーを使用するべきですか?**
-一般に、データが上位レイヤーで使用可能であれば、下位レイヤーには戻らないでください。 つまり、データ要件が製品固有のスキーマに適合できるのであれば、共通スキーマに戻る必要はありません。 
+**各自のシナリオでどのレイヤーを使用するべきですか?** 一般に、データが上位レイヤーで使用可能であれば、下位レイヤーには戻らないでください。つまり、データ要件が製品固有のスキーマに適合できるのであれば、共通スキーマに戻る必要はありません。 
 
 ## <a name="office-365-management-api-schemas"></a>Office 365 管理 API のスキーマ
 
-この記事では、共通スキーマと、製品固有の各スキーマについて詳細に説明します。 次の表では、使用可能なスキーマについて説明しています。
+この記事では、共通スキーマと、製品固有の各スキーマについて詳細に説明します。次の表では、使用可能なスキーマについて説明しています。
 
 |スキーマ名|説明|
 |:-----|:-----|
@@ -51,7 +50,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[データ センター セキュリティ コマンドレット スキーマ](#data-center-security-cmdlet-schema)|データ センター セキュリティ基本スキーマを、すべてのデータ センター セキュリティ コマンドレット監査データに固有のプロパティで拡張します。|
 |[Microsoft Teams スキーマ](#microsoft-teams-schema)|共通スキーマを、すべての Microsoft Teams イベントに固有のプロパティで拡張します。|
 |[Office 365 Advanced Threat Protection および脅威の調査と対応スキーマ](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Office 365 Advanced Threat Protection および脅威の調査と対応のデータに固有のプロパティを使用して、共通スキーマを拡張します。|
-|[自動調査および対応イベント スキーマ](#automated-investigation-and-response-events-in-office-365)|Office 365 自動調査および応答 (AIR) イベントに固有のプロパティを使用して、共通スキーマを拡張します。 例については、「[Tech Community のブログ: Office 365 ATP と O365 管理 API を使用して SOC の有効性を向上させる](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185)」を参照してください。|
+|[自動調査および対応イベント スキーマ](#automated-investigation-and-response-events-in-office-365)|Office 365 自動調査および応答 (AIR) イベントに固有のプロパティを使用して、共通スキーマを拡張します。例については、「[Tech Community のブログ: Office 365 ATP と O365 管理 API を使用して SOC の有効性を向上させる](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185)」を参照してください。|
 |[検疫イベントスキーマ](#hygiene-events-schema)|Exchange Online Protection および Advanced Threat Protection　のイベントに固有のプロパティを使用して、共通スキーマを拡張します。|
 |[Power BI スキーマ](#power-bi-schema)|共通スキーマを、すべての Power BI イベントに固有のプロパティで拡張します。|
 |[Dynamics 365 スキーマ](#dynamics-365-schema)|Dynamics 365 イベントに固有のプロパティを使用して共通スキーマを拡張します。|
@@ -64,23 +63,23 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="common-schema"></a>共通スキーマ
 
-**EntityType の名前** : AuditRecord
+**EntityType の名前**: AuditRecord
 
 |パラメーター|型|必須かどうか?|説明|
 |:-----|:-----|:-----|:-----|
 |Id|Combination GUIDEdm.Guid|はい|監査レコードの一意識別子。|
 |RecordType|Self.[AuditLogRecordType](#auditlogrecordtype)|はい|レコードによって示される操作の種類。監査ログ レコードの種類の詳細については、[AuditLogRecordType](#auditlogrecordtype) の表を参照してください。|
 |CreationTime|Edm.Date|はい|ユーザーがアクティビティを実行した、世界協定時刻 (UTC) での日時。|
-|Operation|Edm.String|はい|ユーザーまたは管理者アクティビティの名前。 一般的な操作/アクティビティの説明については、「[Office 365 プロテクション センターでの監査ログの検索](https://go.microsoft.com/fwlink/p/?LinkId=708432)」を参照してください。 Exchange 管理者アクティビティでは、このプロパティは、実行されたコマンドレットの名前を識別します。 DLP イベントでは、これは "DlpRuleMatch"、"DlpRuleUndo" または "DlpInfo" (後続の「DLP スキーマ」で説明) になる可能性があります。|
-|OrganizationId|Edm.Guid|はい|組織の Office 365 テナントの GUID。 この値は Office 365 サービスに関係なく、組織では常に同じ値になります。|
-|UserType|Self.[UserType](#user-type)|はい|操作を実行したユーザーの種類。 ユーザーの種類の詳細については、「[ユーザーの種類](#user-type)」の表を参照してください。|
+|Operation|Edm.String|はい|ユーザーまたは管理アクティビティの名前。一般的な操作/アクティビティの説明については、「[Office 365 プロテクション センターでの監査ログの検索](https://go.microsoft.com/fwlink/p/?LinkId=708432)」を参照してください。Exchange 管理者のアクティビティの場合、このプロパティは実行されたコマンドレットの名前を示します。DLP イベントでは、これは "DlpRuleMatch"、"DlpRuleUndo" または "DlpInfo" (後続の「DLP スキーマ」で説明) になる可能性があります。|
+|OrganizationId|Edm.Guid|はい|組織の Office 365 テナントの GUID。この値は Office 365 サービスに関係なく、組織では常に同じ値になります。|
+|UserType|Self.[UserType](#user-type)|はい|操作を実行したユーザーの種類。ユーザーの種類の詳細については、「[ユーザーの種類](#user-type)」の表を参照してください。|
 |UserKey|Edm.String|はい|UserId プロパティで識別されるユーザーの別の ID。たとえば、このプロパティには、SharePoint、OneDrive for Business、および Exchange のユーザーにより実行されたイベントの Passport 固有 ID (PUID) が格納されます。このプロパティは、他のサービスで発生するイベントや、システム アカウントで実行されるイベントの UseID プロパティと同じ値を指定することもできます。|
 |Workload|Edm.String|いいえ|アクティビティが発生した Office 365 サービス。 
-|ResultStatus|Edm.String|いいえ|(Operation プロパティで指定された) アクションが正常に終了したかどうかどうかを示します。 指定可能な値は **Succeeded** 、 **PartiallySucceeded** 、または **Failed** です。 Exchange 管理者アクティビティでは、値は **True** または **False** のいずれかになります。<br/><br/>**重要** : さまざまなワークロードにより ResultStatus プロパティの値が上書きされる可能性があります。 たとえば、Azure Active Directory の STS ログオン イベントの場合、ResultStatus の **Succeeded** 値によって示されるものは、HTTP 操作が正常に完了したことだけであり、ログオンが正常に完了したことを意味しません。 実際のログオンが成功しているかどうかを確認するには、「[Azure Active Directory の STS ログオン スキーマ](#azure-active-directory-secure-token-service-sts-logon-schema)」の LogonError プロパティを参照してください。 ログオンに失敗していた場合、このプロパティにはログオン試行に失敗した理由が含まれます。 |
-|ObjectId|Edm.string|いいえ|SharePoint および OneDrive for Business のアクティビティの場合、ユーザーによりアクセスされるファイルまたはフォルダーの完全パス名。 Exchange 管理者の監査ログの場合は、コマンドレットによって変更されたオブジェクトの名前。|
-|UserId|Edm.string|はい|レコードがログに記録されることになった、(Operation プロパティで指定された) アクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、`my_name@my_domain_name` などです。 システム アカウント (SHAREPOINT\system または NT AUTHORITY\SYSTEM など) で実行されるアクティビティのレコードも含まれることに注意してください。 SharePoint では、UserId プロパティの別の値が app@sharepoint に表示されます。 これは、アクティビティを実行した "ユーザー" が、ユーザー、管理者、またはサービスの代理として、組織全体のアクション (SharePoint サイトまたは OneDrive アカウント検索など) を実行するために必要な アクセス許可が SharePoint に与えられているアプリケーションであることを示しています。 詳細については、「[監査レコード内の app@sharepoint ユーザー](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records)」を参照してください。 |
+|ResultStatus|Edm.String|いいえ|(Operation プロパティで指定された) アクションが正常に終了したかどうかどうかを示します。指定可能な値は、**Succeeded**、**PartiallySucceeded**、または **Failed** です。Exchange 管理者アクティビティでは、値は **True** または **False** のいずれかです。<br/><br/>**重要**: さまざまなワークロードにより ResultStatus プロパティの値が上書きされる可能性があります。たとえば、Azure Active Directory STS ログオン イベントの場合、ResultStatus の **Succeeded** の値は、HTTP 操作が成功したことのみを示し、ログオンが成功したという意味ではありません。実際のログオンが成功したかどうかを判断するには、[Azure Active Directory STS ログオン スキーマ](#azure-active-directory-secure-token-service-sts-logon-schema)のLogonError プロパティを参照してください。ログオンに失敗していた場合、このプロパティにはログオン試行に失敗した理由が含まれます。 |
+|ObjectId|Edm.string|いいえ|SharePoint および OneDrive for Business アクティビティの場合、ユーザーがアクセスするファイルまたはフォルダーの完全なパス名。Exchange 管理者監査ログの場合、コマンドレットによって変更されたオブジェクトの名前。|
+|UserId|Edm.string|はい|レコードがログに記録されることになった、(Operation プロパティで指定された) アクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、`my_name@my_domain_name` などです。システム アカウント (SHAREPOINT\system または NT AUTHORITY\SYSTEM など) で実行されるアクティビティのレコードも含まれることに注意してください。SharePoint では、UserId プロパティの別の値が app@sharepoint に表示されます。これは、アクティビティを実行した "ユーザー" が、ユーザー、管理者、またはサービスの代理として、組織全体のアクション (SharePoint サイトまたは OneDrive アカウント検索など) を実行するために必要な アクセス許可が SharePoint に与えられているアプリケーションであることを示しています。詳細については、「[監査レコードの app@sharepoint ユーザー](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records)」を参照してください。 |
 |ClientIP|Edm.String|はい|アクティビティがログに記録されたときに使用されたデバイスの IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。<br/><br/>一部のサービスでは、このプロパティに表示される値は、ユーザーに代わってサービスを呼び出す信頼できるアプリケーション (Office on the web アプリなど) の IP アドレスであり、アクティビティを実行したユーザーが使用するデバイスの IP アドレスではない場合があります。 <br/><br/>また、Azure Active Directory 関連のイベントの場合、 IP アドレスはログに記録されず、ClientIP プロパティの値は `null` になります。|
-|範囲|Self.[AuditLogScope](#auditlogscope)|いいえ|このイベントは、ホストされた O365 サービスまたはオンプレミスのサーバーによって作成されたものですか。 設定できる値は **online** および **onprem** です。 SharePoint は現在、オンプレミスから O365 にイベントを送信する唯一のワークロードです。|
+|範囲|Self.[AuditLogScope](#auditlogscope)|いいえ|このイベントは、ホストされた O365 サービスまたはオンプレミスのサーバーによって作成されたものですか。設定できる値は **online** および **onprem** です。SharePoint は現在、オンプレミスから O365 にイベントを送信する唯一のワークロードです。|
 |||||
 
 ### <a name="enum-auditlogrecordtype---type-edmint32"></a>列挙値: AuditLogRecordType - 型: Edm.Int32
@@ -99,7 +98,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |9|AzureActiveDirectoryAccountLogon|Azure Active Directory OrgId ログオン イベント (非推奨)。|
 |10|DataCenterSecurityCmdlet|データ センター セキュリティ コマンドレット イベント。|
 |11|ComplianceDLPSharePoint|SharePoint のデータ損失防止 (DLP) イベントと OneDrive for Business。|
-|13|ComplianceDLPExchange|統合 DLP ポリシーを使用して構成された場合の Exchange のデータ損失防止 (DLP) イベント。 Exchange トランスポート ルールに基づく DLP イベントはサポートされていません。|
+|13|ComplianceDLPExchange|統合 DLP ポリシーを使用して構成された場合の Exchange のデータ損失防止 (DLP) イベント。Exchange トランスポート ルールに基づく DLP イベントはサポートされていません。|
 |14|SharePointSharingOperation|SharePoint 共有イベント。|
 |15|AzureActiveDirectoryStsLogon|Azure Active Directory の Secure Token Service (STS) ログオン イベント。|
 |16|SkypeForBusinessPSTNUsage|Skype for Business からの公衆交換電話網 (PSTN) イベント。|
@@ -174,10 +173,10 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |90|MSTIC|Microsoft Defender for Office365 の脅威インテリジェンス イベント。|
 |91|PhysicalBadgingSignal|インサイダー リスク管理ソリューションをサポートする物理バッジに関連するイベント。|
 |93|AipDiscover|Azure Information Protection (AIP) スキャナー イベント。|
-|94|AipSensitivityLabelAction||
-|95|AipProtectionAction||
-|96|AipFileDeleted||
-|97|AipHeartBeat||
+|94|AipSensitivityLabelAction|AIP 機密ラベルイベント。 |
+|95|AipProtectionAction|AIP 保護 イベント。|
+|96|AipFileDeleted|AIP ファイル削除イベント。|
+|97|AipHeartBeat|AIP ハートビート イベント。|
 |98|MCASAlerts|Microsoft Cloud App Security によってトリガーされたアラートに対応するイベント。|
 |99|OnPremisesFileShareScannerDlp|ファイル共有の機密データのスキャンに関連するイベント。|
 |100|OnPremisesSharePointScannerDlp|SharePoint での機密データのスキャンに関連するイベント。|
@@ -223,8 +222,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|:-----|
 |サイト|Edm.Guid|いいえ|ユーザーによりアクセスされるファイルまたはフォルダーが置かれているサイトの GUID。|
 |ItemType|Edm.String String="Microsoft.Office.Audit.Schema.SharePoint.[ItemType](#itemtype)"|いいえ|アクセスまたは変更されたオブジェクトの種類。オブジェクトの種類の詳細については、「[ItemType](#itemtype)」の表を参照してください。|
-|EventSource|Edm.String String="Microsoft.Office.Audit.Schema.SharePoint.[EventSource](#eventsource)"|いいえ|SharePoint でイベントが発生したことを示します。 指定可能な値は **SharePoint** または **ObjectModel** 。|
-|SourceName|Edm.String|いいえ|監査対象の操作をトリガーしたエンティティ。 指定可能な値は、SharePoint または **ObjectModel** 。|
+|EventSource|Edm.String String="Microsoft.Office.Audit.Schema.SharePoint.[EventSource](#eventsource)"|いいえ|SharePoint でイベントが発生したことを示します。 指定可能な値は **SharePoint** または **ObjectModel**。|
+|SourceName|Edm.String|いいえ|監査対象の操作をトリガーしたエンティティ。 指定可能な値は、SharePoint または **ObjectModel**。|
 |UserAgent|Edm.String|いいえ|ユーザーのクライアントまたはブラウザーに関する情報。この情報は、クライアントまたはブラウザーによって提供されます。|
 |MachineDomainInfo|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|いいえ|デバイスの同期操作に関する情報。この情報は、要求で指定されている場合にのみ報告されます。|
 |MachineId|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|いいえ|デバイスの同期操作に関する情報。この情報は、要求で指定されている場合にのみ報告されます。|
@@ -419,14 +418,14 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |SiteUrl|Edm.String|はい|ユーザーによりアクセスされるファイルまたはフォルダーが置かれているサイトの URL。|
-|SourceRelativeUrl|Edm.String|いいえ|ユーザーがアクセスするファイルが含まれているフォルダーの URL。 _SiteURL_ 、 _SourceRelativeURL_ 、および _SourceFileName_ パラメーターの値の組み合わせは、 **ObjectID** プロパティの値と同じであり、ユーザーがアクセスするファイルの完全パス名です。|
+|SourceRelativeUrl|Edm.String|いいえ|ユーザーがアクセスするファイルが含まれているフォルダーの URL。_SiteURL_、_SourceRelativeURL_、および _SourceFileName_ パラメーターの値の組み合わせは、**ObjectID** プロパティの値と同じであり、ユーザーがアクセスするファイルの完全パス名です。|
 |SourceFileName|Edm.String|はい|ユーザーによりアクセスされるファイルまたはフォルダーの名前。|
 |SourceFileExtension|Edm.String|いいえ|ユーザーがアクセスしたファイルのファイル拡張子。このプロパティは、アクセスされたオブジェクトがフォルダーの場合には、空白になります。|
-|DestinationRelativeUrl|Edm.String|いいえ|ファイルのコピー先または移動先フォルダーの URL。 _SiteURL_ 、 _SourceRelativeURL_ 、および _SourceFileName_ パラメーターの値の組み合わせは、 **ObjectID** プロパティの値と同じであり、コピーされたファイルの完全パス名です。このプロパティは、FileCopied および FileMoved イベントに対してのみ表示されます。|
+|DestinationRelativeUrl|Edm.String|いいえ|ファイルのコピー先または移動先フォルダーの URL。_SiteURL_、_SourceRelativeURL_、および _SourceFileName_ パラメーターの値の組み合わせは、**ObjectID** プロパティの値と同じであり、コピーされたファイルの完全パス名です。このプロパティは、FileCopied および FileMoved イベントに対してのみ表示されます。|
 |DestinationFileName|Edm.String|いいえ|コピーまたは移動したファイルの名前。このプロパティは、FileCopied および FileMoved イベントに対してのみ表示されます。|
 |DestinationFileExtension|Edm.String|いいえ|コピーまたは移動したファイルのファイル拡張子。このプロパティは、FileCopied および FileMoved イベントに対してのみ表示されます。|
 |UserSharedWith|Edm.String|いいえ|リソースを共有したユーザー。|
-|SharingType|Edm.String|いいえ|リソースを共有したユーザーに割り当てられているアクセス許可の種類。このユーザーは、 _UserSharedWith_ パラメーターにより識別されます。|
+|SharingType|Edm.String|いいえ|リソースを共有したユーザーに割り当てられているアクセス許可の種類。このユーザーは、_UserSharedWith_ パラメーターにより識別されます。|
 |||||
 
 ## <a name="sharepoint-sharing-schema"></a>SharePoint 共有スキーマ
@@ -1038,15 +1037,15 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#attachmentdata))|いいえ|イベントをトリガーした電子メール メッセージの添付ファイルに関するデータ。|
-|DetectionType|Edm.String|はい|検出タイプ (例: **Inline** - 配信時に検出、 **Delayed** - 配布後に検出、 **ZAP** - [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ)。 ZAP の検出タイプのイベントの前には、通常、 **Delayed** 検出タイプのメッセージが表示されます。|
+|DetectionType|Edm.String|はい|検出タイプ (例: **Inline** - 配信時に検出、**Delayed** - 配布後に検出、**ZAP** - [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ)。 ZAP の検出タイプのイベントの前には、通常、**Delayed** 検出タイプのメッセージが表示されます。|
 |DetectionMethod|Edm.String|はい|Office 365 の ATP で検出に使用されるメソッドまたはテクノロジ。|
 |InternetMessageId|Edm.String|はい|インターネット メッセージ ID。|
 |NetworkMessageId|Edm.String|はい|Exchange Online のネットワーク メッセージ ID。|
 |P1Sender|Edm.String|はい|電子メール メッセージの送信者の返信先。|
 |P2Sender|Edm.String|はい|電子メール メッセージの送信者。|
-|ポリシー|Self.[Policy](#policy-type-and-action-type)|はい|メール メッセージに関連するフィルタリング ポリシーのタイプ ( **スパム対策** や **フィッシング対策** など) および関連するアクションタイプ ( **高確度スパム** 、 **スパム** 、 **フィッシング** など)。|
-|ポリシー|Self.[PolicyAction](#policy-action)|はい|メール メッセージに関連するフィルタリング ポリシーで構成されたアクション (たとえば、 **迷惑メールフォルダーに移動** または **検疫** )。|
-|P2Sender|Edm.String|はい|電子メール メッセージの **送信者** 。|
+|ポリシー|Self.[Policy](#policy-type-and-action-type)|はい|メール メッセージに関連するフィルタリング ポリシーのタイプ (**スパム対策** や **フィッシング対策** など) および関連するアクションタイプ (**高確度スパム**、**スパム**、**フィッシング** など)。|
+|ポリシー|Self.[PolicyAction](#policy-action)|はい|メール メッセージに関連するフィルタリング ポリシーで構成されたアクション (たとえば、**迷惑メールフォルダーに移動** または **検疫**)。|
+|P2Sender|Edm.String|はい|電子メール メッセージの **送信者**。|
 |受信者|Collection(Edm.String)|はい|電子メール メッセージの受信者の配列。|
 |SenderIp|Edm.String|はい|Office 365 の電子メールを送信した IP アドレス。 IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
 |件名|Edm.String|はい|メッセージの件名。|
@@ -1324,7 +1323,7 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |監査|Edm.String|いいえ|検疫イベントに関連するシステム情報。|
-|イベント|Edm.String|いいえ|検疫イベントの種類。 このパラメーターの有効な値は、 **一覧表示** また **一覧から除外** です。|
+|イベント|Edm.String|いいえ|検疫イベントの種類。 このパラメーターの有効な値は、**一覧表示** また **一覧から除外** です。|
 |EventId|Edm.Int64|いいえ|検疫イベントの種類の ID。|
 |EventValue|Edm.String|いいえ|影響を受けたユーザー。|
 |理由|Edm.String|いいえ|検疫イベントの詳細。|

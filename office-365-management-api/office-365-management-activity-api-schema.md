@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 829af6eb582175c99239720c04bfe7d0ce286af9
-ms.sourcegitcommit: e74da95f449e4f8e04ee82e2d376c041f8403524
+ms.openlocfilehash: c39865d8b3aff5a11aaf113482982e1c407b9800
+ms.sourcegitcommit: 0f988a3c25a34491a6e80307cfcf097a85aa26fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "49086804"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "49385170"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -49,9 +49,9 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |[データ センター セキュリティ基本スキーマ](#data-center-security-base-schema)|共通スキーマを、すべてのデータ センター セキュリティ監査データに固有のプロパティで拡張します。|
 |[データ センター セキュリティ コマンドレット スキーマ](#data-center-security-cmdlet-schema)|データ センター セキュリティ基本スキーマを、すべてのデータ センター セキュリティ コマンドレット監査データに固有のプロパティで拡張します。|
 |[Microsoft Teams スキーマ](#microsoft-teams-schema)|共通スキーマを、すべての Microsoft Teams イベントに固有のプロパティで拡張します。|
-|[Office 365 Advanced Threat Protection および脅威の調査と対応スキーマ](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Office 365 Advanced Threat Protection および脅威の調査と対応のデータに固有のプロパティを使用して、共通スキーマを拡張します。|
-|[自動調査および対応イベント スキーマ](#automated-investigation-and-response-events-in-office-365)|Office 365 自動調査および応答 (AIR) イベントに固有のプロパティを使用して、共通スキーマを拡張します。例については、「[Tech Community のブログ: Office 365 ATP と O365 管理 API を使用して SOC の有効性を向上させる](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185)」を参照してください。|
-|[検疫イベントスキーマ](#hygiene-events-schema)|Exchange Online Protection および Advanced Threat Protection　のイベントに固有のプロパティを使用して、共通スキーマを拡張します。|
+|[Microsoft Defender for Office 365 および脅威の調査と対応スキーマ](#microsoft-defender-for-office-365-and-threat-investigation-and-response-schema)|Defender for Office 365 および脅威の調査と対応のデータに固有のプロパティを使用して、共通スキーマを拡張します。|
+|[自動調査および対応イベント スキーマ](#automated-investigation-and-response-events-in-office-365)|Office 365 自動調査および応答 (AIR) イベントに固有のプロパティを使用して、共通スキーマを拡張します。例については、「[Tech Community のブログ: Defender for Office 365 と O365 管理 API を使用して SOC の有効性を向上させる](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185)」を参照してください。|
+|[検疫イベントスキーマ](#hygiene-events-schema)|Exchange Online Protection および Microsoft Defender for Office 365 のイベントに固有のプロパティを使用して、共通スキーマを拡張します。|
 |[Power BI スキーマ](#power-bi-schema)|共通スキーマを、すべての Power BI イベントに固有のプロパティで拡張します。|
 |[Dynamics 365 スキーマ](#dynamics-365-schema)|Dynamics 365 イベントに固有のプロパティを使用して共通スキーマを拡張します。|
 |[Workplace Analytics スキーマ](#workplace-analytics-schema)|共通スキーマを、すべての Microsoft Workplace Analytics イベントに固有のプロパティで拡張します。|
@@ -111,8 +111,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |23|SkypeForBusinessCmdlets|Skype for Business イベント。|
 |24|Discovery|セキュリティ/コンプライアンス センターでコンテンツ検索を実行し、eDiscovery のケースを管理することによって実行される、電子情報開示アクティビティのイベント。|
 |25|MicrosoftTeams|Microsoft Teams のイベント。|
-|28|ThreatIntelligence|Exchange Online Protection と Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
-|29|MailSubmission|Exchange Online Protection と Office 365 Advanced Threat Protection からの送信イベント。|
+|28|ThreatIntelligence|Exchange Online Protection と Microsoft Defender for Office 365 からのフィッシングとマルウェアのイベント。|
+|29|MailSubmission|Exchange Online Protection と Office 365 Advanced Threat Protection からの送信についてのイベント。|
 |30|MicrosoftFlow|Microsoft Power Automate (旧称 Microsoft Flow) イベント。|
 |31|AeD|Advanced eDiscovery イベント。|
 |32|MicrosoftStream|Microsoft Stream のイベント。|
@@ -124,13 +124,13 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |38|DataGovernance|セキュリティ/コンプライアンス センターにおけるアイテム保持ポリシーと保持ラベルに関連するイベント|
 |39|Kaizala|Kaizala イベント。|
 |40|SecurityComplianceAlerts|セキュリティ/コンプライアンス アラートのシグナル。|
-|41|ThreatIntelligenceUrl|ブロック時の安全なリンクと Office 365 Advanced Threat Protection からのイベントの上書きブロック。|
+|41|ThreatIntelligenceUrl|ブロック時の安全なリンクと Microsoft Defender for Office 365 からのイベントの上書きブロック。|
 |42|SecurityComplianceInsights|Office 365 セキュリティおよびコンプライアンス センターの分析情報とレポートに関連するイベント。|
 |43|MIPLabel|秘密度ラベルで (手動または自動で) タグ付けされたメール メッセージのトランスポート パイプラインでの検出に関連するイベント。 |
 |44|WorkplaceAnalytics|Workplace Analytics イベント。|
 |45|PowerAppsApp|Power Apps イベント。|
 |46|PowerAppsPlan|Power Apps のサブスクリプション プラン イベント。 |
-|47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Office 365 Advanced Threat Protection からのフィッシングとマルウェアのイベント。|
+|47|ThreatIntelligenceAtpContent|SharePoint、OneDrive for Business、Microsoft Teams のファイルについての Microsoft Defender for Office 365 からのフィッシングとマルウェアのイベント。|
 |48|LabelContentExplorer|[データ分類コンテンツ エクスプローラー](https://docs.microsoft.com/microsoft-365/compliance/data-classification-content-explorer)に関係するイベント。|
 |49|TeamsHealthcare|Microsoft 医療関係向けのTeams の[患者アプリケーション](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit)に関連するベント。|
 |50|ExchangeItemAggregated|[MailItemsAccessed メールボックス監査アクション](https://docs.microsoft.com/microsoft-365/compliance/mailitemsaccessed-forensics-investigations)に関連するイベント。|
@@ -161,7 +161,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |76|CortanaBriefing|ブリーフィング メール イベント。|
 |77|Search|SharePoint および Exchange での検索クエリの実行に関連するイベント。|
 |78|WDATPAlerts|Windows Defender for Endpoint によって生成されたアラートに関連するイベント。|
-|81|MDATPAudit|Microsoft Defender Advanced Threat Protection (ATP) イベント。|
+|81|MDATPAudit|Microsoft Defender for Endpoint イベント。|
 |82|SensitivityLabelPolicyMatch|機密ラベルでラベル付けされたファイルが開かれるか、名前が変更されたときに生成されるイベント。|
 |83|SensitivityLabelAction|機密ラベルがファイルに適用、更新、または削除されたときに生成されるイベント。|
 |84|SensitivityLabeledFileAction|機密ラベルでラベル付けされたファイルが開かれたとき、または名前が変更されたときに生成されるイベント。|
@@ -222,8 +222,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|:-----|
 |サイト|Edm.Guid|いいえ|ユーザーによりアクセスされるファイルまたはフォルダーが置かれているサイトの GUID。|
 |ItemType|Edm.String String="Microsoft.Office.Audit.Schema.SharePoint.[ItemType](#itemtype)"|いいえ|アクセスまたは変更されたオブジェクトの種類。オブジェクトの種類の詳細については、「[ItemType](#itemtype)」の表を参照してください。|
-|EventSource|Edm.String String="Microsoft.Office.Audit.Schema.SharePoint.[EventSource](#eventsource)"|いいえ|SharePoint でイベントが発生したことを示します。 指定可能な値は **SharePoint** または **ObjectModel**。|
-|SourceName|Edm.String|いいえ|監査対象の操作をトリガーしたエンティティ。 指定可能な値は、SharePoint または **ObjectModel**。|
+|EventSource|Edm.String String="Microsoft.Office.Audit.Schema.SharePoint.[EventSource](#eventsource)"|いいえ|SharePoint でイベントが発生したことを示します。指定可能な値は、**SharePoint** または **ObjectModel** です。|
+|SourceName|Edm.String|いいえ|監査対象の操作をトリガーしたエンティティ。指定可能な値は、SharePoint または **ObjectModel** です。|
 |UserAgent|Edm.String|いいえ|ユーザーのクライアントまたはブラウザーに関する情報。この情報は、クライアントまたはブラウザーによって提供されます。|
 |MachineDomainInfo|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|いいえ|デバイスの同期操作に関する情報。この情報は、要求で指定されている場合にのみ報告されます。|
 |MachineId|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|いいえ|デバイスの同期操作に関する情報。この情報は、要求で指定されている場合にのみ報告されます。|
@@ -322,7 +322,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |FolderDeleted|ユーザーが SharePoint または OneDrive for Business サイトからフォルダーを削除します。|
 |FolderDeletedFirstStageRecycleBin|ユーザーが SharePoint または OneDrive for Business サイトのごみ箱からフォルダーを削除します。|
 |FolderDeletedSecondStageRecycleBin|ユーザーが SharePoint または OneDrive for Business サイトの第 2 段階のごみ箱からフォルダーを削除します。|
-|FolderModified|ユーザーが SharePoint または OneDrive for Business サイトでフォルダーを変更します。 このイベントには、フィルダーのメタデータ (タグやプロパティなど) の変更が含まれます。|
+|FolderModified|ユーザーが SharePoint または OneDrive for Business サイトのフォルダーを変更します。 このイベントには、タグやプロパティなどのフォルダー メタデータの変更が含まれます。|
 |FolderMoved|ユーザーが SharePoint または OneDrive for Business サイトからフォルダーを移動します。|
 |FolderRenamed|ユーザーが SharePoint または OneDrive for Business サイトのフォルダーの名前を変更します。|
 |FolderRestored|ユーザーが SharePoint または OneDrive for Business サイトのごみ箱からフォルダーを復元します。|
@@ -332,15 +332,15 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |LanguageAddedToTermStore|用語ストアに言語が追加されました。|
 |LanguageRemovedFromTermStore|用語ストアから言語が削除されました。|
 |LegacyWorkflowEnabledSet|サイト管理者または所有者は、SharePoint ワークフロー タスク コンテンツ タイプをサイトに追加します。グローバル管理者は、SharePoint 管理センターで組織全体のワークフローを有効にすることもできます。|
-|LookAndFeelModified|ユーザーがサイド リンク バー、ガント チャートの書式、またはグループの形式を変更します。  または、ユーザーが Project Web App でビューを作成、変更、または削除します。|
-|ManagedSyncClientAllowed|ユーザーが SharePoint または OneDrive for Business サイトとの同期関係を正常に確立します。 ユーザーのコンピューターが、組織内のドキュメント ライブラリにアクセスできるドメインのリスト (宛先セーフ リストと呼ばれる) に追加されているドメインのメンバーであるため、同期関係は成功しました。 詳細については、「[SharePoint Online PowerShell を使用する](https://go.microsoft.com/fwlink/p/?LinkID=534609)」を参照し、宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にしてください。|
+|LookAndFeelModified|ユーザーは、クイック起動、ガントチャート形式、またはグループ形式を変更します。 または、ユーザーが Project Web App でビューを作成、変更、または削除します。|
+|ManagedSyncClientAllowed|ユーザーは、SharePoint または OneDrive for Business サイトとの同期関係を正常に確立します。ユーザーのコンピューターが、組織内のドキュメント ライブラリにアクセスできるドメインのリスト (宛先セーフ リスト) に追加されているドメインのメンバーであるため、同期関係は成功しました。この機能の詳細については、「[SharePoint Online PowerShell を使用して](https://go.microsoft.com/fwlink/p/?LinkID=534609)、安全な受信者リストにあるドメインの OneDrive 同期を有効にする」を参照してください。|
 |MaxQuotaModified|サイトに割り当てられた上限が変更されています。|
 |MaxResourceUsageModified|サイトのリソース使用量の上限が変更されています。|
 |MySitePublicEnabledSet|SharePoint 管理者によって、ユーザーが公開 MySite を持てるようにフラグが設定されています。|
 |NewsFeedEnabledSet|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトの RSS フィードを有効にします。グローバル管理者は、SharePoint 管理センターで組織全体の RSS フィードを有効にできます。|
 |ODBNextUXSettings|OneDrive for Business 用の新しい UI が使用可能になっています。|
 |OfficeOnDemandSet|サイト管理者は、Office オンデマンドを有効にします。これによりユーザーは、Office デスクトップ アプリケーションの最新バージョンにアクセスできます。Office オンデマンドは Office SharePoint 管理センターで有効にされ、インストール済みのすべての Office アプリケーションを含む Office 365 サブスクリプションを必要とします。|
-|PageViewed|ユーザーが SharePoint または OneDrive for Business サイトにあるページを表示します。 これには、SharePoint サイトまたは One Drive for Business サイトのドキュメント ライブラリのファイルをブラウザーで表示することは含まれません。|
+|PageViewed|ユーザーは、SharePoint サイトまたは OneDrive forBusiness サイトのページを表示します。これには、SharePoint サイトまたは One Drive for Business サイトのドキュメント ライブラリのファイルをブラウザーで表示することは含まれません。|
 |PeopleResultsScopeSet|サイト管理者は、SharePoint サイトの人の検索の結果ソースを作成または変更します。|
 |PermissionSyncSettingModified|ユーザーが Project Web App でプロジェクトのアクセス許可の同期設定を変更します。|
 |PermissionTemplateModified|ユーザーが Project Web App で、アクセス許可テンプレートを作成、変更、または削除します。|
@@ -349,7 +349,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |PreviewModeEnabledSet|サイト管理者は、SharePoint サイトのドキュメント プレビューを有効にします。|
 |ProjectAccessed|ユーザーが Project Web App でプロジェクトのコンテンツにアクセスします。|
 |ProjectCheckedIn|ユーザーが Project Web App からチェックアウトしたプロジェクトをチェックインします。|
-|ProjectCheckedOut|ユーザーが Project Web App にあるプロジェクトをチェックアウトします。 ユーザーが開く権限を持つプロジェクトをチェックアウトして、変更することができます。|
+|ProjectCheckedOut|ユーザーは、Project Web App にあるプロジェクトをチェックアウトします。 ユーザーは、開く権限のあるプロジェクトをチェックアウトして変更することができます。|
 |ProjectCreated|ユーザーが Project Web App でプロジェクトを作成します。|
 |ProjectDeleted|ユーザーが Project Web App でプロジェクトを削除します。|
 |ProjectForceCheckedIn|ユーザーが Project Web App でプロジェクトに対してチェックインを強制します。|
@@ -404,7 +404,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |TimesheetRejected|ユーザーが Project Web App でタイムシートを拒否します。|
 |TimesheetSaved|ユーザーが Project Web App でタイムシートを保存します。|
 |TimesheetSubmitted|ユーザーが Project Web App で状態のタイムシートを送信します。|
-|UnmanagedSyncClientBlocked|ユーザーは、組織のドメインのメンバーではないコンピューター、または組織のドキュメント ライブラリにアクセスできるものの、ドメインのリスト (宛先セーフ リスト) に追加されていないドメインのメンバーであるコンピューターから、SharePoint または OneDrive for Business サイトとの同期関係を確立しようとします。 同期関係は許可されていません。ユーザーのコンピューターは、ドキュメント ライブラリ上のファイルの同期、ダウンロード、アップロードがブロックされています。 この機能については、「[Windows PowerShell コマンドレットを使用して宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にする](https://docs.microsoft.com/powershell/module/sharepoint-online/index)」を参照してください。|
+|UnmanagedSyncClientBlocked|ユーザーは、組織のドメインのメンバーではないコンピューター、または組織のドキュメント ライブラリにアクセスできるものの、ドメインのリスト (宛先セーフ リスト) に追加されていないドメインのメンバーであるコンピューターから、SharePoint または OneDrive for Business サイトとの同期関係を確立しようとします。同期関係は許可されておらず、ユーザーのコンピューターは、ドキュメント ライブラリにあるファイルの同期、ダウンロード、またはアップロードができないようにブロックされています。この機能の詳細については、「[Windows PowerShell コマンドレットを使用して宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にする](https://docs.microsoft.com/powershell/module/sharepoint-online/index)」を参照してください。|
 |UpdateSSOApplication|対象アプリケーションが Secure Store Service で更新されました。|
 |UserAddedToGroup|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループにユーザーを追加します。ユーザーをグループに追加すると、そのユーザーにはグループに割り当てられたアクセス許可が付与されます。 |
 |UserRemovedFromGroup|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトにあるグループからユーザーを削除します。削除されると、そのユーザーにはグループに割り当てられたアクセス許可は付与されなくなります。 |
@@ -430,10 +430,10 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="sharepoint-sharing-schema"></a>SharePoint 共有スキーマ
 
- ファイル共有関連の SharePoint イベント。 これは、ユーザーが別のユーザーに何らかの影響があるアクションを取るという点で、ファイル関連イベントやフォルダー関連イベントとは異なります。 SharePoint 共有スキーマについては、「[Office 365 監査ログで共有監査を使う](https://docs.microsoft.com/microsoft-365/compliance/use-sharing-auditing
+ ファイル共有関連の SharePoint イベント。これは、ユーザーが別のユーザーに何らかの影響があるアクションを取るという点で、ファイル関連イベントやフォルダー関連イベントとは異なります。SharePoint 共有スキーマについては、「[Office 365 監査ログで共有監査を使う](https://docs.microsoft.com/microsoft-365/compliance/use-sharing-auditing
 )」を参照してください。
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**Parameter**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |TargetUserOrGroupName |Edm.String|いいえ|リソースを共有していたターゲット ユーザーまたはグループの UPN または名前を格納します。|
 |TargetUserOrGroupType|Edm.String|いいえ|ターゲット ユーザーまたはグループが、メンバー、ゲスト、グループ、またはパートナーであるかどうかを示します。 |
@@ -535,7 +535,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |ModifiedObjectResolvedName|Edm.String|いいえ|これはコマンドレットによって変更されたオブジェクトのユーザー フレンドリ名です。これはコマンドレットによるオブジェクトの変更の場合にのみ記録されます。|
 |パラメーター|Collection(Common.NameValuePair)|いいえ|Operations プロパティで示されているコマンドレットで使用された、すべてのパラメーターの名前と値。|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|いいえ|このプロパティは、管理イベント用に組み込まれています。プロパティには、変更されたプロパティの名前、変更されたプロパティの新しい値、および変更されたオブジェクトの以前の値が含まれます。|
-|ExternalAccess|Edm.Boolean|はい|組織内のユーザー、Microsoft データセンター担当者またはデータセンター サービス アカウント、あるいは代理管理者により、コマンドレットが実行されたかどうかを示します。 値 **False** は、コマンドレットが組織内のユーザーによって実行されたことを示します。 値 **True** は、コマンドレットがデータセンターの担当者、データセンターのサービス アカウント、または代理管理者によって実行されたことを示します。|
+|ExternalAccess|Edm.Boolean|はい|組織内のユーザー、Microsoft データセンター担当者またはデータセンター サービス アカウント、あるいは代理管理者により、コマンドレットが実行されたかどうかを示します。**False** 値は、コマンドレットが組織内の誰かによって実行されたことを示します。**True** 値は、データセンターの担当者、データセンター サービス アカウント、または代理管理者によってコマンドレットが実行されたことを示します。|
 |OriginatingServer|Edm.String|いいえ|コマンドレット実行元のサーバーの名前。|
 |OrganizationName|Edm.String|いいえ|テナントの名前。|
 |||||
@@ -583,10 +583,10 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|:-----|
 |フォルダー|Self.[ExchangeFolder](#exchangefolder-complex-type)|いいえ|アイテムのグループが存在するフォルダー。|
 |CrossMailboxOperations|Edm.Boolean|いいえ|操作に複数のメールボックスが関係したかどうかを示します。|
-|DestMailboxId|Edm.Guid|いいえ|CrossMailboxOperations パラメーターが **True** の場合にのみ設定します。 ターゲット メールボックスの GUID を指定します。|
-|DestMailboxOwnerUPN|Edm.String|いいえ|CrossMailboxOperations パラメーターが **True** の場合にのみ設定します。 ターゲット メールボックス所有者の UPN を指定します。|
-|DestMailboxOwnerSid|Edm.String|いいえ|CrossMailboxOperations パラメーターが **True** の場合にのみ設定します。 ターゲット メールボックスの SID を指定します。|
-|DestMailboxOwnerMasterAccountSid|Edm.String|いいえ|CrossMailboxOperations パラメーターが **True** の場合にのみ設定します。 ターゲット メールボックス所有者のマスター アカウント SID の SID を指定します。|
+|DestMailboxId|Edm.Guid|いいえ|CrossMailboxOperations パラメーターが **True** の場合にのみ設定します。ターゲット メールボックスの GUID を指定します。|
+|DestMailboxOwnerUPN|Edm.String|いいえ|CrossMailboxOperations パラメーターが **True** の場合にのみ設定します。ターゲット メールボックス所有者の UPN を指定します。|
+|DestMailboxOwnerSid|Edm.String|いいえ|CrossMailboxOperations パラメーターが **True** の場合にのみ設定します。ターゲット メールボックスの SID を指定します。|
+|DestMailboxOwnerMasterAccountSid|Edm.String|いいえ|CrossMailboxOperations パラメーターが **True** の場合にのみ設定します。ターゲット メールボックス所有者のマスター アカウント SID の SID を指定します。|
 |DestFolder|Self.[ExchangeFolder](#exchangefolder-complex-type)|いいえ|移動などの操作の場合の、移動先フォルダー。|
 |Folders|Collection(Self.[ExchangeFolder](#exchangefolder-complex-type))|いいえ|操作に関連したソース フォルダーに関する情報 (フォルダーが選択されて削除された場合など)。|
 |AffectedItems|Collection(Self.[ExchangeItem](#exchangeitem-complex-type))|いいえ|グループ内の各項目についての情報。|
@@ -745,16 +745,16 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|いいえ|ログインを要求しているアプリケーションを表す GUID。表示名は、Azure Active Directory グラフ API を使用して検索できます。|
 |クライアント|Edm.String|いいえ|ログインを実行するブラウザーが提供する、クライアント デバイス情報。|
-|LogonError|Edm.String|いいえ|失敗したログインの場合、ログインが失敗した理由が含まれます。 LogonErrors の詳細な説明については「[認証と承認エラー コード](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes)」の一覧を参照してください。
+|LogonError|Edm.String|いいえ|ログインに失敗した場合、ログインに失敗した理由が含まれます。LogonErrors の詳細な説明については「[認証と承認エラー コード](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes)」の一覧を参照してください。
 |||||
 
 ## <a name="dlp-schema"></a>DLP スキーマ
 
-DLP イベントは、Exchange Online、SharePoint Online、および OneDrive For Business で使用できます。 Exchange の DLP イベントは、統合された DLP ポリシーに基づいたイベント (セキュリティ/コンプライアンス センターで構成されたものなど) でのみ使用できます。 Exchange トランスポート ルールに基づく DLP イベントはサポートされていません。
+DLP イベントは、Exchange Online、SharePoint Online、および OneDrive For Business で使用できます。Exchange の DLP イベントは、統合された DLP ポリシーに基づいたイベント (セキュリティ/コンプライアンス センターで構成されたものなど) でのみ使用できます。Exchange トランスポート ルールに基づく DLP イベントはサポートされていません。
 
-共通スキーマでは、DLP (データ損失防止) イベントに必ず UserKey="DlpAgent" があります。 共通スキーマの Operation プロパティの値として格納される 3 種類の DLP イベントがあります。
+共通スキーマでは、DLP (データ損失防止) イベントに必ず UserKey="DlpAgent" があります。共通スキーマの Operation プロパティの値として格納される 3 種類の DLP イベントがあります。
 
-- DlpRuleMatch: ルールが一致したことを示します。 これらのイベントは、Exchange、SharePoint Online、OneDrive for Business のいずれにも存在します。 Exchange では、誤検知と上書きの情報が含まれます。 SharePoint Online と OneDrive for Business では、誤検知と上書きは異なるイベントを生成します。
+- DlpRuleMatch - これは、ルールが一致したことを示します。 これらのイベントは、Exchange と SharePoint Online および OneDrive for Business の両方に存在します。Exchange では、誤検知と上書きの情報が含まれます。SharePoint Online と OneDrive for Business では、誤検知と上書きは異なるイベントを生成します。
 
 - DlpRuleUndo: SharePoint Online と OneDrive for Business にのみ存在し、ユーザーによる対象の誤検知/上書きにより、またはドキュメントがポリシーの適用対象ではなくなった (ポリシーを変更したか、ドキュメントのコンテンツを変更したため) ことにより、以前に適用されたポリシー アクションが取り消された ("undone") ことを示します。
 
@@ -766,7 +766,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 |ExchangeMetaData|Self.[ExchangeMetadata](#exchangemetadata-complex-type)|いいえ|機密情報を含んだ電子メール メッセージに関するメタデータを記述します。|
 |ExceptionInfo|Edm.String|いいえ|ポリシーが適用されなくなった理由や、エンド ユーザーが記した誤検知や上書きに関する情報を識別します。|
 |PolicyDetails|Collection(Self.[PolicyDetails](#policydetails-complex-type))|はい|DLP イベントをトリガーした 1 つ以上のポリシーに関する情報。|
-|SensitiveInfoDetectionIsIncluded|ブール型|はい|ソース コンテンツからの機密性の高いデータ型の値や周囲のコンテキストがイベントに含まれているかどうかを示します。 Azure Active Directory では、機密性の高いデータへのアクセスは「機密情報を含む DLP ポリシー イベントの読み取り」アクセス許可が必要です。|
+|SensitiveInfoDetectionIsIncluded|ブール型|はい|ソース コンテンツからの機密性の高いデータ型の値や周囲のコンテキストがイベントに含まれているかどうかを示します。Azure Active Directory では、機密性の高いデータへのアクセスは「機密情報を含む DLP ポリシー イベントの読み取り」アクセス許可が必要です。|
 |||||
 
 ### <a name="sharepointmetadata-complex-type"></a>SharePointMetadata 複合型
@@ -847,7 +847,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|Detections|Collection(Self.Detections)|はい|検出された機密情報の配列。 情報には、値 = 一致した値 ( SSN のクレジットカードの値など) と、コンテキスト = 一致した値を含むソース コンテンツからの抜粋のあるキー値のペアが含まれます。 |
+|Detections|Collection(Self.Detections)|はい|検出された機密情報の配列。情報には、値 = 一致した値 (例: SSN のクレジットカードの値など) と、コンテキスト = 一致した値を含むソース コンテンツからの抜粋のあるキー値のペアが含まれます。 |
 |ResultsTruncated|Edm.Boolean|はい|結果が多いためにログが切り捨てられたかどうかを示します。 |
 |||||
 
@@ -882,28 +882,28 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 - [セキュリティ/コンプライアンス センターのアラート ポリシー](https://docs.microsoft.com/office365/securitycompliance/alert-policies#default-alert-policies)に基づいて生成されたすべてのアラート。
 - [Office 365 Cloud App Security](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) および [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) で生成された Office 365 関連のアラート。
 
-これらのイベントの UserId と UserKey は、常に SecurityComplianceAlerts になります。 共通スキーマの Operation プロパティの値として格納される 3 種類の警告イベントがあります。
+これらのイベントの UserId と UserKey は、常に SecurityComplianceAlerts になります。共通スキーマの Operation プロパティの値として格納される 3 種類の警告イベントがあります。
 
 - AlertTriggered: 新しいアラートがポリシーとの一致によって生成されている。
 
-- AlertEntityGenerated: 新しいエンティティがアラートに追加されている。 このイベントは、セキュリティ/コンプライアンス センターの警告 ポリシーに基づいて生成された警告にのみ適用されます。 生成されたアラートごとに、これらのイベントが 1 つまたは複数関連付けられます。 たとえば、いずれかのユーザーが 5 分以内に 100 ファイル以上削除したときに、アラートをトリガーするポリシーが定義されているとします。 2 人のユーザーがほとんど同時にしきい値を超えた場合、AlertEntityGenerated イベントは 2 つになりますが、AlertTriggered イベントは 1 つのみになります。
+- AlertEntityGenerated - 新しいエンティティがアラートに追加されまました。このイベントは、セキュリティ/コンプライアンス センターの警告 ポリシーに基づいて生成された警告にのみ適用されます。生成されたアラートごとに、これらのイベントが 1 つまたは複数関連付けられます。生成されたアラートごとに、これらのイベントが 1 つまたは複数関連付けられます。たとえば、いずれかのユーザーが 5 分以内に 100 ファイル以上削除したときに、アラートをトリガーするポリシーが定義されているとします。2 人のユーザーがほとんど同時にしきい値を超えた場合、AlertEntityGenerated イベントは 2 つになりますが、AlertTriggered イベントは 1 つのみになります。
 
-- AlertUpdated - 警告のメタデータが更新されました。 このイベントは、警告のステータスが変更されたとき（例えば、「アクティブ」から「解決済み」に）、誰かが警告にコメントを追加したときにログに記録されます。
+- AlertUpdated - 警告のメタデータが更新されました。このイベントは、警告のステータスが変更されたとき（例えば、「アクティブ」から「解決済み」に）、誰かが警告にコメントを追加したときにログに記録されます。
 
 |**パラメーター**|**型**|**必須**|**Description**|
 |:-----|:-----|:-----|:-----|
 |AlertId|Edm.Guid|はい|アラートの GUID。|
-|AlertType|Self.String|はい|アラートの種類。 アラートの種類には、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>System</p></li><li><p>Custom</p></li>|
+|AlertType|Self.String|はい|アラートのタイプ。 アラートの種類には、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>System</p></li><li><p>Custom</p></li>|
 |Name|Edm.String|はい|アラートの名前。|
 |PolicyId|Edm.Guid|いいえ|アラートをトリガーしたポリシーの GUID。|
-|Status|Edm.String|いいえ|アラートの状態。 状態には、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Active</p></li><li><p>Investigating</p></li><li><p>Resolved</p></li><li><p>Dismissed</p></li></ul>|
+|Status|Edm.String|いいえ|アラートのステータス。 ステータスには、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Active</p></li><li><p>Investigating</p></li><li><p>Resolved</p></li><li><p>Dismissed</p></li></ul>|
 |重要度|Edm.String|いいえ|アラートの重大度。 重大度レベルには、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>低</p></li><li><p>中</p></li><li><p>高</p></li></ul>|
 |カテゴリ|Edm.String|いいえ|アラートのカテゴリ。 カテゴリには、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>AccessGovernance</p></li><li><p>DataGovernance</p></li><li><p>DataLossPrevention</p></li><li><p>InsiderRiskManagement</p></li><li><p>MailFlow</p></li><li><p>ThreatManagement</p></li><li><p>その他</p></li></ul>|
-|Source|Edm.String|いいえ|アラートのソース。 ソースには、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Office 365 セキュリティ/コンプライアンス</p></li><li><p>Cloud App Security</p></li></ul>|
-|Comments|Edm.String|いいえ|アラートが表示されたユーザーが残したコメント。 既定は、"New alert" です。|
-|Data|Edm.String|いいえ|アラートまたはアラート エンティティの詳細データ BLOB。|
-|AlertEntityId|Edm.String|いいえ|アラート エンティティの識別子。 このパラメーターは、AlertEntityGenerated イベントにのみ適用されます。|
-|EntityType|Edm.String|いいえ|アラートまたはアラート エンティティの種類。 エンティティの種類には、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>User</p></li><li><p>Recipients</p></li><li><p>Sender</p></li><li><p>MalwareFamily</p></li></ul>このパラメーターは、AlertEntityGenerated イベントにのみ適用されます。|
+|Source|Edm.String|いいえ|アラートのソース。ソースには、次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Office 365 セキュリティ/コンプライアンス</p></li><li><p>Cloud App Security</p></li></ul>|
+|Comments|Edm.String|いいえ|アラートが表示されたユーザーが残したコメント。既定は、"New alert" です。|
+|データ|Edm.String|いいえ|アラートまたはアラート エンティティの詳細データ BLOB。|
+|AlertEntityId|Edm.String|いいえ|このパラメーターは、AlertEntityGenerated イベントにのみ適用されます。|
+|EntityType|Edm.String|いいえ|アラートまたはアラート エンティティの種類。エンティティの種類には次のものが含まれます。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>User</p></li><li><p>Recipients</p></li><li><p>Sender</p></li><li><p>MalwareFamily</p></li></ul>このパラメーターは、AlertEntityGenerated イベントにのみ適用されます。|
 |||||
 
 ## <a name="yammer-schema"></a>Yammer スキーマ
@@ -916,12 +916,12 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |ActorYammerUserId|Edm.Int64|いいえ|操作を実行したユーザーの ID。|
 |DataExportType|Edm.String|いいえ|データのエクスポートにメッセージ、メモ、ファイル、トピック、ユーザー、およびグループが含まれている場合は "data" を返します。データのエクスポートにユーザーのみが含まれている場合は "user" を返します。|
 |FileId|Edm.Int64|いいえ|操作中のファイルの ID。 |
-|FileName|Edm.String|いいえ|操作中のファイルの名前。 操作に関係のない場合は空白が表示されます。|
-|GroupName|Edm.String|いいえ|操作中のグループの名前。 操作に関係のない場合は空白が表示されます。|
+|FileName|Edm.String|いいえ|操作中のファイルの名前。 操作に関係がない場合は空白で表示されます。|
+|GroupName|Edm.String|いいえ|操作中のグループの名前。 操作に関係がない場合は空白で表示されます。|
 |IsSoftDelete|Edm.Boolean|いいえ|ネットワークのデータ保持ポリシーが論理的な削除に設定されている場合は "true" を返します。ネットワークのデータ保持ポリシーが物理的な削除に設定されている場合は "false" を返します。|
 |MessageId|Edm.Int64|いいえ|操作中のメッセージの ID。|
 |YammerNetworkId|Edm.Int64|いいえ|操作を実行したユーザーのネットワーク ID。|
-|TargetUserId|Edm.String|いいえ|操作中のターゲット ユーザーのメール アドレス。 操作に関係のない場合は空白が表示されます。|
+|TargetUserId|Edm.String|いいえ|操作の対象ユーザーのメール。 操作に関係がない場合は空白で表示されます。|
 |TargetYammerUserId|Edm.Int64|いいえ|操作中のターゲット ユーザーの ID。|
 |VersionId|Edm.Int64|いいえ|操作中のファイルのバージョン ID。|
 |||||
@@ -972,13 +972,13 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |AddOnType|Self.[AddOnType](#addontype)|いいえ|このイベントを生成したアドオンの種類。|
 |AddonName|Edm.String|不要|イベントを生成したアドオンの名前。|
 |AddOnGuid|Edm.Guid|いいえ|イベントを生成したアドオンの一意識別子。|
-|TabType|Edm.String|いいえ|タブ イベントにのみ存在します。 イベントを生成したタブの種類。|
-|Name|Edm.String|いいえ|設定のイベントにのみ存在します。 変更された設定の名前。|
-|OldValue|Edm.String|いいえ|設定のイベントにのみ存在します。 設定の以前の値。|
-|NewValue|Edm.String|いいえ|設定のイベントにのみ存在します。 設定の新しい値。|
+|TabType|Edm.String|いいえ|タブ イベントにのみ存在します。 イベントを生成したタブのタイプです。|
+|名前|Edm.String|いいえ|設定イベントにのみ存在します。 変更された設定の名前です。|
+|OldValue|Edm.String|いいえ|設定イベントにのみ存在します。 設定の以前の値です。|
+|NewValue|Edm.String|いいえ|設定イベントにのみ存在します。 設定の新しい値です。|
 ||||
 
-### <a name="microsoftteamsmember-complex-type"></a>MicrosoftTeamsMember complex type
+### <a name="microsoftteamsmember-complex-type"></a>MicrosoftTeamsMember 複合型
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -1017,28 +1017,28 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |3|Tab|Microsoft Teams タブ。|
 ||||
 
-## <a name="office-365-advanced-threat-protection-and-threat-investigation-and-response-schema"></a>Office 365 Advanced Threat Protection および脅威の調査と対応スキーマ
+## <a name="microsoft-defender-for-office-365-and-threat-investigation-and-response-schema"></a>Microsoft Defender for Office 365 および脅威の調査と対応スキーマ
 
-[Office 365 Advanced Threat Protection](https://docs.microsoft.com/office365/securitycompliance/office-365-atp) (ATP) および脅威の調査と対応のイベントは、Office 365 Advanced Threat Protection Plan 1、Office 365 Advanced Threat Protection Plan 2、または E5 サブスクリプションをお持ちの Office 365 のお客様が利用できます。 Office 365 ATP フィードの各イベントは、脅威が含まれていると判断された次のように対応します。
+[Microsoft Defender for Office 365](https://docs.microsoft.com/office365/securitycompliance/office-365-atp) と脅威の調査および対応のイベントは、Defender for Office 365 Plan 1、Defender for Office 365 Plan 2、またはE5サブスクリプションをお持ちの Office 365 のお客様にご利用いただけます。 Defender for Office 365 フィードの各イベントは、脅威が含まれていると判断された次のイベントに対応しています。
 
 - 配信時および [Zero-hour Auto Purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によってメッセージに対する検出が行われた、組織内のユーザーが送信または受信する電子メール メッセージ。 
 
-- [Office 365 の ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護に基づいてクリック時に悪意があるとして検出された組織内のユーザーがクリックした URL。  
+- [Defender for Office 365 の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)の保護に基づいてクリック時に悪意があるとして検出された組織内のユーザーがクリックした URL。  
 
-- [Office 365 の ATP](https://docs.microsoft.com/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。
+- [Microsoft Defender for Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-for-spo-odb-and-teams) により悪意があるとして検出された SharePoint Online、OneDrive for Business、または Microsoft Teams 内のファイル。
 
 - トリガーされ、[自動調査](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office)を開始したアラート。
 
 > [!NOTE]
-> Office 365 Advanced Threat Protection および Office 365 脅威の調査と対応 (旧称: Office 365 脅威インテリジェンス) の機能は、Office 365 Advanced Threat Protection Plan 2 および追加の脅威保護機能の一部になっています。 詳細については、「[Office 365 ATP のプランと価格](https://products.office.com/exchange/advance-threat-protection)」および「[Office 365 ATP サービスの説明](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description)」を参照してください。
+> Microsoft Defender for Office 365 および Office 365 脅威の調査および対応（旧称Office 365 Threat Intelligence）機能は、追加の脅威保護機能を備えたDefender for Office 365 Plan2の一部になりました。 詳細については、「[Microsoft Defender for Office 365 のプランと価格](https://products.office.com/exchange/advance-threat-protection)」および「[Defender for Office 365 サービス説明書](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description)」を参照してください。
 
 ### <a name="email-message-events"></a>電子メール メッセージ イベント
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#attachmentdata))|いいえ|イベントをトリガーした電子メール メッセージの添付ファイルに関するデータ。|
-|DetectionType|Edm.String|はい|検出タイプ (例: **Inline** - 配信時に検出、**Delayed** - 配布後に検出、**ZAP** - [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ)。 ZAP の検出タイプのイベントの前には、通常、**Delayed** 検出タイプのメッセージが表示されます。|
-|DetectionMethod|Edm.String|はい|Office 365 の ATP で検出に使用されるメソッドまたはテクノロジ。|
+|DetectionType|Edm.String|はい|検出タイプ (例: **Inline** - 配信時に検出、**Delayed** - 配布後に検出、**ZAP** - [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ)。ZAP 検出タイプのイベントの前には、通常、**遅延** 検出タイプのメッセージが表示されます。|
+|DetectionMethod|Edm.String|はい|Defender for Office 365 で検出に使用されるメソッドまたはテクノロジ。|
 |InternetMessageId|Edm.String|はい|インターネット メッセージ ID。|
 |NetworkMessageId|Edm.String|はい|Exchange Online のネットワーク メッセージ ID。|
 |P1Sender|Edm.String|はい|電子メール メッセージの送信者の返信先。|
@@ -1047,8 +1047,8 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |ポリシー|Self.[PolicyAction](#policy-action)|はい|メール メッセージに関連するフィルタリング ポリシーで構成されたアクション (たとえば、**迷惑メールフォルダーに移動** または **検疫**)。|
 |P2Sender|Edm.String|はい|電子メール メッセージの **送信者**。|
 |受信者|Collection(Edm.String)|はい|電子メール メッセージの受信者の配列。|
-|SenderIp|Edm.String|はい|Office 365 の電子メールを送信した IP アドレス。 IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
-|件名|Edm.String|はい|メッセージの件名。|
+|SenderIp|Edm.String|はい|Office 365 の電子メールを送信した IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
+|Subject|Edm.String|はい|メッセージの件名。|
 |Verdict|Edm.String|はい|メッセージの判定。|
 |MessageTime|Edm.Date|はい|メール メッセージが受信または送信された、協定世界時 (UTC) での日時。|
 |EventDeepLink|Edm.String|はい|エクスプローラーのメール イベントまたは Office 365 セキュリティ/コンプライアンス センターのリアルタイム レポートへのディープリンク。|
@@ -1095,7 +1095,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |7|フィッシング対策、SPOOF|フィッシング対策ポリシーのスプーフィング アクション。|
 |8|フィッシング対策、GIMP|フィッシング対策ポリシーのメールボックス インテリジェンス アクション。|
 |9|マルウェア対策、AMP| マルウェア対策ポリシーのマルウェア ポリシー アクション。|
-|10|安全な添付ファイル、SAP| Office 365 ATP の安全な添付ファイル ポリシーのポリシー アクション。|
+|10|安全な添付ファイル、SAP| Defender for Office 365 ポリシーの、安全な添付ファイルのポリシー アクション。|
 |11|Exchange トランスポート ルール、ETR| Exchange トランスポート ルールのポリシー アクション。|
 |12|マルウェア対策、ZAPM| ゼロアワー自動消去 (ZAP) に適用されるマルウェア対策ポリシーのマルウェア対策ポリシー アクション。|
 |13|フィッシング対策、ZAPP| ZAP に適用されるフィッシング対策のフィッシング詐欺ポリシー アクション。|
@@ -1127,11 +1127,11 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |:-----|:-----|:-----|:-----|
 |UserId|Edm.String|はい|URL をクリックしたユーザーの識別子 (例: 電子メール アドレス)。|
 |AppName|Edm.String|はい|URL がクリックされた Office 365 サービス (例: Outlook メール)。|
-|URLClickAction|Self.[URLClickAction](#urlclickaction)|はい|[Office 365 ATP の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)に関する組織のポリシーに基づいた、URL のクリック アクション。|
+|URLClickAction|Self.[URLClickAction](#urlclickaction)|はい|[Defender for Office 365  の安全なリンク](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)に関する組織のポリシーに基づいた、URL のクリック アクション。|
 |SourceId|Edm.String|はい|URL がクリックされた Office 365 サービスの識別子 (例: メールの場合、これは Exchange Online のネットワーク メッセージ ID)。|
 |TimeOfClick|Edm.Date|はい|ユーザーが URL をクリックした、世界協定時刻 (UTC) での日時。|
 |URL|Edm.String|はい|ユーザーがクリックした URL。|
-|UserIp|Edm.String|はい|URL をクリックしたユーザーの IP アドレス。 IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
+|UserIp|Edm.String|はい|URL をクリックしたユーザーの IP アドレス。IP アドレスは、IPv4 または IPv6 アドレスの形式で表示されます。|
 |||||
 
 ### <a name="enum-urlclickaction---type-edmint32"></a>列挙値: URLClickAction - タイプ: Edm.Int32
@@ -1140,10 +1140,10 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 |**値**|**メンバー名**|**説明**|
 |:-----|:-----|:-----|
-|2|Blockpage|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされました。|
-|3|PendingDetonationPage|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されました。|
-|4|BlockPageOverride|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされましたが、ユーザーは URL に移動するためにブロックをオーバーライドしました。|
-|5|PendingDetonationPageOverride|[Office 365 の ATP の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されましたが、ユーザーは URL に移動するためにオーバーライドしました。|
+|2|Blockpage|[Defender for Office 365 の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされました。|
+|3|PendingDetonationPage|[Defender for Office 365 の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されました。|
+|4|BlockPageOverride|[Defender for Office 365 の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされましたが、ユーザーは URL に移動するためにブロックをオーバーライドしました。|
+|5|PendingDetonationPageOverride|[Defender for Office 365 の安全なリンク機能](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されましたが、ユーザーは URL に移動するためにオーバーライドしました。|
 |||||
 
 ### <a name="file-events"></a>ファイルのイベント
@@ -1152,7 +1152,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |:-----|:-----|:-----|:-----|
 |FileData|Self.[FileData](#filedata)|はい|イベントをトリガーしたファイルに関するデータ。|
 |SourceWorkload|Self.[SourceWorkload](#sourceworkload)|はい|ファイルが見つかったワークロードやサービス (例: SharePoint Online、OneDrive for Business、Microsoft Teams など)
-|DetectionMethod|Edm.String|はい|Office 365 の ATP で検出に使用されるメソッドまたはテクノロジ。|
+|DetectionMethod|Edm.String|はい|Microsoft Defender for Office 365 で検出に使用されるメソッドまたはテクノロジ。|
 |LastModifiedDate|Edm.Date|はい|ファイルが作成または最後に変更された、世界協定時刻 (UTC) での日時。|
 |LastModifiedBy|Edm.String|はい|ファイルを作成または最後に変更したユーザーの識別子 (例: メール アドレス)。|
 |EventDeepLink|Edm.String|はい|エクスプローラーのファイル イベントまたはセキュリティ/コンプライアンス センターのリアルタイム レポートへのディープリンク。|
@@ -1186,9 +1186,9 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ## <a name="automated-investigation-and-response-events-in-office-365"></a>Office 365 の自動調査および対応イベント
 
-[Office 365 の自動調査および応答 (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) イベントは、Office 365 Advanced Threat Protection Plan 2、または Office 365 E5 を含むサブスクリプションをお持ちの Office 365 のお客様が利用できます。 調査イベントは調査ステータスの変更に基づいてログに記録されます。 たとえば、管理者が [保留中のアクション] の調査ステータスを [完了] に変更する操作を行うと、イベントがログに記録されます。 
+[Office 365 自動調査および応答 (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) イベントは、Office 365 Advanced Threat Protection Plan 2 または Office 365 E5 を含むサブスクリプションをお持ちの Office 365 のお客様が利用できます。調査イベントは調査ステータスの変更に基づいてログに記録されます。たとえば、管理者が [保留中のアクション] の調査ステータスを [完了] に変更する操作を行うと、イベントがログに記録されます。
 
-現在のところ、自動調査のみがログに記録されます (手動で生成された調査のイベントのログへの記録は、間もなく開始されます)。次のステータス値がログに記録されます。
+現在、自動調査のみがログに記録されます。(手動で生成された調査のイベントのログへの記録は、間もなく開始されます)。次のステータス値がログに記録されます。
 
 - 調査が開始しました
 - 脅威は検出されませんでした
@@ -1207,13 +1207,13 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |----|----|----|
 |InvestigationId    |Edm.String    |調査 ID/GUID |
 |InvestigationName    |Edm.String    |調査名 |
-|InvestigationType    |Edm.String    |調査の種類。 次のいずれかの値を指定できます。<br/>- ユーザーが報告したメッセージ<br/>- zapped マルウェア<br/>- zapped フィッシング<br/>- URL の判定変更<p>(現在手動調査は利用できません。まもなく提供開始予定です) |
+|InvestigationType    |Edm.String    |調査の種類。 次のいずれかの値を指定します。<br/>- ユーザーが報告したメッセージ<br/>- zapped マルウェア<br/>- zapped フィッシング<br/>- URL の判定変更<p>(現在手動調査は利用できません。まもなく提供開始予定です) |
 |LastUpdateTimeUtc    |Edm.Date    |調査の最終更新の UTC 時刻 |
 |StartTimeUtc    |Edm.Date    |調査の開始時刻 |
 |状態     |Edm.String     |調査、実行中、保留中のアクションなどの状態。 |
 |DeeplinkURL    |Edm.String    |Office 365 セキュリティ/コンプライアンス センターの調査へのディープ リンク URL |
 |Actions |Collection (Edm.String)    |調査により推奨される操作のコレクション |
-|データ    |Edm.String    |調査エンティティの詳細、調査に関連するアラートの情報が含まれているデータ文字列。 エンティティはデータ blob 内の個別のノードで使用できます。 |
+|データ    |Edm.String    |調査エンティティの詳細、調査に関連するアラートの情報が含まれているデータ文字列。エンティティは、データ blob 内の別のノードで使用できます。 |
 ||||
 
 ### <a name="actions"></a>Actions
@@ -1305,8 +1305,8 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 |NetworkMessageIds    |Collection (Edm.String)    |メール クラスターに含まれているメール メッセージの ID のリスト |
 |CountByDeliveryStatus    |Collections (Edm.String)    |DeliveryStatus の文字列表現によるメール メッセージの数 |
 |CountByThreatType    |Collections (Edm.String) |ThreatType の文字列表現によるメール メッセージの数 |
-|Threats    |Collections (Edm.String)    |メール クラスターに含まれているメール メッセージの脅威。 脅威にはフィッシングやマルウェアなどの値が含まれます。 |
-|Query    |Edm.String    |メール クラスターのメッセージを特定するために使用されたクエリ  |
+|Threats    |Collections (Edm.String)    |メール クラスターに含まれているメール メッセージの脅威。脅威にはフィッシングやマルウェアなどの値が含まれます。 |
+|クエリ    |Edm.String    |メール クラスターのメッセージを特定するために使用されたクエリ  |
 |QueryTime    |Edm.DateTime    |クエリ時間  |
 |MailCount    |Edm.int    |メール クラスターに含まれているメール メッセージの数。  |
 |ソース    |String    |メール クラスターのソース、クラスター ソースの値。 |
@@ -1314,7 +1314,7 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 
 ## <a name="hygiene-events-schema"></a>検疫イベント スキーマ
 
-検疫イベントは送信スパム保護に関係しています。 これらのイベントは、メールの送信を制限されているユーザーに関係します。 詳細については、以下を参照してください。
+検疫イベントは送信スパム保護に関係しています。これらのイベントは、メールの送信を制限されているユーザーに関係します。詳細については、次のトピックをご覧ください。
 
 - [送信スパム保護](https://docs.microsoft.com/microsoft-365/security/office-365-security/outbound-spam-controls)
 
@@ -1323,7 +1323,7 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |監査|Edm.String|いいえ|検疫イベントに関連するシステム情報。|
-|イベント|Edm.String|いいえ|検疫イベントの種類。 このパラメーターの有効な値は、**一覧表示** また **一覧から除外** です。|
+|イベント|Edm.String|いいえ|衛生イベントの種類。このパラメーターの有効な値は、**一覧表示** また **一覧から除外** です。|
 |EventId|Edm.Int64|いいえ|検疫イベントの種類の ID。|
 |EventValue|Edm.String|いいえ|影響を受けたユーザー。|
 |理由|Edm.String|いいえ|検疫イベントの詳細。|
@@ -1366,7 +1366,7 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 
 ## <a name="dynamics-365-schema"></a>Dynamics 365 スキーマ
 
-Dynamics 365 イベントのモデル駆動型アプリに関連するイベントの監査レコードは、基本スキーマとエンティティオペレーションスキーマの両方を使用します。 詳細については、「[アクティビティログを有効にして使用する](https://docs.microsoft.com/power-platform/admin/enable-use-comprehensive-auditing#model-driven-apps-in-dynamics-365-schema)」を参照してください。
+Dynamics 365 イベントのモデル駆動型アプリに関連するイベントの監査レコードは、基本スキーマとエンティティオペレーションスキーマの両方を使用します。詳細については、「[アクティビティログを有効にして使用する](https://docs.microsoft.com/power-platform/admin/enable-use-comprehensive-auditing#model-driven-apps-in-dynamics-365-schema)」を参照してください。
 
 ### <a name="dynamics-365-base-schema"></a>Dynamics 365 基本スキーマ
 
@@ -1382,13 +1382,13 @@ Dynamics 365 イベントのモデル駆動型アプリに関連するイベン�
 
 ### <a name="dynamics-365-entity-operation-schema"></a>Dynamics 365 エンティティ操作スキーマ
 
-Dynamics 365 のモデル駆動型アプリからのエンティティイベントは、このスキーマを使用して、Dynamics 36 5基本スキーマに基づいて構築します。 このスキーマには、監査イベントをトリガーしたエンティティ操作に関する情報が含まれています。
+Dynamics 365 のモデル駆動型アプリからのエンティティイベントは、このスキーマを使用して、Dynamics 36 5基本スキーマに基づいて構築します。このスキーマには、監査イベントをトリガーしたエンティティ操作に関する情報が含まれています。
 
 | **パラメーター**     | **型**            | **必須かどうか?** | **説明**|
 |:------------------ | :------------------ | :--------------|:--------------|
 |EntityId|Edm.Guid|いいえ|エンティティの一意識別子。|
-|EntityName|Edm.String|はい|組織のエンティティの名前。 エンティティの例には、`contact` や `authentication`があります。|
-|メッセージ|Edm.String|はい|このパラメーターには、エンティティーに関連して実行された操作が含まれています。 例えば、新しい連絡先が作成された場合、Message プロパティの値は `Create` で、EntityNameプロパティの対応する値は `contact` です。|
+|EntityName|Edm.String|はい|組織内のエンティティの名前。 エンティティの例には、`contact`または`authentication`が含まれます。|
+|メッセージ|Edm.String|はい|このパラメーターには、エンティティーに関連して実行された操作が含まれています。例えば、新しい連絡先が作成された場合、Message プロパティの値は `Create` で、EntityNameプロパティの対応する値は `contact` です。|
 |クエリ|Edm.String|いいえ|FetchXML操作の実行中に使用されたフィルタークエリのパラメーター。|
 |PrimaryFieldValue|Edm.String|いいえ|エンティティのプライマリフィールドである属性の値を示します。|
 |||||
@@ -1401,12 +1401,12 @@ Dynamics 365 のモデル駆動型アプリからのエンティティイベン�
 |:------------------ | :------------------ | :--------------|:--------------|
 | WpaUserRole        | Edm.String | いいえ     | アクションを実行したユーザーの Workplace Analytics ロール。|
 | ModifiedProperties | コレクション (Common.ModifiedProperty) | いいえ | このプロパティには、変更されたプロパティの名前、変更されたプロパティの新しい値、および変更されたプロパティの以前の値が含まれています。|
-| OperationDetails   | コレクション (Common.NameValuePair)    | いいえ | 変更された設定の拡張プロパティの一覧。 各プロパティには **Name** と **Value** があります。|
+| OperationDetails   | コレクション (Common.NameValuePair)    | いいえ | 変更された設定の拡張プロパティの一覧。各プロパティには **Name** と **Value** があります。|
 ||||
 
 ## <a name="quarantine-schema"></a>検疫スキーマ
 
-「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities)」に記載されている検疫イベントは、このスキーマを使用します。 検疫の詳細については、「[Office 365 の検疫](https://docs.microsoft.com/microsoft-365/security/office-365-security/quarantine-email-messages)」を参照してください。
+「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities)」に記載されている検疫イベントは、このスキーマを使用します。検疫の詳細については、「[Office 365 でのメール メッセージの検疫](https://docs.microsoft.com/microsoft-365/security/office-365-security/quarantine-email-messages)」を参照してください。
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
@@ -1442,12 +1442,12 @@ Dynamics 365 のモデル駆動型アプリからのエンティティイベン�
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|FormsUserTypes|Collection(Self.[FormsUserTypes](#formsusertypes))|はい|アクションを実行するユーザーの役割。  このパラメーターの値は、管理者、所有者、レスポンダー、または共同編集者です。|
+|FormsUserTypes|Collection(Self.[FormsUserTypes](#formsusertypes))|はい|アクションを実行するユーザーの役割。このパラメーターの値は、管理者、所有者、レスポンダー、または共同編集者です。|
 |SourceApp|Edm.String|はい|アクションが Forms Web サイトからのものなのか、他のアプリからのものなのかを示します。|
 |FormName|Edm.String|いいえ|現在のフォームの名前。|
 |FormId |Edm.String|いいえ|対象フォームの ID。|
 |FormTypes|Collection(Self.[FormTypes](#formtypes))|いいえ|これが、フォーム、クイズ、またはアンケートなのかを示します。|
-|ActivityParameters|Edm.String|いいえ|アクティビティのパラメーターを含む JSON 文字列。 詳細については、「[Office 365 セキュリティ/コンプライアンス センターで監査ログを検索する](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities)」を参照してください。|
+|ActivityParameters|Edm.String|いいえ|アクティビティのパラメーターを含む JSON 文字列。詳細については、「[Office 365 セキュリティ/コンプライアンス センターで監査ログを検索する](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities)」を参照してください。|
 ||||
 
 ### <a name="enum-formsusertypes---type-edmint32"></a>Enum: FormsUserTypes - Type: Edm.Int32
@@ -1469,15 +1469,15 @@ Dynamics 365 のモデル駆動型アプリからのエンティティイベン�
 |**値**|**フォームの種類**|**説明**|
 |:-----|:-----|:-----|
 |0|フォーム|[新しいフォーム] オプションを使用して作成されたフォーム。|
-|1|クイズ|[新しいクイズ] オプションを使用して作成されたクイズ。  クイズは特殊な種類のフォームで、点数、自動および手動採点、コメントなどの追加の機能が含まれるフォームです。|
-|2|アンケート|[新しいアンケート] オプションを使用して作成されたアンケート。  アンケートは特殊な種類のフォームで、CMS 統合や Flow ルールのサポートなどの追加の機能が含まれるフォームです。|
+|1|クイズ|[新しいクイズ] オプションを使用して作成されたクイズ。クイズは特殊な種類のフォームで、点数、自動および手動採点、コメントなどの追加の機能が含まれます。|
+|2|アンケート|[新しいアンケート] オプションを使用して作成されたアンケート。アンケートは特殊な種類のフォームで、CMS 統合や Flow ルールのサポートなどの追加の機能が含まれるフォームです。|
 ||||
 
 ## <a name="mip-label-schema"></a>MIP ラベルのスキーマ
 
-Microsoft Information Protection (MIP) ラベルのスキーマのイベントは、秘密度ラベルが適用されているトランスポート パイプラインのエージェントによって処理されたメール メッセージを Microsoft 365 が検出したときにトリガーされます。 秘密度ラベルは、手動または自動で、トランスポート パイプラインの内部または外部で適用されます。 秘密度ラベルは、ラベル ポリシーの自動適用により、メール メッセージに自動的に適用できます。
+Microsoft Information Protection (MIP) ラベルのスキーマのイベントは、秘密度ラベルが適用されているトランスポート パイプラインのエージェントによって処理されたメール メッセージを Microsoft 365 が検出したときにトリガーされます。秘密度ラベルは、手動または自動で、トランスポート パイプラインの内部または外部で適用されます。秘密度ラベルは、ラベル ポリシーの自動適用により、メール メッセージに自動的に適用できます。
 
-この監査スキーマの目的は、秘密度ラベルが適用されているすべてのメール アクティビティの合計を示すことです。 そのため、秘密度ラベルがいつどのように適用されたかに関係なく、秘密度ラベルが適用されている組織内のユーザー間で送受信されるメール メッセージごとに、監査のアクティビティが記録されます。 秘密度ラベルの詳細については、以下をご覧ください。
+この監査スキーマの目的は、秘密度ラベルが適用されているすべてのメール アクティビティの合計を示すことです。そのため、秘密度ラベルがいつどのように適用されたかに関係なく、秘密度ラベルが適用されている組織内のユーザー間で送受信されるメール メッセージごとに、監査のアクティビティが記録されます。秘密度ラベルの詳細については、以下をご覧ください。
 
 - [秘密度ラベルの詳細](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels)
 
@@ -1492,12 +1492,12 @@ Microsoft Information Protection (MIP) ラベルのスキーマのイベント�
 |LabelName|Edm.String|いいえ|メール メッセージに適用される秘密度ラベルの名前。|
 |LabelAction|Edm.String|いいえ|メッセージがメールのトランスポート パイプラインに入る前にメール メッセージに適用された秘密度ラベルによって指定されたアクション。|
 |LabelAppliedDateTime|Edm.Date|いいえ|メール メッセージに秘密度ラベルが適用された日付。|
-|ApplicationMode|Edm.String|いいえ|メール メッセージに秘密度ラベルが適用された方法を指定します。 **Privileged** の値は、ラベルがユーザーによって手動で適用されたことを示します。 **Standard** の値は、ラベルがクライアント側またはサービス側のラベル付けのプロセスによって自動的に適用されたことを示します。|
+|ApplicationMode|Edm.String|いいえ|メール メッセージに秘密度ラベルが適用された方法を指定します。**Privileged** の値は、ラベルがユーザーによって手動で適用されたことを示します。**Standard** の値は、ラベルがクライアント側またはサービス側のラベリング プロセスによって自動適用されたことを示します。|
 |||||
 
 ## <a name="communication-compliance-exchange-schema"></a>コミュニケーションコンプライアンス Exchange スキーマ
 
-Office 365 監査ログにリストされているコミュニケーションコンプライアンスイベントは、このスキーマを使用します。 これには、電子メールメッセージのコンテンツに、一致精度が \>= 99.5％ のスパム対策モデルによって識別される不快な言語が含まれている場合に生成される  **SupervisoryReviewOLAudit** 操作の監査レコードが含まれます。
+Office 365 監査ログにリストされているコミュニケーションコンプライアンスイベントは、このスキーマを使用します。これには、電子メールメッセージのコンテンツに、一致精度が \>= 99.5％ のスパム対策モデルによって識別される不快な言語が含まれている場合に生成される  **SupervisoryReviewOLAudit** 操作の監査レコードが含まれます。
 
 |**パラメーター**  |**型**|**必須かどうか?** |**説明**|
 |:---------------|:-------|:--------------|:--------------|

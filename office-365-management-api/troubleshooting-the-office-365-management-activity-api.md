@@ -16,7 +16,7 @@ ms.locfileid: "49021010"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>Office 365 マネージメント アクティビティ API の FAQ とトラブルシューティング
 
-Office 365 マネージメント アクティビティ API （ *統合監査 API* とも呼ばれます） は、Office 365 のセキュリティおよびコンプライアンス製品の一部です:
+Office 365 マネージメント アクティビティ API （*統合監査 API* とも呼ばれます） は、Office 365 のセキュリティおよびコンプライアンス製品の一部です:
 
 - 複数の監査パイプライン ワークロード (SharePoint や Exchange など) にプログラムでアクセスできます
 
@@ -255,7 +255,7 @@ Invoke-WebRequest -Method GET -Headers $headerParams -Uri "$resource/api/v1.0/$t
 
 #### <a name="paging-contents-for-busy-tenants"></a>ビジー状態のテナントに対するコンテンツのページング
 
-多くの大規模な Office 365 テナントでは、1 時間に数千ものイベントが生成されています。 これに該当する組織で、前述の例のように期間が 24 時間のクエリを実行すると、1 つの応答では返しきれないほどの通知の取得が必要になることがあります。 この場合、ある種の論理的なループの実装が必要になります。そのループでは、毎回、 **NextPageUrl:** ヘッダー値について応答ヘッダーを調べます。 詳細については、Office 365 マネージメント アクティビティ API リファレンスの「改ページ」セクションを参照してください。
+多くの大規模な Office 365 テナントでは、1 時間に数千ものイベントが生成されています。 これに該当する組織で、前述の例のように期間が 24 時間のクエリを実行すると、1 つの応答では返しきれないほどの通知の取得が必要になることがあります。 この場合、ある種の論理的なループの実装が必要になります。そのループでは、毎回、**NextPageUrl:** ヘッダー値について応答ヘッダーを調べます。 詳細については、Office 365 マネージメント アクティビティ API リファレンスの「改ページ」セクションを参照してください。
 
 ```powershell
 IF the NextPageUrl header is present in the response... 
@@ -265,7 +265,7 @@ THEN issue a new request substituting the Uri parameter in the above Invoke-WebR
 ELSE exit the loop
 ```
 
-このループ コードのテストは、極度に活発なテナントが存在していないと難しくなります。 スクリプトで数千回の更新操作を実行してテストしてみましたが、 **NextPageUrl** ヘッダーの送信が必要になるほどの数の通知を生成することができませんでした。
+このループ コードのテストは、極度に活発なテナントが存在していないと難しくなります。 スクリプトで数千回の更新操作を実行してテストしてみましたが、**NextPageUrl** ヘッダーの送信が必要になるほどの数の通知を生成することができませんでした。
 
 ### <a name="using-webhooks"></a>Webhook の使用
 
@@ -325,11 +325,11 @@ Response Code 403: {'error':{'code':'AF429','message':'Too many requests. Method
 > [!NOTE]
 > API リファレンスでは、どの API 操作にも *PublisherIdentifier* パラメーターが示されていますが、このパラメーターはコンテンツ BLOB の取得時の contentUri URL に対する GET 要求にも含める必要があります。
 
-問題のトラブルシューティングのために単純な API 呼び出しを実行する場合は (たとえば、サブスクリプションがアクティブかどうかを確認する場合)、 *PublisherIdentifier* パラメーターを省略してもかまいませんが、最終的に実稼働用に使用するコードでは、すべての呼び出しに必ず *PublisherIdentifier* パラメーターを含める必要があります。
+問題のトラブルシューティングのために単純な API 呼び出しを実行する場合は (たとえば、サブスクリプションがアクティブかどうかを確認する場合)、*PublisherIdentifier* パラメーターを省略してもかまいませんが、最終的に実稼働用に使用するコードでは、すべての呼び出しに必ず *PublisherIdentifier* パラメーターを含める必要があります。
 
-会社のテナントに対応するクライアントを実装する場合、 *PublisherIdentifier* はテナント GUID になります。 複数の顧客に対応する ISV アプリケーションまたはアドインを作成する場合、 *PublisherIdentifier* は ISV のテナント GUID にする必要があります (エンド ユーザーの会社のテナント GUID ではありません)。
+会社のテナントに対応するクライアントを実装する場合、*PublisherIdentifier* はテナント GUID になります。 複数の顧客に対応する ISV アプリケーションまたはアドインを作成する場合、*PublisherIdentifier* は ISV のテナント GUID にする必要があります (エンド ユーザーの会社のテナント GUID ではありません)。
 
-有効な *PublisherIdentifier* を含めると、テナントごとに 1 分あたり 60K の要求が割り当てられるプールに入れられます。 これは、莫大な数の要求です。 ただし、 *PublisherIdentifier* パラメーターを含めていないと、すべてのテナントに対して 1 分あたり 60K の要求が割り当てられる汎用プールに入れられます。 この場合、呼び出しが調整される可能性が高くなります。 これを防止するために、 *PublisherIdentifier* を使用してコンテンツ BLOB を要求する方法を示します。
+有効な *PublisherIdentifier* を含めると、テナントごとに 1 分あたり 60K の要求が割り当てられるプールに入れられます。 これは、莫大な数の要求です。 ただし、*PublisherIdentifier* パラメーターを含めていないと、すべてのテナントに対して 1 分あたり 60K の要求が割り当てられる汎用プールに入れられます。 この場合、呼び出しが調整される可能性が高くなります。 これを防止するために、*PublisherIdentifier* を使用してコンテンツ BLOB を要求する方法を示します。
 
 ```json
 $contentUri = ($response.Content | ConvertFrom-Json).contentUri[0]
@@ -337,4 +337,4 @@ $uri = $contentUri + '?PublisherIdentifier=82b24b6d-0591-4604-827b-705d55d0992f'
 $contents = Invoke-WebRequest -Method GET -Headers $headerParams -Uri $uri
 ```
 
-前述の例は、 *$response* 変数が /content エンドポイントに対する要求の応答で設定されていることと、 *$headerParams* 変数に有効なアクセス トークンが含まれていることを前提としています。 このスクリプトでは、応答からのコンテンツ URI の配列内で最初の項目を取得し、その BLOB をダウンロードするために GET を呼び出して、 *$contents* 変数に格納します。 ユーザーのコードでは、 *contentUri* ごとに GET を発行して、contentUri コレクション全体をループ処理することになります。
+前述の例は、*$response* 変数が /content エンドポイントに対する要求の応答で設定されていることと、*$headerParams* 変数に有効なアクセス トークンが含まれていることを前提としています。 このスクリプトでは、応答からのコンテンツ URI の配列内で最初の項目を取得し、その BLOB をダウンロードするために GET を呼び出して、*$contents* 変数に格納します。 ユーザーのコードでは、*contentUri* ごとに GET を発行して、contentUri コレクション全体をループ処理することになります。

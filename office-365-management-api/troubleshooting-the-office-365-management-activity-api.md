@@ -7,12 +7,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: a65c8dff39d80b57b1c885639be2e228e8119cb7
-ms.sourcegitcommit: 263cfbc04033ea8a1d765215e8777739587818e0
+ms.openlocfilehash: 9c909220d660e0202c3ebda2777b2d8922da45a3
+ms.sourcegitcommit: c3bb30b86a4569e9f18891f1cdc30cbffc8c8db4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "49021010"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "49784208"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>Office 365 マネージメント アクティビティ API の FAQ とトラブルシューティング
 
@@ -79,6 +79,10 @@ Microsoft サポートでチケットを開いて、新しい調整制限を要�
 **Azure Active Directory アクティビティの監査ログで TargetUpdatedProperties が ExtendedProperties に含まれなくなったのはなぜですか?**
 
 TargetUpdatedProperties は ExtendedProperties に表示されていました。 これが ExtendedProperties から削除され、現在では ModifiedProperties に表示されるようになりました。
+
+**マネージメント アクティビティ API を介して Active Directory (Azure AD) サインイン アクティビティの UserAccountNotFound エラーの監査ログを利用できないのはなぜですか?**
+
+2020 年 11 月以降、Azure AD サインイン アクティビティの監査ログは、Azure AD Event Hubs から統合監査ログに取り込まれます。 UserAccountNotFound ログオン エラーは Event Hubs で使用できないため、UserAccountNotFound エラーの監査ログはマネージメント アクティビティ API によって返されなくなりました。
 
 ## <a name="troubleshooting-the-office-365-management-activity-api"></a>Office 365 マネージメント アクティビティ API のトラブルシューティング
 

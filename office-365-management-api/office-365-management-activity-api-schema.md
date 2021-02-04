@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c39865d8b3aff5a11aaf113482982e1c407b9800
-ms.sourcegitcommit: 0f988a3c25a34491a6e80307cfcf097a85aa26fa
+ms.openlocfilehash: c71536ad05afe50e675661cebbfe1826cf6af3fa
+ms.sourcegitcommit: 3a6a64742924b9fbc1ffd6826b5651eb5583f70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "49385170"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "50096956"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -332,7 +332,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |GroupUpdated|サイト管理者または所有者は、SharePoint または OneDrive for Business サイトのグループの設定を変更します。これには、グループの名前、グループ メンバーシップを表示または編集できるユーザー、およびメンバーシップ要求を処理する方法の変更を含めることができます。|
 |LanguageAddedToTermStore|用語ストアに言語が追加されました。|
 |LanguageRemovedFromTermStore|用語ストアから言語が削除されました。|
-|LegacyWorkflowEnabledSet|サイト管理者または所有者は、SharePoint ワークフロー タスク コンテンツ タイプをサイトに追加します。グローバル管理者は、SharePoint 管理センターで組織全体のワークフローを有効にすることもできます。|
+|LegacyWorkflowEnabledSet|サイト管理者または所有者が、SharePoint ワークフロー タスク コンテンツの種類をサイトに追加します。グローバル管理者は、SharePoint 管理センターの組織全体のワーク フローを有効にすることもできます。|
 |LookAndFeelModified|ユーザーがサイド リンク バー、ガント チャートの書式、またはグループの形式を変更します。  または、ユーザーが Project Web App でビューを作成、変更、または削除します。|
 |ManagedSyncClientAllowed|ユーザーが SharePoint または OneDrive for Business サイトとの同期関係を正常に確立します。 ユーザーのコンピューターが、組織内のドキュメント ライブラリにアクセスできるドメインのリスト (宛先セーフ リストと呼ばれる) に追加されているドメインのメンバーであるため、同期関係は成功しました。 詳細については、「[SharePoint Online PowerShell を使用する](https://go.microsoft.com/fwlink/p/?LinkID=534609)」を参照し、宛先セーフ リスト上のドメインに対して OneDrive 同期を有効にしてください。|
 |MaxQuotaModified|サイトに割り当てられた上限が変更されています。|
@@ -746,7 +746,8 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|いいえ|ログインを要求しているアプリケーションを表す GUID。表示名は、Azure Active Directory グラフ API を使用して検索できます。|
 |クライアント|Edm.String|いいえ|ログインを実行するブラウザーが提供する、クライアント デバイス情報。|
-|LogonError|Edm.String|いいえ|失敗したログインの場合、ログインが失敗した理由が含まれます。 LogonErrors の詳細な説明については「[認証と承認エラー コード](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes)」の一覧を参照してください。
+|ErrorCode|Edm.String|いいえ|ログインに失敗した場合 (Operation プロパティの値がUserLoginFailed の場合)、このプロパティには Azure Active Directory STS (AADSTS) エラー コードが含まれます。 これらのエラー コードの説明については、[認証および承認のエラー コード](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes)を参照してください。 `0` の値は、ログインが成功したことを示します。|
+|LogonError|Edm.String|いいえ|ログインに失敗した場合、このプロパティには、ログインに失敗した理由のユーザーが読み取り可能な説明が含まれます。|
 |||||
 
 ## <a name="dlp-schema"></a>DLP スキーマ
@@ -1204,7 +1205,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="main-investigation-schema"></a>主要な調査スキーマ
 
-|名前    |種類    |説明  |
+|名前    |型    |説明  |
 |----|----|----|
 |InvestigationId    |Edm.String    |調査 ID/GUID |
 |InvestigationName    |Edm.String    |調査名 |

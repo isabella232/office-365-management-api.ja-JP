@@ -2,17 +2,17 @@
 ms.technology: o365-service-communications
 ms.TocTitle: Troubleshooting the Office 365 Management Activity API
 title: Office 365 マネージメント アクティビティ API のトラブルシューティング
-description: この API のサポートについて Microsoft サポートに最も多く寄せられる質問のまとめです。
+description: Office 365 マネージメント アクティビティ API のサポートについて Microsoft サポートに最も多く寄せられる質問のまとめです。
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 9c909220d660e0202c3ebda2777b2d8922da45a3
-ms.sourcegitcommit: c3bb30b86a4569e9f18891f1cdc30cbffc8c8db4
+ms.openlocfilehash: d954cc97320953ed35d6e46cb118395469c93394
+ms.sourcegitcommit: 24ef06fd001f273d16be72733509b5ec202d3ebb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "49784208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "50418189"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>Office 365 マネージメント アクティビティ API の FAQ とトラブルシューティング
 
@@ -80,9 +80,9 @@ Microsoft サポートでチケットを開いて、新しい調整制限を要�
 
 TargetUpdatedProperties は ExtendedProperties に表示されていました。 これが ExtendedProperties から削除され、現在では ModifiedProperties に表示されるようになりました。
 
-**マネージメント アクティビティ API を介して Active Directory (Azure AD) サインイン アクティビティの UserAccountNotFound エラーの監査ログを利用できないのはなぜですか?**
+**マネージメント アクティビティ API を介して Active Directory (Azure AD) サインイン アクティビティの UserAccountNotFound「LogonError」の監査ログを利用できないのはなぜですか?**
 
-2020 年 11 月以降、Azure AD サインイン アクティビティの監査ログは、Azure AD Event Hubs から統合監査ログに取り込まれます。 UserAccountNotFound ログオン エラーは Event Hubs で使用できないため、UserAccountNotFound エラーの監査ログはマネージメント アクティビティ API によって返されなくなりました。
+2020 年 11 月以降、Azure AD サインイン アクティビティの監査ログは、Azure AD Event Hubs から統合監査ログに取り込まれます。 この変更の結果、「LogonError」プロパティに UserAccountNotFound 値を入力することはできません。 2021 年 2 月の第 1 週から、[Azure AD ログオン監査スキーマの ErrorCode プロパティ](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema)が [AADSTS エラー コード](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information)と一致するようになりました。 また、UserAccountNotFound エラーのログイン試行時のユーザー名は、組織の Azure AD ディレクトリに存在しないため、UserId パラメーターに入力されません。
 
 ## <a name="troubleshooting-the-office-365-management-activity-api"></a>Office 365 マネージメント アクティビティ API のトラブルシューティング
 
@@ -219,15 +219,16 @@ RawContentLength  : 266
 
 ```powershell
 Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_ENDPOINT>/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
+```
 
 > [!NOTE]
-> Remember that `$headerParams` was populated in the first part of the script listed in the [Connecting to the API](#connecting-to-the-api) section in this article.
+> `$headerParams` のデータは、この記事の「[API への接続](#connecting-to-the-api)」に示したスクリプトの最初の部分で設定されています。
 
-The previous code will create a new subscription to the Audit.AzureActiveDirectory content type, with a webhook that is null. You can then check your subscriptions using the code in the [Checking your subscriptions](#checking-your-subscriptions) section in this article.
+前述のコードにより、Audit.AzureActiveDirectory コンテンツ タイプに対する新しいサブスクリプションが作成されます (Webhook は Null になっています)。 その後で、この記事の「[サブスクリプションの確認](#checking-your-subscriptions)」セクションで示したコードを使用すると、サブスクリプションを確認できます。
 
-## Checking content availability
+## <a name="checking-content-availability"></a>コンテンツの利用の可否の確認
 
-To check what content blobs were created during a certain period, you can add the following line to the script in the “Connecting to the API” section.
+特定の期間中に、どのコンテンツ BLOB が作成されたかを確認するために、「API への接続」セクションで示したスクリプトに、次の行を追加することができます。
 
 ```powershell
 Invoke-WebRequest -Method GET -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint"

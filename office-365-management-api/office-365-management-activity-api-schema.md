@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c71536ad05afe50e675661cebbfe1826cf6af3fa
-ms.sourcegitcommit: 3a6a64742924b9fbc1ffd6826b5651eb5583f70c
+ms.openlocfilehash: c0e253532abd43779cb624d5b63b907600e0f5b5
+ms.sourcegitcommit: bd92bba316c564fd7c09d5202ce46c1f9276f5ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "50096956"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "50726899"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -837,10 +837,23 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|Confidence|Edm.Int|はい|検出と一致したパターンの信頼度。|
-|カウント|Edm.Int|はい|検出された機密性の高いインスタンスの数。|
+|Confidence|Edm.Int|はい|機密情報の種類のすべての一致するパターンの集計された信頼度。|
+|カウント|Edm.Int|はい|検出された機密性の高いインスタンスの合計数。|
+|場所|Edm.String|いいえ||
 |SensitiveType|Edm.Guid|はい|検出された機密性の高いデータの種類を識別する GUID。|
 |SensitiveInformationDetections|Self.SensitiveInformationDetections|いいえ|詳細 (一致した値と一致した値のコンテキスト) のある機密情報データを含むオブジェクトの配列。|
+|SensitiveInformationDetailedClassificationAttributes|Collection(SensitiveInformationDetailedConfidenceLevelResult)|はい|3 つの各信頼度レベル (高、中、低) で検出された機密情報の種類の数および、DLP ルールに一致するかどうかに関する情報。|
+|SensitiveInformationTypeName|Edm.String|いいえ|機密情報の種類の名前。|
+|UniqueCount|Edm.Int32|はい|一意の検出された機密性の高いインスタンスの数。|
+|||||
+
+### <a name="sensitiveinformationdetailedclassificationattributes-complex-type"></a>SensitiveInformationDetailedClassificationAttributes complex type
+
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+|Confidence|Edm.int32|はい|検出されたパターンの信頼度レベル。|
+|カウント|Edm.Int32|はい|特定の信頼度レベルで検出された機密性の高いインスタンスの数。|
+|IsMatch|Edm.Boolean|はい|指定のカウントと DLP ルールで検出された機密の種類の信頼度レベルの結果が一致するかどうかを示します。|
 |||||
 
 ### <a name="sensitiveinformationdetections-complex-type"></a>SensitiveInformationDetections complex type
@@ -849,7 +862,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|Detections|Collection(Self.Detections)|はい|検出された機密情報の配列。 情報には、値 = 一致した値 ( SSN のクレジットカードの値など) と、コンテキスト = 一致した値を含むソース コンテンツからの抜粋のあるキー値のペアが含まれます。 |
+|DetectedValues|Collection(Common.NameValuePair)|はい|検出された機密情報の配列。 情報には、値 = 一致した値 ( クレジットカードの値など) と、コンテキスト = 一致した値を含むソース コンテンツからの抜粋のあるキー値のペアが含まれます。 |
 |ResultsTruncated|Edm.Boolean|はい|結果が多いためにログが切り捨てられたかどうかを示します。 |
 |||||
 
@@ -1205,7 +1218,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="main-investigation-schema"></a>主要な調査スキーマ
 
-|名前    |型    |説明  |
+|名前    |種類    |説明  |
 |----|----|----|
 |InvestigationId    |Edm.String    |調査 ID/GUID |
 |InvestigationName    |Edm.String    |調査名 |

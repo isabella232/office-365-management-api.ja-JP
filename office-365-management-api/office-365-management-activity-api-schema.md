@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 1d4fdfd920ae10331e789847ef76dc1a719ad2fc
-ms.sourcegitcommit: 1bd313b6add47b58e5aa1af53cd00d2872610556
+ms.openlocfilehash: 9ce20bd1fd8f0b6e706df46a5d8b63540962ffaf
+ms.sourcegitcommit: dfdacf2cdee3ad0f305167ba0c8a9bf9df8af356
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "50903356"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "51761998"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -577,7 +577,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ### <a name="exchangemailboxauditgrouprecord-schema"></a>ExchangeMailboxAuditGroupRecord スキーマ
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |フォルダー|Self.[ExchangeFolder](#exchangefolder-complex-type)|いいえ|アイテムのグループが存在するフォルダー。|
 |CrossMailboxOperations|Edm.Boolean|いいえ|操作に複数のメールボックスが関係したかどうかを示します。|
@@ -592,7 +592,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ### <a name="exchangemailboxauditrecord-schema"></a>ExchangeMailboxAuditRecord スキーマ
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |アイテム|Self.[ExchangeItem](#exchangeitem-complex-type)|いいえ|操作の実行対象のアイテムを表します。|
 |ModifiedProperties|Collection(Edm.String)|いいえ|TBD|
@@ -604,7 +604,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ### <a name="exchangeitem-complex-type"></a>ExchangeItem 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |ID|Edm.String|はい|ストア ID。|
 |Subject|Edm.String|いいえ|アクセスされたメッセージの件名。|
@@ -614,7 +614,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ### <a name="exchangefolder-complex-type"></a>ExchangeFolder 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |ID|Edm.String|はい|フォルダー オブジェクトのストアの ID。|
 |Path|Edm.String|いいえ|アクセスされたメッセージが置かれているメールボックス フォルダーの名前。|
@@ -622,7 +622,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="azure-active-directory-base-schema"></a>Azure Active Directory 基本スキーマ
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |AzureActiveDirectoryEventType|Self.[AzureActiveDirectoryEventType](#azureactivedirectoryeventtype)|はい|Azure AD イベントの種類。 |
 |ExtendedProperties|Collection(Common.NameValuePair)|いいえ|Azure AD イベントの拡張プロパティ。|
@@ -641,7 +641,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="azure-active-directory-account-logon-schema"></a>Azure Active Directory アカウント ログオン スキーマ
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |アプリケーション|Edm.String|いいえ|Office 15 などの、アカウント ログイン イベントをトリガーするアプリケーション。|
 |Client|Edm.String|いいえ|クライアント デバイス、デバイスの OS、およびアカウント ログイン イベントに使用したデバイスのブラウザーに関する詳細。|
@@ -703,7 +703,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="azure-active-directory-schema"></a>Azure Active Directory スキーマ
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |Actor|Collection(Self.[IdentityTypeValuePair](#complex-type-identitytypevaluepair))|いいえ|アクションを実行したユーザーまたはサービス プリンシパル。|
 |ActorContextId|Edm.String|いいえ|アクターが属する組織の GUID。|
@@ -717,7 +717,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ### <a name="complex-type-identitytypevaluepair"></a>複合型 IdentityTypeValuePair
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |ID|Edm.String|はい|種類を指定した ID の値。|
 |種類|Self.IdentityType|はい|ID の種類。|
@@ -739,7 +739,7 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 
 ## <a name="azure-active-directory-secure-token-service-sts-logon-schema"></a>Azure Active Directory の Secure Token Service (STS) ログオン スキーマ
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|いいえ|ログインを要求しているアプリケーションを表す GUID。表示名は、Azure Active Directory グラフ API を使用して検索できます。|
 |クライアント|Edm.String|いいえ|ログインを実行するブラウザーが提供する、クライアント デバイス情報。|
@@ -770,7 +770,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 ### <a name="sharepointmetadata-complex-type"></a>SharePointMetadata 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |接続元|Edm.String|はい|イベントを実行したユーザーの ID。 This will be either the FileOwner, LastModifier, or LastSharer.|
 |itemCreationTime|Edm.Date|はい|イベントのログの記録日時に関する UTC の Datetimestamp。|
@@ -787,7 +787,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 ### <a name="exchangemetadata-complex-type"></a>ExchangeMetadata 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |MessageID|Edm.String|はい|イベントをトリガーした電子メールのメッセージ ID。|
 |送信元|Edm.String|はい|電子メールを送信したユーザー。|
@@ -801,7 +801,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 ### <a name="policydetails-complex-type"></a>PolicyDetails 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |PolicyId|Edm.Guid|はい|このイベントにおける DLP ポリシーの GUID。|
 |PolicyName|Edm.String|はい|このイベントにおける DLP ポリシーのフレンドリ名。|
@@ -810,7 +810,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 ### <a name="rules-complex-type"></a>ルール複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |RuleId|Edm.Guid|はい|このイベントにおける DLP ルールの GUID。|
 |RuleName|Edm.String|はい|このイベントにおける DLP ルールの フレンドリ名。|
@@ -823,7 +823,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 ### <a name="conditionsmatched-complex-type"></a>ConditionsMatched 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |SensitiveInformation|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|いいえ|検出された機密情報の種類に関する情報。|
 |DocumentProperties|Collection(NameValuePair)|いいえ|ルールの一致をトリガーしたドキュメント プロパティに関する情報。|
@@ -832,7 +832,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 ### <a name="sensitiveinformation-complex-type"></a>SensitiveInformation 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |Confidence|Edm.Int|はい|機密情報の種類のすべての一致するパターンの集計された信頼度。|
 |カウント|Edm.Int|はい|検出された機密性の高いインスタンスの合計数。|
@@ -846,7 +846,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 ### <a name="sensitiveinformationdetailedclassificationattributes-complex-type"></a>SensitiveInformationDetailedClassificationAttributes complex type
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |Confidence|Edm.int32|はい|検出されたパターンの信頼度レベル。|
 |カウント|Edm.Int32|はい|特定の信頼度レベルで検出された機密性の高いインスタンスの数。|
@@ -857,7 +857,7 @@ DLP イベントは、Exchange Online、SharePoint Online、および OneDrive F
 
 DLP 機密データは、「DLP 機密データの読み取り」アクセス許可が付与されたユーザーが、アクティビティ フィード API でのみ利用できます。
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |DetectedValues|Collection(Common.NameValuePair)|はい|検出された機密情報の配列。 情報には、値 = 一致した値 ( クレジットカードの値など) と、コンテキスト = 一致した値を含むソース コンテンツからの抜粋のあるキー値のペアが含まれます。 |
 |ResultsTruncated|Edm.Boolean|はい|結果が多いためにログが切り捨てられたかどうかを示します。 |
@@ -865,7 +865,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="exceptioninfo-complex-type"></a>ExceptionInfo 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |理由|Edm.String|いいえ|For a DLPRuleUndo event, this indicates why the rule no longer applies, which can be one of 3 reasons: Override, Document Change, or Policy Change|
 |FalsePositive|Edm.Boolean|いいえ|ユーザーが誤検知としてこのイベントを指定したかどうかを示します。|
@@ -940,7 +940,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ## <a name="data-center-security-base-schema"></a>データ センター セキュリティ基本スキーマ
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |DataCenterSecurityEventType|Self.[DataCenterSecurityEventType](#datacentersecurityeventtype)|はい|ロック ボックス内のコマンドレット イベントのタイプ。|
 |||||
@@ -956,7 +956,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ## <a name="data-center-security-cmdlet-schema"></a>データ センター セキュリティ コマンドレット スキーマ
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |StartTime|Edm.Date|はい|コマンドレット実行の開始時刻。|
 |EffectiveOrganization|Edm.String|はい|昇格/コマンドレットの対象とされたテナントの名前。|
@@ -971,7 +971,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ## <a name="microsoft-teams-schema"></a>Microsoft Teams スキーマ
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |MessageId|Edm.String|いいえ|チャットまたはチャネル メッセージの識別子。|
 |Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|いいえ|チーム内のユーザーの一覧。|
@@ -992,7 +992,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="microsoftteamsmember-complex-type"></a>MicrosoftTeamsMember complex type
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |UPN|Edm.String|いいえ|ユーザーのユーザー プリンシパル名。|
 |Role|Self.[MemberRoleType](#memberroletype)|いいえ|チーム内のユーザーの役割。|
@@ -1012,7 +1012,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="keyvaluepair-complex-type"></a>KeyValuePair 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |キー|Edm.String|いいえ|キーと値のペアのキー。|
 |値|Edm.String|いいえ|キーと値のペアの値。|
@@ -1046,7 +1046,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="email-message-events"></a>電子メール メッセージ イベント
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#attachmentdata))|いいえ|イベントをトリガーした電子メール メッセージの添付ファイルに関するデータ。|
 |DetectionType|Edm.String|はい|検出タイプ (例: **Inline** - 配信時に検出、**Delayed** - 配布後に検出、**ZAP** - [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15) によって削除されたメッセージ)。 ZAP の検出タイプのイベントの前には、通常、**Delayed** 検出タイプのメッセージが表示されます。|
@@ -1064,11 +1064,11 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |Verdict|Edm.String|はい|メッセージの判定。|
 |MessageTime|Edm.Date|はい|メール メッセージが受信または送信された、協定世界時 (UTC) での日時。|
 |EventDeepLink|Edm.String|はい|エクスプローラーのメール イベントまたは Office 365 セキュリティ/コンプライアンス センターのリアルタイム レポートへのディープリンク。|
-|[配信アクション] (今後のフィールド) |Edm.String|はい|メール メッセージの元の配信操作。|
-|[元の配信場所] (今後のフィールド) |Edm.String|はい|メール メッセージの元の配信場所。|
-|[最新の配信場所] (今後のフィールド) |Edm.String|はい|イベントの時点でのメール メッセージの最新の配信場所。|
-|方向性 (今後のフィールド) |Edm.String|はい|メール メッセージが受信、送信、または内部組織のメッセージであるかどうかを識別します。|
-|ThreatsAndDetectionTech (今後のフィールド) |Edm.String|はい|脅威と対応する検出テクノロジ。 このフィールドは、スパム判定に対する最新の追加を含む、メール メッセージのすべての脅威を公開します。  たとえば、["Phish: [Spoof DMARC]","Spam: [URL malicious reputation]"。 異なる検出の脅威と検出テクノロジを以下に示します。|
+|配信アクション |Edm.String|はい|メール メッセージの元の配信操作。|
+|元の配信場所 |Edm.String|はい|メール メッセージの元の配信場所。|
+|最新の配信場所 |Edm.String|はい|イベントの時点でのメール メッセージの最新の配信場所。|
+|方向性 |Edm.String|はい|メール メッセージが受信、送信、または内部組織のメッセージであるかどうかを識別します。|
+|ThreatsAndDetectionTech |Edm.String|はい|脅威と対応する検出テクノロジ。 このフィールドは、スパム判定に対する最新の追加を含む、メール メッセージのすべての脅威を公開します。  たとえば、["Phish: [Spoof DMARC]","Spam: [URL malicious reputation]"。 異なる検出の脅威と検出テクノロジを以下に示します。|
 |||||
 
 > [!NOTE]
@@ -1103,7 +1103,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 #### <a name="attachmentdata"></a>AttachmentData
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |FileName|Edm.String|はい|添付ファイルのファイル名。|
 |FileType|Edm.String|はい|添付ファイルのファイルの種類。|
@@ -1171,7 +1171,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="url-time-of-click-events"></a>URL time-of-click イベント
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |UserId|Edm.String|はい|URL をクリックしたユーザーの識別子 (例: 電子メール アドレス)。|
 |AppName|Edm.String|はい|URL がクリックされた Office 365 サービス (例: Outlook メール)。|
@@ -1196,7 +1196,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="file-events"></a>ファイルのイベント
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |FileData|Self.[FileData](#filedata)|はい|イベントをトリガーしたファイルに関するデータ。|
 |SourceWorkload|Self.[SourceWorkload](#sourceworkload)|はい|ファイルが見つかったワークロードやサービス (例: SharePoint Online、OneDrive for Business、Microsoft Teams など)
@@ -1210,7 +1210,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 #### <a name="filedata"></a>FileData
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |DocumentId|Edm.String|はい|SharePoint、OneDrive、または Microsoft Teams のファイルの一意の識別子。|
 |FileName|Edm.String|はい|イベントをトリガーしたファイルの名前。|
@@ -1251,7 +1251,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="main-investigation-schema"></a>主要な調査スキーマ
 
-|名前    |種類    |説明  |
+|名前    |型    |説明  |
 |----|----|----|
 |InvestigationId    |Edm.String    |調査 ID/GUID |
 |InvestigationName    |Edm.String    |調査名 |
@@ -1368,7 +1368,7 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 
 - [Office 365 の制限されたユーザー ポータルから、ブロックされたユーザーを削除する](https://docs.microsoft.com/microsoft-365/security/office-365-security/removing-user-from-restricted-users-portal-after-spam)
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |監査|Edm.String|いいえ|検疫イベントに関連するシステム情報。|
 |イベント|Edm.String|いいえ|検疫イベントの種類。 このパラメーターの有効な値は、**一覧表示** また **一覧から除外** です。|
@@ -1381,7 +1381,7 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 
 「[Office 365 プロテクション センターでの監査ログの検索](/power-bi/service-admin-auditing#activities-audited-by-power-bi)」にリストされている Power BI イベントは、このスキーマを使用します。
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 | AppName               | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したアプリの名前です。 |
 | DashboardName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  いいえ  | イベントが発生したダッシュ ボードの名前です。 |
@@ -1397,7 +1397,7 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 
 ### <a name="membershipinformationtype-complex-type"></a>MembershipInformationType 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 | MemberEmail | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | グループの電子メール アドレス。 |
 | 状態      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | 現在、入力されていません。 |
@@ -1405,7 +1405,7 @@ FileHashes |Collection (Edm.String)    |ファイルに関連付けられてい�
 
 ### <a name="sharinginformationtype-complex-type"></a>SharingInformationType 複合型
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 | RecipientEmail    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | 共有の招待の受信者の電子メール アドレス。 |
 | RecipientName    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  いいえ  | 共有の招待の受信者の名前。 |
@@ -1418,7 +1418,7 @@ Dynamics 365 イベントのモデル駆動型アプリに関連するイベン�
 
 ### <a name="dynamics-365-base-schema"></a>Dynamics 365 基本スキーマ
 
-| **パラメーター**     | **型**            | **必須かどうか?** | **説明**|
+| **パラメーター**     | **Type**            | **必須かどうか?** | **説明**|
 |:------------------ | :------------------ | :--------------|:--------------|
 |CrmOrganizationUniqueName|Edm.String|はい|組織の一意の名前。|
 |InstanceUrl|Edm.String|はい|インスタンスの URL。|
@@ -1432,7 +1432,7 @@ Dynamics 365 イベントのモデル駆動型アプリに関連するイベン�
 
 Dynamics 365 のモデル駆動型アプリからのエンティティイベントは、このスキーマを使用して、Dynamics 36 5基本スキーマに基づいて構築します。 このスキーマには、監査イベントをトリガーしたエンティティ操作に関する情報が含まれています。
 
-| **パラメーター**     | **型**            | **必須かどうか?** | **説明**|
+| **パラメーター**     | **Type**            | **必須かどうか?** | **説明**|
 |:------------------ | :------------------ | :--------------|:--------------|
 |EntityId|Edm.Guid|いいえ|エンティティの一意識別子。|
 |EntityName|Edm.String|はい|組織のエンティティの名前。 エンティティの例には、`contact` や `authentication`があります。|
@@ -1445,7 +1445,7 @@ Dynamics 365 のモデル駆動型アプリからのエンティティイベン�
 
 「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities)」にリストされている WorkPlace Analytics イベントは、このスキーマを使用します。
 
-| **パラメーター**     | **型**            | **必須かどうか?** | **説明**|
+| **パラメーター**     | **Type**            | **必須かどうか?** | **説明**|
 |:------------------ | :------------------ | :--------------|:--------------|
 | WpaUserRole        | Edm.String | いいえ     | アクションを実行したユーザーの Workplace Analytics ロール。|
 | ModifiedProperties | コレクション (Common.ModifiedProperty) | いいえ | このプロパティには、変更されたプロパティの名前、変更されたプロパティの新しい値、および変更されたプロパティの以前の値が含まれています。|
@@ -1456,7 +1456,7 @@ Dynamics 365 のモデル駆動型アプリからのエンティティイベン�
 
 「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities)」に記載されている検疫イベントは、このスキーマを使用します。 検疫の詳細については、「[Office 365 の検疫](https://docs.microsoft.com/microsoft-365/security/office-365-security/quarantine-email-messages)」を参照してください。
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|いいえ|ユーザーによって実行された検疫要求の型。|
 |RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|いいえ|検疫要求のソースは、セキュリティ/コンプライアンス センター (SCC)、コマンドレット、URLlink に由来する場合があります。|
@@ -1488,7 +1488,7 @@ Dynamics 365 のモデル駆動型アプリからのエンティティイベン�
 
 「[Office 365 セキュリティ/コンプライアンス センターでの監査ログの検索](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities)」に記載されている Micorosft Forms イベントは、このスキーマを使用します。
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |FormsUserTypes|Collection(Self.[FormsUserTypes](#formsusertypes))|はい|アクションを実行するユーザーの役割。  このパラメーターの値は、管理者、所有者、レスポンダー、または共同編集者です。|
 |SourceApp|Edm.String|はい|アクションが Forms Web サイトからのものなのか、他のアプリからのものなのかを示します。|
@@ -1531,7 +1531,7 @@ Microsoft Information Protection (MIP) ラベルのスキーマのイベント�
 
 - [秘密度ラベルをコンテンツに自動的に適用する](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically)
 
-|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|**パラメーター**|**Type**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
 |Sender|Edm.String|いいえ|メール メッセージの差出人フィールドのメール アドレス。|
 |Receivers|Collection(Edm.String)|いいえ|メール メッセージの [宛先]、[CC]、[BCC] フィールドにあるすべてのメール アドレス。|
@@ -1547,7 +1547,7 @@ Microsoft Information Protection (MIP) ラベルのスキーマのイベント�
 
 Office 365 監査ログにリストされているコミュニケーションコンプライアンスイベントは、このスキーマを使用します。 これには、電子メールメッセージのコンテンツに、一致精度が \>= 99.5％ のスパム対策モデルによって識別される不快な言語が含まれている場合に生成される  **SupervisoryReviewOLAudit** 操作の監査レコードが含まれます。
 
-|**パラメーター**  |**型**|**必須かどうか?** |**説明**|
+|**パラメーター**  |**Type**|**必須かどうか?** |**説明**|
 |:---------------|:-------|:--------------|:--------------|
 | ExchangeDetails |[ExchangeDetails](#exchangedetails)|いいえ|SupervisoryReviewOLAudit イベントをトリガーした電子メールメッセージのプロパティ。|
 |||||

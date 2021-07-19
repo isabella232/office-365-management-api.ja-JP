@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 8ee293d2e82fc2a4cc5cce04289c7428f39339d5
-ms.sourcegitcommit: 1c2efaeeeb4942591cf37f16edb64b3b41b9e83c
+ms.openlocfilehash: 6bb8d836281ebb4e98ef90957ab98d24e0c1342d
+ms.sourcegitcommit: f08ff7cfd17aedd9d2ca85b5df0666ca986c9aed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "53326603"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "53447906"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -976,22 +976,26 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 |**パラメーター**|**型**|**必須かどうか?**|**説明**|
 |:-----|:-----|:-----|:-----|
-|MessageId|Edm.String|いいえ|チャットまたはチャネル メッセージの識別子。|
-|Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|いいえ|チーム内のユーザーの一覧。|
-|TeamName|Edm.String|いいえ|監査対象のチームの名前。|
-|TeamGuid|Edm.Guid|いいえ|監査対象のチームの一意識別子。|
-|ChannelType|Edm.String|いいえ|監査対象のチャネルの種類 (標準/プライベート)。　 |
-|ChannelName|Edm.String|いいえ|監査対象のチャネルの名前。|
-|ChannelGuid|Edm.Guid|いいえ|監査対象のチャネルの一意識別子。|
-|ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|いいえ|追加のプロパティのリスト。|
-|AddOnType|Self.[AddOnType](#addontype)|いいえ|このイベントを生成したアドオンの種類。|
-|AddonName|Edm.String|不要|イベントを生成したアドオンの名前。|
 |AddOnGuid|Edm.Guid|いいえ|イベントを生成したアドオンの一意識別子。|
-|TabType|Edm.String|いいえ|タブ イベントにのみ存在します。 イベントを生成したタブの種類。|
-|Name|Edm.String|いいえ|設定のイベントにのみ存在します。 変更された設定の名前。|
-|OldValue|Edm.String|いいえ|設定のイベントにのみ存在します。 設定の以前の値。|
-|NewValue|Edm.String|いいえ|設定のイベントにのみ存在します。 設定の新しい値。|
+|AddOnName|Edm.String|不要|イベントを生成したアドオンの名前。|
+|AddOnType|Self.[AddOnType](#addontype)|いいえ|このイベントを生成したアドオンの種類。|
+|ChannelGuid|Edm.Guid|いいえ|監査対象のチャネルの一意識別子。|
+|ChannelName|Edm.String|いいえ|監査対象のチャネルの名前。|
+|ChannelType|Edm.String|いいえ|監査対象のチャネルの種類 (標準/プライベート)。　 |
+|ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|いいえ|追加のプロパティのリスト。|
+|HostedContents|Collection(Self.[HostedContent](#hostedcontent-complex-type))|いいえ|チャットまたはチャネル メッセージでホストされるコンテンツのコレクション。|
+|メンバー|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|いいえ|チーム内のユーザーの一覧。|
+|MessageId|Edm.String|いいえ|チャットまたはチャネル メッセージの識別子。|
 |MessageURLs|Edm.String|いいえ|Teams メッセージで送信される URL に表示します。|
+|メッセージ|Collection(Self.[Message](#message-complex-type))|いいえ|チャットまたはチャネル メッセージのコレクション。|
+|MessageSizeInBytes|Edm.Int64|いいえ|UTF-16 エンコードを使用したチャットまたはチャネル メッセージのサイズ (バイト単位)。|
+|名前|Edm.String|いいえ|設定のイベントにのみ存在します。 変更された設定の名前。|
+|NewValue|Edm.String|いいえ|設定のイベントにのみ存在します。 設定の新しい値。|
+|OldValue|Edm.String|いいえ|設定のイベントにのみ存在します。 設定の以前の値。|
+|SubscriptionId|Edm.String|いいえ|Microsoft Graph 変更通知サブスクリプションの一意識別子。|
+|TabType|Edm.String|いいえ|タブ イベントにのみ存在します。 イベントを生成したタブの種類。|
+|TeamGuid|Edm.Guid|いいえ|監査対象のチームの一意識別子。|
+|TeamName|Edm.String|いいえ|監査対象のチームの名前。|
 ||||
 
 ### <a name="microsoftteamsmember-complex-type"></a>MicrosoftTeamsMember complex type
@@ -1033,6 +1037,32 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |3|Tab|Microsoft Teams タブ。|
 ||||
 
+### <a name="hostedcontent-complex-type"></a>HostedContent 複合型
+
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+|ID|Edm.String|はい|メッセージでホストされるコンテンツの一意の識別子。|
+|SizeInBytes|Edm.Int64|いいえ|メッセージでホストされるコンテンツ サイズ (バイト単位)。|
+|||||
+
+### <a name="message-complex-type"></a>メッセージ複合型
+
+|**パラメーター**|**型**|**必須かどうか?**|**説明**|
+|:-----|:-----|:-----|:-----|
+|AADGroupId|Edm.String|いいえ|メッセージが属する Azure Active Directory 内のグループの一意識別子。|
+|ID|Edm.String|はい|チャットまたはチャネル メッセージの一意識別子。|
+|ChannelGuid|Edm.String|いいえ|メッセージが属するチャネルの一意識別子。|
+|ChannelName|Edm.String|いいえ|メッセージが属するチャネルの名前。|
+|ChannelType|Edm.String|いいえ|メッセージが属するチャネルの種類。|
+|ChatName|Edm.String|いいえ|メッセージが属するチャットの名前。|
+|ChatThreadId|Edm.String|いいえ|メッセージが属するチャットの一意識別子。|
+|ParentMessageId|Edm.String|いいえ|親チャットまたはチャネル メッセージの一意識別子。|
+|SizeInBytes|Edm.Int64|いいえ|UTF-16 エンコードを使用したメッセージのサイズ (バイト単位)。|
+|TeamGuid|Edm.String|いいえ|メッセージが属するチームの一意識別子。|
+|TeamName|Edm.String|いいえ|メッセージが属するチームの名前。|
+|バージョン|Edm.String|いいえ|チャットまたはチャネル メッセージのバージョン。|
+|||||
+ 
 ## <a name="microsoft-defender-for-office-365-and-threat-investigation-and-response-schema"></a>Microsoft Defender for Office 365 および脅威の調査と対応スキーマ
 
 [Microsoft Defender for Office 365](/office365/securitycompliance/office-365-atp) と脅威の調査および対応のイベントは、Defender for Office 365 Plan 1、Defender for Office 365 Plan 2、またはE5サブスクリプションをお持ちの Office 365 のお客様にご利用いただけます。  Defender for Office 365 フィードの各イベントは、脅威が含まれていると判断された次のイベントに対応しています。
@@ -1073,7 +1103,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |最新の配信場所 |Edm.String|はい|イベントの時点でのメール メッセージの最新の配信場所。|
 |方向性 |Edm.String|はい|メール メッセージが受信、送信、または内部組織のメッセージであるかどうかを識別します。|
 |ThreatsAndDetectionTech |Edm.String|はい|脅威と対応する検出テクノロジ。 このフィールドは、スパム判定に対する最新の追加を含む、メール メッセージのすべての脅威を公開します。  たとえば、["Phish: [Spoof DMARC]","Spam: [URL malicious reputation]"。 異なる検出の脅威と検出テクノロジを以下に示します。|
-|AdditionalActionsAndResults |Collection(Edm.String)|いいえ|ZAP や手動での修復など、メールに対して行われた追加アクション。 また、対応する結果も含まれます。|
+|AdditionalActionsAndResults |Collection(Edm.String)|いいえ|ZAP や手動での修復など、電子メールで実行された追加のアクション。対応する結果も含まれます。|
 |コネクタ |Edm.String|いいえ|メールに関連するコネクターの名前と GUID。|
 |AuthDetails |Collection(Self.[AuthDetails](#authdetails))|いいえ|メールに対して行われる認証チェックです。 また、SPF、DKIM、DMARC、および CompAuth の値も含まれます。|
 |SystemOverrides |Collection(Self.[SystemOverrides](#systemoverrides))|いいえ|メールに適用可能なオーバーライド。 これらは、システムまたはユーザーによるオーバーライドが可能です。|

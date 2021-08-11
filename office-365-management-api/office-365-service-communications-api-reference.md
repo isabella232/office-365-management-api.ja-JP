@@ -7,24 +7,27 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 7cd91d9a43090b4731a11df701e0bf1aa340800e
-ms.sourcegitcommit: e7f345710dc63003704399419f784c4a9b5fc529
+ms.openlocfilehash: 883c7026ea41794e290208bed73b8da4f8ce90861cd2a1f8193e731e5dd1a4ef
+ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "48830470"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "54274342"
 ---
 # <a name="office-365-service-communications-api-reference"></a>Office 365 サービス通信 API リファレンス
 
+> [!IMPORTANT]
+> Microsoft Graph てサービスの正常性とAPI 通信が現在利用可能です。 Microsoft Graph API は、この記事に記載されているサービス通信 API に取って代わるものです。 2021 年 12 月 17 日以降、サービス通信 API の従来バージョンは廃止されます。 新しい Microsoft Graph API の詳細については、「[Microsoft Graph を使用してサービスの正常性と通信にアクセスするための概要](/graph/service-communications-concept-overview)」を参照してください。
+
 Office 365 サービス通信 API V2 を使用して、次のデータにアクセスできます。
 
-- **Get Services** :サブスクライブしているサービスのリストを取得します。
+- **Get Services**:サブスクライブしているサービスのリストを取得します。
 
-- **Get Current Status** : 現在進行中のサービス インシデントのリアルタイム ビューを取得します。
+- **Get Current Status**: 現在進行中のサービス インシデントのリアルタイム ビューを取得します。
 
-- **Get Historical Status** : サービス インシデントの過去のビューを取得します。
+- **Get Historical Status**: サービス インシデントの過去のビューを取得します。
 
-- **Get Messages** : インシデントとメッセージ センター通信を検索します。
+- **Get Messages**: インシデントとメッセージ センター通信を検索します。
 
 現在、Office 365 サービス通信 API には、Office 365、Yammer、Dynamics CRM および Microsoft Intune のクラウド サービスのデータが含まれます。
 
@@ -36,9 +39,9 @@ API のルート URL には、操作の範囲を単一のテナントに限定�
 https://manage.office.com/api/v1.0/{tenant_identifier}/ServiceComms/{operation}
 ```
 
-**Office 365 サービス通信 API** は、任意の Web 言語と、HTTPS および X.509 証明書をサポートするホスト環境とを用いてソリューションを開発できる、REST サービスです。 この API は、認証と承認に **Microsoft Azure Active Directory** および **OAuth2** プロトコルを使用します。 アプリケーションからこの API にアクセスする場合は、まず Azure AD で登録し、適切な範囲を指定したアクセス許可で設定する必要があります。 これにより、アプリケーションで、API を呼び出すために必要な OAuth2 アクセス トークンを要求できます。 Azure AD でのアプリケーションの登録および設定の詳細については、「[Office 365 管理 API の概要](get-started-with-office-365-management-apis.md)」を参照してください。
+**Office 365 Service Communications API** は、 REST サービスであり、Web 言語を使用してソリューションの開発を可能し、HTTPS および X.509 認証をサポートする環境をホストします。API は、認証と承認のために、**Microsoft Azure Active Directory** と **OAuth2** プロトコルに依存します。ご使用のアプリから API にアクセスするには、まずそれを Azure AD で登録して、適切なスコープのアクセス許可を持たせて構成します。これにより、ご使用のアプリは API の呼び出しに必要な OAuth2 アクセス トークンを要求できるようになります。Azure AD でのアプリの登録と構成の詳細については、「[Office 365 管理 API の概要](get-started-with-office-365-management-apis.md)」.を参照してください。
 
-すべての API 要求は、 **ServiceHealth.Read** 要求が含まれている Azure AD から取得した有効な OAuth2 JWT のアクセス トークンがある、承認 HTTP ヘッダーを必要とします。テナント ID は、ルート URL のテナント ID と一致していなければなりません。
+すべての API 要求は、**ServiceHealth.Read** 要求が含まれている Azure AD から取得した有効な OAuth2 JWT のアクセス トークンがある、承認 HTTP ヘッダーを必要とします。テナント ID は、ルート URL のテナント ID と一致していなければなりません。
 
 ```json
 Authorization: Bearer {OAuth2 token}
@@ -278,7 +281,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 - PostIncidentReportPublished
 - ServiceOperational
 
-これらの状態の定義の説明については、「[Microsoft 365 サービスの正常性をチェックする方法](https://docs.microsoft.com/microsoft-365/enterprise/view-service-health#status-definitions)」を参照してください。
+これらの状態の定義の説明については、「[Microsoft 365 サービスの正常性をチェックする方法](/enterprise/view-service-health#status-definitions)」を参照してください。
 
 ## <a name="get-historical-status"></a>Get Historical Status
 
@@ -464,7 +467,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
     ]
 }
 ```
-
 
 ## <a name="errors"></a>エラー
 

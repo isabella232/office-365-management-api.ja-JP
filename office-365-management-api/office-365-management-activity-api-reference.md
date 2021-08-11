@@ -7,12 +7,12 @@ ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c8eb59433b49c9735ddfefea0d1e6804e8937439
-ms.sourcegitcommit: f08ff7cfd17aedd9d2ca85b5df0666ca986c9aed
+ms.openlocfilehash: 6d2f013a79d444a596dab1423ac2c731fb86a8df4358c99480705a2a8f23bbe1
+ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "53447899"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "54274330"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Office 365 管理アクティビティ API リファレンス
 

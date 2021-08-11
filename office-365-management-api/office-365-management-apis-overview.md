@@ -7,12 +7,12 @@ ms.ContentId: 4fca85f9-efa6-3b4b-b10d-a07cb31f803f
 ms.topic: reference (API)
 ms.date: 09/28/2016
 localization_priority: Priority
-ms.openlocfilehash: 4f0e9414b1f2691f43a8b79e92e39bc589beeb89
-ms.sourcegitcommit: ec60dbd5990cfc61b8c000b423e7ade25fa613a8
+ms.openlocfilehash: 21c252bcd0fe422536dd8dc5a81b7a7c79fd2d04215a8f4c125af3116947b982
+ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "48397462"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "54274211"
 ---
 # <a name="office-365-management-apis-overview"></a>Office 365 管理 API の概要
 

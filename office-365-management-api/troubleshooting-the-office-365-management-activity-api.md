@@ -7,12 +7,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: d954cc97320953ed35d6e46cb118395469c93394
-ms.sourcegitcommit: 24ef06fd001f273d16be72733509b5ec202d3ebb
+ms.openlocfilehash: 086b40d0207fba761db66d918d74dc872ae66c9471ceced91d2b4b6dfe73ac1e
+ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "50418189"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "54274351"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>Office 365 マネージメント アクティビティ API の FAQ とトラブルシューティング
 
@@ -55,7 +55,7 @@ Office 365 マネージメント アクティビティ API の使用を開始す
 
 **コンテンツはいつまでAPI を使用して取得し、利用可能ですか?**
 
-コンテンツは、コンテンツが使用可能であることを通知してから7日間は、API を使用して取得できます。 通知が非常に長い期間遅延した場合でも (サービスの中断などの場合)、元のイベントに関連するコンテンツ BLOB をダウンロードする通知が最初に利用可能になってから 7 日間の期間があります。
+コンテンツは、コンテンツが使用可能であることを通知してから 7 日間は、API を使用して取得できます。通知が非常に長い期間遅延した場合でも (サービスの中断などの場合)、元のイベントに関連するコンテンツ BLOB をダウンロードする通知が最初に利用可能になってから 7 日間の期間があります。
 
 **コンテンツ BLOB 内の特定のイベント ID や RecordType などのプロパティについてマネージメント アクティビティ API を照会できますか?**
 
@@ -78,7 +78,7 @@ Microsoft サポートでチケットを開いて、新しい調整制限を要�
 
 **Azure Active Directory アクティビティの監査ログで TargetUpdatedProperties が ExtendedProperties に含まれなくなったのはなぜですか?**
 
-TargetUpdatedProperties は ExtendedProperties に表示されていました。 これが ExtendedProperties から削除され、現在では ModifiedProperties に表示されるようになりました。
+TargetUpdatedProperties は ExtendedProperties に表示されていました。これが ExtendedProperties から削除され、現在では ModifiedProperties に表示されるようになりました。
 
 **マネージメント アクティビティ API を介して Active Directory (Azure AD) サインイン アクティビティの UserAccountNotFound「LogonError」の監査ログを利用できないのはなぜですか?**
 
@@ -86,7 +86,7 @@ TargetUpdatedProperties は ExtendedProperties に表示されていました。
 
 ## <a name="troubleshooting-the-office-365-management-activity-api"></a>Office 365 マネージメント アクティビティ API のトラブルシューティング
 
-Office 365 マネージメント アクティビティ API の入門者が明確にしておく必要のあることの 1 つは、イベントが発生した日付、イベントの発生元になる可能性のあるサイト コレクション、イベントの種類などのイベントの詳細によってクエリを実行するという概念がないことです。 その代りに、特定のワークロード (SharePoint や Azure AD など) に対するサブスクリプションを作成します。また、それぞれのサブスクリプションはテナント単位にします。
+Office 365 マネージメント アクティビティ API の入門者が明確にしておく必要のあることの 1 つは、イベントが発生した日付、イベントの発生元になる可能性のあるサイト コレクション、イベントの種類などのイベントの詳細によってクエリを実行するという概念がないことです。その代りに、特定のワークロード (SharePoint や Azure AD など) に対するサブスクリプションを作成します。また、それぞれのサブスクリプションはテナント単位にします。
 
 以下のセクションでは、Office 365 マネージメント アクティビティ API を使用する際にお客様が抱く最も一般的な質問をまとめています。
 
@@ -174,7 +174,7 @@ access_token   : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjJLVmN1enFBaWRPTHF
 
 ### <a name="checking-your-subscriptions"></a>サブスクリプションの確認
 
-既存のマネージメント アクティビティ API クライアントまたはソリューションへのデータ フローに中断が発生したときには、サブスクリプションに何らかの問題が発生しているのではないかと疑われることがあります。 アクティブなサブスクリプションを確認するために、前述のスクリプトに次のコードを追加します。
+既存のマネージメント アクティビティ API クライアントまたはソリューションへのデータ フローに中断が発生したときには、サブスクリプションに何らかの問題が発生しているのではないかと疑われることがあります。アクティブなサブスクリプションを確認するために、前述のスクリプトに次のコードを追加します。
 
 ```powershell
 Invoke-WebRequest -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/list" 

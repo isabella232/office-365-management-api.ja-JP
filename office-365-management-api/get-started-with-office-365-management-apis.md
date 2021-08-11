@@ -7,12 +7,12 @@ ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: d11644a4a9985096c14ad4ae265471159243b65b
-ms.sourcegitcommit: ec60dbd5990cfc61b8c000b423e7ade25fa613a8
-ms.translationtype: MT
+ms.openlocfilehash: 64406bc52070f89223142fbf06313c9357d97a79311a2f00c95bfa4c829147e1
+ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "48397448"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "54274271"
 ---
 # <a name="get-started-with-office-365-management-apis"></a>Office 365 Management API の使用を開始する
 
@@ -137,10 +137,10 @@ Azure AD からアプリ専用アクセス トークンを要求するときは�
 
 2. 証明書 MMC スナップインを開き、自分のユーザー アカウントに接続します。 
     
-3. 個人用フォルダーで新しい証明書を検索し、base64 でエンコードされたファイル (mycompanyname.cer など) に公開キーをエクスポートします。 アプリケーションは、この証明書を Azure AD との通信に使用するため、秘密キーへのアクセスも確実に維持されるようになります。
+3. 個人用フォルダーで新しい証明書を検索し、base64 でエンコードされたファイル (mycompanyname.cer など) に公開キーをエクスポートします。アプリケーションは Azure ADとの通信にこの証明書を使用して、ユーザーが秘密キーへのアクセスを同様に保持できるようにします。
     
    > [!NOTE] 
-   > Windows PowerShell を使用すると、拇印および Base64 でエンコードされた公開キーを抽出できます。 その他のプラットフォームには、証明書のプロパティを取得する同様のツールがあります。
+   > Windows PowerShell を使用して、拇印と base64 でエンコードされた公開キーを抽出できます。他のプラットフォームには、証明書のプロパティを取得するための同様のツールが用意されています。
 
 4. Windows PowerShell プロンプトから、次を入力して実行します。
     
@@ -214,7 +214,7 @@ Azure AD からアプリ専用アクセス トークンを要求するときは�
 
 ## <a name="get-office-365-tenant-admin-consent"></a>Office 365 テナント管理者の同意を得る
 
-アプリケーションに Office 365 Management API を使用するために必要なアクセス許可が構成されたため、テナント管理者は、アプリケーションが API を使用してテナントのデータにアクセスするために、これらのアクセス許可を明示的に与える必要があります。 同意を与えるには、テナント管理者が、次に示す特別に作成された URL を使用して、Azure AD にサインインする必要があります。この URL では、アプリケーションの要求したアクセス許可を確認することができます。 自分が所有するテナントのデータにアクセスするために API を使用する場合、この手順は必要ではありません。
+アプリケーションに Office 365 Management APIを使用するために必要なアクセス許可が構成されたため、テナント管理者は、アプリケーションが API を使用してテナントのデータにアクセスするために、これらのアクセス許可を明示的に与える必要があります。同意を与えるには、テナント管理者は、次の特別に作成された URL を使用して、Azure AD にログインする必要があります。この URL では、アプリケーションの要求したアクセス許可を確認することができます。独自のテナントのデータにアクセスするためにAPI を使用する場合、この手順は必要ではありません。
 
 
 ```http
@@ -229,7 +229,7 @@ https://login.windows.net/common/oauth2/authorize?response_type=code&resource=ht
 https://login.windows.net/common/oauth2/authorize?response_type=code&resource=https%3A%2F%2Fmanage.office.com&client_id=2d4d11a2-f814-46a7-890a-274a72a7309e&redirect_uri=http%3A%2F%2Fwww.mycompany.com%2Fmyapp%2F
 ```
 
-同意 URL をテストするには、その URL をブラウザーに貼り付けて、アプリケーションの登録に使用したテナント以外のテナントの Office 365 管理者の資格情報を使用してサインインします。 Office Management API を使用するために必要なアプリケーションのアクセス許可を付与する要求が表示されます。
+同意 URL をテストするには、その URL をブラウザーに貼り付けて、アプリケーションの登録に使用したテナント以外のテナントの Office 365 管理者の資格情報を使用してサインインします。Office Management API を使用するために必要なアプリケーションのアクセス許可を付与する要求が表示されます。
 
 
 ![Azure AD アプリの追加ページ](images/azure-ad-app-added-page.png)
@@ -242,7 +242,7 @@ https://login.windows.net/common/oauth2/authorize?response_type=code&resource=ht
 http://www.mycompany.com/myapp/?code=AAABAAAAvPM1KaPlrEqdFSB...
 ```
 
-アプリケーションは、この認証コードを使用して Azure AD からアクセス トークンを取得します。そのトークンからテナント ID を抽出できます。 テナント ID を抽出して格納すると、テナント管理者のサインインを必要とすることなく、その後のアクセス トークンを取得できます。
+アプリケーションはテナント ID を抽出できるAzure AD からアクセス トークンを取得するために、この認証コードを使用します。テナント ID を抽出し、格納したら、テナント管理者のログインを必要とせずその後のアクセス トークンを取得できます。
 
 
 ## <a name="request-access-tokens-from-azure-ad"></a>Azure AD からアクセス トークンを要求する
@@ -263,7 +263,7 @@ Azure AD からアクセス トークンを要求する方法は 2 つです。
 http://www.mycompany.com/myapp/?code=AAABAAAAvPM1KaPlrEqdFSB...
 ```
 
-アプリケーションはアクセス トークンの認証コードを交換するために Azure AD に HTTP REST POST を実行します。 テナント ID がまだ不明であるため、POST は「共通」のエンドポイントに送られます。このエンドポイントの URL にはテナント ID が埋め込まれていません。
+アプリケーションはアクセス トークン取得のため、認証コードと交換するために、Azure AD に HTTP REST POST を実行します。テナント ID がまだ不明であるため、POSTは「一般的な」エンドポイントに送られます。このエンドポイントの URL にはテナント ID が埋め込まれていません。
 
 ```http
 https://login.windows.net/common/oauth2/token
@@ -333,7 +333,7 @@ Content-Length: 3265
 
 ### <a name="request-an-access-token-by-using-client-credentials"></a>クライアントの資格情報を使用してアクセス トークンを要求する
 
-テナント ID が判明すると、アプリケーションは、Azure AD にサービス間の呼び出しを行い、期限切れの際に追加のアクセス トークンを要求することができます。 これらのトークンには、同意を許可した管理者ではなく、要求元のアプリケーションについてのみ情報が含まれます。 サービス間の呼び出しでは、アプリケーションが X.509 証明書を使用して、base64 でエンコードされ、SHA256 で署名されている JWT ベアラー トークンの形式でクライアントのアサーションを作成する必要があります。
+テナント ID が判明すると、アプリケーションは、Azure AD にサービス間の呼び出しを行い、期限切れの際に追加のアクセス トークンを要求することができます。これらのトークンには、同意を許可した管理者ではなく、要求元のアプリケーションについての情報のみが含まれます。サービス間の呼び出しでは、アプリケーションが X.509 証明書を使用して、base64 でエンコードされ、SHA256 で署名されている JWT ベアラー トークンの形式でクライアントのアサーションを作成する必要があります。
 
 .NET でアプリケーションを開発するときには、[Azure AD Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) を使用してクライアントのアサーションを作成できます。他の開発プラットフォームにも同様のライブラリが必要です。
 

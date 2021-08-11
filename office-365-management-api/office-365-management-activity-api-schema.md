@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 6bb8d836281ebb4e98ef90957ab98d24e0c1342d
-ms.sourcegitcommit: f08ff7cfd17aedd9d2ca85b5df0666ca986c9aed
-ms.translationtype: MT
+ms.openlocfilehash: 696b624beaff188d51313ce248ffabbbad421a1b5014e5b61da1cb86c8e18dbd
+ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "53447906"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "54274341"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Office 365 管理アクティビティ API のスキーマ
 
@@ -90,22 +90,22 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |1|ExchangeAdmin|Exchange 管理者監査ログからのイベント。|
 |2|ExchangeItem|単一のアイテムに対して実行されるアクション (単一の電子メール メッセージの作成や受信など) の、Exchange メールボックス監査ログからのイベント。|
 |3|ExchangeItemGroup|複数のアイテムに対して実行できるアクション (1 つ以上の電子メール メッセージの移動や削除など) の、Exchange メールボックス監査ログからのイベント。|
-|4 |SharePoint|SharePoint イベント。|
-|6 |SharePointFileOperation|SharePoint ファイル操作イベント。|
-|7 |OneDrive|Skype for Business イベント。|
-|8 |AzureActiveDirectory|Azure Active Directory イベント。|
-|9 |AzureActiveDirectoryAccountLogon|Azure Active Directory OrgId ログオン イベント (非推奨)。|
-|10 |DataCenterSecurityCmdlet|データ センター セキュリティ コマンドレット イベント。|
+|4|SharePoint|SharePoint イベント。|
+|6|SharePointFileOperation|SharePoint ファイル操作イベント。|
+|7|OneDrive|Skype for Business イベント。|
+|8|AzureActiveDirectory|Azure Active Directory イベント。|
+|9|AzureActiveDirectoryAccountLogon|Azure Active Directory OrgId ログオン イベント (非推奨)。|
+|10|DataCenterSecurityCmdlet|データ センター セキュリティ コマンドレット イベント。|
 |11|ComplianceDLPSharePoint|SharePoint のデータ損失防止 (DLP) イベントと OneDrive for Business。|
 |13|ComplianceDLPExchange|統合 DLP ポリシーを使用して構成された場合の Exchange のデータ損失防止 (DLP) イベント。 Exchange トランスポート ルールに基づく DLP イベントはサポートされていません。|
-|14 |SharePointSharingOperation|SharePoint 共有イベント。|
+|14|SharePointSharingOperation|SharePoint 共有イベント。|
 |15|AzureActiveDirectoryStsLogon|Azure Active Directory の Secure Token Service (STS) ログオン イベント。|
-|16 |SkypeForBusinessPSTNUsage|Skype for Business からの公衆交換電話網 (PSTN) イベント。|
-|17 |SkypeForBusinessUsersBlocked|Skype for Business からのブロックされたユーザー イベント。|
-|18 |SecurityComplianceCenterEOPCmdlet|セキュリティ センターとコンプライアンス センターの管理者アクション|
+|16|SkypeForBusinessPSTNUsage|Skype for Business からの公衆交換電話網 (PSTN) イベント。|
+|17|SkypeForBusinessUsersBlocked|Skype for Business からのブロックされたユーザー イベント。|
+|18|SecurityComplianceCenterEOPCmdlet|セキュリティ センターとコンプライアンス センターの管理者アクション|
 |19|ExchangeAggregatedOperation|集計された Exchange メールボックス監査イベント。|
 |20|PowerBIAudit|Power BI イベント。|
-| 21|CRM|Dynamics 365 イベント。|
+|21|CRM|Dynamics 365 イベント。|
 |22|Yammer|Yammer イベント。|
 |23|SkypeForBusinessCmdlets|Skype for Business イベント。|
 |24|Discovery|セキュリティ/コンプライアンス センターでコンテンツ検索を実行し、eDiscovery のケースを管理することによって実行される、電子情報開示アクティビティのイベント。|
@@ -198,11 +198,11 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |1|Reserved|予約済みユーザー。|
 |2|Admin|管理者。|
 |3|DcAdmin|Microsoft データセンターのオペレーター。|
-|4 |System|システム アカウント。|
-|5 |Application|アプリケーション。|
-|6 |ServicePrincipal|サービス プリンシパル。|
-|7 |CustomPolicy|カスタム ポリシー。|
-|8 |SystemPolicy|システム ポリシー。|
+|4|System|システム アカウント。|
+|5|Application|アプリケーション。|
+|6|ServicePrincipal|サービス プリンシパル。|
+|7|CustomPolicy|カスタム ポリシー。|
+|8|SystemPolicy|システム ポリシー。|
 ||||
 
 ### <a name="enum-auditlogscope---type-edmint32"></a>列挙値: AuditLogScope - 型: Edm.Int32
@@ -236,11 +236,11 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |:-----|:-----|:-----|
 |0|Invalid|アイテムは、その他の種類のアイテム (この表にリストされている) のいずれでもありません。|
 |1|File|アイテムはファイルです。|
-|5 |Folder|アイテムはフォルダーです。|
-|6 |Web|アイテムは Web です。|
-|7 |Site|アイテムはサイトです。|
-|8 |Tenant|アイテムはテナントです。|
-|9 |DocumentLibrary|アイテムはドキュメント ライブラリです。|
+|5|Folder|アイテムはフォルダーです。|
+|6|Web|アイテムは Web です。|
+|7|Site|アイテムはサイトです。|
+|8|Tenant|アイテムはテナントです。|
+|9|DocumentLibrary|アイテムはドキュメント ライブラリです。|
 |11|Page|アイテムはページです。|
 ||||
 
@@ -571,9 +571,9 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |1|Admin|他のユーザーのメールボックスに対する管理者特権を持つユーザー。|
 |2|委任|他のユーザーのメールボックスに対する代理人特権を持つユーザー。|
 |3|Transport|Microsoft データセンターのトランスポート サービス。|
-|4 |SystemService|Microsoft データセンターのサービス アカウント。|
-|5 |BestAccess|内部使用のため予約済みです。|
-|6 |DelegatedAdmin|代理管理者。|
+|4|SystemService|Microsoft データセンターのサービス アカウント。|
+|5|BestAccess|内部使用のため予約済みです。|
+|6|DelegatedAdmin|代理管理者。|
 |||||
 
 ### <a name="exchangemailboxauditgrouprecord-schema"></a>ExchangeMailboxAuditGroupRecord スキーマ
@@ -659,11 +659,11 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |1|MobilePhone|ユーザー資格情報は、携帯電話です。|
 |2|SecretQuestion|ユーザー資格情報は、秘密の質問です。|
 |3|SecurePin|ユーザー資格情報は、セキュア PIN です。|
-|4 |SecurePinReset|ユーザー資格情報は、セキュア PIN リセットです。|
+|4|SecurePinReset|ユーザー資格情報は、セキュア PIN リセットです。|
 |11|EasyID|ユーザー資格情報は、EasyID です。|
-|14 |PasswordIndexCredentialType|ユーザー資格情報は、PasswordIndexCredentialType です。|
-|16 |Device|ユーザー資格情報は、デバイスです。|
-|17 |ForeignRealmIndex|ユーザーの資格情報は、ForeignRealmIndex です。|
+|14|PasswordIndexCredentialType|ユーザー資格情報は、PasswordIndexCredentialType です。|
+|16|Device|ユーザー資格情報は、デバイスです。|
+|17|ForeignRealmIndex|ユーザーの資格情報は、ForeignRealmIndex です。|
 |||||
 
 ### <a name="enum-logintype---type-edmint32"></a>列挙:LoginType - タイプ:Edm.Int32
@@ -684,21 +684,21 @@ Office 365 管理アクティビティ API のスキーマは、次の 2 つの�
 |1|Password|認証方法は、パスワードです。|
 |2|Digest|認証方法は、ダイジェストです。|
 |3|ProxyAuth|認証方法は、ProxyAuth です。|
-|4 |InfoCard|認証方法は、InfoCard です。|
-|5 |DAToken|認証方法は、DAToken です。|
-|6 |Sha1RememberMyPassword|認証方法は、Sha1RememberMyPassword です。|
-|7 |LMPasswordHash|認証方法は、LMPasswordHash です。|
-|8 |ADFSFederatedToken|認証方法は、ADFSFederatedToken です。|
-|9 |EID|認証方法は、EID です。|
-|10 |DeviceID|認証方法は、DeviceID です。 |
+|4|InfoCard|認証方法は、InfoCard です。|
+|5|DAToken|認証方法は、DAToken です。|
+|6|Sha1RememberMyPassword|認証方法は、Sha1RememberMyPassword です。|
+|7|LMPasswordHash|認証方法は、LMPasswordHash です。|
+|8|ADFSFederatedToken|認証方法は、ADFSFederatedToken です。|
+|9|EID|認証方法は、EID です。|
+|10|DeviceID|認証方法は、DeviceID です。 |
 |11|MD5|認証方法は、MD5 です。|
-|12 |EncProxyPasswordHash|認証方法は、EncProxyPasswordHash です。|
+|12|EncProxyPasswordHash|認証方法は、EncProxyPasswordHash です。|
 |13|LWAFederation|認証方法は、LWAFederation です。|
-|14 |Sha1HashedPassword|認証方法は、Sha1HashedPassword です。|
+|14|Sha1HashedPassword|認証方法は、Sha1HashedPassword です。|
 |15|SecurePin|認証方法は、セキュア PIN です。|
-|16 |SecurePinReset|認証方法は、セキュア PIN リセットです。|
-|17 |SAML20PostSimpleSign|認証方法は、SAML20PostSimpleSign です。|
-|18 |SAML20Post|認証方法は、SAML20Post です。|
+|16|SecurePinReset|認証方法は、セキュア PIN リセットです。|
+|17|SAML20PostSimpleSign|認証方法は、SAML20PostSimpleSign です。|
+|18|SAML20Post|認証方法は、SAML20Post です。|
 |19|OneTimeCode|認証方法は、ワンタイム・コードです。|
 |||||
 
@@ -1198,19 +1198,19 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |1|スパム対策、HSPM|スパム対策ポリシーの高確度スパム (HSPM) アクション。|
 |2|スパム対策、SPM|スパム対策ポリシーのスパム (SPM) アクション。|
 |3|スパム対策、バルク|スパム対策ポリシーのバルク アクション。|
-|4 |スパム対策、PHSH|スパム対策ポリシーのフィッシング (PHSH) アクション。|
-|5 |フィッシング対策、DIMP|フィッシング対策ポリシーのドメイン偽装 (DIMP) アクション。|
-|6 |フィッシング対策、UIMP|フィッシング対策ポリシーのユーザー偽装 (UIMP) アクション。|
-|7 |フィッシング対策、SPOOF|フィッシング対策ポリシーのスプーフィング アクション。|
-|8 |フィッシング対策、GIMP|フィッシング対策ポリシーのメールボックス インテリジェンス アクション。|
-|9 |マルウェア対策、AMP| マルウェア対策ポリシーのマルウェア ポリシー アクション。|
-|10 |安全な添付ファイル、SAP| Defender for Office 365 ポリシーの、安全な添付ファイルのポリシー アクション。|
+|4|スパム対策、PHSH|スパム対策ポリシーのフィッシング (PHSH) アクション。|
+|5|フィッシング対策、DIMP|フィッシング対策ポリシーのドメイン偽装 (DIMP) アクション。|
+|6|フィッシング対策、UIMP|フィッシング対策ポリシーのユーザー偽装 (UIMP) アクション。|
+|7|フィッシング対策、SPOOF|フィッシング対策ポリシーのスプーフィング アクション。|
+|8|フィッシング対策、GIMP|フィッシング対策ポリシーのメールボックス インテリジェンス アクション。|
+|9|マルウェア対策、AMP| マルウェア対策ポリシーのマルウェア ポリシー アクション。|
+|10|安全な添付ファイル、SAP| Defender for Office 365 ポリシーの、安全な添付ファイルのポリシー アクション。|
 |11|Exchange トランスポート ルール、ETR| Exchange トランスポート ルールのポリシー アクション。|
-|12 |マルウェア対策、ZAPM| ゼロアワー自動消去 (ZAP) に適用されるマルウェア対策ポリシーのマルウェア対策ポリシー アクション。|
+|12|マルウェア対策、ZAPM| ゼロアワー自動消去 (ZAP) に適用されるマルウェア対策ポリシーのマルウェア対策ポリシー アクション。|
 |13|フィッシング対策、ZAPP| ZAP に適用されるフィッシング対策のフィッシング詐欺ポリシー アクション。|
-|14 |フィッシング対策、ZAPS| ZAP に適用されるスパム対策 ポリシーの迷惑メール ポリシー アクション。|
+|14|フィッシング対策、ZAPS| ZAP に適用されるスパム対策 ポリシーの迷惑メール ポリシー アクション。|
 |15|スパム対策、高確度フィッシング メール (HPHISH)|スパム対策ポリシーの高確度フィッシング ポリシー アクション。|
-|17 |スパム対策、送信スパム ポリシー (OSPM)|スパム対策の送信スパム フィルター ポリシーのポリシー アクション。|
+|17|スパム対策、送信スパム ポリシー (OSPM)|スパム対策の送信スパム フィルター ポリシーのポリシー アクション。|
 ||||
 
 ### <a name="enum-policyaction---type-edmint32"></a>列挙値: PolicyAction - 型: Edm.Int32
@@ -1223,11 +1223,11 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |1|AddXHeader|メール メッセージに X-header を追加するポリシー アクション。|
 |2|ModifySubject|フィルタリング ポリシーで指定された情報でメール メッセージの件名を変更するポリシー アクション。|
 |3|Redirect|フィルタリング ポリシーで指定されたメール アドレスにメール メッセージをリダイレクトするポリシー アクション。|
-|4 |Delete|メール メッセージを削除 (ドロップ) するポリシー アクション。|
-|5 |Quarantine|メール メッセージを隔離するポリシー アクション。|
-|6 |NoAction| メール メッセージに対してアクションを実行しないように構成されたポリシー。|
-|7 |BccMessage|フィルタリング ポリシーで指定されたメール アドレスにメール メッセージを Bcc するポリシー アクション。|
-|8 |ReplaceAttachment|ポリシーアクションとは、フィルタリング ポリシーで指定されたメールメッセージの添付ファイルを置き換えることです。|
+|4|Delete|メール メッセージを削除 (ドロップ) するポリシー アクション。|
+|5|Quarantine|メール メッセージを隔離するポリシー アクション。|
+|6|NoAction| メール メッセージに対してアクションを実行しないように構成されたポリシー。|
+|7|BccMessage|フィルタリング ポリシーで指定されたメール アドレスにメール メッセージを Bcc するポリシー アクション。|
+|8|ReplaceAttachment|ポリシーアクションとは、フィルタリング ポリシーで指定されたメールメッセージの添付ファイルを置き換えることです。|
 ||||
 
 ### <a name="url-time-of-click-events"></a>URL time-of-click イベント
@@ -1251,8 +1251,8 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 |:-----|:-----|:-----|
 |2|Blockpage|[Defender for Office 365 の安全なリンク機能](/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされました。|
 |3|PendingDetonationPage|[Defender for Office 365 の安全なリンク機能](/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されました。|
-|4 |BlockPageOverride|[Defender for Office 365 の安全なリンク機能](/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされましたが、ユーザーは URL に移動するためにブロックをオーバーライドしました。|
-|5 |PendingDetonationPageOverride|[Defender for Office 365 の安全なリンク機能](/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されましたが、ユーザーは URL に移動するためにオーバーライドしました。|
+|4|BlockPageOverride|[Defender for Office 365 の安全なリンク機能](/office365/securitycompliance/atp-safe-links)により、ユーザーが URL に移動することがブロックされましたが、ユーザーは URL に移動するためにブロックをオーバーライドしました。|
+|5|PendingDetonationPageOverride|[Defender for Office 365 の安全なリンク機能](/office365/securitycompliance/atp-safe-links)により、ユーザーに分析保留中のページが表示されましたが、ユーザーは URL に移動するためにオーバーライドしました。|
 |||||
 
 ### <a name="file-events"></a>ファイルのイベント
@@ -1337,7 +1337,7 @@ DLP 機密データは、「DLP 機密データの読み取り」アクセス許
 
 ### <a name="main-investigation-schema"></a>主要な調査スキーマ
 
-|名前    |種類    |説明  |
+|名前    |型    |説明  |
 |----|----|----|
 |InvestigationId    |Edm.String    |調査 ID/GUID |
 |InvestigationName    |Edm.String    |調査名 |
@@ -1558,7 +1558,7 @@ Dynamics 365 のモデル駆動型アプリからのエンティティイベン�
 |1|Delete|これは、有害と見なされるメール メッセージを削除するように求める、ユーザーからの要求です。|
 |2|Release|これは、有害と見なされるメール メッセージを解放するように求める、ユーザーからの要求です。|
 |3|Export|これは、有害と見なされるメール メッセージをエクスポートするように求める、ユーザーからの要求です。|
-|4 |ViewHeader|これは、有害と見なされるメール メッセージのヘッダーを表示するように求める、ユーザーからの要求です。|
+|4|ViewHeader|これは、有害と見なされるメール メッセージのヘッダーを表示するように求める、ユーザーからの要求です。|
 ||||
 
 ### <a name="enum-requestsource---type-edmint32"></a>Enum: RequestSource - Type: Edm.Int32

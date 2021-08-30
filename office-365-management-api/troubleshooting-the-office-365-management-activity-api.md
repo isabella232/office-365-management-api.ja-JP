@@ -6,13 +6,13 @@ description: Office 365 マネージメント アクティビティ API のサ�
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
-localization_priority: Priority
-ms.openlocfilehash: 086b40d0207fba761db66d918d74dc872ae66c9471ceced91d2b4b6dfe73ac1e
-ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
+ms.localizationpriority: high
+ms.openlocfilehash: a5bceab7d18553824b604609d71c50a05f4d65d6
+ms.sourcegitcommit: 13b50617b1a73f5890414087d8eabe6b2240cfb4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "54274351"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "58510154"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>Office 365 マネージメント アクティビティ API の FAQ とトラブルシューティング
 
@@ -35,11 +35,11 @@ Office 365 マネージメント アクティビティ API の使用を開始す
 
 **Office 365 組織の監査を無効にするとどうなりますか? マネージメント アクティビティ API を介してイベントを引き続き取得できますか?**
 
-いいえ。 管理アクティビティ API を介してレコードを取得するには、組織の Office 365 統合監査を有効にする必要があります。 手順については、[監査ログの検索を有効または無効にする](https://docs.microsoft.com/microsoft-365/compliance/turn-audit-log-search-on-or-off)を参照してください。
+いいえ。 管理アクティビティ API を介してレコードを取得するには、組織の Office 365 統合監査を有効にする必要があります。 手順については、[監査ログの検索を有効または無効にする](/microsoft-365/compliance/turn-audit-log-search-on-or-off)を参照してください。
 
 **特定の Office 365 サービスについて、どのイベントが監査されますか?**
 
-総合的なイベントの一覧は、Office 365 マネージメント アクティビティ API スキーマのドキュメントに記載されています。 詳細については、「Office 365 マネージメント アクティビティ API のスキーマ」を参照してください。 また、監査されているほとんどの Office 365 サービスのイベント・リストについては、[セキュリティ/コンプライアンス センターで監査ログを検索する](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#audited-activities)も参照してください。
+総合的なイベントの一覧は、Office 365 マネージメント アクティビティ API スキーマのドキュメントに記載されています。 詳細については、「Office 365 マネージメント アクティビティ API のスキーマ」を参照してください。 また、監査されているほとんどの Office 365 サービスのイベント・リストについては、[セキュリティ/コンプライアンス センターで監査ログを検索する](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#audited-activities)も参照してください。
 
 **マネージメント アクティビティ API でフェッチされたレコードと、Microsoft 365 コンプライアンス センターの監査ログの検索ツールを使用して返されたレコードに違いはありますか?**
 
@@ -82,7 +82,7 @@ TargetUpdatedProperties は ExtendedProperties に表示されていました。
 
 **マネージメント アクティビティ API を介して Active Directory (Azure AD) サインイン アクティビティの UserAccountNotFound「LogonError」の監査ログを利用できないのはなぜですか?**
 
-2020 年 11 月以降、Azure AD サインイン アクティビティの監査ログは、Azure AD Event Hubs から統合監査ログに取り込まれます。 この変更の結果、「LogonError」プロパティに UserAccountNotFound 値を入力することはできません。 2021 年 2 月の第 1 週から、[Azure AD ログオン監査スキーマの ErrorCode プロパティ](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema)が [AADSTS エラー コード](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information)と一致するようになりました。 また、UserAccountNotFound エラーのログイン試行時のユーザー名は、組織の Azure AD ディレクトリに存在しないため、UserId パラメーターに入力されません。
+2020 年 11 月以降、Azure AD サインイン アクティビティの監査ログは、Azure AD Event Hubs から統合監査ログに取り込まれます。 この変更の結果、「LogonError」プロパティに UserAccountNotFound 値を入力することはできません。 2021 年 2 月の第 1 週から、[Azure AD ログオン監査スキーマの ErrorCode プロパティ](/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema)が [AADSTS エラー コード](/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information)と一致するようになりました。 また、UserAccountNotFound エラーのログイン試行時のユーザー名は、組織の Azure AD ディレクトリに存在しないため、UserId パラメーターに入力されません。
 
 ## <a name="troubleshooting-the-office-365-management-activity-api"></a>Office 365 マネージメント アクティビティ API のトラブルシューティング
 
@@ -112,13 +112,13 @@ Office 365 マネージメント アクティビティ API の入門者が明確
 
 ### <a name="enabling-unified-audit-logging-in-office-365"></a>Office 365 で統合監査ログを有効にする
 
-管理アクティビティ API を使用するためにアプリをセットアップしたのに、それが動作しない場合は、Office 365 組織の統合監査ログが有効になっていることをご確認ください。 これを実行するには、Office 365 監査ログをオンにします。 手順については、「[Office 365 監査ログの検索を有効または無効にする](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)」を参照してください。
+管理アクティビティ API を使用するためにアプリをセットアップしたのに、それが動作しない場合は、Office 365 組織の統合監査ログが有効になっていることをご確認ください。 これを実行するには、Office 365 監査ログをオンにします。 手順については、「[Office 365 監査ログの検索を有効または無効にする](/microsoft-365/compliance/turn-audit-log-search-on-or-off)」を参照してください。
 
 統合監査が有効になっていない場合は、通常、次の文字列を含むエラーが表示されます。`Microsoft.Office.Compliance.Audit``.DataServiceException: Tenant <tenantID> does not exist.`
 
 ### <a name="connecting-to-the-api"></a>API への接続
 
-ほとんどのアプリケーションは、簡単なクライアント資格情報の OAuth2 フローを使用して API に接続します。 そのため、最初の手順では、マネージメント アクティビティ API のデータへのアクセスに必要なアクセス許可を持つ Azure AD アプリケーションを作成します。 Azure AD アプリの登録を作成する手順に関する説明は、この記事の範囲外になります。 詳細については、「[クイック スタート: Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)」を参照してください。
+ほとんどのアプリケーションは、簡単なクライアント資格情報の OAuth2 フローを使用して API に接続します。 そのため、最初の手順では、マネージメント アクティビティ API のデータへのアクセスに必要なアクセス許可を持つ Azure AD アプリケーションを作成します。 Azure AD アプリの登録を作成する手順に関する説明は、この記事の範囲外になります。 詳細については、「[クイック スタート: Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する](/azure/active-directory/develop/active-directory-integrating-applications)」を参照してください。
 
 #### <a name="azure-application-permissions"></a>Azure アプリケーションのアクセス許可
 

@@ -6,13 +6,13 @@ description: この API を使用して、Get Services、Get Current Status、Ge
 ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
-localization_priority: Priority
-ms.openlocfilehash: 883c7026ea41794e290208bed73b8da4f8ce90861cd2a1f8193e731e5dd1a4ef
-ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
+ms.localizationpriority: high
+ms.openlocfilehash: 32a1304006d81f5d37deedb369dd63ae41da24a9
+ms.sourcegitcommit: 6becab1db19ca810b10a3563a5e4c9dd097aa6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "54274342"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "58506196"
 ---
 # <a name="office-365-service-communications-api-reference"></a>Office 365 サービス通信 API リファレンス
 

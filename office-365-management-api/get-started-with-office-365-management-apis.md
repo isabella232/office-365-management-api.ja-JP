@@ -6,13 +6,13 @@ description: この API では、Azure AD を使用してサービスへのア�
 ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
 ms.date: ''
-localization_priority: Priority
-ms.openlocfilehash: 64406bc52070f89223142fbf06313c9357d97a79311a2f00c95bfa4c829147e1
-ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
+ms.localizationpriority: high
+ms.openlocfilehash: 96a0cd71c55251160117d1ae598c8935479b6780
+ms.sourcegitcommit: 13b50617b1a73f5890414087d8eabe6b2240cfb4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "54274271"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "58510147"
 ---
 # <a name="get-started-with-office-365-management-apis"></a>Office 365 Management API の使用を開始する
 
@@ -33,7 +33,7 @@ Office 365 Management API と同じようにセキュリティで保護された
 ![管理 API が承認フローを開始する](images/authorization-flow.png)
 
 > [!IMPORTANT]
-> Office 365 管理アクティビティ API を介してデータにアクセスする前に、Office 365 組織の統合監査ログを有効にする必要があります。 これを実行するには、Office 365 監査ログをオンにします。 手順については、「[Office 365 監査ログの検索を有効または無効にする](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)」を参照してください。 <br/><br/>Office 365 サービス通信 API のみを使用している場合は、統合監査ログを有効にする必要はありません。
+> Office 365 管理アクティビティ API を介してデータにアクセスする前に、Office 365 組織の統合監査ログを有効にする必要があります。 これを実行するには、Office 365 監査ログをオンにします。 手順については、「[Office 365 監査ログの検索を有効または無効にする](/office365/securitycompliance/turn-audit-log-search-on-or-off)」を参照してください。 <br/><br/>Office 365 サービス通信 API のみを使用している場合は、統合監査ログを有効にする必要はありません。
 
 ## <a name="register-your-application-in-azure-ad"></a>Azure AD でアプリケーションを登録する
 
@@ -42,7 +42,7 @@ Office 365 Management API は、Office 365 テナント データに対し、Azu
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure AD でアプリを登録するには、Office 365 サブスクリプションと、Office 365 サブスクリプションに関連付けられている Azure のサブスクリプションが必要です。開始するには、Office 365 と Azure の両方に、試用版のサブスクリプションを使用できます。詳細については、「[Office 365 開発者プログラムへようこそ](https://docs.microsoft.com/office/developer-program/office-365-developer-program)」を参照してください。
+Azure AD でアプリを登録するには、Office 365 サブスクリプションと、Office 365 サブスクリプションに関連付けられている Azure のサブスクリプションが必要です。開始するには、Office 365 と Azure の両方に、試用版のサブスクリプションを使用できます。詳細については、「[Office 365 開発者プログラムへようこそ](/office/developer-program/office-365-developer-program)」を参照してください。
 
 
 ### <a name="use-the-azure-management-portal-to-register-your-application-in-azure-ad"></a>Azure の管理ポータルを使用してアプリケーションを Azure AD で登録する
@@ -80,7 +80,7 @@ Azure AD でアプリを登録するには、Office 365 サブスクリプショ
 
 アプリケーションを登録すると、いくつかの重要なプロパティを指定する必要があります。プロパティでは、Azure AD 内でアプリケーションがどのように機能するか、また、テナント管理者が Office 365 Management API を使用してアプリケーションにテナント データへのアクセス許可に同意する方法を指定します。
 
-Azure AD アプリケーションの全般的なアプリケーション構成の詳細については、「[Application オブジェクトのプロパティ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)」を参照してください。
+Azure AD アプリケーションの全般的なアプリケーション構成の詳細については、「[Application オブジェクトのプロパティ](/azure/active-directory/develop/active-directory-application-objects)」を参照してください。
 
 
 1. **クライアント ID**。この値は Azure AD で自動的に生成されます。アプリケーションは、テナント管理者に同意を求めるとき、および Azure AD からアプリ専用トークンを要求するときに、この値を使用します。
@@ -335,7 +335,7 @@ Content-Length: 3265
 
 テナント ID が判明すると、アプリケーションは、Azure AD にサービス間の呼び出しを行い、期限切れの際に追加のアクセス トークンを要求することができます。これらのトークンには、同意を許可した管理者ではなく、要求元のアプリケーションについての情報のみが含まれます。サービス間の呼び出しでは、アプリケーションが X.509 証明書を使用して、base64 でエンコードされ、SHA256 で署名されている JWT ベアラー トークンの形式でクライアントのアサーションを作成する必要があります。
 
-.NET でアプリケーションを開発するときには、[Azure AD Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) を使用してクライアントのアサーションを作成できます。他の開発プラットフォームにも同様のライブラリが必要です。
+.NET でアプリケーションを開発するときには、[Azure AD Authentication Library (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) を使用してクライアントのアサーションを作成できます。他の開発プラットフォームにも同様のライブラリが必要です。
 
 エンコードされていない JWT トークンは、次のプロパティを持つヘッダーとペイロードで構成されます。
 

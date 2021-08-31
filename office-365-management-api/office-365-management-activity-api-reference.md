@@ -6,26 +6,26 @@ description: Office 365 管理アクティビティ API は、Office 365 と Azu
 ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: ''
-localization_priority: Priority
-ms.openlocfilehash: 6d2f013a79d444a596dab1423ac2c731fb86a8df4358c99480705a2a8f23bbe1
-ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
+ms.localizationpriority: high
+ms.openlocfilehash: ba8913806f13719e0851ea5a3574ac7847ab35f5
+ms.sourcegitcommit: 13b50617b1a73f5890414087d8eabe6b2240cfb4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "54274330"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "58510139"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Office 365 管理アクティビティ API リファレンス
 
 Office 365 管理アクティビティ API は、Office 365 と Azure AD のアクティビティ ログから、ユーザー、管理者、システム、およびポリシー アクションとポリシー イベントについての情報を取得するために使用します。 
 
-Office 365 と Microsoft Azure Active Directory の監査ログとアクティビティ ログに記録されたアクションとイベントを使用して、監視、分析、およびデータ可視化を提供するソリューションを作成できます。 このソリューションにより、企業はそのコンテンツに対して実行されたアクションの可視性を向上させることができます。 これらのアクションとイベントは、Office 365 アクティビティ レポートからも入手できます。 詳細については、「[Office 365 セキュリティ/コンプライアンス センターで監査ログを検索する](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c)」を参照してください。
+Office 365 と Microsoft Azure Active Directory の監査ログとアクティビティ ログに記録されたアクションとイベントを使用して、監視、分析、およびデータ可視化を提供するソリューションを作成できます。 このソリューションにより、企業はそのコンテンツに対して実行されたアクションの可視性を向上させることができます。 これらのアクションとイベントは、Office 365 アクティビティ レポートからも入手できます。 詳細については、[「Search the audit log in the Microsoft 365 (Microsoft 365 での監査ログの検索)」](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)を参照してください。
 
 Office 365 管理アクティビティ API は、REAT Web サービスの 1 つであり、任意の言語と、HTTPS および X.509 証明書をサポートするホスト環境を用いて、ソリューションの開発に使用できます。この API は、認証と承認に Azure AD と OAuth2 プロトコルを使用します。アプリケーションからこの API にアクセスする場合は、まず Azure AD で登録し、適切なアクセス許可で設定する必要があります。これにより、アプリケーションで、API を呼び出すために必要な OAuth2 アクセス トークンを要求できます。詳細については、「[Office 365 管理 API の使用を開始する](get-started-with-office-365-management-apis.md)」を参照してください。
 
 Office 365 管理アクティビティ API で返されるデータの詳細情報については、「[Office 365 管理アクティビティ API のスキーマ](office-365-management-activity-api-schema.md)」を参照してください。
 
 > [!IMPORTANT]
-> Office 365 管理アクティビティ API を介してデータにアクセスする前に、Office 365 組織の統合監査ログを有効にする必要があります。 これを実行するには、Office 365 監査ログをオンにします。 手順については、「[Office 365 監査ログの検索を有効または無効にする](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)」を参照してください。
+> Office 365 管理アクティビティ API を介してデータにアクセスする前に、Office 365 組織の統合監査ログを有効にする必要があります。 これを実行するには、Office 365 監査ログをオンにします。 手順については、「[Office 365 監査ログの検索を有効または無効にする](/microsoft-365/compliance/turn-audit-log-search-on-or-off)」を参照してください。
 
 
 ## <a name="working-with-the-office-365-management-activity-api"></a>Office 365 管理アクティビティ API の操作
@@ -130,7 +130,7 @@ Authorization: Bearer eyJ0e...Qa6wg
 |**パス**| `/subscriptions/start?contentType={ContentType}`||
 |**パラメーター**|contentType|有効なコンテンツ タイプである必要があります。|
 ||PublisherIdentifier|API に対するコードを作成するベンダーのテナント GUID。 これは、アプリケーション GUID またはアプリケーションを使用する顧客の GUID では **ありません**。コードを記述した会社の GUID です。 このパラメーターは、要求率の調整に使用します。 専用のクオータを取得する場合は、このパラメーターが発行されるすべての要求で指定されていることを確認してください。 このパラメーターの指定なしで受信したすべての要求は、同一のクオータを共有することになります。|
-|**Body**|webhook|次の 3 つのプロパティが指定された、オプションの JSON オブジェクト:<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>address</b>: Required HTTPS endpoint that can receive notifications.  A test message will be sent to the webhook to validate the webhook before creating the subscription.</p></li><li><p><b>authId</b>: Optional string that will be included as the WebHook-AuthID header in notifications sent to the webhook as a means of identifying and authorizing the source of the request to the webhook.</p></li><li><p><b>expiration</b>: Optional datetime that indicates a datetime after which notifications should no longer be sent to the webhook.</p></li></ul>|
+|**Body**|webhook|次の 3 つのプロパティが指定された、オプションの JSON オブジェクト:<ul><li>**address**</b>: Required HTTPS endpoint that can receive notifications.  A test message will be sent to the webhook to validate the webhook before creating the subscription.</li><li>**authId**: Optional string that will be included as the WebHook-AuthID header in notifications sent to the webhook as a means of identifying and authorizing the source of the request to the webhook.</li><li>**expiration**: Optional datetime that indicates a datetime after which notifications should no longer be sent to the webhook.|
 |**Response**|contentType|呼び出しで指定するコンテンツ タイプ。|
 ||status|サブスクリプションの状態。サブスクリプションが無効の場合、コンテンツを取得したりそのリストを作成したりすることはできません。|
 ||webhook|Webhook の状態と一緒に、呼び出しに指定される Webhook のプロパティ。Webhook が無効である場合、通知は受け取りませんが、サブスクリプションが有効であれば、コンテンツを取得したりそのリストを作成したりできます。|
@@ -171,8 +171,6 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
-
-
 ## <a name="webhook-validation"></a>Webhook の検証
 
 /Start 操作が呼び出され、Webhook が指定されると、アクティブ リスナーが通知を受け入れて処理できることを検証するために、指定された Webhook アドレスに検証通知が送信されます。HTTP 200 OK 応答が返信されない場合は、サブスクリプションは作成されません。または、Webhook を既存のサブスクリプションに追加するために /start が呼び出されているものの、HTTP 200 OK の応答が返信されない場合は、Webhook は追加されず、サブスクリプションは変更されません。
@@ -190,7 +188,6 @@ Webhook-ValidationCode: (random opaque string)
 }
 
 ```
-
 
 #### <a name="sample-response"></a>応答のサンプル
 
@@ -240,10 +237,10 @@ HTTP/1.1 200 OK
 |**パス**| `/subscriptions/list`||
 |**パラメーター**|PublisherIdentifier|API に対するコードを作成するベンダーのテナント GUID。 これは、アプリケーション GUID またはアプリケーションを使用する顧客の GUID では **ありません**。コードを記述した会社の GUID です。 このパラメーターは、要求率の調整に使用します。 専用のクオータを取得する場合は、このパラメーターが発行されるすべての要求で指定されていることを確認してください。 このパラメーターの指定なしで受信したすべての要求は、同一のクオータを共有することになります。|
 |**Body**|(空)||
-|**応答**|JSON 配列|各サブスクリプションは、次の 3 つのプロパティが指定された JSON オブジェクトで表されます。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>contentType</b>:コンテンツ タイプを示します。</p></li><li><p><b>status</b>: サブスクリプションの状態を示します。</p></li><li><p><b>webhook</b>: Indicates the configured webhook, together with the status (enabled, disabled, expired) of the webhook.  If a subscription does not have a webhook, the webhook property will be present but with null value.</p></li></ul>|
+|**応答**|JSON 配列|各サブスクリプションは、次の 3 つのプロパティが指定された JSON オブジェクトで表されます。<ul><li>**contentType**:コンテンツ タイプを示します。</li><li>**status**: サブスクリプションの状態を示します。</li><li>**webhook**: Indicates the configured webhook, together with the status (enabled, disabled, expired) of the webhook.  If a subscription does not have a webhook, the webhook property will be present but with null value.|
 
 
-#### <a name="sample-request"></a>要求のサンプル
+#### <a name="sample-request"></a>要求の例
 
 ```json
 GET {root}/subscriptions/list?PublisherIdentifier=46b472a7-c68e-4adf-8ade-3db49497518e
@@ -290,8 +287,8 @@ Content-Type: application/json; charset=utf-8
 |**パス**| `/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
 |**パラメーター**|contentType|有効なコンテンツ タイプである必要があります。|
 ||PublisherIdentifier|API に対するコードを作成するベンダーのテナント GUID。 これは、アプリケーション GUID またはアプリケーションを使用する顧客の GUID では **ありません**。コードを記述した会社の GUID です。 このパラメーターは、要求率の調整に使用します。 専用のクオータを取得する場合は、このパラメーターが発行されるすべての要求で指定されていることを確認してください。 このパラメーターの指定なしで受信したすべての要求は、同一のクオータを共有することになります。|
-||startTime endTime|Optional datetimes (UTC) indicating the time range of content to return, based on when the content became available. The time range is inclusive with respect to startTime (startTime <= contentCreated) and exclusive with respect to endTime (contentCreated < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>開始時刻と終了時刻の両方を指定する (または両方を省略する) 必要があります。その時間差は 24 時間を超えてはならず、開始時刻は過去 7 日以内でなければなりません。 By default, if startTime and endTime are omitted, then the content available in the last 24 hours is returned.<p>**注**: 24 時間よりも長い間隔になる startTime と endTime を指定することもできますが、そのような設定はお勧めできません。 さらに、24 時間よりも長い間隔の要求に対する応答で結果が得られたとしても、部分的な結果になっている可能性があり、結果と見なすべきではありません。 要求の発行の際には、間隔が 24 時間以内になる startTime と endTime を指定してください。</p>|
-|**Response**|JSON 配列|利用可能なコンテンツは、次のプロパティが指定された JSON オブジェクトで表されます。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>contentType</b>:コンテンツ タイプを示します。</p></li><li><p><b>contentId</b>:コンテンツを一意に識別する、符号化文字列です。</p></li><li><p><b>contentUri</b>:コンテンツを取得するときに使用する URL です。</p></li><li><p><b>contentCreated</b>:コンテンツが利用可能になった日付/時刻です。</p></li><li><p><b>contentExpiration</b>:コンテンツ取得の締切となる日付/時刻です。</p></li></ul>|
+||startTime endTime|Optional datetimes (UTC) indicating the time range of content to return, based on when the content became available. The time range is inclusive with respect to startTime (startTime <= contentCreated) and exclusive with respect to endTime (contentCreated < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul><li>YYYY-MM-DD</li><li>YYYY-MM-DDTHH:MM</li><li>YYYY-MM-DDTHH:MM:SS</ul>開始時刻と終了時刻の両方を指定する (または両方を省略する) 必要があります。その時間差は 24 時間を超えてはならず、開始時刻は過去 7 日以内でなければなりません。 By default, if startTime and endTime are omitted, then the content available in the last 24 hours is returned.<p>**注**: 24 時間よりも長い間隔になる startTime と endTime を指定することもできますが、そのような設定はお勧めできません。 さらに、24 時間よりも長い間隔の要求に対する応答で結果が得られたとしても、部分的な結果になっている可能性があり、結果と見なすべきではありません。 要求の発行の際には、間隔が 24 時間以内になる startTime と endTime を指定してください。</p>|
+|**Response**|JSON 配列|利用可能なコンテンツは、次のプロパティが指定された JSON オブジェクトで表されます。<ul><li>**contentType**:コンテンツ タイプを示します。</li><li>**contentId**:コンテンツを一意に識別する、符号化文字列です。</li><li> **contentUri**:コンテンツを取得するときに使用する URL です。</li><li>**contentCreated**:コンテンツが利用可能になった日付/時刻です。</li><li> **contentExpiration**:コンテンツ取得の締切となる日付/時刻です。|
 
 
 #### <a name="sample-request"></a>要求のサンプル
@@ -321,7 +318,6 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-
 ### <a name="pagination"></a>改ページ
 
 ある時間範囲の利用可能なコンテンツのリストを作成する場合、返される結果の数は、応答のタイムアウトを防ぐために制限されます。指定の時間範囲内に 1 つの応答で返せるよりもより多くの結果がある場合、結果は切り捨てられ、次ページの結果を取得するために使用する URL を示すヘッダーが応答に追加されます。この URL には、元の要求に指定されているのと同じ _startTime_ および _endTime_ パラメーターと、次ページの内部 ID を示すパラメーターが含まれます。元の要求で _startTime_ と _endTime_ が指定されていなかった場合、それらは元の要求が出された時点に先行する 24 時間間隔を反映するように設定されます。
@@ -346,17 +342,17 @@ NextPageUri: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscrip
 要求の本文には、利用可能なコンテンツ blob を表す、1 つ以上の JSON オブジェクトの配列が含まれます。通知を比較的小さいサイズにしておくために、各通知内のコンテンツ blob の数は制限されています。この制限は変更される場合があるので、実装では、固定サイズを前提とするのではなく、配列の長さを照会する必要があります。各オブジェクトには、/content 操作によって返されたのと同じプロパティ、データが属するテナントの GUID、およびサブスクリプションを作成したアプリケーションの GUID が含まれます。これにより、Webhook は、複数のテナントとアプリケーションでの使用中に、コンテキストを確立することができます。
 
 - **tenantId**:コンテンツが属するテナントの GUID です。
-    
+
 - **clientId**:サブスクリプションを作成したアプリケーションの GUID です。
-    
+
 - **contentType**:コンテンツ タイプを示します。
-    
+
 - **contentId**:コンテンツを一意に識別する、符号化文字列です。
-    
+
 - **contentUri**:コンテンツを取得するときに使用する URL です。
-    
+
 - **contentCreated**:コンテンツが利用可能になった日付/時刻です。
-    
+
 - **contentExpiration**:コンテンツ取得の締切となる日付/時刻です。
     
 通知の例を次に示します。
@@ -381,11 +377,9 @@ Webhook-AuthID: o365activityapinotification
 
 ```
 
-
 ## <a name="notification-failure-and-retry"></a>通知の失敗および再試行
 
 通知システムは、新しいコンテンツが利用可能になると通知を送信します。通知の送信時に過剰なエラーが発生した場合、再試行メカニズムによって再試行間隔が指数関数的に増加します。エラーが引き続き発生する場合は、Webhook を無効にし、その Webhook への通知の送信を完全に停止する権利を留保します。/start 操作を使用して、無効な Webhook を再度有効にすることができます。
-
 
 ## <a name="retrieving-content"></a>コンテンツの取得
 
@@ -493,7 +487,6 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-
 ## <a name="list-notifications"></a>通知のリスト作成
 
 この操作は、指定されたコンテンツ タイプに対するすべての通知試行を一覧表示します。コンテンツ タイプのサブスクリプションを開始するときに Webhook を含めなかった場合、取得する通知はありません。エラーが発生した場合に通知を再試行するため、この操作では同一のコンテンツに対して複数の通知を返すことがあります。通知が送信される順序は、コンテンツが利用可能になった順序と必ずしも一致しません (特にエラーや再試行が発生した場合)。 
@@ -506,7 +499,7 @@ Content-Type: application/json; charset=utf-8
 |**パス**| `/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
 |**パラメーター**|contentType|有効なコンテンツ タイプである必要があります。|
 ||PublisherIdentifier|API に対するコードを作成するベンダーのテナント GUID。 これは、アプリケーション GUID またはアプリケーションを使用する顧客の GUID では **ありません**。コードを記述した会社の GUID です。 このパラメーターは、要求率の調整に使用します。 専用のクオータを取得する場合は、このパラメーターが発行されるすべての要求で指定されていることを確認してください。 このパラメーターの指定なしで受信したすべての要求は、同一のクオータを共有することになります。|
-||startTime endTime|コンテンツが利用可能になったときを基点として、コンテンツが返される時間の範囲を示す、オプションの日付/時刻 (UTC)。 この時間の範囲には、_startTime_ (_startTime_ <= contentCreated) は含まれ、_endTime_ (_contentCreated_ < endTime) は含まれません。これにより、利用可能なコンテンツのページングに、重複することのない増分の時間間隔を使用できます。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>開始時刻と終了時刻の両方を指定する (または両方を省略する) 必要があります。その時間差は 24 時間を超えてはならず、開始時刻は過去 7 日以内でなければなりません。 By default, if  _startTime_ and _endTime_ are omitted, the content available in the last 24 hours is returned.|
+||startTime endTime|コンテンツが利用可能になったときを基点として、コンテンツが返される時間の範囲を示す、オプションの日付/時刻 (UTC)。 この時間の範囲には、_startTime_ (_startTime_ <= contentCreated) は含まれ、_endTime_ (_contentCreated_ < endTime) は含まれません。これにより、利用可能なコンテンツのページングに、重複することのない増分の時間間隔を使用できます。<ul><li>YYYY-MM-DD</li><li>YYYY-MM-DDTHH:MM</li><li>YYYY-MM-DDTHH:MM:SS</ul>開始時刻と終了時刻の両方を指定する (または両方を省略する) 必要があります。その時間差は 24 時間を超えてはならず、開始時刻は過去 7 日以内でなければなりません。 By default, if  _startTime_ and _endTime_ are omitted, the content available in the last 24 hours is returned.|
 |**応答**|JSON 配列|通知は、次のプロパティが指定された JSON オブジェクトで表されます。 <ul><li>**contentType**: コンテンツ タイプを示します。</li><li>**contentId**: コンテンツを一意に識別する、符号化文字列です。</li><li>**contentUri**: コンテンツを取得するときに使用する URL です。 </li><li>**contentCreated**: コンテンツが利用可能になった日付/時刻です。</li><li>**contentExpiration**: コンテンツ取得の締切となる日付/時刻です。</li><li>**notificationSent**: 通知が送信された日付/時刻です。</li><li>**notificationStatus**: 通知の試行の成功または失敗を示します。</li></ul>|
 
 #### <a name="sample-request"></a>要求のサンプル
@@ -564,7 +557,7 @@ NextPageUri: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscrip
 |**パラメーター**|PublisherIdentifier|API に対するコードを作成するベンダーのテナント GUID。 これは、アプリケーション GUID またはアプリケーションを使用する顧客の GUID では **ありません**。コードを記述した会社の GUID です。 このパラメーターは、要求率の調整に使用します。 専用のクオータを取得する場合は、このパラメーターが発行されるすべての要求で指定されていることを確認してください。 このパラメーターの指定なしで受信したすべての要求は、同一のクオータを共有することになります。|
 |**ヘッダー**|Accept-Language|Header to specify the desired language for localized names. For example, use "en-US" for English or "es" for Spanish. The default language (en-US) will be returned if this header is not present.|
 |**Body**|(空)||
-|**応答**|JSON 配列|利用可能なコンテンツは、次のプロパティが指定された JSON オブジェクトで表されます。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>id</b>: Indicates the guid of the sensitive information type.</p></li><li><p><b>name</b>: The friendly name of the sensitive information type.</p></li></ul>|
+|**応答**|JSON 配列|利用可能なコンテンツは、次のプロパティが指定された JSON オブジェクトで表されます。<ul><li>**id**</b>: Indicates the guid of the sensitive information type.</li><li>**name**: The friendly name of the sensitive information type.</p></li></ul>|
 
 #### <a name="sample-request"></a>要求のサンプル
 
@@ -602,7 +595,7 @@ Office 365 管理アクティビティ API を使用して監査ログにアク�
 
 発行者レベルの制限からテナント レベルの制限に移行しています。 その結果、各組織は、監査データにアクセスするために独自に完全に割り当てられた帯域幅を取得します。 すべての組織には、最初に 1 分あたり 2,000 件の要求のベースラインが割り当てられます。 これは静的な定義済みの制限ではありませんが、組織内のシート数などの要因の組み合わせでモデル化され、Office 365 および Microsoft 365 E5 組織は非 E5 組織の約 2 倍の帯域幅を取得します。 また、サービスの正常性を保護するために、最大帯域幅の上限も設定されます。
 
-詳細については、「Microsoft 365 での高度な監査」の「[Office 365 管理アクティビティ API への高帯域幅アクセス](https://docs.microsoft.com/microsoft-365/compliance/advanced-audit#high-bandwidth-access-to-the-office-365-management-activity-api)」セクションを参照してください。
+詳細については、「Microsoft 365 での高度な監査」の「[Office 365 管理アクティビティ API への高帯域幅アクセス](/compliance/advanced-audit#high-bandwidth-access-to-the-office-365-management-activity-api)」セクションを参照してください。
 
 > [!NOTE] 
 > それぞれのテナントは最初に最大 1 分あたり 2,000 の要求を送信できますが、Microsoft は応答速度を保証できません。 応答速度は、クライアント システムのパフォーマンス、ネットワーク容量、ネットワーク速度など、さまざまな要因によって決まります。 
@@ -626,24 +619,25 @@ Office 365 管理アクティビティ API を使用して監査ログにアク�
 |||
 |:-----|:-----|
 |コード|メッセージ|
-|AF10001|要求で送信されたアクセス許可セット ({0}) に、必要なアクセス許可 **ActivityFeed.Read** が含まれていませんでした。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = the permission set in the access token.</p></li></ul>|
-|AF20001|Missing parameter: {0}. <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = 不足しているパラメーターの名前。</p></li></ul>|
-|AF20002|無効なパラメーターの種類です: {0}。 予期される種類: {1}<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = 無効なパラメーターの名前。</p></li><li><p>{1} = the expected type (int, datetime, guid).</p></li></ul>|
-|AF20003|指定した有効期限 {0} は、過去の日付と時刻に設定されています。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = API 呼び出しに渡される有効期限。</p></li></ul>|
-|AF20010|URL ({0}) で渡されたテナント ID が、アクセス トークン ({1}) で渡されたテナント ID と一致しません。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = tenant ID passed in the URL</p></li><li><p>{1} = tenant ID passed in the access token</p></li></ul>|
-|AF20011|指定したテナント ID ({0}) は、システムに存在しないか、削除されています。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>   {0} = tenant ID passed in the URL</p></li></ul>|
-|AF20012|指定したテナント ID ({0}) が、システムで正しく構成されていません。 <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>    {0} = tenant ID passed in the URL</p></li></ul>|
-|AF20013|URL ({0}) で渡されたテナント ID は、有効な GUID ではありません。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p> {0} = tenant ID passed in the URL</p></li></ul>|
+|AF10001|要求で送信されたアクセス許可セット ({0}) に、必要なアクセス許可 **ActivityFeed.Read** が含まれていませんでした。<br/><br/>{0} = the permission set in the access token.</p></li></ul>|
+|AF20001|Missing parameter: {0}. <br/><br/>{0} = 不足しているパラメーターの名前。</p></li></ul>|
+|AF20002|無効なパラメーターの種類です: {0}。 予期される種類: {1}<br/><br/>{0} = 無効なパラメーターの名前。</p>{1} = the expected type (int, datetime, guid).</p></li></ul>|
+|AF20003|指定した有効期限 {0} は、過去の日付と時刻に設定されています。<br/><br/>{0} = API 呼び出しに渡される有効期限。</p></li></ul>|
+|AF20010|URL ({0}) で渡されたテナント ID が、アクセス トークン ({1}) で渡されたテナント ID と一致しません。<br/><br/>{0} = URL で渡されたテナント ID{1} = アクセス トークンで渡されたテナント ID</p></li></ul>|
+|AF20011|指定したテナント ID ({0}) は、システムに存在しないか、削除されています。 <br/><br/> {0} = tenant ID passed in the URL</p></li></ul>|
+|AF20012|指定したテナント ID ({0}) が、システムで正しく構成されていません。 <br/><br/>  {0} = tenant ID passed in the URL</p></li></ul>|
+|AF20013|URL ({0}) で渡されたテナント ID は、有効な GUID ではありません。<br/><br/>   {0} = tenant ID passed in the URL</p></li></ul>|
 |AF20020|指定したコンテンツ タイプが無効です。|
-|AF20021|The webhook endpoint {{0}) could not be validated. {1}<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = Webhook アドレス。</p></li><li><p>{1} = "The endpoint did not return HTTP 200." or "The address must begin with HTTPS."</p></li></ul>|
+|AF20021|The webhook endpoint {{0}) could not be validated. {1}<br/><br/>{0} = Webhook アドレス。<br/><br/>{1} = "The endpoint did not return HTTP 200." or "The address must begin with HTTPS."</p></li></ul>|
 |AF20022|指定したコンテンツ タイプのサブスクリプションがありません。|
-|AF20023|The subscription was disabled by {0}.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = "テナント管理" または "サービス管理"</p></li></ul>|
+|AF20023|The subscription was disabled by {0}.<br/><br/>{0} = "テナント管理" または "サービス管理"</p></li></ul>|
 |AF20030|開始時刻と終了時刻の両方を指定する (または両方を省略する) 必要があります。その時間差は 24 時間を超えてはならず、開始時刻は過去 7 日以内でなければなりません。|
-|AF20031|Invalid nextPage Input: {0}.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = URL に渡された次ページ インジケーター</p></li></ul>|
-|AF20050|指定された ID が存在しません。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = リソース ID またはリソース URL。</p></li></ul>|
-|AF20051|Content requested with the key {0} has already expired. Content older than 7 days cannot be retrieved.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>•    {0} = resource id or resource URL</p></li></ul>|
-|AF20052|URL 内のコンテンツの ID {0} は無効です。<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = リソース ID またはリソース URL。</p></li></ul>|
+|AF20031|Invalid nextPage Input: {0}.<br/><br/>{0} = URL に渡された次ページ インジケーター</p></li></ul>|
+|AF20050|指定された ID が存在しません。<br/><br/>{0} = リソース ID またはリソース URL。</p></li></ul>|
+|AF20051|Content requested with the key {0} has already expired. Content older than 7 days cannot be retrieved.<<br/><br/>  {0} = リソース ID またはリソース URL。</p></li></ul>|
+|AF20052|URL 内のコンテンツの ID {0} は無効です。<br/><br/>{0} = リソース ID またはリソース URL。</p></li></ul>|
 |AF20053|Accept-Language ヘッダーには、1 つの言語のみ表示可能です。|
 |AF20054|Accept-Language ヘッダーに無効な構文があります。|
-|AF429|要求数が多すぎます。 メソッド={0}, PublisherId={1}<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = HTTP メソッド</p></li><li><p>{1} = PublisherIdentifier として使用されたテナント GUID</p></li></ul>|
+|AF429|要求数が多すぎます。 メソッド={0}, PublisherId={1}<br/><br/>{0} = HTTP メソッド<br/><br/>{1} = PublisherIdentifier として使用されたテナント GUID</p></li></ul>|
 |AF50000|内部エラーが発生しました。要求を再試行してください。|
+|||
